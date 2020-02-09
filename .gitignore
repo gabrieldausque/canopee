@@ -1,0 +1,9 @@
+.idea/**
+bin/
+obj/
+
+/CanopeeAgent/CanopeeAgent.Common/bin/
+/CanopeeAgent/CanopeeAgent.Common/obj/
+/CanopeeAgent/CanopeeAgent/bin/
+/CanopeeAgent/CanopeeAgentStl/obj/
+/CanopeeAgent/CanopeeAgentStl/bin/
