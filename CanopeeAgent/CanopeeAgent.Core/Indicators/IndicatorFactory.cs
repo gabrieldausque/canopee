@@ -1,9 +1,10 @@
 using System.Composition.Hosting;
 using System.IO;
 using System.Runtime.Loader;
+using CanopeeAgent.Common;
 using Microsoft.Extensions.Configuration;
 
-namespace CanopeeAgent.Common
+namespace CanopeeAgent.Core.Indicators
 {
     internal class IndicatorFactory
     {
@@ -23,7 +24,7 @@ namespace CanopeeAgent.Common
             _container = _containerConfiguration.CreateContainer();
         }
 
-        public IIndicator GetIndicator(IConfiguration configurationManager, string indicatorName)
+        public IIndicator GetIndicator(string indicatorName, IConfiguration configuration)
         {
             //TODO : do injection of component input, transform and output based on configuration
             return null;

@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using CanopeeAgent.Common;
+using CanopeeAgent.Core.Configuration;
+using Microsoft.Extensions.Configuration;
 
-namespace CanopeeAgent.Common
+namespace CanopeeAgent.Core.Indicators
 {
     public class Collector : IDisposable
     {
@@ -12,8 +15,10 @@ namespace CanopeeAgent.Common
         {
             _indicators = new List<IIndicator>();
             _indicatorsFactory = new IndicatorFactory();
-            
-            //TODO : read the configuration section for the indicators and get each from the factory
+
+            var config = ConfigurationService.Instance
+                .Configuration.GetSection("Indicators")
+                .Get<List<IndicatorConfiguration>>();
         }
 
         public void Run()

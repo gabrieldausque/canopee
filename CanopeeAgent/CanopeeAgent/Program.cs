@@ -5,6 +5,7 @@ using System.Net.Mime;
 using System.Runtime.Loader;
 using System.Threading;
 using CanopeeAgent.Common;
+using CanopeeAgent.Core.Hosting;
 
 namespace CanopeeAgent
 {
@@ -12,11 +13,16 @@ namespace CanopeeAgent
     {
         static void Main(string[] args)
         {
-            var host = new ConsoleHost();
-            host.Run();
-            
-            Console.WriteLine("Exiting ...");
-
+            try
+            {
+                var host = new ConsoleHost();
+                host.Run();
+                Console.WriteLine("Exiting ...");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }

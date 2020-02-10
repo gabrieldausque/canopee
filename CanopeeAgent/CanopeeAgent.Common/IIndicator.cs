@@ -6,9 +6,8 @@ namespace CanopeeAgent.Common
 {
     public interface IIndicator
     {
+        void Initialize(IConfiguration configuration);
         void Collect();
-
-        IInput Input { get; set; }
         ITransform Transform { get; set; }
         IOutput Output { get; set; }
         

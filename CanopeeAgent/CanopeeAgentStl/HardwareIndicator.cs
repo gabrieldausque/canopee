@@ -7,13 +7,18 @@
     [Export("Hardware",typeof(IIndicator))]
     public class HardwareIndicator : IIndicator
     {
+        public void Initialize(IConfiguration configuration)
+        {
+            //TODO : make initialization based on configuration of the agent
+        }
+
         public void Collect()
         {
             throw new System.NotImplementedException();
         }
-
-        public IInput Input { get; set; }
+        
         public ITransform Transform { get; set; }
+        
         public IOutput Output { get; set; }
     }
 }

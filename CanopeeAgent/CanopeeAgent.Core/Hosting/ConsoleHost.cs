@@ -1,8 +1,8 @@
 using System;
-using System.Runtime.Loader;
 using System.Threading;
+using CanopeeAgent.Core.Indicators;
 
-namespace CanopeeAgent.Common
+namespace CanopeeAgent.Core.Hosting
 {
     public class ConsoleHost
     {
