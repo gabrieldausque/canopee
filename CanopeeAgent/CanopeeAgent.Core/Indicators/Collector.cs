@@ -8,27 +8,40 @@ namespace CanopeeAgent.Core.Indicators
 {
     public class Collector : IDisposable
     {
-        private List<IIndicator> _indicators;
+        private Dictionary<string, IIndicator> _indicators;
         private IndicatorFactory _indicatorsFactory;
 
         public Collector()
         {
-            _indicators = new List<IIndicator>();
+            _indicators = new Dictionary<string, IIndicator>();
             _indicatorsFactory = new IndicatorFactory();
 
             var config = ConfigurationService.Instance
                 .Configuration.GetSection("Indicators")
                 .Get<List<IndicatorConfiguration>>();
+
+            foreach (var indicatorConfig in config)
+            {
+                var indicator = _indicatorsFactory.GetIndicator(indicatorConfig.Type, indicatorConfig);
+                _indicators.Add(indicatorConfig.Name, indicator);
+            }
         }
 
         public void Run()
         {
-            //TODO : start each indicators
+            foreach (var indicator in _indicators)
+            {
+                indicator.Value.Run();
+            }
         }
 
         public void Dispose()
         {
-            //TODO: dispose each indicators
+            foreach (var indicator in _indicators)
+            {
+                indicator.Value.Dispose();
+            }
+            _indicators.Clear();
         }
     }
 }

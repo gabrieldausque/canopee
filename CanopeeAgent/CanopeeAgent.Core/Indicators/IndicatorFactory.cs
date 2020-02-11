@@ -2,32 +2,21 @@ using System.Composition.Hosting;
 using System.IO;
 using System.Runtime.Loader;
 using CanopeeAgent.Common;
-using Microsoft.Extensions.Configuration;
+using CanopeeAgent.Core.Configuration;
 
 namespace CanopeeAgent.Core.Indicators
 {
-    internal class IndicatorFactory
+    internal class IndicatorFactory : FactoryFromDirectoryBase
     {
-        private ContainerConfiguration _containerConfiguration;
-        private CompositionHost _container;
-
-        public IndicatorFactory()
+        public IndicatorFactory() : base(@"./Indicators")
         {
-            _containerConfiguration = new ContainerConfiguration();
-            foreach (var assemblyPath in Directory.EnumerateFiles(@"./Indicators","*.dll"))
-            {
-                var fullPath = Path.GetFullPath(assemblyPath);
-                var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(fullPath);
-                _containerConfiguration.WithAssembly(assembly);
-            }
-
-            _container = _containerConfiguration.CreateContainer();
         }
 
-        public IIndicator GetIndicator(string indicatorName, IConfiguration configuration)
+        public IIndicator GetIndicator(string indicatorType, IndicatorConfiguration configuration)
         {
-            //TODO : do injection of component input, transform and output based on configuration
-            return null;
+            var indicator = Container.GetExport<IIndicator>(indicatorType);
+            indicator?.Initialize(configuration);
+            return indicator;
         }
     }
 }

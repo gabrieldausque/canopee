@@ -1,7 +1,7 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeAgent", "CanopeeAgent\CanopeeAgent.csproj", "{85D2F15E-4A59-4033-9ADE-0C60E41BA133}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeAgentStl", "CanopeeAgentStl\CanopeeAgentStl.csproj", "{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeAgent.StandardLibrary", "CanopeeAgent.StandardLibrary\CanopeeAgent.StandardLibrary.csproj", "{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeAgent.Common", "CanopeeAgent.Common\CanopeeAgent.Common.csproj", "{4B749D47-9E9E-4E79-8827-F13443889C8F}"
 EndProject
