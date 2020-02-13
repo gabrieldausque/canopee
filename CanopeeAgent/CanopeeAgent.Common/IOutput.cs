@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+
 namespace CanopeeAgent.Common
 {
     public interface IOutput
     {
-        void SendToOutput(string json);
+        void SendToOutput(ICollectedEvent collectedEvent);
+        void Initialize(Dictionary<string, string> configurationOutput);
     }
 }

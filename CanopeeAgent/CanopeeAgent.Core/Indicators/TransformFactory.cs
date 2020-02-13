@@ -30,8 +30,14 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 
         public ITransform GetTransform(string transformType, Dictionary<string,string> transformConfiguration)
         {
-            var transformer = Container.GetExport<ITransform>(transformType);
-            transformer?.Initialize(transformConfiguration);
+            if(Container.TryGetExport<ITransform>(transformType, out var transformer))
+            {
+                transformer?.Initialize(transformConfiguration);    
+            }
+            else
+            {
+                transformer = Container.GetExport<ITransform>("Default");
+            }
             return transformer;
         }
     }

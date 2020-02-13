@@ -1,0 +1,36 @@
+using System.Collections.Generic;
+using CanopeeAgent.Common;
+
+namespace CanopeeAgent.Core.Indicators
+{
+    public class OutputFactory : FactoryFromDirectoryBase
+    {
+        private static readonly object LockInstance = new object();
+        private static OutputFactory _instance;
+
+        public static OutputFactory Instance  {
+            get
+            {
+                lock (LockInstance)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new OutputFactory();
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        public OutputFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
+        {
+        }
+        
+        public IOutput GetOutput(string outputType, Dictionary<string, string> configurationOutput)
+        {
+            var output = Container.GetExport<IOutput>(outputType);
+            output?.Initialize(configurationOutput);
+            return output;
+        }
+    }
+}
