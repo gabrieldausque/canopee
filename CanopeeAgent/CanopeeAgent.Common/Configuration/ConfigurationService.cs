@@ -31,6 +31,11 @@ namespace CanopeeAgent.Core.Configuration
                 .AddJsonFile("appsettings.json", true);
             Configuration = builder.Build();
         }
-        
+
+        public string AgentId
+        {
+            get { return Configuration.GetSection("CanopeeAgent")["AgentId"]; }
+        }
+
     }
 }

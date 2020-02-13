@@ -8,7 +8,7 @@ namespace CanopeeAgent.Core.Indicators
 {
     internal class IndicatorFactory : FactoryFromDirectoryBase
     {
-        public IndicatorFactory() : base(@"./Indicators")
+        public IndicatorFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
         {
         }
 

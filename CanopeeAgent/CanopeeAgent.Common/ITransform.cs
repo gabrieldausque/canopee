@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+
 namespace CanopeeAgent.Common
 {
     public interface ITransform
     {
-        string TransformToJSon(string input);
+        ICollectedEvent Transform(ICollectedEvent input);
+        void Initialize(Dictionary<string, string> transformConfiguration);
     }
 }

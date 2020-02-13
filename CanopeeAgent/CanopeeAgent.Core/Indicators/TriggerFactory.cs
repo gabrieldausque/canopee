@@ -23,7 +23,7 @@ namespace CanopeeAgent.Core.Indicators
             }
         }
 
-        public TriggerFactory() : base(@"Indicators")
+        public TriggerFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
         {
             
         }
