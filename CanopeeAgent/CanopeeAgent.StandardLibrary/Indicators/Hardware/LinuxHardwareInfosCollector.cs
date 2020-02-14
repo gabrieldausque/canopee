@@ -40,28 +40,31 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         protected override void SetMemoryInfos(HardwareInfosEvent infosEvent)
         {
             var lines = GetBatchOutput("free -h");
-            var regex = new Regex(".+:[ ]+([0-9a-zA-Z]+)[ ]+.*");
+            var regex = new Regex(".+:[ ]+(?<size>[0-9\\.,]+)(?<unit>[a-zA-Z]+)[ ]+.*");
             var matches = regex.Match(lines[1]);
-            infosEvent.MemorySize = matches.Groups[1].Value;
+            infosEvent.MemorySize = int.Parse(matches.Groups["size"].Value);
+            infosEvent.MemoryUnit = matches.Groups["unit"].Value;
         }
 
         protected override void SetDiskInfos(HardwareInfosEvent infosEvent)
         {
             var lines = GetBatchOutput("df -h --output=source,size,avail ");
-            var regex = new Regex(@"/dev/(?<volumeName>sd[a-z]+[0-9]+)[ ]+(?<size>[0-9\.,A-Z]+)[ ]+(?<spaceAvailable>[0-9\.,A-Z]+)");
+            var regex = new Regex(@"/dev/(?<volumeName>sd[a-z]+[0-9]+)[ ]+(?<size>[0-9\.,]+)(?<unit>[a-zA-Z]+)[ ]+(?<spaceAvailable>[0-9\.,]+)(?<spaceAvailableUnit>[A-Z]+)");
             foreach (var line in lines)
             {
                 var matches = regex.Match(line);
                 var volumeName = matches.Groups["volumeName"].Value;
-                var size = matches.Groups["size"].Value;
-                var spaceAvailable = matches.Groups["spaceAvailable"].Value;
+                int.TryParse(matches.Groups["size"].Value, out var size);
+                int.TryParse(matches.Groups["spaceAvailable"].Value, out var spaceAvailable);
+                var spaceAvailableUnit = matches.Groups["spaceAvailableUnit"].Value;
                 if (string.IsNullOrEmpty(volumeName))
                     continue;
                 var diskInfo = new DiskInfos()
                 {
                     Name = volumeName,
                     Size = size,
-                    SpaceAvailable = spaceAvailable
+                    SpaceAvailable = spaceAvailable,
+                    SpaceAvailableUnit = spaceAvailableUnit
                 };
                 infosEvent.AddDiskInfos(diskInfo);
             }
