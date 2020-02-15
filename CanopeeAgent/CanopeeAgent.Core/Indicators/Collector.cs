@@ -17,13 +17,12 @@ namespace CanopeeAgent.Core.Indicators
             _indicatorsFactory = new IndicatorFactory();
 
             var config = ConfigurationService.Instance
-                .Configuration.GetSection("Indicators")
-                .Get<List<IndicatorConfiguration>>();
+                .Configuration.GetSection("Indicators").GetChildren();
 
             foreach (var indicatorConfig in config)
             {
-                var indicator = _indicatorsFactory.GetIndicator(indicatorConfig.Type, indicatorConfig);
-                _indicators.Add(indicatorConfig.Name, indicator);
+                var indicator = _indicatorsFactory.GetIndicator(indicatorConfig["Type"], indicatorConfig);
+                _indicators.Add(indicatorConfig["Name"], indicator);
             }
         }
 

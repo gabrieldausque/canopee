@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Composition;
 using CanopeeAgent.Common;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace CanopeeAgent.StandardIndicators.Outputs
@@ -14,7 +15,7 @@ namespace CanopeeAgent.StandardIndicators.Outputs
             Console.WriteLine(JsonConvert.SerializeObject(collectedEvent));
         }
 
-        public void Initialize(Dictionary<string, string> configurationOutput)
+        public void Initialize(IConfiguration configurationOutput)
         {
             //nothing to do for console
         }

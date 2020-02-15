@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Composition;
 using CanopeeAgent.Common.Events;
+using Microsoft.Extensions.Configuration;
 using Quartz;
 using Quartz.Impl;
 using ITrigger = CanopeeAgent.Common.ITrigger;
@@ -24,7 +25,7 @@ namespace CanopeeAgent.StandardIndicators.Triggers
             };
         }
         
-        public void Initialize(Dictionary<string, string> triggerParameters)
+        public void Initialize(IConfigurationSection triggerParameters)
         {
             var raiseEventTaskId = Guid.NewGuid().ToString();
             var jobDetail = JobBuilder.Create<RaiseEventJob>()

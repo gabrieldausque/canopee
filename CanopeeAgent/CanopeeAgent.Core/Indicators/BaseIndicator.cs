@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using CanopeeAgent.Common;
 using CanopeeAgent.Core.Configuration;
 using CanopeeAgent.StandardIndicators.Indicators.Hardware;
+using Microsoft.Extensions.Configuration;
 
 namespace CanopeeAgent.Core.Indicators
 {
@@ -32,16 +33,21 @@ namespace CanopeeAgent.Core.Indicators
             throw new NotSupportedException("The current OS is not Supported");
         }
 
-        public virtual void Initialize(IndicatorConfiguration configuration)
+        public virtual void Initialize(IConfigurationSection configuration)
         {
-            Trigger = TriggerFactory.Instance.GetTrigger(configuration.Input["TriggerType"],
-                configuration.Input);
+            var triggerConfiguration = configuration.GetSection("Trigger");
+            Trigger = TriggerFactory.Instance.GetTrigger(triggerConfiguration["TriggerType"], triggerConfiguration);
             Trigger.EventTriggered += (sender, args) => { this.Collect(); };
+
+            //The input configuration is not treated in the base consructor, as it may have specific configuration for each collector
             
-            Transform = TransformFactory.Instance.GetTransform(configuration.Transform["TransformType"], 
-                configuration.Transform);
-            
-            Output = OutputFactory.Instance.GetOutput(configuration.Output["OutputType"], configuration.Output);
+            var transformConfiguration = configuration.GetSection("Transform");
+            Transform = TransformFactory.Instance.GetTransform(transformConfiguration["TransformType"], 
+                transformConfiguration);
+
+            var outputConfiguration = configuration.GetSection("Output");
+            Output = OutputFactory.Instance.GetOutput(outputConfiguration["OutputType"], 
+                outputConfiguration);
         }
 
         public abstract void Collect();

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CanopeeAgent.Common;
+using Microsoft.Extensions.Configuration;
 
 namespace CanopeeAgent.Core.Indicators
 {
@@ -26,7 +27,7 @@ namespace CanopeeAgent.Core.Indicators
         {
         }
         
-        public IOutput GetOutput(string outputType, Dictionary<string, string> configurationOutput)
+        public IOutput GetOutput(string outputType, IConfiguration configurationOutput)
         {
             var output = Container.GetExport<IOutput>(outputType);
             output?.Initialize(configurationOutput);

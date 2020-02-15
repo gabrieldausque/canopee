@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CanopeeAgent.Common;
+using Microsoft.Extensions.Configuration;
 
 namespace CanopeeAgent.Core.Indicators
 {
@@ -28,7 +29,7 @@ namespace CanopeeAgent.Core.Indicators
             
         }
 
-        public ITrigger GetTrigger(string triggerType, Dictionary<string, string> triggerParameters)
+        public ITrigger GetTrigger(string triggerType, IConfigurationSection triggerParameters)
         {
             var trigger = Container.GetExport<ITrigger>(triggerType);
             trigger?.Initialize(triggerParameters);

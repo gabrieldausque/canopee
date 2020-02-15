@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace CanopeeAgent.Core.Configuration
@@ -15,6 +16,6 @@ namespace CanopeeAgent.Core.Configuration
         [JsonProperty]
         public Dictionary<string,string> Transform { get; set; }
         [JsonProperty]
-        public Dictionary<string,string> Output { get; set; }
+        public IConfiguration Output { get; set; }
     }
 }

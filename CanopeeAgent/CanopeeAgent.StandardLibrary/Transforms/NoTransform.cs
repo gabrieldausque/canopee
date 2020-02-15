@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Composition;
 using CanopeeAgent.Common;
+using Microsoft.Extensions.Configuration;
 
 namespace CanopeeAgent.StandardIndicators.Transforms
 {
@@ -12,7 +13,7 @@ namespace CanopeeAgent.StandardIndicators.Transforms
             return input;
         }
 
-        public void Initialize(Dictionary<string, string> transformConfiguration)
+        public void Initialize(IConfigurationSection transformConfiguration)
         {
             //Do nothing for no transform
         }

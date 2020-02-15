@@ -8,20 +8,14 @@ using Newtonsoft.Json;
 namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 {
     [JsonObject("HardWareInfos")]
-    public class HardwareInfosEvent : BaseCollectedEvent
+    public class HardwareInfos : BaseCollectedEvent
     {
-        public HardwareInfosEvent(string agentId)
+        public HardwareInfos(string agentId) :base(agentId)
         {
-            EventDate = DateTime.Now;
-            AgentId = agentId;
             Disks = new List<DiskInfos>();
             Displays = new List<DisplayInfos>();
         }
-        
-        public HardwareInfosEvent()
-        {
-            Disks = new List<DiskInfos>();
-        }
+       
         public string CpuArchitecture { get; set; }
         public int CpusAvailable { get; set; }
         public string CpuModel { get; set; }

@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Loader;
 using CanopeeAgent.Common;
 using CanopeeAgent.Core.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace CanopeeAgent.Core.Indicators
 {
@@ -12,7 +13,7 @@ namespace CanopeeAgent.Core.Indicators
         {
         }
 
-        public IIndicator GetIndicator(string indicatorType, IndicatorConfiguration configuration)
+        public IIndicator GetIndicator(string indicatorType, IConfigurationSection configuration)
         {
             var indicator = Container.GetExport<IIndicator>(indicatorType);
             indicator?.Initialize(configuration);

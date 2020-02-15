@@ -21,13 +21,20 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         public override void Collect()
         {
             //get the event
-            ICollectedEvent infos = _currentCollector.Collect();
-            
-            //enrich event
-            infos = Transform.Transform(infos);
+            HardwareInfos infos = _currentCollector.Collect();
             
             //send event to output
-            Output.SendToOutput(infos);    
+            Output.SendToOutput(infos);
+
+            foreach (var diskInfos in infos.Disks)
+            {
+                Output.SendToOutput(diskInfos);
+            }
+
+            foreach (var displayInfos in infos.Displays)
+            {
+                Output.SendToOutput(displayInfos);
+            }
         }
     }
 }

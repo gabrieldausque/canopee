@@ -4,9 +4,12 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 {
     public abstract class BaseHardwareInfosCollector : IHardwareInfosEventCollector
     {
-        public virtual HardwareInfosEvent Collect()
+        protected string AgentId;
+
+        public virtual HardwareInfos Collect()
         {
-            var infos = new HardwareInfosEvent(ConfigurationService.Instance.AgentId);
+            AgentId = ConfigurationService.Instance.AgentId;
+            var infos = new HardwareInfos(AgentId);
             SetCpuInfos(infos);
             SetMemoryInfos(infos);
             SetDiskInfos(infos);
@@ -14,10 +17,10 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             return infos;
         }
 
-        protected abstract void SetCpuInfos(HardwareInfosEvent infosEvent);
-        protected abstract void SetMemoryInfos(HardwareInfosEvent infosEvent);
-        protected abstract void SetDiskInfos(HardwareInfosEvent infosEvent);
-        protected abstract void SetDisplayInfos(HardwareInfosEvent infosEvent);
+        protected abstract void SetCpuInfos(HardwareInfos infos);
+        protected abstract void SetMemoryInfos(HardwareInfos infos);
+        protected abstract void SetDiskInfos(HardwareInfos infos);
+        protected abstract void SetDisplayInfos(HardwareInfos infos);
         
     }
 }

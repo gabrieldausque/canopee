@@ -7,7 +7,7 @@ namespace CanopeeAgent.Common
 {
     public interface IIndicator : IDisposable
     {
-        void Initialize(IndicatorConfiguration configuration);
+        void Initialize(IConfigurationSection configuration);
         void Collect();
         void Run();
         void Stop();

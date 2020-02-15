@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CanopeeAgent.Common;
 using CanopeeAgent.Core.Indicators;
+using Microsoft.Extensions.Configuration;
 
 namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 {
@@ -28,7 +29,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         {
         }
 
-        public ITransform GetTransform(string transformType, Dictionary<string,string> transformConfiguration)
+        public ITransform GetTransform(string transformType, IConfigurationSection transformConfiguration)
         {
             if(Container.TryGetExport<ITransform>(transformType, out var transformer))
             {

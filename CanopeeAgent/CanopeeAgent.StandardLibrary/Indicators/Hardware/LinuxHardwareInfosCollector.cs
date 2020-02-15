@@ -25,28 +25,28 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             var processOutput = p.StandardOutput.ReadToEnd();
             return processOutput.Split("\n");
         }
-        protected override void SetCpuInfos(HardwareInfosEvent infosEvent)
+        protected override void SetCpuInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("lscpu");
             var regex = new Regex(".+:[ ]+(.+)");
             var matches = regex.Match(lines[0]);
-            infosEvent.CpuArchitecture = matches.Groups[1].Value;
+            infos.CpuArchitecture = matches.Groups[1].Value;
             matches = regex.Match(lines[4]);
-            infosEvent.CpusAvailable = int.Parse(matches.Groups[1].Value);
+            infos.CpusAvailable = int.Parse(matches.Groups[1].Value);
             matches = regex.Match(lines[13]);
-            infosEvent.CpuModel = matches.Groups[1].Value;
+            infos.CpuModel = matches.Groups[1].Value;
         }
 
-        protected override void SetMemoryInfos(HardwareInfosEvent infosEvent)
+        protected override void SetMemoryInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("free -h");
             var regex = new Regex(".+:[ ]+(?<size>[0-9\\.,]+)(?<unit>[a-zA-Z]+)[ ]+.*");
             var matches = regex.Match(lines[1]);
-            infosEvent.MemorySize = int.Parse(matches.Groups["size"].Value);
-            infosEvent.MemoryUnit = matches.Groups["unit"].Value;
+            infos.MemorySize = int.Parse(matches.Groups["size"].Value);
+            infos.MemoryUnit = matches.Groups["unit"].Value;
         }
 
-        protected override void SetDiskInfos(HardwareInfosEvent infosEvent)
+        protected override void SetDiskInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("df -h --output=source,size,avail ");
             var regex = new Regex(@"/dev/(?<volumeName>sd[a-z]+[0-9]+)[ ]+(?<size>[0-9\.,]+)(?<unit>[a-zA-Z]+)[ ]+(?<spaceAvailable>[0-9\.,]+)(?<spaceAvailableUnit>[A-Z]+)");
@@ -59,30 +59,36 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
                 var spaceAvailableUnit = matches.Groups["spaceAvailableUnit"].Value;
                 if (string.IsNullOrEmpty(volumeName))
                     continue;
-                var diskInfo = new DiskInfos()
+                var diskInfo = new DiskInfos(this.AgentId)
                 {
+                    EventDate = infos.EventDate,
+                    EventId = infos.EventId,
                     Name = volumeName,
                     Size = size,
                     SpaceAvailable = spaceAvailable,
                     SpaceAvailableUnit = spaceAvailableUnit
                 };
-                infosEvent.AddDiskInfos(diskInfo);
+                infos.AddDiskInfos(diskInfo);
             }
         }
 
-        protected override void SetDisplayInfos(HardwareInfosEvent infosEvent)
+        protected override void SetDisplayInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("lspci");
             foreach (var line in lines)
             {
                 if (line.Contains("VGA") || line.Contains("3D"))
                 {
-                    var displayInfos = new DisplayInfos();
+                    var displayInfos = new DisplayInfos(AgentId)
+                    {
+                        EventDate = infos.EventDate,
+                        EventId = infos.EventId
+                    };
                     var fields = line.Split(":");
                     var regex = new Regex(@"[0-9]+[\.,]+[0-9]+[ ]+(.*)");
                     displayInfos.DisplayType = regex.Match(fields[1]).Groups[1].Value;
                     displayInfos.DisplayModel = fields[2].Trim();
-                    infosEvent.AddDisplayInfos(displayInfos);
+                    infos.AddDisplayInfos(displayInfos);
                 }
             }
         }
