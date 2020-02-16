@@ -1,9 +1,11 @@
-﻿using System.Composition;
+﻿using System.Collections.Generic;
+using System.Composition;
 using System.Net.NetworkInformation;
 using CanopeeAgent.Common;
 using CanopeeAgent.Core.Indicators;
 using CanopeeAgent.StandardIndicators.Factories;
 using Microsoft.VisualBasic.CompilerServices;
+using Nest;
 using Newtonsoft.Json;
 
 namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
@@ -11,30 +13,22 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
     [Export("Hardware",typeof(IIndicator))]
     public class HardwareIndicator : BaseIndicator
     {
-        private IHardwareInfosEventCollector _currentCollector;
+        private readonly IHardwareInfosEventCollector _currentCollector;
         public HardwareIndicator()
         {
             _currentCollector =
                 HardwareInfosEventCollectorFactory.Instance.GetCollectorByPlatform(GetCurrentPlatform());
         }
-        
-        public override void Collect()
+
+        public override ICollection<ICollectedEvent> InternalCollect()
         {
-            //get the event
+            var collectedEvents = new List<ICollectedEvent>();
             HardwareInfos infos = _currentCollector.Collect();
-            
-            //send event to output
-            Output.SendToOutput(infos);
-
-            foreach (var diskInfos in infos.Disks)
-            {
-                Output.SendToOutput(diskInfos);
-            }
-
-            foreach (var displayInfos in infos.Displays)
-            {
-                Output.SendToOutput(displayInfos);
-            }
+            collectedEvents.Add(infos);
+            collectedEvents.AddRange(infos.Disks);
+            collectedEvents.AddRange(infos.GraphicalCards);
+            collectedEvents.AddRange(infos.Displays);
+            return collectedEvents;
         }
     }
 }

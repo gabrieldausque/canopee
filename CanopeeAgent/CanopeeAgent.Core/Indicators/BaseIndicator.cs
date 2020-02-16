@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Runtime.InteropServices;
 using CanopeeAgent.Common;
 using CanopeeAgent.Core.Configuration;
@@ -50,7 +52,16 @@ namespace CanopeeAgent.Core.Indicators
                 outputConfiguration);
         }
 
-        public abstract void Collect();
+        public abstract ICollection<ICollectedEvent> InternalCollect();
+
+        public virtual void Collect()
+        {
+            foreach (var collectedEvent in InternalCollect())
+            {
+                Transform.Transform(collectedEvent);
+                Output.SendToOutput(collectedEvent);    
+            }
+        }
 
         public virtual void Run()
         {

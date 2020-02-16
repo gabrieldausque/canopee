@@ -14,6 +14,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         {
             Disks = new List<DiskInfos>();
             Displays = new List<DisplayInfos>();
+            GraphicalCards = new List<GraphicalCardInfos>();
         }
        
         public string CpuArchitecture { get; set; }
@@ -25,7 +26,8 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 
         public ICollection<DiskInfos> Disks { get; set; }
         public ICollection<DisplayInfos> Displays { get; set; }
-
+        public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
+        
         public void AddDiskInfos(DiskInfos diskInfo)
         {
             Disks.Add(diskInfo);
@@ -35,5 +37,11 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         {
             Displays.Add(displayInfos);
         }
+
+        public void AddGraphicalCardInfos(GraphicalCardInfos graphicalCardInfos)
+        {
+            GraphicalCards.Add(graphicalCardInfos);
+        }
     }
+    
 }
