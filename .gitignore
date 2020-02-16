@@ -9,3 +9,6 @@ obj/
 /CanopeeAgent/CanopeeAgentStl/bin/
 /CanopeeAgent/CanopeeAgent.Core/bin/
 /CanopeeAgent/CanopeeAgent.Core/obj/
+/.vs/canopee/v16/.suo
+/.vs
+/CanopeeAgent/.vs/CanopeeAgent
