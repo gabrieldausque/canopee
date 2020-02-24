@@ -24,8 +24,13 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         
         public string MemoryUnit { get; set; }
 
+        [JsonIgnore]
         public ICollection<DiskInfos> Disks { get; set; }
+
+        [JsonIgnore]
         public ICollection<DisplayInfos> Displays { get; set; }
+
+        [JsonIgnore]
         public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
         
         public void AddDiskInfos(DiskInfos diskInfo)
