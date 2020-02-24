@@ -11,6 +11,7 @@ namespace CanopeeAgent.Core.Indicators
 {
     public abstract class BaseIndicator : IIndicator
     {
+        protected string _agentId;
         protected OSPlatform GetCurrentPlatform()
         {
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -37,6 +38,8 @@ namespace CanopeeAgent.Core.Indicators
 
         public virtual void Initialize(IConfigurationSection configuration)
         {
+            _agentId = ConfigurationService.Instance.AgentId;
+
             var triggerConfiguration = configuration.GetSection("Trigger");
             Trigger = TriggerFactory.Instance.GetTrigger(triggerConfiguration["TriggerType"], triggerConfiguration);
             Trigger.EventTriggered += (sender, args) => { this.Collect(); };
