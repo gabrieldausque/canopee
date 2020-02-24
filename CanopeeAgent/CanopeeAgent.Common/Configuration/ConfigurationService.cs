@@ -27,8 +27,13 @@ namespace CanopeeAgent.Core.Configuration
         public ConfigurationService()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true);
+                .SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("appsettings.json", true);
+            var currentEnvironment = System.Environment.GetEnvironmentVariable("CANOPEE_ENVIRONMENT");
+            if (!string.IsNullOrEmpty(currentEnvironment))
+            {
+                builder.AddJsonFile($"appsettings.{currentEnvironment}.json", true);
+            }
             Configuration = builder.Build();
         }
 

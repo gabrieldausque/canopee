@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "CanopeeAgent": {
+      "commandName": "Executable"
+    },
+    "Kaamelot": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": "Kaamelot"
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 
         public GraphicalCardInfos(string agentId) : base(agentId)
         {
+
         }
     }
 }

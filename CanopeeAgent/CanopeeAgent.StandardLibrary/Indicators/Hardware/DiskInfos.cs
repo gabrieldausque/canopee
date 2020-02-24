@@ -12,10 +12,10 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
     {
         [Key]
         public string Name { get; set; }
-        public int Size { get; set; }
+        public float Size { get; set; }
         
         public string SizeUnit { get; set; }
-        public int SpaceAvailable { get; set; }
+        public float SpaceAvailable { get; set; }
         
         public string SpaceAvailableUnit { get; set; }
 

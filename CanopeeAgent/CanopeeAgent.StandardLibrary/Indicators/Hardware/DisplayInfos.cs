@@ -9,5 +9,6 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         }
 
         public string Resolution { get; set; }
+        public string Name { get; set; }
     }
 }

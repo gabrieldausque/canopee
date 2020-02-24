@@ -2,10 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Configurations>Debug;Release;DebugKaamelot</Configurations>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <OutputPath>..\bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
+      <OutputPath>..\bin\Debug\</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup>

@@ -1,17 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>CanopeeAgent</RootNamespace>
+        <Configurations>Debug;Release;DebugKaamelot</Configurations>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <OutputPath>../bin/Debug/</OutputPath>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
+      <OutputPath>../bin/Debug/</OutputPath>
+    </PropertyGroup>
+
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationIcon />
+        <StartupObject />
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugKaamelot|AnyCPU'">
+      <DefineConstants>TRACE;DEBUG</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,6 +38,9 @@
 
     <ItemGroup>
       <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.Kaamelot.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

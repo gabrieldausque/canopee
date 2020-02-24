@@ -8,23 +8,14 @@ using Newtonsoft.Json.Linq;
 namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
 {
     [Export("LINUX", typeof(IHardwareInfosEventCollector))]
-    [Export("FREEBSD", typeof(IHardwareInfosEventCollector))]
     public class LinuxHardwareInfosCollector : BaseHardwareInfosCollector
     {
-        private string[] GetBatchOutput(string commandLine)
+        public LinuxHardwareInfosCollector()
         {
-            var psi = new ProcessStartInfo
-            {
-                CreateNoWindow = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                FileName = "/bin/bash",
-                Arguments = $"-c \"{commandLine} \""
-            };
-            var p = Process.Start(psi);
-            var processOutput = p.StandardOutput.ReadToEnd();
-            return processOutput.Split("\n");
+            _shellExecutor = "/bin/bash";
+            _arguments = "-c";
         }
+
         protected override void SetCpuInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("lscpu");
@@ -42,7 +33,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             var lines = GetBatchOutput("free -h");
             var regex = new Regex(".+:[ ]+(?<size>[0-9\\.,]+)(?<unit>[a-zA-Z]+)[ ]+.*");
             var matches = regex.Match(lines[1]);
-            infos.MemorySize = int.Parse(matches.Groups["size"].Value);
+            infos.MemorySize = float.Parse(matches.Groups["size"].Value);
             infos.MemoryUnit = GetSizeUnit(matches.Groups["unit"].Value);
         }
 
@@ -54,8 +45,8 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             {
                 var matches = regex.Match(line);
                 var volumeName = matches.Groups["volumeName"].Value;
-                int.TryParse(matches.Groups["size"].Value, out var size);
-                int.TryParse(matches.Groups["spaceAvailable"].Value, out var spaceAvailable);
+                float.TryParse(matches.Groups["size"].Value, out var size);
+                float.TryParse(matches.Groups["spaceAvailable"].Value, out var spaceAvailable);
                 var spaceAvailableUnit = matches.Groups["spaceAvailableUnit"].Value;
                 var sizeUnit = matches.Groups["sizeUnit"].Value;
                 if (string.IsNullOrEmpty(volumeName))
@@ -68,7 +59,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
                     Size = size,
                     SizeUnit = GetSizeUnit(sizeUnit),
                     SpaceAvailable = spaceAvailable,
-                    SpaceAvailableUnit = spaceAvailableUnit
+                    SpaceAvailableUnit = GetSizeUnit(spaceAvailableUnit)
                 };
                 infos.AddDiskInfos(diskInfo);
             }
@@ -81,12 +72,13 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             {
                 if (!line.Contains("Screen")) continue;
                 var regex = new Regex(@"Screen (?<screenId>[0-9]+): minimum [0-9]+ x [0-9]+, current (?<resolution>[0-9]+ x [0-9]+), maximum [0-9]+ x [0-9]+");
-                var macthes = regex.Match(line);
+                var matches = regex.Match(line);
                 var displayInfos = new DisplayInfos(AgentId)
                 {
                     EventDate = infos.EventDate,
                     EventId = infos.EventId,
-                    Resolution = macthes.Groups["resolution"].Value
+                    Resolution = matches.Groups["resolution"].Value,
+                    Name = $"Screen {matches.Groups["screenId"].Value}" 
                 };
                 infos.AddDisplayInfos(displayInfos);
             }

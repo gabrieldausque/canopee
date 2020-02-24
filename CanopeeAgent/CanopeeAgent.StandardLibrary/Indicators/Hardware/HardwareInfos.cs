@@ -20,7 +20,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         public string CpuArchitecture { get; set; }
         public int CpusAvailable { get; set; }
         public string CpuModel { get; set; }
-        public int MemorySize { get; set; }
+        public float MemorySize { get; set; }
         
         public string MemoryUnit { get; set; }
 

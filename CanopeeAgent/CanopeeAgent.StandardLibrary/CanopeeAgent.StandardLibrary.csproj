@@ -1,11 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>CanopeeAgent.StandardIndicators</RootNamespace>
+        <Configurations>Debug;Release;DebugKaamelot</Configurations>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>..\bin\Debug\Indicators</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
       <OutputPath>..\bin\Debug\Indicators</OutputPath>
     </PropertyGroup>
 
