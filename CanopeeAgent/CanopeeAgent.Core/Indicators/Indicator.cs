@@ -14,6 +14,8 @@ namespace CanopeeAgent.Core.Indicators
     public class Indicator : IIndicator
     {
         protected string _agentId;
+        protected object _lockCollect = new object();
+        protected bool _isCollecting;
 
         public virtual void Initialize(IConfigurationSection configuration)
         {
@@ -26,6 +28,7 @@ namespace CanopeeAgent.Core.Indicators
             var inputConfiguration = configuration.GetSection("Input");
             Input = InputFactory.Instance.GetInput(inputConfiguration, _agentId);
             
+            //TODO : Add a collection of transforms to add multiple fields and also chained transformation
             var transformConfiguration = configuration.GetSection("Transform");
             Transform = TransformFactory.Instance.GetTransform(transformConfiguration);
 
@@ -35,10 +38,34 @@ namespace CanopeeAgent.Core.Indicators
 
         public virtual void Collect()
         {
-            foreach (var collectedEvent in Input.Collect())
+            try
             {
-                Transform.Transform(collectedEvent);
-                Output.SendToOutput(collectedEvent);    
+                if (!_isCollecting)
+                {
+                    lock (_lockCollect)
+                    {
+                        if (_isCollecting)
+                            return;
+                        _isCollecting = true;
+                    }
+                    var collectedEvents = Input.Collect();
+                    foreach (var collectedEvent in collectedEvents)
+                    {
+                        Transform.Transform(collectedEvent);
+                        Output.SendToOutput(collectedEvent);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                var color = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.ToString());
+                Console.ForegroundColor = color;
+            }
+            finally
+            {
+                _isCollecting = false;
             }
         }
 

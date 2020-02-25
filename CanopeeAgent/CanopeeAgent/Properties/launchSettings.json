@@ -8,6 +8,12 @@
       "environmentVariables": {
         "CANOPEE_ENVIRONMENT": "Kaamelot"
       }
+    },
+    "Ragnarok": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": "Ragnarok"
+      }
     }
   }
 }

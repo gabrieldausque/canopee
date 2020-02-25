@@ -25,6 +25,7 @@ namespace CanopeeAgent.StandardIndicators.Outputs
             if(!r.IsValid)
             {
                 Console.WriteLine(r);
+                Console.WriteLine(r.ServerError);
             }
         }
 
