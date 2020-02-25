@@ -1,16 +1,13 @@
-using System.ComponentModel.DataAnnotations;
+using CanopeeAgent.Common;
 using System.Composition;
-using System.Diagnostics;
-using System.Linq.Expressions;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json.Linq;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
-    [Export("LINUX", typeof(IHardwareInfosEventCollector))]
-    public class LinuxHardwareInfosCollector : BaseHardwareInfosCollector
+    [Export("HardwareLINUX", typeof(IInput))]
+    public class LinuxHardwareInfosInput : BaseHardwareInfosInput
     {
-        public LinuxHardwareInfosCollector()
+        public LinuxHardwareInfosInput()
         {
             _shellExecutor = "/bin/bash";
             _arguments = "-c";

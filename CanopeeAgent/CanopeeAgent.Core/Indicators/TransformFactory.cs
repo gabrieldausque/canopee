@@ -29,16 +29,11 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         {
         }
 
-        public ITransform GetTransform(string transformType, IConfigurationSection transformConfiguration)
+        public ITransform GetTransform(IConfigurationSection configurationTransform)
         {
-            if(Container.TryGetExport<ITransform>(transformType, out var transformer))
-            {
-                transformer?.Initialize(transformConfiguration);    
-            }
-            else
-            {
-                transformer = Container.GetExport<ITransform>("Default");
-            }
+            var type = string.IsNullOrWhiteSpace(configurationTransform["TransformType"]) ? "Default" : configurationTransform["TransformType"];
+            var transformer = Container.GetExport<ITransform>(type);
+            transformer?.Initialize(configurationTransform);
             return transformer;
         }
     }

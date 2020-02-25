@@ -27,9 +27,10 @@ namespace CanopeeAgent.Core.Indicators
         {
         }
         
-        public IOutput GetOutput(string outputType, IConfiguration configurationOutput)
+        public IOutput GetOutput(IConfiguration configurationOutput)
         {
-            var output = Container.GetExport<IOutput>(outputType);
+            var type = string.IsNullOrWhiteSpace(configurationOutput["OutputType"]) ? "Default" : configurationOutput["OutputType"];
+            var output = Container.GetExport<IOutput>(type);
             output?.Initialize(configurationOutput);
             return output;
         }

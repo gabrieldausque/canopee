@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using CanopeeAgent.Common;
 using CanopeeAgent.Common.Events;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
-    [JsonObject("HardWareInfos")]
     public class HardwareInfos : BaseCollectedEvent
     {
         public HardwareInfos(string agentId) :base(agentId)
@@ -24,13 +24,10 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
         
         public string MemoryUnit { get; set; }
 
-        [JsonIgnore]
         public ICollection<DiskInfos> Disks { get; set; }
 
-        [JsonIgnore]
         public ICollection<DisplayInfos> Displays { get; set; }
 
-        [JsonIgnore]
         public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
         
         public void AddDiskInfos(DiskInfos diskInfo)

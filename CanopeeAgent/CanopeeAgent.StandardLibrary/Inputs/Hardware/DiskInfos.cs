@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using CanopeeAgent.Common;
 using CanopeeAgent.Common.Events;
-using Newtonsoft.Json;
+using System.Text.Json;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
-    [JsonObject("DiskInfos")]
     public class DiskInfos : BaseCollectedEvent
     {
         [Key]

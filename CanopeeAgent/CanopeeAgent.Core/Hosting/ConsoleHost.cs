@@ -19,6 +19,7 @@ namespace CanopeeAgent.Core.Hosting
         {
             Console.WriteLine("Start the collector");
             Console.CancelKeyPress += this.Stop;
+            Console.WriteLine("Press [CTRL+C] to close agent");
             _collector.Run();
             _exitEvent.WaitOne();
         }

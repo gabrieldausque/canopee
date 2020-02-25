@@ -13,10 +13,11 @@ namespace CanopeeAgent.Core.Indicators
         {
         }
 
-        public IIndicator GetIndicator(string indicatorType, IConfigurationSection configuration)
+        public IIndicator GetIndicator(IConfigurationSection configurationIndicator)
         {
-            var indicator = Container.GetExport<IIndicator>(indicatorType);
-            indicator?.Initialize(configuration);
+            var type = string.IsNullOrWhiteSpace(configurationIndicator["Type"])?"Default": configurationIndicator["Type"];
+            var indicator = Container.GetExport<IIndicator>(type);
+            indicator?.Initialize(configurationIndicator);
             return indicator;
         }
     }

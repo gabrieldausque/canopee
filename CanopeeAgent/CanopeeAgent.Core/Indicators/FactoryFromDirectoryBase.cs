@@ -1,5 +1,7 @@
+using System;
 using System.Composition.Hosting;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 
 namespace CanopeeAgent.Core.Indicators
@@ -18,6 +20,30 @@ namespace CanopeeAgent.Core.Indicators
                 containerConfiguration.WithAssembly(assembly);
             }
             Container = containerConfiguration.CreateContainer();
+        }
+
+        protected OSPlatform GetCurrentPlatform()
+        {
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return OSPlatform.Linux;
+            }
+
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return OSPlatform.Windows;
+            }
+
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
+            {
+                return OSPlatform.FreeBSD;
+            }
+
+            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return OSPlatform.OSX;
+            }
+            throw new NotSupportedException("The current OS is not Supported");
         }
     }
 }

@@ -29,10 +29,11 @@ namespace CanopeeAgent.Core.Indicators
             
         }
 
-        public ITrigger GetTrigger(string triggerType, IConfigurationSection triggerParameters)
+        public ITrigger GetTrigger(IConfigurationSection configurationTrigger)
         {
-            var trigger = Container.GetExport<ITrigger>(triggerType);
-            trigger?.Initialize(triggerParameters);
+            var type = string.IsNullOrWhiteSpace(configurationTrigger["TriggerType"]) ? "Default" : configurationTrigger["TriggerType"];
+            var trigger = Container.GetExport<ITrigger>(type);
+            trigger?.Initialize(configurationTrigger);
             return trigger;
         }
     }

@@ -1,12 +1,13 @@
+using CanopeeAgent.Common;
 using System;
 using System.Collections.Generic;
 using System.Composition;
 using System.Text.RegularExpressions;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
-    [Export("WINDOWS", typeof(IHardwareInfosEventCollector))]
-    public class WindowsHardwareInfosCollector : BaseHardwareInfosCollector
+    [Export("HardwareWINDOWS", typeof(IInput))]
+    public class WindowsHardwareInfosInput : BaseHardwareInfosInput
     {
         private static readonly Dictionary<int, string> GraphicalCardTypes = new Dictionary<int, string>()
         {
@@ -16,7 +17,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             {3,"3D" }
         };
 
-        public WindowsHardwareInfosCollector()
+        public WindowsHardwareInfosInput()
         {
             _shellExecutor = "cmd";
             _arguments = "/c";

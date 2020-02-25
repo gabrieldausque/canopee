@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using CanopeeAgent.Common.Events;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
     public class GraphicalCardInfos : BaseCollectedEvent
     {

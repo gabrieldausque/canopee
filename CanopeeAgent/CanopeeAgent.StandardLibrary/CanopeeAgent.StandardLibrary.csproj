@@ -30,8 +30,11 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
       <PackageReference Include="NEST" Version="7.5.1" />
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
       <PackageReference Include="Quartz" Version="3.0.7" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Indicators\" />
     </ItemGroup>
 
 </Project>

@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent.Common", "Cano
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent.Core", "CanopeeAgent.Core\CanopeeAgent.Core.csproj", "{8A65E1DB-9656-41C4-901F-0155E0AF8835}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{DF7F2146-AADB-407B-886B-5DE3376B0366}"
+	ProjectSection(SolutionItems) = preProject
+		AgentLocation.csv = AgentLocation.csv
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

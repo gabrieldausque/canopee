@@ -21,7 +21,7 @@ namespace CanopeeAgent.Core.Indicators
 
             foreach (var indicatorConfig in config)
             {
-                var indicator = _indicatorsFactory.GetIndicator(indicatorConfig["Type"], indicatorConfig);
+                var indicator = _indicatorsFactory.GetIndicator(indicatorConfig);
                 _indicators.Add(indicatorConfig["Name"], indicator);
             }
         }

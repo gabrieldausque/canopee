@@ -5,7 +5,7 @@ using CanopeeAgent.Common;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
 using Nest;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace CanopeeAgent.StandardIndicators.Outputs
 {
@@ -18,12 +18,14 @@ namespace CanopeeAgent.StandardIndicators.Outputs
 
         public void SendToOutput(ICollectedEvent collectedEvent)
         {
-            string serializedEvent = JsonConvert.SerializeObject(collectedEvent);
+            string serializedEvent = JsonSerializer.Serialize(collectedEvent, collectedEvent.GetType());
             var index = _indexesByType[collectedEvent.GetType()]; 
             var r = _client.LowLevel.Index<IndexResponse>(index,
                 PostData.String(serializedEvent));
-            Console.WriteLine(serializedEvent);
-            Console.WriteLine(r);
+            if(!r.IsValid)
+            {
+                Console.WriteLine(r);
+            }
         }
 
         public void Initialize(IConfiguration configurationOutput)

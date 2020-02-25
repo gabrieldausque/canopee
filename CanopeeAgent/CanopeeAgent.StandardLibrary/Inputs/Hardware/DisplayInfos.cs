@@ -1,6 +1,6 @@
 using CanopeeAgent.Common.Events;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
     public class DisplayInfos : BaseCollectedEvent
     {

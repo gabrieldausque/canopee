@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using CanopeeAgent.Common;
 using CanopeeAgent.Core.Configuration;
+using CanopeeAgent.Core.Indicators;
+using Microsoft.Extensions.Configuration;
 
-namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
+namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 {
-    public abstract class BaseHardwareInfosCollector : IHardwareInfosEventCollector
+    public abstract class BaseHardwareInfosInput : BaseInput
     {
         private Dictionary<string, string> _unitsRepository;
         
-        protected string AgentId;
-
         protected string _shellExecutor;
         protected string _arguments;
 
@@ -57,7 +58,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             };
         }
 
-        protected BaseHardwareInfosCollector()
+        protected BaseHardwareInfosInput()
         {
             _unitsRepository = new Dictionary<string, string>()
             {
@@ -70,15 +71,19 @@ namespace CanopeeAgent.StandardIndicators.Indicators.Hardware
             };
         }
 
-        public virtual HardwareInfos Collect()
+        public override ICollection<ICollectedEvent> Collect()
         {
-            AgentId = ConfigurationService.Instance.AgentId;
+            var result = new List<ICollectedEvent>();
             var infos = new HardwareInfos(AgentId);
             SetCpuInfos(infos);
             SetMemoryInfos(infos);
             SetDiskInfos(infos);
             SetDisplayInfos(infos);
-            return infos;
+            result.Add(infos);
+            result.AddRange(infos.Disks);
+            result.AddRange(infos.Displays);
+            result.AddRange(infos.GraphicalCards);
+            return result;
         }
 
         protected string GetSizeUnit(string customUnit)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace CanopeeAgent.Common.Events
 {
@@ -15,6 +16,8 @@ namespace CanopeeAgent.Common.Events
         public string EventId { get; set; }
         public DateTime EventDate { get; set; }
         public string AgentId { get; set; }
+        
+        [JsonExtensionData]
         public Dictionary<string, object> ExtractedFields { get; }
         
         public void AddExtendedField(string key, object value)
