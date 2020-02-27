@@ -38,8 +38,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CanopeeAgent.Common\CanopeeAgent.Common.csproj" />
-      <ProjectReference Include="..\CanopeeAgent.Core\CanopeeAgent.Core.csproj" />
+      <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
+      <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
