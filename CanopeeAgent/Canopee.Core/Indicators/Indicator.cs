@@ -5,6 +5,7 @@ using System.Data;
 using System.Runtime.InteropServices;
 using Canopee.Common;
 using Canopee.Common.Configuration;
+using Canopee.Common.Events;
 using Canopee.StandardLibrary.Indicators.Hardware;
 using Microsoft.Extensions.Configuration;
 
@@ -28,7 +29,7 @@ namespace Canopee.Core.Indicators
 
             var triggerConfiguration = configuration.GetSection("Trigger");
             Trigger = TriggerFactory.Instance.GetTrigger(triggerConfiguration);
-            Trigger.EventTriggered += (sender, args) => { this.Collect(); };
+            Trigger.EventTriggered += (sender, args) => { this.Collect(args); };
 
             var inputConfiguration = configuration.GetSection("Input");
             Input = InputFactory.Instance.GetInput(inputConfiguration, _agentId);
@@ -44,7 +45,7 @@ namespace Canopee.Core.Indicators
             Output = OutputFactory.Instance.GetOutput(outputConfiguration);
         }
 
-        public virtual void Collect()
+        public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             try
             {
@@ -56,7 +57,7 @@ namespace Canopee.Core.Indicators
                             return;
                         _isCollecting = true;
                     }
-                    var collectedEvents = Input.Collect();
+                    var collectedEvents = Input.Collect(fromTriggerEventArgs);
                     foreach (var collectedEvent in collectedEvents)
                     {
                         foreach(var transformer in Transforms)

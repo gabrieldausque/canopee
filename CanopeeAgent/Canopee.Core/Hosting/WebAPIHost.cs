@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 namespace Canopee.Core.Hosting
 {
-    public class WebAPIHost
+    public class WebAPIHostController : ControllerBase
     {
         
     }

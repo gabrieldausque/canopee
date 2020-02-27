@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Diagnostics;
 using System.IO;
+using Canopee.Common.Events;
 
 namespace Canopee.StandardLibrary.Inputs.File
 {
@@ -32,7 +33,7 @@ namespace Canopee.StandardLibrary.Inputs.File
             //TODO : save data in temporary file for restarting when 
         }
 
-        public override ICollection<ICollectedEvent> Collect()
+        public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             var collectedEvents = new List<ICollectedEvent>();
             var headers = new List<string>();

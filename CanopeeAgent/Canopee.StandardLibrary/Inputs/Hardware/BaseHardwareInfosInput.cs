@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Canopee.Common;
 using Canopee.Common.Configuration;
+using Canopee.Common.Events;
 using Canopee.Core.Indicators;
 using Microsoft.Extensions.Configuration;
 
@@ -71,7 +72,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             };
         }
 
-        public override ICollection<ICollectedEvent> Collect()
+        public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             var result = new List<ICollectedEvent>();
             var infos = new HardwareInfos(AgentId);

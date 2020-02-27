@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Canopee.Common.Events;
 
 namespace Canopee.Core.Indicators
 {
@@ -10,7 +11,7 @@ namespace Canopee.Core.Indicators
     {
         public string AgentId { get; set; }
 
-        public abstract ICollection<ICollectedEvent> Collect();
+        public abstract ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs);
 
         public virtual void Initialize(IConfiguration configurationInput, string agentId)
         {

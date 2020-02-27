@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Canopee.Common.Configuration;
+using Canopee.Common.Events;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Common
@@ -9,7 +10,7 @@ namespace Canopee.Common
     public interface IIndicator : IDisposable
     {
         void Initialize(IConfigurationSection configuration);
-        void Collect();
+        void Collect(TriggerEventArgs fromTriggerArgs);
         void Run();
         void Stop();
         IInput Input { get; set; }
