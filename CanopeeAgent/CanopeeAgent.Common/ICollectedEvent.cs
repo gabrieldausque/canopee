@@ -14,5 +14,7 @@ namespace CanopeeAgent.Common
         void AddExtractedField(string key, object value);
 
         object GetFieldValue(string propertyName);
+
+        void SetFieldValue(string propertyName, object value);
     }
 }

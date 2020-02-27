@@ -64,7 +64,7 @@ namespace CanopeeAgent.StandardIndicators.Indicators.File
                             {
                                 if (!string.IsNullOrEmpty(headers[fieldIndex]))
                                 {
-                                    info.AddExtractedField(headers[fieldIndex], fields[fieldIndex]);
+                                    info.SetFieldValue(headers[fieldIndex], fields[fieldIndex]);
                                 }
                             }
                         }

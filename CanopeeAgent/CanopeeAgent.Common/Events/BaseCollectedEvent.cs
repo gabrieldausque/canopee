@@ -47,5 +47,25 @@ namespace CanopeeAgent.Common.Events
 
             return null;
         }
+
+        public void SetFieldValue(string propertyName, object value)
+        {
+            var prop = GetType().GetProperty(propertyName);
+            if (prop != null)
+            {
+                prop.SetValue(this, value);
+            }
+            else
+            {
+                if (ExtractedFields.ContainsKey(propertyName))
+                {
+                    ExtractedFields[propertyName] = value;
+                }
+                else
+                {
+                    ExtractedFields.Add(propertyName, value);
+                }
+            }
+        }
     }
 }

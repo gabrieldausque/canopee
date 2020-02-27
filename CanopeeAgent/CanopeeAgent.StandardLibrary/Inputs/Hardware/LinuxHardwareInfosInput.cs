@@ -27,7 +27,7 @@ namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 
         protected override void SetMemoryInfos(HardwareInfos infos)
         {
-            var lines = GetBatchOutput("free -h");
+            var lines = GetBatchOutput("\"free -h\"");
             var regex = new Regex(".+:[ ]+(?<size>[0-9\\.,]+)(?<unit>[a-zA-Z]+)[ ]+.*");
             var matches = regex.Match(lines[1]);
             infos.MemorySize = float.Parse(matches.Groups["size"].Value);
@@ -36,7 +36,7 @@ namespace CanopeeAgent.StandardIndicators.Inputs.Hardware
 
         protected override void SetDiskInfos(HardwareInfos infos)
         {
-            var lines = GetBatchOutput("df -h --output=source,size,avail ");
+            var lines = GetBatchOutput("\"df -h --output=source,size,avail \"");
             var regex = new Regex(@"/dev/(?<volumeName>sd[a-z]+[0-9]+)[ ]+(?<size>[0-9\.,]+)(?<sizeUnit>[a-zA-Z]+)[ ]+(?<spaceAvailable>[0-9\.,]+)(?<spaceAvailableUnit>[A-Z]+)");
             foreach (var line in lines)
             {
