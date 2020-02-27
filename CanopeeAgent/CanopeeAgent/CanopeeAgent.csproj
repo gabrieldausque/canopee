@@ -43,6 +43,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="appsettings.KaamelotLinux.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="appsettings.RagnarokLinux.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
