@@ -14,6 +14,12 @@
       "environmentVariables": {
         "CANOPEE_ENVIRONMENT": "Ragnarok"
       }
+    },
+    "RagnarokLinux": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": "RagnarokLinux"
+      }
     }
   }
 }
