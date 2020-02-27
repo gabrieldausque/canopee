@@ -20,7 +20,7 @@ namespace CanopeeAgent.Common.Events
         [JsonExtensionData]
         public Dictionary<string, object> ExtractedFields { get; }
         
-        public void AddExtendedField(string key, object value)
+        public void AddExtractedField(string key, object value)
         {
             if (!ExtractedFields.ContainsKey(key))
             {
@@ -30,6 +30,22 @@ namespace CanopeeAgent.Common.Events
             {
                 ExtractedFields[key] = value;
             }
+        }
+
+        public object GetFieldValue(string propertyName)
+        {
+            var prop = GetType().GetProperty(propertyName);
+            if (prop != null)
+            {
+                return prop.GetValue(this);
+            }
+
+            if (ExtractedFields.ContainsKey(propertyName))
+            {
+                return ExtractedFields[propertyName];
+            }
+
+            return null;
         }
     }
 }

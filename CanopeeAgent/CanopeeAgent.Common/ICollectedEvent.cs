@@ -11,6 +11,8 @@ namespace CanopeeAgent.Common
         
         Dictionary<string,object> ExtractedFields { get; }
 
-        void AddExtendedField(string key, object value);
+        void AddExtractedField(string key, object value);
+
+        object GetFieldValue(string propertyName);
     }
 }

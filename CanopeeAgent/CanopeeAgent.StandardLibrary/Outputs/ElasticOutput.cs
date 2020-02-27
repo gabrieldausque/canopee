@@ -49,7 +49,6 @@ namespace CanopeeAgent.StandardIndicators.Outputs
                 var index = indexByType.Value;
                 if (!_client.Indices.Exists(new IndexExistsDescriptor(index)).Exists)
                 {
-                    //TODO: Manage configuration for index on creation
                     var result = _client.Indices.Create(index);
                     if (!result.Acknowledged)
                     {

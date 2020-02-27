@@ -17,6 +17,11 @@ namespace CanopeeAgent.Core.Indicators
         protected object _lockCollect = new object();
         protected bool _isCollecting;
 
+        public Indicator()
+        {
+            Transforms = new List<ITransform>();
+        }
+
         public virtual void Initialize(IConfigurationSection configuration)
         {
             _agentId = ConfigurationService.Instance.AgentId;
@@ -28,9 +33,12 @@ namespace CanopeeAgent.Core.Indicators
             var inputConfiguration = configuration.GetSection("Input");
             Input = InputFactory.Instance.GetInput(inputConfiguration, _agentId);
             
-            //TODO : Add a collection of transforms to add multiple fields and also chained transformation
-            var transformConfiguration = configuration.GetSection("Transform");
-            Transform = TransformFactory.Instance.GetTransform(transformConfiguration);
+            var transformsConfiguration = configuration.GetSection("Transforms");
+            foreach(var transformConfiguration in transformsConfiguration.GetChildren())
+            {
+                var transform = TransformFactory.Instance.GetTransform(transformConfiguration);
+                Transforms.Add(transform);
+            }
 
             var outputConfiguration = configuration.GetSection("Output");
             Output = OutputFactory.Instance.GetOutput(outputConfiguration);
@@ -51,7 +59,10 @@ namespace CanopeeAgent.Core.Indicators
                     var collectedEvents = Input.Collect();
                     foreach (var collectedEvent in collectedEvents)
                     {
-                        Transform.Transform(collectedEvent);
+                        foreach(var transformer in Transforms)
+                        {
+                            transformer.Transform(collectedEvent);
+                        }
                         Output.SendToOutput(collectedEvent);
                     }
                 }
@@ -85,7 +96,7 @@ namespace CanopeeAgent.Core.Indicators
         }
 
         public IInput Input { get; set; }
-        public ITransform Transform { get; set; }
+        public ICollection<ITransform> Transforms { get; set; }
         public IOutput Output { get; set; }
         public ITrigger Trigger { get; set; }
     }
