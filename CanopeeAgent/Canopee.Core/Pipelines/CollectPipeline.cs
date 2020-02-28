@@ -28,22 +28,22 @@ namespace Canopee.Core.Pipelines
             _pipelineName = configuration["Name"];
             
             var triggerConfiguration = configuration.GetSection("Trigger");
-            Trigger = TriggerFactory.Instance.GetTrigger(triggerConfiguration);
+            Trigger = TriggerFactory.Instance().GetTrigger(triggerConfiguration);
             Trigger.ParentName = _pipelineName; 
             Trigger.EventTriggered += (sender, args) => { this.Collect(args); };
 
             var inputConfiguration = configuration.GetSection("Input");
-            Input = InputFactory.Instance.GetInput(inputConfiguration, _agentId);
+            Input = InputFactory.Instance().GetInput(inputConfiguration, _agentId);
             
             var transformsConfiguration = configuration.GetSection("Transforms");
             foreach(var transformConfiguration in transformsConfiguration.GetChildren())
             {
-                var transform = TransformFactory.Instance.GetTransform(transformConfiguration);
+                var transform = TransformFactory.Instance().GetTransform(transformConfiguration);
                 Transforms.Add(transform);
             }
 
             var outputConfiguration = configuration.GetSection("Output");
-            Output = OutputFactory.Instance.GetOutput(outputConfiguration);
+            Output = OutputFactory.Instance().GetOutput(outputConfiguration);
         }
 
         public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)

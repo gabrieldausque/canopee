@@ -1,11 +1,9 @@
 using System;
 using Canopee.Common;
-using Canopee.Common.Hosting.Web;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 
-namespace Canopee.Core.Hosting
+namespace Canopee.Core.Hosting.Web
 {
     public class ASPNetCanopeeHost : ICanopeeHost
     {
@@ -15,7 +13,7 @@ namespace Canopee.Core.Hosting
         {
             _collectPipelineManager = new CollectPipelineManager();
             HostTrigger =
-                TriggerFactory.Instance.GetTrigger(configuration.GetSection("CanopeeServer").GetSection("Trigger"));
+                TriggerFactory.Instance().GetTrigger(configuration.GetSection("Canopee").GetSection("Trigger"));
         }
 
         public ITrigger HostTrigger { get; private set; }

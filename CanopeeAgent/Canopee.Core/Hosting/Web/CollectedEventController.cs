@@ -1,23 +1,21 @@
 using Canopee.Common;
 using Canopee.Common.Hosting.Web;
 using Canopee.Core.Pipelines;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 
-namespace Canopee.Core.Hosting
+namespace Canopee.Core.Hosting.Web
 {
     [Route("api/events")]
     [ApiController]
-    public class WebAPIHostEventsController : Controller
+    public class CollectedEventController : Controller
     {
         private readonly ITrigger _trigger;
 
-        public WebAPIHostEventsController()
+        public CollectedEventController(ITrigger trigger)
         {
-             _trigger = HttpContext.RequestServices.GetService(typeof(ITrigger)) as ITrigger;
+             _trigger = trigger;
         }
         
         [HttpGet]
@@ -27,7 +25,7 @@ namespace Canopee.Core.Hosting
             return Ok(true);
         }
 
-        [HttpPost("{pipelineName:string}", Name = "CreateCollectedEvent")]
+        [HttpPost("{pipelineName}", Name = "CreateCollectedEvent")]
         public IActionResult CreateCollectedEvent(string pipelineName, [FromBody] JToken collectedEventAsJson)
         {
             var triggerArgs = new WebTriggerArg(pipelineName, collectedEventAsJson.ToString());

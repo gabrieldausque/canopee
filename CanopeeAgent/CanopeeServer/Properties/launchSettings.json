@@ -11,6 +11,7 @@
   "profiles": {
     "CanopeeServer": {
       "commandName": "Project",
+      "workingDirectory": "../bin/Debug",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",

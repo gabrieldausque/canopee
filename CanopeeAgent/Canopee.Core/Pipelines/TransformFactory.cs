@@ -8,22 +8,19 @@ namespace Canopee.Core.Pipelines
         private static readonly object LockInstance = new object();
         private static TransformFactory _instance;
 
-        public static TransformFactory Instance
+        public static TransformFactory Instance(string directoryCatalog=@"./Pipelines")
         {
-            get
+            lock (LockInstance)
             {
-                lock (LockInstance)
+                if (_instance == null)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = new TransformFactory();
-                    }
+                    _instance = new TransformFactory();
                 }
-                return _instance;
             }
+            return _instance;
         }
 
-        public TransformFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
+        public TransformFactory(string directoryCatalog = @"./Pipelines") : base(directoryCatalog)
         {
         }
 

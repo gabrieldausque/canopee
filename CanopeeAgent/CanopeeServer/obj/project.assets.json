@@ -3411,7 +3411,7 @@
       ]
     },
     "Microsoft.Extensions.Configuration/3.1.1": {
-      "sha512": "6BMGMMWuMCGD/sAPkBCR0Z21P+dEocaqNmvNJ+lTz0Qn3nSeUYjnF9jog7Bohe6Zp3wQLQdjkdzGeyu/r+m6gw==",
+      "sha512": "LHbdc7ZBzKOqmvGpK1EkEqpFllPa3IOrEI7dIu+BZwr6A10zBpe2XpZHeNh87DGjEfHcAItwvh/Slah8tbnr7Q==",
       "type": "package",
       "path": "microsoft.extensions.configuration/3.1.1",
       "files": [
@@ -3427,7 +3427,7 @@
       ]
     },
     "Microsoft.Extensions.Configuration.Abstractions/3.1.1": {
-      "sha512": "L3y6lpNDMlrfn3HWS5HKaAC/sFqy8DsUwgn6Jc7P24FPAIEMmb2RKlzjxAUYEC2JoQ9CT6ceVVgPgiJcQyWLXA==",
+      "sha512": "Msu6IzxV486nNmsasJQXB/c44DiVz7FqXCjIBnvmG2M8NGaVDIQra1qff9cEEkhqa+dGH+jf3mdggm8w9eX7BQ==",
       "type": "package",
       "path": "microsoft.extensions.configuration.abstractions/3.1.1",
       "files": [
@@ -3443,7 +3443,7 @@
       ]
     },
     "Microsoft.Extensions.Configuration.Binder/3.1.1": {
-      "sha512": "pCX0itT/IHAVwtTuhTN1LO3v5KYlBTfHvgR5Ym+SQunBZSFmPiwLc+ij48qbMsNBe0jhxZ8RVL7Hh99HqaDA3g==",
+      "sha512": "4J+01OANCMbFEF0bu9hID3m61emMwU2m13WXYrZDCIoxneMPWdWFzpLmsMqT8kIPgCgb2+SQ/1UAQcGCH/ASIQ==",
       "type": "package",
       "path": "microsoft.extensions.configuration.binder/3.1.1",
       "files": [
@@ -3491,7 +3491,7 @@
       ]
     },
     "Microsoft.Extensions.DependencyInjection/3.1.1": {
-      "sha512": "ohL5Czr1XAgmWDQVyh6v0c7VOt6Ys8R+HiGSh2t9RnInnpezuhpPE9K2chOJUqar10N9Pjbt2zPWaCvfdpViVA==",
+      "sha512": "Jg48cM12C8iqjpFMNXWEmJR/2jnmScV8Y8txVOayycLqHatLV2Cn4wuwj56KSOc/xVWwlWmq9Y5ebDH6awnexw==",
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection/3.1.1",
       "files": [
@@ -3511,7 +3511,7 @@
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.1": {
-      "sha512": "u7mp93LbCUN7ie5xYXM5/gsaVzzQG7b2as7tuZkSZGHc7jP81DmqUznXW4KQSw1n8qS4NdFcQ+NI3i+UpjOzbQ==",
+      "sha512": "uKZr5b4w9nQE6UAXS4PqBFbg2qe6kS+pdsCbDG2kHjUaWT/B7EOcDraoR52H/4BoBIEH3By5co6Wioru7+v9Zg==",
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.1",
       "files": [
@@ -3639,7 +3639,7 @@
       ]
     },
     "Microsoft.Extensions.Logging/3.1.1": {
-      "sha512": "Jntoq66RaOIq+zvf3ypn9NIrk7XJPRWZm873YaHwNmCcLodOOpJaWYrOicdR4h8/2K+cuw3TWvTZCD+VnhWm0g==",
+      "sha512": "SykGku44CIQJRM+eUzB61bGVNv0Lmgx70UAmhu1XLFXhP4I0rBSNJusfOlEpDN8T5JQsykIuM2lOd8J8nTnfAg==",
       "type": "package",
       "path": "microsoft.extensions.logging/3.1.1",
       "files": [
@@ -3655,7 +3655,7 @@
       ]
     },
     "Microsoft.Extensions.Logging.Abstractions/3.1.1": {
-      "sha512": "xAOVR7MXV180QL90Ut6S/nRvmTZtUSdSOaIuOuXCJN3YfupdLD7ogtFMseUjx08vxC9VNcpS+WvphP92+4BoUA==",
+      "sha512": "4/1BLjd9Zvc87xlhfkIsAlHOgMnGJBQFIEmO3CUKLrf38nIFp3W7X+JoFiRmn20WAi5+l2sgUWS4ixaIuB3S0g==",
       "type": "package",
       "path": "microsoft.extensions.logging.abstractions/3.1.1",
       "files": [
@@ -3682,7 +3682,7 @@
       ]
     },
     "Microsoft.Extensions.Options/3.1.1": {
-      "sha512": "f/6KQLUXsum9/9IcV3tZqOiYOYlaeKYsWoeMwJ5+c7ezudbiOsOa461QvcfFKFIGepNETCjbmOU/qm8rUUhllA==",
+      "sha512": "p2faCNhzXyG5oLLOV8n8dwg2rfqS4aRpIWu4qgwZMq+al3133mAQ+Hb822iwRoj3qnKM8zY4A6Jz/Vm/xWHvrA==",
       "type": "package",
       "path": "microsoft.extensions.options/3.1.1",
       "files": [
@@ -3698,7 +3698,7 @@
       ]
     },
     "Microsoft.Extensions.Primitives/3.1.1": {
-      "sha512": "CYZT1iTczEUyQBbDcs6BF4qcb8WmIprkqYOjS+kcNjM98u4tS/x3JKO/bQIqYiXR0ZP0FRWrehYJLe7Tp2qxrA==",
+      "sha512": "tC5Eo5DbJA+NgiIw26R5c97N02tFvtfqstUxqb/4qXPLXI2IAIWSMUkh/1c9Gw59TT9hNkLwlmLErSPlHgyJVQ==",
       "type": "package",
       "path": "microsoft.extensions.primitives/3.1.1",
       "files": [
@@ -3957,11 +3957,12 @@
       ]
     },
     "runtime.native.System.IO.Compression/4.3.0": {
-      "sha512": "b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
+      "sha512": "INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
       "type": "package",
       "path": "runtime.native.system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -4062,11 +4063,12 @@
       ]
     },
     "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "T5NvFgmHX0WH4c7lP72krsnk+IJI10vJf2j2twGE+5QBRA4RyRAgD+ZjEgdmpLOjW4B+nZGaadewTCUcR899OQ==",
+      "sha512": "nyFNiCk/r+VOiIqreLix8yN+q3Wga9+SE8BCgkf+2BwEKiNx6DyvFjCgkfV743/grxv8jHJ8gUK4XEQw7yzRYg==",
       "type": "package",
       "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -7925,21 +7927,17 @@
     ]
   },
   "packageFolders": {
-    "/home/gabriel/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/home/gabriel/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
+      "projectUniqueName": "/datas/canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
       "projectName": "CanopeeServer",
-      "projectPath": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
+      "projectPath": "/datas/canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
       "packagesPath": "/home/gabriel/.nuget/packages/",
-      "outputPath": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/obj/",
+      "outputPath": "/datas/canopee/CanopeeAgent/CanopeeServer/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "/home/gabriel/.config/NuGet/NuGet.Config"
       ],
@@ -7952,11 +7950,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
-              "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+            "/datas/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+              "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
             },
-            "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
-              "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+            "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+              "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
             }
           }
         }
@@ -7987,7 +7985,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
       }
     }
   }

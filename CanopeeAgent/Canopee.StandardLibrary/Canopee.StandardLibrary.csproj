@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\bin\Debug\Indicators</OutputPath>
+      <OutputPath>..\bin\Debug\Pipelines</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
-      <OutputPath>..\bin\Debug\Indicators</OutputPath>
+      <OutputPath>..\bin\Debug\Pipelines</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>

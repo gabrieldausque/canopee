@@ -7,20 +7,19 @@ namespace Canopee.Core.Pipelines
 {
     public class CollectPipelineManager : IDisposable
     {
-        private Dictionary<string, ICollectPipeline> _pipelines;
-        private CollectPipelineFactory _collectPipelinesFactory;
+        private readonly Dictionary<string, ICollectPipeline> _pipelines;
 
         public CollectPipelineManager()
         {
             _pipelines = new Dictionary<string, ICollectPipeline>();
-            _collectPipelinesFactory = new CollectPipelineFactory();
+            var collectPipelinesFactory = new CollectPipelineFactory();
 
             var config = ConfigurationService.Instance
-                .Configuration.GetSection("Indicators").GetChildren();
+                .Configuration.GetSection("Pipelines").GetChildren();
 
             foreach (var pipelineConfig in config)
             {
-                var pipeline = _collectPipelinesFactory.GetIndicator(pipelineConfig);
+                var pipeline = collectPipelinesFactory.GetIndicator(pipelineConfig);
                 _pipelines.Add(pipelineConfig["Name"], pipeline);
             }
         }
@@ -41,7 +40,7 @@ namespace Canopee.Core.Pipelines
             }
         }
 
-        protected bool _disposed = false; 
+        protected bool Disposed = false; 
         public void Dispose()
         {
             Dispose(true);
@@ -50,7 +49,7 @@ namespace Canopee.Core.Pipelines
 
         private void Dispose(bool disposing)
         {
-            if (_disposed) return;
+            if (Disposed) return;
 
             if (disposing)
             {
@@ -59,7 +58,7 @@ namespace Canopee.Core.Pipelines
                     pipeline.Value?.Dispose();
                 }
                 _pipelines.Clear();
-                _disposed = true;
+                Disposed = true;
             }
         }
     }

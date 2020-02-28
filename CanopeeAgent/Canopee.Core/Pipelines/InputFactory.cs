@@ -8,22 +8,19 @@ namespace Canopee.Core.Pipelines
         private static readonly object LockInstance = new object();
         private static InputFactory _instance;
 
-        public static InputFactory Instance
+        public static InputFactory Instance(string directoryCatalog = @"./Pipelines")
         {
-            get
+            lock (LockInstance)
             {
-                lock (LockInstance)
+                if (_instance == null)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = new InputFactory();
-                    }
+                    _instance = new InputFactory(directoryCatalog);
                 }
-                return _instance;
             }
+            return _instance;
         }
 
-        public InputFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
+        public InputFactory(string directoryCatalog = @"./Pipelines") : base(directoryCatalog)
         {
         }
 

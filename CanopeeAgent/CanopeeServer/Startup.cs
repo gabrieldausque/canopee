@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Canopee.Common;
 using Canopee.Core.Hosting;
+using Canopee.Core.Hosting.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,8 +29,9 @@ namespace CanopeeServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var canopeeCoreAssembly = typeof(WebAPIHostEventsController).Assembly;
+            var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
             services.AddCanopeeHost(Configuration);
+            services.AddHttpContextAccessor();
             services.AddControllers()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));
         }

@@ -39,7 +39,7 @@ namespace Canopee.Common.Configuration
 
         public string AgentId
         {
-            get { return Configuration.GetSection("CanopeeAgent")["AgentId"]; }
+            get { return Configuration.GetSection("Canopee")["AgentId"]; }
         }
 
     }

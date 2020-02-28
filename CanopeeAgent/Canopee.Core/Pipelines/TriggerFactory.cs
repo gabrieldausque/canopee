@@ -8,22 +8,19 @@ namespace Canopee.Core.Pipelines
         private static readonly object LockInstance = new object();
         private static TriggerFactory _instance;
 
-        public static TriggerFactory Instance
+        public static TriggerFactory Instance(string directoryCatalog = @"./Pipelines")
         {
-            get
-            {
                 lock (LockInstance)
                 {
                     if (_instance == null)
                     {
-                        _instance = new TriggerFactory();
+                        _instance = new TriggerFactory(directoryCatalog);
                     }
                 }
                 return _instance;
-            }
         }
 
-        public TriggerFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
+        public TriggerFactory(string directoryCatalog = @"./Pipelines") : base(directoryCatalog)
         {
             
         }

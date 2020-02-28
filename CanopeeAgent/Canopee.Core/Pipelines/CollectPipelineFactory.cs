@@ -5,7 +5,7 @@ namespace Canopee.Core.Pipelines
 {
     internal class CollectPipelineFactory : FactoryFromDirectoryBase
     {
-        public CollectPipelineFactory(string directoryCatalog = @"./Indicators") : base(directoryCatalog)
+        public CollectPipelineFactory(string directoryCatalog = @"./Pipelines") : base(directoryCatalog)
         {
         }
 
