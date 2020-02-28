@@ -4,18 +4,27 @@ using System.Text.Json.Serialization;
 
 namespace Canopee.Common.Events
 {
-    public abstract class BaseCollectedEvent : ICollectedEvent
+    public class CollectedEvent : ICollectedEvent
     {
-        protected BaseCollectedEvent(string agentId)
+        public CollectedEvent(string agentId)
         {
             AgentId = agentId;
             EventId = Guid.NewGuid().ToString();
             EventDate = DateTime.Now;
             ExtractedFields = new Dictionary<string, object>();
         }
+
+        public CollectedEvent(string agentId, string rawEvent) : this(agentId)
+        {
+            Raw = rawEvent;
+        }
+        
         public string EventId { get; set; }
         public DateTime EventDate { get; set; }
         public string AgentId { get; set; }
+
+        [JsonIgnore]
+         public string Raw { get; set; }
         
         [JsonExtensionData]
         public Dictionary<string, object> ExtractedFields { get; }

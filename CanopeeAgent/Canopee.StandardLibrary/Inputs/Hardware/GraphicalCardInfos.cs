@@ -3,7 +3,7 @@ using Canopee.Common.Events;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
-    public class GraphicalCardInfos : BaseCollectedEvent
+    public class GraphicalCardInfos : CollectedEvent
     {
         [Key]
         public string GraphicalCardType { get; set; }

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Canopee.Core.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,8 +27,9 @@ namespace CanopeeServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            
+            var canopeeCoreAssembly = typeof(WebAPIHostEventsController).Assembly;
+            services.AddControllers()
+                .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

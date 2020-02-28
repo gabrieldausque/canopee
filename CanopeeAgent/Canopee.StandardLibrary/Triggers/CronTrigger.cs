@@ -14,6 +14,7 @@ namespace Canopee.StandardLibrary.Triggers
     {
         private readonly IScheduler _scheduler;
         public event EventHandler<TriggerEventArgs> EventTriggered;
+        public string ParentName { get; set; }
 
         public CronTrigger()
         {
@@ -21,7 +22,7 @@ namespace Canopee.StandardLibrary.Triggers
             _scheduler = schedulerFactory.GetScheduler().Result;
             RaiseEventJob.EventTriggered += (sender, args) =>
             {
-                EventTriggered?.Invoke(this, args);
+                RaiseEvent(sender, args);
             };
         }
         
@@ -49,6 +50,11 @@ namespace Canopee.StandardLibrary.Triggers
         public void Stop()
         {
             _scheduler.Shutdown();
+        }
+
+        public void RaiseEvent(object sender, TriggerEventArgs triggerArgs)
+        {
+            EventTriggered?.Invoke(this, triggerArgs);
         }
 
         private bool IsDisposed { get; set; }

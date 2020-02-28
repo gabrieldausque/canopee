@@ -2,7 +2,7 @@ using Canopee.Common.Events;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
-    public class DisplayInfos : BaseCollectedEvent
+    public class DisplayInfos : CollectedEvent
     {
         public DisplayInfos(string agentId) : base(agentId)
         {

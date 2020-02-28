@@ -5,9 +5,8 @@ using System.Composition;
 namespace Canopee.StandardLibrary.Inputs.File
 {
    
-    public class RawFileLineInfo : BaseCollectedEvent
+    public class RawFileLineInfo : CollectedEvent
     {
-        public string Raw { get; set; }
         public RawFileLineInfo(string agentId) : base(agentId)
         {
 

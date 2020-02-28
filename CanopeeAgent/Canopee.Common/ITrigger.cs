@@ -8,8 +8,10 @@ namespace Canopee.Common
     public interface ITrigger
     {
         event EventHandler<TriggerEventArgs> EventTriggered;
+        string ParentName { get; set; }
         void Initialize(IConfigurationSection triggerParameters);
         void Start();
         void Stop();
+        void RaiseEvent(object sender, TriggerEventArgs triggerArgs);
     }
 }

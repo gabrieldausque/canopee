@@ -14,6 +14,7 @@ namespace Canopee.Core.Pipelines
         protected string _agentId;
         protected object _lockCollect = new object();
         protected bool _isCollecting;
+        private string _pipelineName;
 
         public CollectPipeline()
         {
@@ -23,9 +24,11 @@ namespace Canopee.Core.Pipelines
         public virtual void Initialize(IConfigurationSection configuration)
         {
             _agentId = ConfigurationService.Instance.AgentId;
-
+            _pipelineName = configuration["Name"];
+            
             var triggerConfiguration = configuration.GetSection("Trigger");
             Trigger = TriggerFactory.Instance.GetTrigger(triggerConfiguration);
+            Trigger.ParentName = _pipelineName; 
             Trigger.EventTriggered += (sender, args) => { this.Collect(args); };
 
             var inputConfiguration = configuration.GetSection("Input");

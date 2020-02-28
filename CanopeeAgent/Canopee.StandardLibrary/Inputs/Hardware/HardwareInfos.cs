@@ -5,7 +5,7 @@ using Canopee.StandardLibrary.Inputs.Hardware;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
-    public class HardwareInfos : BaseCollectedEvent
+    public class HardwareInfos : CollectedEvent
     {
         public HardwareInfos(string agentId) :base(agentId)
         {

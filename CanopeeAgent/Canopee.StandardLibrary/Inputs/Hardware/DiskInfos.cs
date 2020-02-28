@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
-    public class DiskInfos : BaseCollectedEvent
+    public class DiskInfos : CollectedEvent
     {
         [Key]
         public string Name { get; set; }

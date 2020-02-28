@@ -17,7 +17,14 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+            "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+          },
+          "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+            "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
