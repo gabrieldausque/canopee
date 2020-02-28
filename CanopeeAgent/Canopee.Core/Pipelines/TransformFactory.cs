@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using Canopee.Common;
-using Canopee.Core.Indicators;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.StandardLibrary.Indicators.Hardware
+namespace Canopee.Core.Pipelines
 {
     public class TransformFactory : FactoryFromDirectoryBase
     {

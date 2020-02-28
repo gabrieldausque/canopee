@@ -1,11 +1,11 @@
 ﻿using Canopee.Common;
-using Canopee.Core.Indicators;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Composition;
 using System.Diagnostics;
 using System.IO;
 using Canopee.Common.Events;
+using Canopee.Core.Pipelines;
 
 namespace Canopee.StandardLibrary.Inputs.File
 {

@@ -1,24 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Composition;
-using System.Data;
-using System.Runtime.InteropServices;
 using Canopee.Common;
 using Canopee.Common.Configuration;
 using Canopee.Common.Events;
-using Canopee.StandardLibrary.Indicators.Hardware;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Core.Indicators
+namespace Canopee.Core.Pipelines
 {
-    [Export("Default", typeof(IIndicator))]
-    public class Indicator : IIndicator
+    [Export("Default", typeof(ICollectPipeline))]
+    public class CollectPipeline : ICollectPipeline
     {
         protected string _agentId;
         protected object _lockCollect = new object();
         protected bool _isCollecting;
 
-        public Indicator()
+        public CollectPipeline()
         {
             Transforms = new List<ITransform>();
         }

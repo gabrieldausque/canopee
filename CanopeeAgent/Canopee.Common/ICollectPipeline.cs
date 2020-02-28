@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Common
 {
-    public interface IIndicator : IDisposable
+    public interface ICollectPipeline : IDisposable
     {
         void Initialize(IConfigurationSection configuration);
         void Collect(TriggerEventArgs fromTriggerArgs);

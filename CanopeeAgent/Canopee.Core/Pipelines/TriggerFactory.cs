@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using Canopee.Common;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Core.Indicators
+namespace Canopee.Core.Pipelines
 {
     public class TriggerFactory : FactoryFromDirectoryBase
     {

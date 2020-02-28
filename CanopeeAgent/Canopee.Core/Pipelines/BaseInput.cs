@@ -1,11 +1,9 @@
-﻿using Canopee.Common;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Canopee.Common;
 using Canopee.Common.Events;
+using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Core.Indicators
+namespace Canopee.Core.Pipelines
 {
     public abstract class BaseInput : IInput
     {

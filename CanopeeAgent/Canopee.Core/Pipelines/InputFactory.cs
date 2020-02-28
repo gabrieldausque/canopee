@@ -1,10 +1,7 @@
 ﻿using Canopee.Common;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Canopee.Core.Indicators
+namespace Canopee.Core.Pipelines
 {
     public class InputFactory : FactoryFromDirectoryBase
     {

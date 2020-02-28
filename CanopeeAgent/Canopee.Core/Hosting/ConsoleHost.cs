@@ -1,18 +1,18 @@
 using System;
 using System.Threading;
-using Canopee.Core.Indicators;
+using Canopee.Core.Pipelines;
 
 namespace Canopee.Core.Hosting
 {
     public class ConsoleHost
     {
         private ManualResetEvent _exitEvent;
-        private Collector _collector;
+        private CollectPipelineManager _collectPipelineManager;
 
         public ConsoleHost()
         {
             _exitEvent = new ManualResetEvent(false);
-            _collector = new Collector();
+            _collectPipelineManager = new CollectPipelineManager();
         }
 
         public void Run()
@@ -20,7 +20,7 @@ namespace Canopee.Core.Hosting
             Console.WriteLine("Start the collector");
             Console.CancelKeyPress += this.Stop;
             Console.WriteLine("Press [CTRL+C] to close agent");
-            _collector.Run();
+            _collectPipelineManager.Run();
             _exitEvent.WaitOne();
         }
 
@@ -29,7 +29,7 @@ namespace Canopee.Core.Hosting
             e.Cancel = true;
             Console.WriteLine("");
             Console.WriteLine("Clearing collector instance");
-            _collector.Dispose();
+            _collectPipelineManager.Dispose();
             Console.WriteLine("Exiting the host");
             _exitEvent.Set();
         }
