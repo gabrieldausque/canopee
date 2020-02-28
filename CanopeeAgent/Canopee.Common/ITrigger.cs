@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Common
 {
-    public interface ITrigger
+    public interface ITrigger : IDisposable
     {
         event EventHandler<TriggerEventArgs> EventTriggered;
         string ParentName { get; set; }

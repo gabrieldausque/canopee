@@ -33,13 +33,34 @@ namespace Canopee.Core.Pipelines
             }
         }
 
-        public void Dispose()
+        public void Stop()
         {
             foreach (var pipeline in _pipelines)
             {
-                pipeline.Value.Dispose();
+                pipeline.Value.Stop();
             }
-            _pipelines.Clear();
+        }
+
+        protected bool _disposed = false; 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (disposing)
+            {
+                foreach (var pipeline in _pipelines)
+                {
+                    pipeline.Value?.Dispose();
+                }
+                _pipelines.Clear();
+                _disposed = true;
+            }
         }
     }
 }

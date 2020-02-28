@@ -1,6 +1,7 @@
 using Canopee.Common;
-using Canopee.Common.Events;
+using Canopee.Common.Hosting.Web;
 using Canopee.Core.Pipelines;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -12,14 +13,11 @@ namespace Canopee.Core.Hosting
     [ApiController]
     public class WebAPIHostEventsController : Controller
     {
-        private IConfiguration _configuration;
-        private ITrigger _trigger;
+        private readonly ITrigger _trigger;
 
-        public WebAPIHostEventsController(IConfiguration configuration)
+        public WebAPIHostEventsController()
         {
-            _configuration = configuration.GetSection("CanopeeServer");
-            var triggerConfiguration = _configuration.GetSection("Trigger");
-            _trigger = TriggerFactory.Instance.GetTrigger(triggerConfiguration);
+             _trigger = HttpContext.RequestServices.GetService(typeof(ITrigger)) as ITrigger;
         }
         
         [HttpGet]
@@ -32,22 +30,9 @@ namespace Canopee.Core.Hosting
         [HttpPost("{pipelineName:string}", Name = "CreateCollectedEvent")]
         public IActionResult CreateCollectedEvent(string pipelineName, [FromBody] JToken collectedEventAsJson)
         {
-            var triggerArgs = new WebTriggerArg(pipelineName, collectedEventAsJson);
+            var triggerArgs = new WebTriggerArg(pipelineName, collectedEventAsJson.ToString());
             _trigger.RaiseEvent(this, triggerArgs);
             return CreatedAtRoute("CreateCollectedEvent", new { pipelineName=pipelineName}, true);
         }
-    }
-
-    public class WebTriggerArg : TriggerEventArgs
-    {
-        public WebTriggerArg(string pipelineName, JToken collectedEventAsJson)
-        {
-            PipelineName = pipelineName;
-            RawEvent = collectedEventAsJson;
-        }
-
-        public JToken RawEvent { get; set; }
-
-        public string PipelineName { get; set; }
     }
 }

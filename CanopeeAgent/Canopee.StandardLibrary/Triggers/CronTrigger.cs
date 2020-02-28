@@ -12,7 +12,7 @@ namespace Canopee.StandardLibrary.Triggers
     [Export("Cron", typeof(ITrigger))]
     public class CronTrigger : ITrigger, IDisposable
     {
-        private readonly IScheduler _scheduler;
+        private IScheduler _scheduler;
         public event EventHandler<TriggerEventArgs> EventTriggered;
         public string ParentName { get; set; }
 
@@ -44,12 +44,12 @@ namespace Canopee.StandardLibrary.Triggers
 
         public void Start()
         {
-            _scheduler.Start();
+            _scheduler?.Start();
         }
 
         public void Stop()
         {
-            _scheduler.Shutdown();
+            _scheduler?.Shutdown();
         }
 
         public void RaiseEvent(object sender, TriggerEventArgs triggerArgs)
@@ -57,13 +57,23 @@ namespace Canopee.StandardLibrary.Triggers
             EventTriggered?.Invoke(this, triggerArgs);
         }
 
-        private bool IsDisposed { get; set; }
+        protected bool _disposed = false;
         public void Dispose()
         {
-            if (!IsDisposed)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (disposing)
             {
                 this.Stop();
-                IsDisposed = true;
+                _scheduler = null;
+                EventTriggered = null;
+                _disposed = true;
             }
         }
     }

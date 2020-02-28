@@ -2663,6 +2663,7 @@
           "Microsoft.Composition": "1.0.31",
           "Microsoft.Extensions.Configuration": "3.1.1",
           "Microsoft.Extensions.Configuration.Binder": "3.1.1",
+          "Microsoft.Extensions.DependencyInjection": "3.1.1",
           "Microsoft.Extensions.Logging": "3.1.1"
         },
         "compile": {

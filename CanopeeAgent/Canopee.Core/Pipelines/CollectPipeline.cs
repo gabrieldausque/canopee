@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Composition;
+using System.Security.Cryptography.X509Certificates;
 using Canopee.Common;
 using Canopee.Common.Configuration;
 using Canopee.Common.Events;
@@ -91,9 +92,24 @@ namespace Canopee.Core.Pipelines
             Trigger.Stop();
         }
 
+
+        private bool _disposed = false;
         public virtual void Dispose()
         {
-            Trigger.Stop();
+            Dispose(true); 
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (disposing)
+            {
+                Trigger?.Dispose();
+                //TODO : dispose other stuff
+                _disposed = true;
+            }
         }
 
         public IInput Input { get; set; }

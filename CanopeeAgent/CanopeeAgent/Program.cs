@@ -15,7 +15,7 @@ namespace CanopeeAgent
         {
             try
             {
-                var host = new ConsoleHost();
+                var host = new ConsoleCanopeeHost();
                 host.Run();
                 Console.WriteLine("Exiting ...");
             }

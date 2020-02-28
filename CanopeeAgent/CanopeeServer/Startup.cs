@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Canopee.Common;
 using Canopee.Core.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace CanopeeServer
         public void ConfigureServices(IServiceCollection services)
         {
             var canopeeCoreAssembly = typeof(WebAPIHostEventsController).Assembly;
+            services.AddCanopeeHost(Configuration);
             services.AddControllers()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));
         }
