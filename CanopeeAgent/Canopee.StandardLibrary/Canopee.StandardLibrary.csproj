@@ -6,11 +6,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\bin\Debug\Pipelines</OutputPath>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
-      <OutputPath>..\bin\Debug\Pipelines</OutputPath>
+      <OutputPath>..\bin\Agent\Debug\Pipelines</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>
@@ -32,4 +28,7 @@
       <PackageReference Include="Quartz" Version="3.0.7" />
     </ItemGroup>
 
+    <Target Name="CopyToServer" AfterTargets="AfterBuild">
+        <Exec Command="echo "
+    </Target>
 </Project>

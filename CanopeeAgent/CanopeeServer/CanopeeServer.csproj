@@ -5,9 +5,13 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\bin\Debug\</OutputPath>
+      <OutputPath>..\bin\Server\Debug</OutputPath>
     </PropertyGroup>
 
+    <Target Name="CopyToServer" AfterTargets="AfterBuild">
+        <Exec Command="echo meow meow"/>
+    </Target>
+    
     <ItemGroup>
       <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
       <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
@@ -21,10 +25,6 @@
 
     <ItemGroup>
       <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers" />
     </ItemGroup>
 
     <PropertyGroup>

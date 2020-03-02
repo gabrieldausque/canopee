@@ -8,12 +8,12 @@ namespace Canopee.Common.Events
     {
         public CollectedEvent()
         {
-        }
-        public CollectedEvent(string agentId):this()
-        {
             EventId = Guid.NewGuid().ToString();
             EventDate = DateTime.Now;
             ExtractedFields = new Dictionary<string, object>();
+        }
+        public CollectedEvent(string agentId):this()
+        {
             AgentId = agentId;
         }
 
@@ -25,7 +25,7 @@ namespace Canopee.Common.Events
          public string Raw { get; set; }
         
         [JsonExtensionData]
-        public Dictionary<string, object> ExtractedFields { get; }
+        public Dictionary<string, object> ExtractedFields { get; set; }
         
         public void AddExtractedField(string key, object value)
         {

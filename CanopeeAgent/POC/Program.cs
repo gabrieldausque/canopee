@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Canopee.Common.Events;
 
 namespace POC
 {
@@ -9,7 +10,7 @@ namespace POC
     {
        
         [JsonExtensionData]
-        public Dictionary<string, object> test { get; set; }
+        public Dictionary<string, object> ExtractedFields { get; set; }
     }
     
     class Program
@@ -18,7 +19,7 @@ namespace POC
         {
             string json =
                 "{ \"Date\": \"2019-08-01T00:00:00-07:00\",\"temperatureCelsius\": 25,\"Summary\": \"Hot\",\"DatesAvailable\": [\"2019-08-01T00:00:00-07:00\",\"2019-08-02T00:00:00-07:00\"],\"SummaryWords\": [\"Cool\",\"Windy\",\"Humid\"]}";
-            var newObject = JsonSerializer.Deserialize<WeatherForecast>(json);
+            var newObject = JsonSerializer.Deserialize<CollectedEvent>(json);
         }
     }
 }

@@ -5,4 +5,8 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
+    </ItemGroup>
+
 </Project>
