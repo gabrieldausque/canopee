@@ -9,6 +9,12 @@
         "CANOPEE_ENVIRONMENT": "Kaamelot"
       }
     },
+    "KaamelotLinux": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": "KaamelotLinux"
+      }
+    },
     "Ragnarok": {
       "commandName": "Project",
       "environmentVariables": {

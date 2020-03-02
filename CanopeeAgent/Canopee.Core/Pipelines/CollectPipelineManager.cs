@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using Canopee.Common;
+using Canopee.Common.Configuration;
+
+namespace Canopee.Core.Pipelines
+{
+    public class CollectPipelineManager : IDisposable
+    {
+        private readonly Dictionary<string, ICollectPipeline> _pipelines;
+
+        public CollectPipelineManager()
+        {
+            _pipelines = new Dictionary<string, ICollectPipeline>();
+            var collectPipelinesFactory = new CollectPipelineFactory();
+
+            var config = ConfigurationService.Instance
+                .Configuration.GetSection("Pipelines").GetChildren();
+
+            foreach (var pipelineConfig in config)
+            {
+                var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
+                _pipelines.Add(pipelineConfig["Name"], pipeline);
+            }
+        }
+
+        public void Run()
+        {
+            foreach (var pipeline in _pipelines)
+            {
+                pipeline.Value.Run();
+            }
+        }
+
+        public void Stop()
+        {
+            foreach (var pipeline in _pipelines)
+            {
+                pipeline.Value.Stop();
+            }
+        }
+
+        protected bool Disposed = false; 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (Disposed) return;
+
+            if (disposing)
+            {
+                foreach (var pipeline in _pipelines)
+                {
+                    pipeline.Value?.Dispose();
+                }
+                _pipelines.Clear();
+                Disposed = true;
+            }
+        }
+    }
+}

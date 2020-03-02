@@ -4,8 +4,8 @@ using System.IO;
 using System.Net.Mime;
 using System.Runtime.Loader;
 using System.Threading;
-using CanopeeAgent.Common;
-using CanopeeAgent.Core.Hosting;
+using Canopee.Common;
+using Canopee.Core.Hosting;
 
 namespace CanopeeAgent
 {
@@ -15,7 +15,7 @@ namespace CanopeeAgent
         {
             try
             {
-                var host = new ConsoleHost();
+                var host = new ConsoleCanopeeHost();
                 host.Run();
                 Console.WriteLine("Exiting ...");
             }

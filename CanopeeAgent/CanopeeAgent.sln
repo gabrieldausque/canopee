@@ -5,16 +5,25 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent", "CanopeeAgent\CanopeeAgent.csproj", "{85D2F15E-4A59-4033-9ADE-0C60E41BA133}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent.StandardLibrary", "CanopeeAgent.StandardLibrary\CanopeeAgent.StandardLibrary.csproj", "{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canopee.StandardLibrary", "Canopee.StandardLibrary\Canopee.StandardLibrary.csproj", "{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent.Common", "CanopeeAgent.Common\CanopeeAgent.Common.csproj", "{4B749D47-9E9E-4E79-8827-F13443889C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canopee.Common", "Canopee.Common\Canopee.Common.csproj", "{4B749D47-9E9E-4E79-8827-F13443889C8F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent.Core", "CanopeeAgent.Core\CanopeeAgent.Core.csproj", "{8A65E1DB-9656-41C4-901F-0155E0AF8835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canopee.Core", "Canopee.Core\Canopee.Core.csproj", "{8A65E1DB-9656-41C4-901F-0155E0AF8835}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{DF7F2146-AADB-407B-886B-5DE3376B0366}"
 	ProjectSection(SolutionItems) = preProject
 		AgentLocation.csv = AgentLocation.csv
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ElasticSearch", "ElasticSearch", "{C0D6C84E-F409-4273-9BB7-813AC51BBB78}"
+	ProjectSection(SolutionItems) = preProject
+		IndexesCreationScript.txt = IndexesCreationScript.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeServer", "CanopeeServer\CanopeeServer.csproj", "{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC", "POC\POC.csproj", "{4A51D776-F8D0-48FE-8750-DB84FBB78936}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +47,14 @@ Global
 		{8A65E1DB-9656-41C4-901F-0155E0AF8835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A65E1DB-9656-41C4-901F-0155E0AF8835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A65E1DB-9656-41C4-901F-0155E0AF8835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

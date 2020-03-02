@@ -1,0 +1,43 @@
+PUT hw-main
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT hw-disks
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT hw-display
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT hw-graphicalcards
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
