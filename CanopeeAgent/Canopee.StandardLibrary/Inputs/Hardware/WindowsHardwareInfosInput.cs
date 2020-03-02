@@ -95,8 +95,8 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                 var regex = new Regex("(?<name>.+)[ ]+(?<height>[0-9]*)[ ]+(?<width>[0-9]*)");
                 var match = regex.Match(output[lineIndex]);
                 var name = match.Groups["name"].Value.Trim();
-                var height = string.IsNullOrEmpty(match.Groups["height"].Value) ? "?" : match.Groups["height"].Value;
-                var width = string.IsNullOrEmpty(match.Groups["width"].Value) ? "?" : match.Groups["width"].Value;
+                var height = string.IsNullOrWhiteSpace(match.Groups["height"].Value) ? "?" : match.Groups["height"].Value;
+                var width = string.IsNullOrWhiteSpace(match.Groups["width"].Value) ? "?" : match.Groups["width"].Value;
                 var displayInfos = new DisplayInfos(this.AgentId)
                 {
                     EventId = infos.EventId,

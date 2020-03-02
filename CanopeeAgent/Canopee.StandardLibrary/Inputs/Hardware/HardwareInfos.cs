@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Canopee.Common.Events;
 using Canopee.StandardLibrary.Inputs.Hardware;
 
@@ -25,10 +26,13 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
         
         public string MemoryUnit { get; set; }
 
+        [JsonIgnore]
         public ICollection<DiskInfos> Disks { get; set; }
 
+        [JsonIgnore]
         public ICollection<DisplayInfos> Displays { get; set; }
 
+        [JsonIgnore]
         public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
         
         public void AddDiskInfos(DiskInfos diskInfo)

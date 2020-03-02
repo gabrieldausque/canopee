@@ -9,12 +9,13 @@
     </PropertyGroup>
 
     <Target Name="CopyToServer" AfterTargets="AfterBuild">
-        <Exec Command="echo meow meow"/>
+        <Exec Command="echo meow meow" />
     </Target>
     
     <ItemGroup>
       <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
       <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
+      <ProjectReference Include="..\Canopee.StandardLibrary\Canopee.StandardLibrary.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,6 +31,22 @@
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="..\AgentLocation.csv" Link="AgentLocation.csv">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
-
+    <Target Name="BuildStandardLibrary" AfterTargets="BeforeBuild">
+        <Message Importance="high" Text="Building lazy dependency" />
+        <MSBuild Projects="..\Canopee.StandardLibrary\Canopee.StandardLibrary.csproj" />
+    </Target>
+    
+    <Target Name="Copy Library" AfterTargets="AfterBuild">
+        <Copy SourceFiles="$(OutDir)\Canopee.StandardLibrary.dll" OverwriteReadOnlyFiles="True" DestinationFolder="$(OutDir)\Pipelines">
+            
+        </Copy>
+    </Target>
+    
 </Project>

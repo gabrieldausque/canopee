@@ -12,14 +12,20 @@ namespace Canopee.StandardLibrary.Outputs
     [Export("Elastic",typeof(IOutput))]
     public class ElasticOutput : IOutput
     {
-        private Dictionary<Type, string> _indexesByType;
+        public ElasticOutput()
+        {
+            _indexesByType = new Dictionary<string, string>();
+        }
+        
+        private Dictionary<string, string> _indexesByType;
         private string _url;
         private ElasticClient _client;
+        private string _defaultIndex;
 
         public void SendToOutput(ICollectedEvent collectedEvent)
         {
             string serializedEvent = JsonSerializer.Serialize(collectedEvent, collectedEvent.GetType());
-            var index = _indexesByType[collectedEvent.GetType()]; 
+            var index = GetIndexByType(collectedEvent.GetEventType()); 
             var r = _client.LowLevel.Index<IndexResponse>(index,
                 PostData.String(serializedEvent));
             if(!r.IsValid)
@@ -29,9 +35,14 @@ namespace Canopee.StandardLibrary.Outputs
             }
         }
 
+        private string GetIndexByType(string eventTypeFullName)
+        {
+            return (_indexesByType.ContainsKey(eventTypeFullName)) ? _indexesByType[eventTypeFullName] : _defaultIndex;
+        }
+
         public void Initialize(IConfiguration configurationOutput)
         {
-            _indexesByType = new Dictionary<Type, string>();
+            _defaultIndex = configurationOutput["DefaultIndex"];
             _url = configurationOutput["Url"];
             
             var uri = new Uri(_url);
@@ -41,7 +52,7 @@ namespace Canopee.StandardLibrary.Outputs
             //create index if it doesn't exists
             foreach (var indexConfig in configurationOutput.GetSection("Indexes").GetChildren())
             {
-                _indexesByType.Add(Type.GetType(indexConfig["InfosType"], true), indexConfig["Index"]);
+                _indexesByType.Add(indexConfig["InfosType"], indexConfig["Index"]);
             }
             
             foreach (var indexByType in _indexesByType)

@@ -20,6 +20,9 @@
           },
           "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
             "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+          },
+          "/datas/canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {
+            "projectPath": "/datas/canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj"
           }
         }
       }

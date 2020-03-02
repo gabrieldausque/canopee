@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Composition;
+using System.Reflection;
 using System.Text.Json;
 using Canopee.Common;
 using Canopee.Common.Events;
@@ -14,7 +16,8 @@ namespace Canopee.StandardLibrary.Inputs.Trigger
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             var collectedEvents = new List<ICollectedEvent>();
-            CollectedEvent collectedEvent = fromTriggerEventArgs.Raw as CollectedEvent;
+            ICollectedEvent collectedEvent = fromTriggerEventArgs.Raw as ICollectedEvent;
+            collectedEvents.Add(collectedEvent);
             return collectedEvents;
         }
     }

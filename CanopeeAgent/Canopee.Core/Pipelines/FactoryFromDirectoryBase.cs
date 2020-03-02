@@ -19,6 +19,8 @@ namespace Canopee.Core.Pipelines
                 var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(fullPath);
                 containerConfiguration.WithAssembly(assembly);
             }
+
+            containerConfiguration.WithAssembly(this.GetType().Assembly);
             Container = containerConfiguration.CreateContainer();
         }
 

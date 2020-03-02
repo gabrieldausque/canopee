@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\bin\Debug\</OutputPath>
+      <OutputPath>..\bin\Agent\Debug\</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
-      <OutputPath>..\bin\Debug\</OutputPath>
+      <OutputPath>..\bin\Agent\Debug\</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -21,10 +21,6 @@
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Hosting\Web" />
     </ItemGroup>
 
 </Project>

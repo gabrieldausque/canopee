@@ -23,6 +23,7 @@ namespace Canopee.StandardLibrary.Outputs
         
         public void SendToOutput(ICollectedEvent collectedEvent)
         {
+            collectedEvent.SetFieldValue("EventType", collectedEvent.GetType().FullName);
             UriBuilder builder = new UriBuilder(_url);
             builder.Path = UriPath;
             builder.Query = $"pipelineId={_pipelineId}";

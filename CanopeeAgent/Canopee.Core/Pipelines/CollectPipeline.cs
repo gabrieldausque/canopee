@@ -29,7 +29,7 @@ namespace Canopee.Core.Pipelines
             _agentId = ConfigurationService.Instance.AgentId;
             Name = configuration["Name"];
             
-            if (!string.IsNullOrEmpty(configuration["Id"]))
+            if (!string.IsNullOrWhiteSpace(configuration["Id"]))
             {
                 Id = configuration["Id"];
             }

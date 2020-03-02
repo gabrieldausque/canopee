@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Canopee.Common.Events
@@ -27,18 +30,6 @@ namespace Canopee.Common.Events
         [JsonExtensionData]
         public Dictionary<string, object> ExtractedFields { get; set; }
         
-        public void AddExtractedField(string key, object value)
-        {
-            if (!ExtractedFields.ContainsKey(key))
-            {
-                ExtractedFields.Add(key, value);
-            }
-            else
-            {
-                ExtractedFields[key] = value;
-            }
-        }
-
         public object GetFieldValue(string propertyName)
         {
             var prop = GetType().GetProperty(propertyName);
@@ -73,6 +64,32 @@ namespace Canopee.Common.Events
                     ExtractedFields.Add(propertyName, value);
                 }
             }
+        }
+
+        public T ConvertTo<T>() where T:ICollectedEvent,new()
+        {
+            T converted = new T();
+            foreach (var propertyInfo in GetType().GetProperties())
+            {
+                if (propertyInfo.Name != "ExtractedFields")
+                {
+                    converted.SetFieldValue(propertyInfo.Name, propertyInfo.GetValue(this));    
+                }
+            }
+
+            foreach (var extractedFields in ExtractedFields)
+            {
+                converted.SetFieldValue(extractedFields.Key, extractedFields.Value);
+            }
+            return converted;
+        }
+
+        public string GetEventType()
+        {
+            var extractedEventType = GetFieldValue("EventType");
+            if (extractedEventType != null)
+                return extractedEventType.ToString();
+            return this.GetType().FullName;
         }
     }
 }

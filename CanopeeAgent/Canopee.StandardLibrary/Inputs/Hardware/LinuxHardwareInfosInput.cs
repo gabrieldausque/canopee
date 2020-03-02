@@ -46,7 +46,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                 float.TryParse(matches.Groups["spaceAvailable"].Value, out var spaceAvailable);
                 var spaceAvailableUnit = matches.Groups["spaceAvailableUnit"].Value;
                 var sizeUnit = matches.Groups["sizeUnit"].Value;
-                if (string.IsNullOrEmpty(volumeName))
+                if (string.IsNullOrWhiteSpace(volumeName))
                     continue;
                 var diskInfo = new DiskInfos(this.AgentId)
                 {

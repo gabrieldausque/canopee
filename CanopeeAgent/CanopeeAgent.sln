@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent", "CanopeeAgent\CanopeeAgent.csproj", "{85D2F15E-4A59-4033-9ADE-0C60E41BA133}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canopee.StandardLibrary", "Canopee.StandardLibrary\Canopee.StandardLibrary.csproj", "{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Canopee.Common", "Canopee.Common\Canopee.Common.csproj", "{4B749D47-9E9E-4E79-8827-F13443889C8F}"
@@ -20,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ElasticSearch", "ElasticSea
 	ProjectSection(SolutionItems) = preProject
 		IndexesCreationScript.txt = IndexesCreationScript.txt
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent", "CanopeeAgent\CanopeeAgent.csproj", "{85D2F15E-4A59-4033-9ADE-0C60E41BA133}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeServer", "CanopeeServer\CanopeeServer.csproj", "{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}"
 EndProject

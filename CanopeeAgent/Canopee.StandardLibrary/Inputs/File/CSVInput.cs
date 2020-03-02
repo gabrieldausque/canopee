@@ -59,7 +59,7 @@ namespace Canopee.StandardLibrary.Inputs.File
                             var fields = line.Split(_fieldSeparator);
                             for(int fieldIndex=0;fieldIndex < headers.Count; fieldIndex++)
                             {
-                                if (!string.IsNullOrEmpty(headers[fieldIndex]))
+                                if (!string.IsNullOrWhiteSpace(headers[fieldIndex]))
                                 {
                                     info.SetFieldValue(headers[fieldIndex], fields[fieldIndex]);
                                 }

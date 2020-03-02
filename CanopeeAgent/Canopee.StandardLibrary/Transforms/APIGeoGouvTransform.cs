@@ -42,7 +42,7 @@ namespace Canopee.StandardLibrary.Transforms
                         var element = document.RootElement[0];
                         var lat = element.GetProperty("centre").GetProperty("coordinates")[1].GetDecimal();
                         var lon = element.GetProperty("centre").GetProperty("coordinates")[0].GetDecimal();
-                        input.AddExtractedField("Location", new
+                        input.SetFieldValue("Location", new
                         {
                             lat = lat,
                             lon = lon
