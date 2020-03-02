@@ -9,6 +9,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 {
     public class DiskInfos : CollectedEvent
     {
+        public DiskInfos()
+        {
+            
+        }
         [Key]
         public string Name { get; set; }
         public float Size { get; set; }

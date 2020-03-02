@@ -9,7 +9,7 @@ namespace Canopee.Core.Pipelines
         {
         }
 
-        public ICollectPipeline GetIndicator(IConfigurationSection configurationIndicator)
+        public ICollectPipeline GetPipeline(IConfigurationSection configurationIndicator)
         {
             var type = string.IsNullOrWhiteSpace(configurationIndicator["Type"])?"Default": configurationIndicator["Type"];
             var indicator = Container.GetExport<ICollectPipeline>(type);

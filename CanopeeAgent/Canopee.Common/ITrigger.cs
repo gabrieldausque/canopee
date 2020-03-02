@@ -7,11 +7,12 @@ namespace Canopee.Common
 {
     public interface ITrigger : IDisposable
     {
-        event EventHandler<TriggerEventArgs> EventTriggered;
-        string ParentName { get; set; }
+        string OwnerName { get; set; }
+        public string OwnerId { get; set; }
         void Initialize(IConfigurationSection triggerParameters);
         void Start();
         void Stop();
         void RaiseEvent(object sender, TriggerEventArgs triggerArgs);
+        void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, TriggerSubscriptionContext context);
     }
 }

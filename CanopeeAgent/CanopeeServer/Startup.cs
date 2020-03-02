@@ -32,8 +32,18 @@ namespace CanopeeServer
             var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
             services.AddCanopeeHost(Configuration);
             services.AddHttpContextAccessor();
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("CanopeeSpec", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Canopee Api",
+                    Version = "0.1"
+                });
+                options.IncludeXmlComments("Canopee.Core.xml");
+            });
             services.AddControllers()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +56,12 @@ namespace CanopeeServer
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/CanopeeSpec/swagger.json", "Canopee API");
+                options.RoutePrefix = "api";
+            });
             app.UseRouting();
 
             app.UseAuthorization();

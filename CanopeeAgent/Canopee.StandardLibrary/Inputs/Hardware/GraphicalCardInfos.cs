@@ -5,6 +5,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 {
     public class GraphicalCardInfos : CollectedEvent
     {
+        public GraphicalCardInfos()
+        {
+            
+        }
         [Key]
         public string GraphicalCardType { get; set; }
         public string GraphicalCardModel { get; set; }

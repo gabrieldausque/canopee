@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Canopee.Core.Hosting
 {
+    /// <summary>
+    /// The Canopee pipeline processing host for console application
+    /// </summary>
     public class ConsoleCanopeeHost : ICanopeeHost
     {
         private ManualResetEvent _exitEvent;

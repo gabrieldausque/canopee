@@ -19,6 +19,7 @@ namespace Canopee.Core.Hosting.Web
             {
                 throw new NullReferenceException("The ASPCanopeeHost instance is null, please check the assemblies you are using.");
             }
+            canopeeHost.Run();
             services.AddSingleton<ITrigger>(canopeeHost.HostTrigger);
         }
     }

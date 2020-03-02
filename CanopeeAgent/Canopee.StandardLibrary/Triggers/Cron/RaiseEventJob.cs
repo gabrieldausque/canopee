@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Canopee.Common.Events;
 using Quartz;
 
-namespace Canopee.StandardLibrary.Triggers
+namespace Canopee.StandardLibrary.Triggers.Cron
 {
     internal class RaiseEventJob : IJob
     {
@@ -13,7 +13,11 @@ namespace Canopee.StandardLibrary.Triggers
         {
             return Task.Run(() =>
             {
-                EventTriggered?.Invoke(this, new TriggerEventArgs());
+                var args = new CronTriggerEventArgs()
+                {
+                    FireTimeInUtc = context.ScheduledFireTimeUtc.ToString()
+                };
+                EventTriggered?.Invoke(this, args);
             });
         }
     }

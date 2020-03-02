@@ -4,6 +4,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 {
     public class DisplayInfos : CollectedEvent
     {
+        public DisplayInfos()
+        {
+            
+        }
         public DisplayInfos(string agentId) : base(agentId)
         {
         }

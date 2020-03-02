@@ -19,7 +19,7 @@ namespace Canopee.Core.Pipelines
 
             foreach (var pipelineConfig in config)
             {
-                var pipeline = collectPipelinesFactory.GetIndicator(pipelineConfig);
+                var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
                 _pipelines.Add(pipelineConfig["Name"], pipeline);
             }
         }

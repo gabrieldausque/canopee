@@ -7,6 +7,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 {
     public class HardwareInfos : CollectedEvent
     {
+        public HardwareInfos()
+        {
+            
+        }
         public HardwareInfos(string agentId) :base(agentId)
         {
             Disks = new List<DiskInfos>();

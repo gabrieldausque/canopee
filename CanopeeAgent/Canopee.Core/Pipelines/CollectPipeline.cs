@@ -15,22 +15,32 @@ namespace Canopee.Core.Pipelines
         protected string _agentId;
         protected object _lockCollect = new object();
         protected bool _isCollecting;
-        private string _pipelineName;
+        public string Name { get; private set; }
+        public string Id { get; private set; }
 
         public CollectPipeline()
         {
             Transforms = new List<ITransform>();
+            Id = Guid.NewGuid().ToString();
         }
 
         public virtual void Initialize(IConfigurationSection configuration)
         {
             _agentId = ConfigurationService.Instance.AgentId;
-            _pipelineName = configuration["Name"];
+            Name = configuration["Name"];
+            
+            if (!string.IsNullOrEmpty(configuration["Id"]))
+            {
+                Id = configuration["Id"];
+            }
             
             var triggerConfiguration = configuration.GetSection("Trigger");
             Trigger = TriggerFactory.Instance().GetTrigger(triggerConfiguration);
-            Trigger.ParentName = _pipelineName; 
-            Trigger.EventTriggered += (sender, args) => { this.Collect(args); };
+            Trigger.SubscribeToTrigger((sender, args) => { this.Collect(args); }, new TriggerSubscriptionContext()
+            {
+                PipelineId =  Id,
+                PipelineName = Name
+            });
 
             var inputConfiguration = configuration.GetSection("Input");
             Input = InputFactory.Instance().GetInput(inputConfiguration, _agentId);

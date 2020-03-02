@@ -1,11 +1,14 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/datas/canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
+    "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
     "projectName": "CanopeeServer",
-    "projectPath": "/datas/canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
-    "outputPath": "/datas/canopee/CanopeeAgent/CanopeeServer/obj/",
+    "projectPath": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
+    "outputPath": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/obj/",
     "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
     "originalTargetFrameworks": [
       "netcoreapp3.1"
     ],
@@ -15,11 +18,11 @@
     "frameworks": {
       "netcoreapp3.1": {
         "projectReferences": {
-          "/datas/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
-            "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+          "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+            "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
           },
-          "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
-            "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+          "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+            "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
           }
         }
       }
@@ -32,6 +35,12 @@
   },
   "frameworks": {
     "netcoreapp3.1": {
+      "dependencies": {
+        "Swashbuckle.AspNetCore": {
+          "target": "Package",
+          "version": "[5.0.0, )"
+        }
+      },
       "imports": [
         "net461",
         "net462",
@@ -50,7 +59,7 @@
           "privateAssets": "all"
         }
       },
-      "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
+      "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
     }
   }
 }

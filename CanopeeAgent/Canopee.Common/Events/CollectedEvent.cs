@@ -6,19 +6,17 @@ namespace Canopee.Common.Events
 {
     public class CollectedEvent : ICollectedEvent
     {
-        public CollectedEvent(string agentId)
+        public CollectedEvent()
         {
-            AgentId = agentId;
+        }
+        public CollectedEvent(string agentId):this()
+        {
             EventId = Guid.NewGuid().ToString();
             EventDate = DateTime.Now;
             ExtractedFields = new Dictionary<string, object>();
+            AgentId = agentId;
         }
 
-        public CollectedEvent(string agentId, string rawEvent) : this(agentId)
-        {
-            Raw = rawEvent;
-        }
-        
         public string EventId { get; set; }
         public DateTime EventDate { get; set; }
         public string AgentId { get; set; }

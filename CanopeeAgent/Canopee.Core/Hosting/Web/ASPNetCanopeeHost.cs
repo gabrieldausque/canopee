@@ -28,11 +28,13 @@ namespace Canopee.Core.Hosting.Web
 
         public void Run()
         {
+            HostTrigger.Start();
             _collectPipelineManager.Run();
         }
 
         public void Stop()
         {
+            HostTrigger.Stop();
             _collectPipelineManager.Stop();
         }
         
