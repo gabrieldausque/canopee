@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Composition;
+using System.Data;
 using System.Data.Common;
 using Canopee.Common;
 using Canopee.Common.Events;
@@ -26,27 +27,21 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             var collectedRows = new List<ICollectedEvent>();
-            FbConnection connection = null;
-            FbCommand command = null;
-            FbDataReader reader = null;
+            FbDataAdapter da = null;
             try
             {
-                connection = new FbConnection(_connectionString);
-                connection.Open();
-                command = connection.CreateCommand();
-                command.CommandText = _selectStatement;
-                reader = command.ExecuteReader();
-                var columns = reader.GetColumnSchema();
-                while (reader.Read())
+                DataTable dt = new DataTable();
+                da = new FbDataAdapter(_selectStatement, _connectionString);
+                da.Fill(dt);
+                foreach (DataRow row in dt.Rows)
                 {
-                    var collectedEvent = new CollectedEvent(AgentId);
-                    foreach (var column in columns)
+                    var newEvent = new CollectedEvent(AgentId);
+                    foreach (DataColumn col in dt.Columns)
                     {
-                        collectedEvent.SetFieldValue(column.ColumnName, reader.GetValue(column.ColumnOrdinal.Value));
-                        collectedRows.Add(collectedEvent);
+                        newEvent.SetFieldValue(col.ColumnName, row[col]);
                     }
+                    collectedRows.Add(newEvent);
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {
@@ -54,9 +49,7 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
             }
             finally
             {
-                reader?.Dispose();
-                command?.Dispose();
-                connection?.Dispose();
+                da?.Dispose();
             }
 
             return collectedRows;
