@@ -47,8 +47,6 @@ namespace Canopee.StandardLibrary.Transforms
 
         public ICollectedEvent Transform(ICollectedEvent input)
         {
-            //TODO : create elastic client and request for the searched fields 
-            //TODO : put fields obtained in extendedfields dictionary
             object keyValue = null;
             if(input.GetType().GetProperty(_key.LocalName) != null)
             {

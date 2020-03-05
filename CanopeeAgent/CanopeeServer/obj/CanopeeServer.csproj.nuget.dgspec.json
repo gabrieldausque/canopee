@@ -193,6 +193,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "FirebirdSql.Data.FirebirdClient": {
+              "target": "Package",
+              "version": "[7.1.1, )"
+            },
             "Microsoft.Composition": {
               "target": "Package",
               "version": "[1.0.31, )"

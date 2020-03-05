@@ -17,6 +17,18 @@
           "lib/netstandard2.0/Elasticsearch.Net.dll": {}
         }
       },
+      "FirebirdSql.Data.FirebirdClient/7.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3117,6 +3129,7 @@
         "dependencies": {
           "Canopee.Common": "1.0.0",
           "Canopee.Core": "1.0.0",
+          "FirebirdSql.Data.FirebirdClient": "7.1.1",
           "Microsoft.Composition": "1.0.31",
           "NEST": "7.5.1",
           "Quartz": "3.0.7"
@@ -3148,6 +3161,21 @@
         "lib/netstandard2.0/Elasticsearch.Net.pdb",
         "lib/netstandard2.0/Elasticsearch.Net.xml",
         "license.txt"
+      ]
+    },
+    "FirebirdSql.Data.FirebirdClient/7.1.1": {
+      "sha512": "na+kT2eU8TwyPvXsZ57bBDyUbEyA1dOkqQlyrqZNmnbF64x3oEmDsz9vKRKNql3lfrfhCyiFBY0fS3pTE2Pisg==",
+      "type": "package",
+      "path": "firebirdsql.data.firebirdclient/7.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "firebirdsql.data.firebirdclient.7.1.1.nupkg.sha512",
+        "firebirdsql.data.firebirdclient.nuspec",
+        "lib/net452/FirebirdSql.Data.FirebirdClient.dll",
+        "lib/netstandard2.0/FirebirdSql.Data.FirebirdClient.dll",
+        "license.txt",
+        "readme.txt"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {

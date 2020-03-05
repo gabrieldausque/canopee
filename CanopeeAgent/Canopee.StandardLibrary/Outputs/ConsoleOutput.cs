@@ -8,6 +8,7 @@ using System.Text.Json;
 namespace Canopee.StandardLibrary.Outputs
 {
     [Export("Console", typeof(IOutput))]
+    [Export("Default", typeof(IOutput))]
     public class ConsoleOutput : IOutput
     {
         public void SendToOutput(ICollectedEvent collectedEvent)
