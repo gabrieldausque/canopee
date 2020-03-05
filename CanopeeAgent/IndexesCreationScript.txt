@@ -41,3 +41,14 @@ PUT hw-graphicalcards
     }
   }
 }
+
+PUT hw-versions
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
