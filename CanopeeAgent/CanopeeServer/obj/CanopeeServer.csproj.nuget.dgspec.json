@@ -1,28 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj": {}
+    "E:\\developments\\canopee\\CanopeeAgent\\CanopeeServer\\CanopeeServer.csproj": {}
   },
   "projects": {
-    "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+    "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj",
+        "projectUniqueName": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj",
         "projectName": "Canopee.Common",
-        "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj",
-        "packagesPath": "/home/gabriel/.nuget/packages/",
-        "outputPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/obj/",
+        "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/home/gabriel/.config/NuGet/NuGet.Config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,36 +66,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+    "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj",
+        "projectUniqueName": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj",
         "projectName": "Canopee.Core",
-        "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj",
-        "packagesPath": "/home/gabriel/.nuget/packages/",
-        "outputPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/obj/",
+        "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/home/gabriel/.config/NuGet/NuGet.Config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
-                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+              "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj": {
+                "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj"
               }
             }
           }
@@ -150,39 +148,38 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {
+    "E:\\developments\\canopee\\CanopeeAgent\\Canopee.StandardLibrary\\Canopee.StandardLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj",
+        "projectUniqueName": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.StandardLibrary\\Canopee.StandardLibrary.csproj",
         "projectName": "Canopee.StandardLibrary",
-        "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj",
-        "packagesPath": "/home/gabriel/.nuget/packages/",
-        "outputPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/obj/",
+        "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.StandardLibrary\\Canopee.StandardLibrary.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.StandardLibrary\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/home/gabriel/.config/NuGet/NuGet.Config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
-                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+              "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj": {
+                "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj"
               },
-              "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
-                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+              "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj": {
+                "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj"
               }
             }
           }
@@ -224,42 +221,41 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj": {
+    "E:\\developments\\canopee\\CanopeeAgent\\CanopeeServer\\CanopeeServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
+        "projectUniqueName": "E:\\developments\\canopee\\CanopeeAgent\\CanopeeServer\\CanopeeServer.csproj",
         "projectName": "CanopeeServer",
-        "projectPath": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/CanopeeServer.csproj",
-        "packagesPath": "/home/gabriel/.nuget/packages/",
-        "outputPath": "/opt/developments/Canopee/CanopeeAgent/CanopeeServer/obj/",
+        "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\CanopeeServer\\CanopeeServer.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "E:\\developments\\canopee\\CanopeeAgent\\CanopeeServer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/home/gabriel/.config/NuGet/NuGet.Config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
-                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+              "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj": {
+                "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Common\\Canopee.Common.csproj"
               },
-              "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
-                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+              "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj": {
+                "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.Core\\Canopee.Core.csproj"
               },
-              "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {
-                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj"
+              "E:\\developments\\canopee\\CanopeeAgent\\Canopee.StandardLibrary\\Canopee.StandardLibrary.csproj": {
+                "projectPath": "E:\\developments\\canopee\\CanopeeAgent\\Canopee.StandardLibrary\\Canopee.StandardLibrary.csproj"
               }
             }
           }
@@ -296,7 +292,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
