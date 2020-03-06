@@ -42,7 +42,7 @@ PUT hw-graphicalcards
   }
 }
 
-PUT hw-versions
+PUT hw-products
 {
   "mappings": {
     "properties": {
