@@ -25,6 +25,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeServer", "CanopeeSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC", "POC\POC.csproj", "{4A51D776-F8D0-48FE-8750-DB84FBB78936}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Firebird", "Firebird", "{4FEC0F7B-797B-472A-8DD5-9141A97609CA}"
+ProjectSection(SolutionItems) = preProject
+	installationlogs.sql = installationlogs.sql
+	userinfos.sql = userinfos.sql
+	versions.sql = versions.sql
+	Insert_logs.sql = Insert_logs.sql
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
