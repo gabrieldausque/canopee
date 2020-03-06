@@ -9,6 +9,12 @@
         "CANOPEE_ENVIRONMENT": "Kaamelot"
       }
     },
+    "Kaamelot2": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": "Kaamelot2"
+      }
+    },
     "KaamelotLinux": {
       "commandName": "Project",
       "environmentVariables": {
