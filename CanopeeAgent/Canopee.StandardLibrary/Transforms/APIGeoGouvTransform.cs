@@ -30,7 +30,7 @@ namespace Canopee.StandardLibrary.Transforms
         {
             UriBuilder builder = new UriBuilder(Url);
             builder.Path = _entity;
-            builder.Query = $"{_key.SearchedName}={input.GetFieldValue(_key.LocalName)}&&fields=centre&format=json&geometry=centre";
+            builder.Query = $"{_key.SearchedName}={input.GetFieldValue(_key.LocalName)}&&fields=centre,codeDepartement,codeRegion&format=json&geometry=centre";
             using (HttpClient client = new HttpClient())
             {
                 var response = client.GetAsync(builder.Uri).Result;
@@ -47,6 +47,8 @@ namespace Canopee.StandardLibrary.Transforms
                             lat = lat,
                             lon = lon
                         });
+                        input.SetFieldValue("CodeDepartement", int.Parse(element.GetProperty("codeDepartement").GetString()));
+                        input.SetFieldValue("CodeRegion", int.Parse(element.GetProperty("codeRegion").GetString()));
                     }
                 }
             }
