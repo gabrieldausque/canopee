@@ -53,7 +53,7 @@ namespace CanopeeServer
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseSwagger();
