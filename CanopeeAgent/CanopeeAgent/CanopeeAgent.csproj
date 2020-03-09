@@ -40,7 +40,6 @@
     <ItemGroup>
       <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
       <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
-      <ProjectReference Include="..\Canopee.StandardLibrary\Canopee.StandardLibrary.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -64,10 +63,16 @@
       </None>
     </ItemGroup>
 
-    <Target Name="Copy Library" AfterTargets="AfterBuild">
-        <Copy SourceFiles="$(OutDir)\Canopee.StandardLibrary.dll" OverwriteReadOnlyFiles="True" DestinationFolder="$(OutDir)\Pipelines">
-
-        </Copy>
+    <Target Name="BuildStandardLibrary" AfterTargets="AfterBuild">
+        <Exec Command="dotnet build -c Release -o $(OutDir)/PipelinesTemp/ ../Canopee.StandardLibrary/Canopee.StandardLibrary.csproj" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/FirebirdSql.Data.FirebirdClient.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Elasticsearch.Net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Nest.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
     </Target>
     
 </Project>
