@@ -11,10 +11,11 @@
       <OutputPath>../bin/Agent/Debug/</OutputPath>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
-      <OutputPath>../bin/Agent/Debug/</OutputPath>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>../bin/Agent/Release/</OutputPath>
+      <DocumentationFile>..\bin\Agent\Release\CanopeeAgent.xml</DocumentationFile>
     </PropertyGroup>
-
+    
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <ApplicationManifest>app.manifest</ApplicationManifest>
