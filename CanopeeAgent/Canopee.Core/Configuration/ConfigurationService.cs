@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Common.Configuration
+namespace Canopee.Core.Configuration
 {
     public class ConfigurationService
     {

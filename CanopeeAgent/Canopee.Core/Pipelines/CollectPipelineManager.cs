@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Canopee.Common;
-using Canopee.Common.Configuration;
+using Canopee.Core.Configuration;
 
 namespace Canopee.Core.Pipelines
 {

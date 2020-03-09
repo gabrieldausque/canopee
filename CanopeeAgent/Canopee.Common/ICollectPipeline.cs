@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Canopee.Common.Configuration;
 using Canopee.Common.Events;
 using Microsoft.Extensions.Configuration;
 

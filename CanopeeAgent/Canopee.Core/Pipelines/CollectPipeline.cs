@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Security.Cryptography.X509Certificates;
 using Canopee.Common;
-using Canopee.Common.Configuration;
 using Canopee.Common.Events;
+using Canopee.Core.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Pipelines
@@ -58,6 +58,11 @@ namespace Canopee.Core.Pipelines
 
         public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
         {
+            //TODO: Replace by logger
+            var color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Collecting pipeline {Name} with Id {Id}");
+            Console.ForegroundColor = color;
             try
             {
                 if (!_isCollecting)
@@ -81,13 +86,15 @@ namespace Canopee.Core.Pipelines
             }
             catch(Exception ex)
             {
-                var color = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(ex.ToString());
                 Console.ForegroundColor = color;
             }
             finally
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Collect finish for {Name}:{Id}");
+                Console.ForegroundColor = color;
                 _isCollecting = false;
             }
         }
