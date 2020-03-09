@@ -13,6 +13,10 @@
       <OutputPath>..\bin\Agent\Debug\</OutputPath>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Canopee.Common.xml</DocumentationFile>
+    </PropertyGroup>
+
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>

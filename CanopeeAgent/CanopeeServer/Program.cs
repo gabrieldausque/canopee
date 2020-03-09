@@ -23,9 +23,14 @@ namespace CanopeeServer
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
+            var hostingFileName =
+                (!string.IsNullOrWhiteSpace(Environment.ExpandEnvironmentVariables("%CANOPEE_ENVIRONMENT%")))
+                    ? $"hosting.{Environment.ExpandEnvironmentVariables("%CANOPEE_ENVIRONMENT%")}.json"
+                    : $"hosting.json";  
+            Console.WriteLine($"Loading hosting files : {hostingFileName}");
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("hosting.json", true)
+                .AddJsonFile(hostingFileName, true)
                 .AddCommandLine(args)
                 .Build();
             
@@ -35,7 +40,12 @@ namespace CanopeeServer
                     webBuilder.UseStartup<Startup>();
                     if (!string.IsNullOrWhiteSpace(config["Urls"]))
                     {
+                        Console.WriteLine($"Changing Urls to : {config["Urls"]}");
                         webBuilder.UseUrls(config["Urls"]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No hosting configuration for Urls");
                     }
                 });
 

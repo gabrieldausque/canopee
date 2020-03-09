@@ -7,6 +7,11 @@
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <OutputPath>..\bin\Server\Debug</OutputPath>
     </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>..\bin\Server\Release</OutputPath>
+      <DocumentationFile>..\bin\Server\Release\CanopeeServer.xml</DocumentationFile>
+    </PropertyGroup>
 
     <Target Name="CopyToServer" AfterTargets="AfterBuild">
         <Exec Command="echo meow meow" />
@@ -21,10 +26,6 @@
       <None Update="localhost.pfx">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -43,6 +44,15 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
+      <Content Update="hosting.Production.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+        
+    <ItemGroup>
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
     </ItemGroup>
 
     <Target Name="BuildStandardLibrary" AfterTargets="AfterBuild">
