@@ -2,3 +2,4 @@ dotnet publish --configuration Release --output ../bin/Agent/Published --self-co
 cp -Rv ../bin/Agent/Release/Pipelines/ ../bin/Agent/Published/
 cp -Rv ../bin/Agent/Release/Canopee*.xml ../bin/Agent/Published/
 chmod 777 ../bin/Agent/Published/CanopeeAgent
+chmod 777 ../bin/Agent/Published/LaunchAgentLinux.sh

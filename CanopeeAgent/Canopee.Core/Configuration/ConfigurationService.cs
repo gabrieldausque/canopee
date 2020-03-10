@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
@@ -28,10 +29,12 @@ namespace Canopee.Core.Configuration
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory());
+            Console.WriteLine("Loading configuration file : appsettings.json");
             builder.AddJsonFile("appsettings.json", true);
             var currentEnvironment = System.Environment.GetEnvironmentVariable("CANOPEE_ENVIRONMENT");
             if (!string.IsNullOrWhiteSpace(currentEnvironment))
             {
+                Console.WriteLine($"Loading configuration file : appsettings.{currentEnvironment}.json");
                 builder.AddJsonFile($"appsettings.{currentEnvironment}.json", true);
             }
             Configuration = builder.Build();
