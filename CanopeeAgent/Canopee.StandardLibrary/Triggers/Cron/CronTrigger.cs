@@ -18,12 +18,12 @@ namespace Canopee.StandardLibrary.Triggers.Cron
         {
             var schedulerFactory = new StdSchedulerFactory();
             _scheduler = schedulerFactory.GetScheduler().Result;
-            RaiseEventJob.EventTriggered += RaiseEvent;
         }
         
         public override void Initialize(IConfigurationSection triggerParameters)
         {
             var raiseEventTaskId = Guid.NewGuid().ToString();
+            RaiseEventJob.SubscribeTo(raiseEventTaskId, RaiseEvent);
             var jobDetail = JobBuilder.Create<RaiseEventJob>()
                 .WithIdentity(raiseEventTaskId)
                 .Build();
