@@ -4,7 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>Kaamelot</ActiveDebugProfile>
+    <ActiveDebugProfile>Ragnarok</ActiveDebugProfile>
     <_LastSelectedProfileId>C:\developments\canopee\CanopeeAgent\CanopeeAgent\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

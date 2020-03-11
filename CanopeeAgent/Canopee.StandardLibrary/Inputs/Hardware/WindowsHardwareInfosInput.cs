@@ -127,7 +127,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
         protected override void SetUsbPeripherals(HardwareInfos infos)
         {
-            
+            var lines = 
         }
 
         private string GetGraphicalCardtype(int graphicalCardType)
