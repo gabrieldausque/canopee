@@ -12,8 +12,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{DF7F2146-AADB-407B-886B-5DE3376B0366}"
 	ProjectSection(SolutionItems) = preProject
 		AgentLocation.csv = AgentLocation.csv
-		ServerPublishCommand.sh = ServerPublishCommand.sh
+		AgentPublishCommand.bat = AgentPublishCommand.bat
 		AgentPublishCommand.sh = AgentPublishCommand.sh
+		ServerPublishCommand.sh = ServerPublishCommand.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ElasticSearch", "ElasticSearch", "{C0D6C84E-F409-4273-9BB7-813AC51BBB78}"
@@ -23,17 +24,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ElasticSearch", "ElasticSea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent", "CanopeeAgent\CanopeeAgent.csproj", "{85D2F15E-4A59-4033-9ADE-0C60E41BA133}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeServer", "CanopeeServer\CanopeeServer.csproj", "{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeServer", "CanopeeServer\CanopeeServer.csproj", "{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC", "POC\POC.csproj", "{4A51D776-F8D0-48FE-8750-DB84FBB78936}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC", "POC\POC.csproj", "{4A51D776-F8D0-48FE-8750-DB84FBB78936}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Firebird", "Firebird", "{4FEC0F7B-797B-472A-8DD5-9141A97609CA}"
-ProjectSection(SolutionItems) = preProject
-	installationlogs.sql = installationlogs.sql
-	userinfos.sql = userinfos.sql
-	versions.sql = versions.sql
-	Insert_logs.sql = Insert_logs.sql
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		Insert_logs.sql = Insert_logs.sql
+		installationlogs.sql = installationlogs.sql
+		userinfos.sql = userinfos.sql
+		versions.sql = versions.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +42,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9195E555-CD96-47FC-88DB-CCA6CC3E0CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +54,10 @@ Global
 		{8A65E1DB-9656-41C4-901F-0155E0AF8835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A65E1DB-9656-41C4-901F-0155E0AF8835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A65E1DB-9656-41C4-901F-0155E0AF8835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85D2F15E-4A59-4033-9ADE-0C60E41BA133}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
