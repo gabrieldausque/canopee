@@ -9,8 +9,8 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
     {
         public LinuxHardwareInfosInput()
         {
-            _shellExecutor = "/bin/bash";
-            _arguments = "-c";
+            ShellExecutor = "/bin/bash";
+            Arguments = "-c";
         }
 
         protected override void SetCpuInfos(HardwareInfos infos)
@@ -94,6 +94,26 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                 displayInfos.GraphicalCardType = regex.Match(fields[1]).Groups[1].Value;
                 displayInfos.GraphicalCardModel = fields[2].Trim();
                 infos.AddGraphicalCardInfos(displayInfos);
+            }
+        }
+
+        protected override void SetUsbPeripherals(HardwareInfos infos)
+        {
+            foreach (var line in GetBatchOutput("lsusb"))
+            {
+                var usbDeviceRegexp = new Regex("Bus (?<busId>[0-9]{3}) Device (?<deviceNumber>[0-9]{3}): ID (?<deviceId>[0-9a-zA-Z:]{9}) (?<deviceName>.+)");
+                if (usbDeviceRegexp.IsMatch(line))
+                {
+                    var match = usbDeviceRegexp.Match(line);
+                    var usbInfo = new UsbPeripheralInfos()
+                    {
+                        BusId = match.Groups["busId"].Value,
+                        DeviceNumber = match.Groups["deviceNumber"].Value,
+                        DeviceId = match.Groups["deviceId"].Value,
+                        DeviceName = match.Groups["deviceName"].Value
+                    };
+                    infos.AddUsbPeripherals(usbInfo);
+                }
             }
         }
     }

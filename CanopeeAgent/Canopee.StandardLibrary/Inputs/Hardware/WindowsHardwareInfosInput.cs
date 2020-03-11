@@ -19,8 +19,8 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
         public WindowsHardwareInfosInput()
         {
-            _shellExecutor = "cmd";
-            _arguments = "/c";
+            ShellExecutor = "cmd";
+            Arguments = "/c";
         }
 
         protected override void SetCpuInfos(HardwareInfos infos)
@@ -123,6 +123,11 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                 };
                 infos.AddGraphicalCardInfos(graphicInfos);
             }
+        }
+
+        protected override void SetUsbPeripherals(HardwareInfos infos)
+        {
+            
         }
 
         private string GetGraphicalCardtype(int graphicalCardType)

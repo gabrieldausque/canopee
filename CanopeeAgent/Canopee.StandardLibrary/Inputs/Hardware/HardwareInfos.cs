@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Canopee.Common;
 using Canopee.Common.Events;
 using Canopee.StandardLibrary.Inputs.Hardware;
 
@@ -17,6 +18,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             Disks = new List<DiskInfos>();
             Displays = new List<DisplayInfos>();
             GraphicalCards = new List<GraphicalCardInfos>();
+            USBPeripherals = new List<UsbPeripheralInfos>();
         }
        
         public string CpuArchitecture { get; set; }
@@ -34,7 +36,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
         [JsonIgnore]
         public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
-        
+     
+        [JsonIgnore]
+        public ICollection<UsbPeripheralInfos> USBPeripherals { get; set; }
+
         public void AddDiskInfos(DiskInfos diskInfo)
         {
             Disks.Add(diskInfo);
@@ -49,6 +54,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
         {
             GraphicalCards.Add(graphicalCardInfos);
         }
+
+        public void AddUsbPeripherals(UsbPeripheralInfos usbInfo)
+        {
+            USBPeripherals.Add(usbInfo);
+        }
     }
-    
 }
