@@ -1,4 +1,4 @@
-PUT hw-main
+PUT canopee-agentlocation
 {
   "mappings": {
     "properties": {
@@ -9,7 +9,7 @@ PUT hw-main
   }
 }
 
-PUT hw-disks
+PUT canopee-hw-hardwareinfos
 {
   "mappings": {
     "properties": {
@@ -20,7 +20,7 @@ PUT hw-disks
   }
 }
 
-PUT hw-display
+PUT canopee-hw-disks
 {
   "mappings": {
     "properties": {
@@ -31,7 +31,7 @@ PUT hw-display
   }
 }
 
-PUT hw-graphicalcards
+PUT canopee-hw-display
 {
   "mappings": {
     "properties": {
@@ -42,7 +42,7 @@ PUT hw-graphicalcards
   }
 }
 
-PUT hw-products
+PUT canopee-hw-graphicalcards
 {
   "mappings": {
     "properties": {
@@ -53,7 +53,51 @@ PUT hw-products
   }
 }
 
-PUT hw-installationlogs
+PUT canopee-hw-usbperipherals
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT canopee-products
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT canopee-installationlogs
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT canopee-network
+{
+  "mappings": {
+    "properties": {
+      "Location":{
+        "type": "geo_point"
+      }
+    }
+  }
+}
+
+PUT canopee-operatingsystem
 {
   "mappings": {
     "properties": {
