@@ -19,6 +19,17 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "CANOPEE_ENVIRONMENT": "Development"
       }
+    },
+    "CanopeeServer.WebServer001": {
+      "commandName": "Project",
+      "workingDirectory": "../bin/Server/Debug",
+      "launchBrowser": true,
+      "launchUrl": "api",
+      "applicationUrl": "http://::5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "CANOPEE_ENVIRONMENT": "Production"
+      }
     }
   }
 }

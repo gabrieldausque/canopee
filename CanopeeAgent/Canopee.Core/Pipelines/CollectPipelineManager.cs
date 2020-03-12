@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Canopee.Common;
-using Canopee.Common.Configuration;
+using Canopee.Core.Configuration;
 
 namespace Canopee.Core.Pipelines
 {
@@ -17,8 +18,10 @@ namespace Canopee.Core.Pipelines
             var config = ConfigurationService.Instance
                 .Configuration.GetSection("Pipelines").GetChildren();
 
+            Console.WriteLine($"{config.Count()} Pipelines to read");
             foreach (var pipelineConfig in config)
             {
+                Console.WriteLine($"Reading Pipeline {pipelineConfig["Name"]}");
                 var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
                 _pipelines.Add(pipelineConfig["Name"], pipeline);
             }

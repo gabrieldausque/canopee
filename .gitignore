@@ -16,3 +16,4 @@ obj/
 /.vs/canopee/v16/.suo
 /.vs
 /CanopeeAgent/.vs/CanopeeAgent
+/CanopeeAgent/CanopeeServer/obj/

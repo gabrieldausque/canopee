@@ -1,33 +1,43 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Canopee.Common;
-using Canopee.Common.Configuration;
 using Canopee.Common.Events;
 using Canopee.Core.Pipelines;
+using Canopee.StandardLibrary.Inputs.Batch;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
-    public abstract class BaseHardwareInfosInput : BaseInput
+    public abstract class BaseHardwareInfosInput : BatchInput
     {
-        private Dictionary<string, string> _unitsRepository;
-        
-        protected string _shellExecutor;
-        protected string _arguments;
-
-        protected virtual string[] GetBatchOutput(string commandLine)
+        protected BaseHardwareInfosInput()
         {
-            var psi = new ProcessStartInfo
+            UnitsRepository = new Dictionary<string, string>()
             {
-                CreateNoWindow = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                FileName = _shellExecutor,
-                Arguments = $"{_arguments} {commandLine} "
+                {"T","Tb" },
+                {"Ti","Tb" },
+                {"G", "Gb"},
+                {"Gi", "Gb"},
+                {"M", "Mb"},
+                {"Mi", "Mb"}
             };
-            var p = Process.Start(psi);
-            var processOutput = p.StandardOutput.ReadToEnd();
-            return processOutput.Split("\n");
+        }
+
+        public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
+        {
+            var result = new List<ICollectedEvent>();
+            var infos = new HardwareInfos(AgentId);
+            SetCpuInfos(infos);
+            SetMemoryInfos(infos);
+            SetDiskInfos(infos);
+            SetDisplayInfos(infos);
+            SetUsbPeripherals(infos);
+            result.Add(infos);
+            result.AddRange(infos.Disks);
+            result.AddRange(infos.Displays);
+            result.AddRange(infos.GraphicalCards);
+            result.AddRange(infos.USBPeripherals);
+            return result;
         }
 
         protected float GetOptimizedSizeAndUnit(float originalSize, out string unit)
@@ -59,38 +69,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             };
         }
 
-        protected BaseHardwareInfosInput()
-        {
-            _unitsRepository = new Dictionary<string, string>()
-            {
-                {"T","Tb" },
-                {"Ti","Tb" },
-                {"G", "Gb"},
-                {"Gi", "Gb"},
-                {"M", "Mb"},
-                {"Mi", "Mb"}
-            };
-        }
-
-        public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
-        {
-            var result = new List<ICollectedEvent>();
-            var infos = new HardwareInfos(AgentId);
-            SetCpuInfos(infos);
-            SetMemoryInfos(infos);
-            SetDiskInfos(infos);
-            SetDisplayInfos(infos);
-            result.Add(infos);
-            result.AddRange(infos.Disks);
-            result.AddRange(infos.Displays);
-            result.AddRange(infos.GraphicalCards);
-            return result;
-        }
-
         protected string GetSizeUnit(string customUnit)
         {
-            if (_unitsRepository.ContainsKey(customUnit))
-                return _unitsRepository[customUnit];
+            if (UnitsRepository.ContainsKey(customUnit))
+                return UnitsRepository[customUnit];
             return customUnit;
         }
         
@@ -98,5 +80,6 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
         protected abstract void SetMemoryInfos(HardwareInfos infos);
         protected abstract void SetDiskInfos(HardwareInfos infos);
         protected abstract void SetDisplayInfos(HardwareInfos infos);
+        protected abstract void SetUsbPeripherals(HardwareInfos infos);
     }
 }

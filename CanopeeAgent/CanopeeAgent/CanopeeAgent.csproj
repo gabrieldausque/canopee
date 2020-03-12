@@ -11,10 +11,11 @@
       <OutputPath>../bin/Agent/Debug/</OutputPath>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)'=='DebugKaamelot'">
-      <OutputPath>../bin/Agent/Debug/</OutputPath>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>../bin/Agent/Release/</OutputPath>
+      <DocumentationFile>..\bin\Agent\Release\CanopeeAgent.xml</DocumentationFile>
     </PropertyGroup>
-
+    
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -30,17 +31,35 @@
       <None Include="..\AgentLocation.csv" Link="AgentLocation.csv">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="appsettings.RagnarokProduction.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="LaunchAgentLinux.sh">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.KaamelotLinuxProduction.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.Kaamelot2Production.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.KaamelotProduction.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.RagnarokLinuxProduction.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.1" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
       <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
-      <ProjectReference Include="..\Canopee.StandardLibrary\Canopee.StandardLibrary.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -62,12 +81,21 @@
       <None Update="appsettings.Kaamelot.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="LaunchAgentWindows.bat">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
-    <Target Name="Copy Library" AfterTargets="AfterBuild">
-        <Copy SourceFiles="$(OutDir)\Canopee.StandardLibrary.dll" OverwriteReadOnlyFiles="True" DestinationFolder="$(OutDir)\Pipelines">
-
-        </Copy>
+    <Target Name="BuildStandardLibrary" AfterTargets="AfterBuild">
+        <Exec Command="dotnet build -c $(Configuration) -o $(OutDir)/PipelinesTemp/ ../Canopee.StandardLibrary/Canopee.StandardLibrary.csproj" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/FirebirdSql.Data.FirebirdClient.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Elasticsearch.Net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Nest.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
     </Target>
     
 </Project>

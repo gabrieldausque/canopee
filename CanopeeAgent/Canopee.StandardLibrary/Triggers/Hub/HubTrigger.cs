@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 namespace Canopee.StandardLibrary.Triggers.Hub
 {
     [Export("HubTrigger", typeof(ITrigger))]
+    [Export("Default", typeof(ITrigger))]
     [Shared]
     public class HubTrigger : ITrigger
     {

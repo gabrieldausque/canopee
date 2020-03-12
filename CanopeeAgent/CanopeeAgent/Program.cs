@@ -15,6 +15,10 @@ namespace CanopeeAgent
         {
             try
             {
+                Console.WriteLine(
+                    $"ASPNETCORE_ENVIRONMENT = {Environment.ExpandEnvironmentVariables("%ASPNETCORE_ENVIRONMENT%")}");
+                Console.WriteLine(
+                    $"CANOPEE_ENVIRONMENT = {Environment.ExpandEnvironmentVariables("%CANOPEE_ENVIRONMENT%")}");
                 var host = new ConsoleCanopeeHost();
                 host.Run();
                 Console.WriteLine("Exiting ...");
