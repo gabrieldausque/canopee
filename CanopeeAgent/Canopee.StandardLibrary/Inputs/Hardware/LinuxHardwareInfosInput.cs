@@ -105,7 +105,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                 if (usbDeviceRegexp.IsMatch(line))
                 {
                     var match = usbDeviceRegexp.Match(line);
-                    var usbInfo = new UsbPeripheralInfos()
+                    var usbInfo = new UsbPeripheralInfos(AgentId)
                     {
                         BusId = match.Groups["busId"].Value,
                         DeviceNumber = match.Groups["deviceNumber"].Value,

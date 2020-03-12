@@ -153,7 +153,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
                 if(!string.IsNullOrWhiteSpace(deviceName) && !string.IsNullOrWhiteSpace(deviceId) && usbDeviceIds.Contains(deviceId))
                 {
-                    var usbPeripheralInfo = new UsbPeripheralInfos()
+                    var usbPeripheralInfo = new UsbPeripheralInfos(AgentId)
                     {
                         DeviceId = deviceId,
                         DeviceName = deviceName
