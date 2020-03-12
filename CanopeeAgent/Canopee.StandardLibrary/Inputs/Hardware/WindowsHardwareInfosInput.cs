@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Composition;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
@@ -127,7 +128,41 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
         protected override void SetUsbPeripherals(HardwareInfos infos)
         {
-            var lines = 
+            var usbDevicesIdLines = GetBatchOutput("\"wmic path Win32_UsbControllerDevice get Dependent\"");
+            var PnpDeviceInfosLines = GetBatchOutput("\"wmic path Win32_PnPEntity get Name,PnpDeviceId /value\"");
+            var usbDeviceIds = new List<string>();
+            foreach (var line in usbDevicesIdLines)
+            {
+                var fields = line.Split('=');
+                if(fields.Length > 1)
+                {
+                    usbDeviceIds.Add(line.Split('=')[1].Replace("\"", "").Trim());
+                }
+            }
+
+            var deviceName = string.Empty;
+            var deviceId = string.Empty;
+            foreach(var line in PnpDeviceInfosLines)
+            {
+                if (line.Contains("Name"))
+                {
+                    deviceName = line.Split('=')[1].Trim();
+                } else if(line.Contains("PNPDeviceID")) {
+                    deviceId = HttpUtility.HtmlDecode(line.Split('=')[1].Trim());
+                }
+
+                if(!string.IsNullOrWhiteSpace(deviceName) && !string.IsNullOrWhiteSpace(deviceId) && usbDeviceIds.Contains(deviceId))
+                {
+                    var usbPeripheralInfo = new UsbPeripheralInfos()
+                    {
+                        DeviceId = deviceId,
+                        DeviceName = deviceName
+                    };
+                    infos.AddUsbPeripherals(usbPeripheralInfo);
+                    deviceName = string.Empty;
+                    deviceId = string.Empty;
+                }
+            }
         }
 
         private string GetGraphicalCardtype(int graphicalCardType)
