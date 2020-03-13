@@ -1,6 +1,7 @@
 using Canopee.Common;
 using System.Composition;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
@@ -36,16 +37,16 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
         protected override void SetDiskInfos(HardwareInfos infos)
         {
-            var lines = GetBatchOutput("\"df -h --output=source,size,avail \"");
-            var regex = new Regex(@"/dev/(?<volumeName>sd[a-z]+[0-9]+)[ ]+(?<size>[0-9\.,]+)(?<sizeUnit>[a-zA-Z]+)[ ]+(?<spaceAvailable>[0-9\.,]+)(?<spaceAvailableUnit>[A-Z]+)");
+            var lines = GetBatchOutput("\"df --output=source,size,avail \"");
+            var regex = new Regex(@"/dev/(?<volumeName>sd[a-z]+[0-9]+)[ ]+(?<size>[0-9\.,]+)[ ]+(?<spaceAvailable>[0-9\.,]+)");
             foreach (var line in lines)
             {
                 var matches = regex.Match(line);
                 var volumeName = matches.Groups["volumeName"].Value;
-                float.TryParse(matches.Groups["size"].Value, out var size);
-                float.TryParse(matches.Groups["spaceAvailable"].Value, out var spaceAvailable);
-                var spaceAvailableUnit = matches.Groups["spaceAvailableUnit"].Value;
-                var sizeUnit = matches.Groups["sizeUnit"].Value;
+                float.TryParse(matches.Groups["size"].Value, out var sizeInByte);
+                float.TryParse(matches.Groups["spaceAvailable"].Value, out var spaceAvailableInByte);
+                var size = GetOptimizedSizeAndUnit(sizeInByte, out var sizeUnit);
+                var spaceAvailable = GetOptimizedSizeAndUnit(spaceAvailableInByte, out var spaceAvailableUnit);
                 if (string.IsNullOrWhiteSpace(volumeName))
                     continue;
                 var diskInfo = new DiskInfos(this.AgentId)
@@ -53,10 +54,12 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                     EventDate = infos.EventDate,
                     EventId = infos.EventId,
                     Name = volumeName,
+                    SizeInByte = sizeInByte,
                     Size = size,
-                    SizeUnit = GetSizeUnit(sizeUnit),
+                    SizeUnit = sizeUnit,
+                    SpaceAvailableInByte = spaceAvailableInByte,
                     SpaceAvailable = spaceAvailable,
-                    SpaceAvailableUnit = GetSizeUnit(spaceAvailableUnit)
+                    SpaceAvailableUnit = spaceAvailableUnit
                 };
                 infos.AddDiskInfos(diskInfo);
             }

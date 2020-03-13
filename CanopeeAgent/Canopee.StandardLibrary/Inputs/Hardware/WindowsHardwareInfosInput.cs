@@ -78,8 +78,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                         EventDate = infos.EventDate,
                         Name = name
                     };
+                    diskInfos.SizeInByte = capacity;
                     diskInfos.Size = GetOptimizedSizeAndUnit(capacity, out var unit);
                     diskInfos.SizeUnit = unit;
+                    diskInfos.SpaceAvailableInByte = freeSpace;
                     diskInfos.SpaceAvailable = GetOptimizedSizeAndUnit(freeSpace, out unit);
                     diskInfos.SpaceAvailableUnit = unit;
                     infos.AddDiskInfos(diskInfos);
