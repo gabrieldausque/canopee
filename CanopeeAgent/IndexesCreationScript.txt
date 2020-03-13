@@ -15,6 +15,18 @@ PUT canopee-hw-hardwareinfos
     "properties": {
       "Location":{
         "type": "geo_point"
+      },
+      "Disks":{
+        "type": "nested"
+      },
+      "Displays":{
+        "type": "nested"
+      },
+      "GraphicalCards":{
+        "type": "nested"
+      },
+      "USBPeripherals":{
+        "type": "nested"
       }
     }
   }
