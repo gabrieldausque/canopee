@@ -28,16 +28,12 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
         
         public string MemoryUnit { get; set; }
 
-        [JsonIgnore]
         public ICollection<DiskInfos> Disks { get; set; }
 
-        [JsonIgnore]
         public ICollection<DisplayInfos> Displays { get; set; }
 
-        [JsonIgnore]
         public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
      
-        [JsonIgnore]
         public ICollection<UsbPeripheralInfos> USBPeripherals { get; set; }
 
         public void AddDiskInfos(DiskInfos diskInfo)

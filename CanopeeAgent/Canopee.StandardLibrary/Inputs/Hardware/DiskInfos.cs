@@ -21,6 +21,8 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
         public float SpaceAvailable { get; set; }
         
         public string SpaceAvailableUnit { get; set; }
+        public float SizeInByte { get; set; }
+        public float SpaceAvailableInByte { get; set; }
 
         public DiskInfos(string agentId) : base(agentId)
         {
