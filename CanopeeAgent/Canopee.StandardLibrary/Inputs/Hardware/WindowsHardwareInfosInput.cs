@@ -97,9 +97,17 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             {
                 var regex = new Regex("(?<name>.+)[ ]+(?<height>[0-9]*)[ ]+(?<width>[0-9]*)");
                 var match = regex.Match(output[lineIndex]);
-                var name = match.Groups["name"].Value.Trim();
+                var name = string.IsNullOrWhiteSpace(match.Groups["name"].Value)?"Screen" : match.Groups["name"].Value.Trim();
                 var height = string.IsNullOrWhiteSpace(match.Groups["height"].Value) ? "?" : match.Groups["height"].Value;
                 var width = string.IsNullOrWhiteSpace(match.Groups["width"].Value) ? "?" : match.Groups["width"].Value;
+                if(width == "?" || height == "?")
+                {
+                    var videomodeDescription = GetBatchOutput("wmic path win32_videocontroller get videomodedescription")[1];
+                    var regexVideoMode = new Regex("(?<width>[0-9]+) x (?<height>[0-9]+) x.+");
+                    var matchVideoMode = regexVideoMode.Match(videomodeDescription);
+                    width = matchVideoMode.Groups["width"].Value;
+                    height = matchVideoMode.Groups["height"].Value;
+                }
                 var displayInfos = new DisplayInfos(this.AgentId)
                 {
                     EventId = infos.EventId,
@@ -153,14 +161,18 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
                     deviceId = HttpUtility.HtmlDecode(line.Split('=')[1].Trim());
                 }
 
-                if(!string.IsNullOrWhiteSpace(deviceName) && !string.IsNullOrWhiteSpace(deviceId) && usbDeviceIds.Contains(deviceId))
+                if(!string.IsNullOrWhiteSpace(deviceName) && !string.IsNullOrWhiteSpace(deviceId))
                 {
-                    var usbPeripheralInfo = new UsbPeripheralInfos(AgentId)
+                    if (usbDeviceIds.Contains(deviceId))
                     {
-                        DeviceId = deviceId,
-                        DeviceName = deviceName
-                    };
-                    infos.AddUsbPeripherals(usbPeripheralInfo);
+                        var usbPeripheralInfo = new UsbPeripheralInfos(AgentId)
+                        {
+                            DeviceId = deviceId,
+                            DeviceName = deviceName
+                        };
+                        infos.AddUsbPeripherals(usbPeripheralInfo);
+                    }
+
                     deviceName = string.Empty;
                     deviceId = string.Empty;
                 }
