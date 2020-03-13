@@ -16,6 +16,7 @@ namespace Canopee.StandardLibrary.Outputs
     [Export("Canopee", typeof(IOutput))]
     public class CanopeeOutput : IOutput
     {
+        
         private static readonly string UriPath = "api/events";
         private string _url;
         private string _pipelineId;

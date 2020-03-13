@@ -1,18 +1,17 @@
 using System;
 using System.Threading;
-using Canopee.Common;
 using Canopee.Core.Pipelines;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
-namespace Canopee.Core.Hosting
+namespace Canopee.Core.Hosting.Console
 {
     /// <summary>
     /// The Canopee pipeline processing host for console application
     /// </summary>
-    public class ConsoleCanopeeHost : ICanopeeHost
+    public class ConsoleCanopeeHost : BaseCanopeeHost
     {
-        private ManualResetEvent _exitEvent;
-        private CollectPipelineManager _collectPipelineManager;
+        private readonly ManualResetEvent _exitEvent;
+        private readonly CollectPipelineManager _collectPipelineManager;
 
         public ConsoleCanopeeHost()
         {
@@ -20,11 +19,11 @@ namespace Canopee.Core.Hosting
             _collectPipelineManager = new CollectPipelineManager();
         }
 
-        public void Run()
+        public override void Run()
         {
-            Console.WriteLine("Start the collector");
-            Console.CancelKeyPress += this.Stop;
-            Console.WriteLine("Press [CTRL+C] to close agent");
+            Logger.Log("Start the collector");
+            System.Console.CancelKeyPress += this.Stop;
+            Logger.Log("Press [CTRL+C] to close agent");
             _collectPipelineManager.Run();
             _exitEvent.WaitOne();
         }
@@ -35,17 +34,17 @@ namespace Canopee.Core.Hosting
             this.Stop();
         }
 
-        public void Stop()
+        public override void Stop()
         {
-            Console.WriteLine("");
-            Console.WriteLine("Clearing collector instance");
+            Logger.Log("");
+            Logger.Log("Clearing collector instance");
             _collectPipelineManager.Stop();
-            Console.WriteLine("Exiting the host");
+            Logger.Log("Exiting the host");
             _exitEvent.Set();
         }
 
         private bool _disposed = false;
-        public void Dispose()
+        public override void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);

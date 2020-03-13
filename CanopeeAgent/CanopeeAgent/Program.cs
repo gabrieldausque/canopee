@@ -6,6 +6,7 @@ using System.Runtime.Loader;
 using System.Threading;
 using Canopee.Common;
 using Canopee.Core.Hosting;
+using Canopee.Core.Hosting.Console;
 
 namespace CanopeeAgent
 {
@@ -19,6 +20,7 @@ namespace CanopeeAgent
                     $"ASPNETCORE_ENVIRONMENT = {Environment.ExpandEnvironmentVariables("%ASPNETCORE_ENVIRONMENT%")}");
                 Console.WriteLine(
                     $"CANOPEE_ENVIRONMENT = {Environment.ExpandEnvironmentVariables("%CANOPEE_ENVIRONMENT%")}");
+                
                 var host = new ConsoleCanopeeHost();
                 host.Run();
                 Console.WriteLine("Exiting ...");

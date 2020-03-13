@@ -9,12 +9,12 @@ namespace Canopee.Core.Pipelines
         {
         }
 
-        public ICollectPipeline GetPipeline(IConfigurationSection configurationIndicator)
+        public ICollectPipeline GetPipeline(IConfigurationSection pipelineConfiguration)
         {
-            var type = string.IsNullOrWhiteSpace(configurationIndicator["Type"])?"Default": configurationIndicator["Type"];
-            var indicator = Container.GetExport<ICollectPipeline>(type);
-            indicator?.Initialize(configurationIndicator);
-            return indicator;
+            var type = string.IsNullOrWhiteSpace(pipelineConfiguration["Type"])?"Default": pipelineConfiguration["Type"];
+            var pipeline = Container.GetExport<ICollectPipeline>(type);
+            pipeline?.Initialize(pipelineConfiguration);
+            return pipeline;
         }
     }
 }

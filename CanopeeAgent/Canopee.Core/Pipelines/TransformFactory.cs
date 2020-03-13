@@ -14,7 +14,7 @@ namespace Canopee.Core.Pipelines
             {
                 if (_instance == null)
                 {
-                    _instance = new TransformFactory();
+                    _instance = new TransformFactory(directoryCatalog);
                 }
             }
             return _instance;

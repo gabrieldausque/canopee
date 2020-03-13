@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 
-namespace Canopee.Core.Pipelines
+namespace Canopee.Core
 {
     public class FactoryFromDirectoryBase
     {

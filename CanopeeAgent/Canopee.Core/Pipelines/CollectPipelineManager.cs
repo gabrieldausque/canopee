@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using Canopee.Common;
 using Canopee.Core.Configuration;
+using Canopee.Core.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Pipelines
 {
     public class CollectPipelineManager : IDisposable
     {
+        private static ICanopeeLogger _canopeeLogger = null;
         private readonly Dictionary<string, ICollectPipeline> _pipelines;
+        private readonly ICanopeeLogger Logger = null;
 
         public CollectPipelineManager()
         {
+            var loggingConfiguration = ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
             _pipelines = new Dictionary<string, ICollectPipeline>();
             var collectPipelinesFactory = new CollectPipelineFactory();
 
             var config = ConfigurationService.Instance
                 .Configuration.GetSection("Pipelines").GetChildren();
 
-            Console.WriteLine($"{config.Count()} Pipelines to read");
+            Logger.Log($"{config.Count()} Pipelines to read");
             foreach (var pipelineConfig in config)
             {
-                Console.WriteLine($"Reading Pipeline {pipelineConfig["Name"]}");
+                Logger.Log($"Reading Pipeline {pipelineConfig["Name"]}");
                 var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
                 _pipelines.Add(pipelineConfig["Name"], pipeline);
             }
@@ -31,6 +37,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
+                Logger.Log($"Starting pipeline {pipeline}");
                 pipeline.Value.Run();
             }
         }
@@ -39,6 +46,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
+                Logger.Log($"Stopping pipeline {pipeline}");
                 pipeline.Value.Stop();
             }
         }

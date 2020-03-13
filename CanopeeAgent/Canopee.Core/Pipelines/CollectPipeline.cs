@@ -5,13 +5,16 @@ using System.Security.Cryptography.X509Certificates;
 using Canopee.Common;
 using Canopee.Common.Events;
 using Canopee.Core.Configuration;
+using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Pipelines
 {
     [Export("Default", typeof(ICollectPipeline))]
     public class CollectPipeline : ICollectPipeline
     {
+        private readonly ICanopeeLogger Logger = null;
         protected string _agentId;
         protected object _lockCollect = new object();
         protected bool _isCollecting;
@@ -20,6 +23,8 @@ namespace Canopee.Core.Pipelines
 
         public CollectPipeline()
         {
+            Logger = CanopeeLoggerFactory.Instance()
+                .GetLogger(ConfigurationService.Instance.GetLoggingConfiguration(), this.GetType());
             Transforms = new List<ITransform>();
             Id = Guid.NewGuid().ToString();
         }
@@ -58,11 +63,7 @@ namespace Canopee.Core.Pipelines
 
         public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
         {
-            //TODO: Replace by logger
-            var color = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"Collecting pipeline {Name} with Id {Id}");
-            Console.ForegroundColor = color;
+            Logger.Log($"Collecting pipeline {this}");
             try
             {
                 if (!_isCollecting)
@@ -86,15 +87,11 @@ namespace Canopee.Core.Pipelines
             }
             catch(Exception ex)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.ToString());
-                Console.ForegroundColor = color;
+                Logger.Log($"Error while collecting {this} : {ex}", LogLevel.Error);
             }
             finally
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"Collect finish for {Name}:{Id}");
-                Console.ForegroundColor = color;
+                Logger.Log($"Collect finished for {this}");
                 _isCollecting = false;
             }
         }
@@ -133,5 +130,10 @@ namespace Canopee.Core.Pipelines
         public ICollection<ITransform> Transforms { get; set; }
         public IOutput Output { get; set; }
         public ITrigger Trigger { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}:{Id}";
+        }
     }
 }
