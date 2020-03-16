@@ -17,3 +17,6 @@ obj/
 /.vs
 /CanopeeAgent/.vs/CanopeeAgent
 /CanopeeAgent/CanopeeServer/obj/
+/CanopeeAgent/CanopeeElectronizedAgent/bin/
+/CanopeeAgent/CanopeeElectronizedAgent/obj/
+
