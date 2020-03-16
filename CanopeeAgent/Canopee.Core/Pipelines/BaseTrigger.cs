@@ -1,12 +1,22 @@
 using System;
 using Canopee.Common;
 using Canopee.Common.Events;
+using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Pipelines
 {
     public abstract class BaseTrigger : ITrigger
     {
+        public BaseTrigger()
+        {
+            var configuration = Configuration.ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
+        }
+
+        protected ICanopeeLogger Logger;
+        
         private bool _disposed = false;
         
         protected event EventHandler<TriggerEventArgs> EventTriggered;
@@ -24,7 +34,7 @@ namespace Canopee.Core.Pipelines
             EventTriggered?.Invoke(this, triggerArgs);
         }
         
-        public void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, TriggerSubscriptionContext context)
+        public virtual void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, TriggerSubscriptionContext context)
         {
             OwnerId = context.PipelineId;
             OwnerName = context.PipelineName;

@@ -21,9 +21,9 @@ namespace Canopee.Core.Hosting.Console
 
         public override void Run()
         {
-            Logger.Log("Start the collector");
+            Logger.LogInfo("Start the collector");
             System.Console.CancelKeyPress += this.Stop;
-            Logger.Log("Press [CTRL+C] to close agent");
+            Logger.LogInfo("Press [CTRL+C] to close agent");
             _collectPipelineManager.Run();
             _exitEvent.WaitOne();
         }
@@ -36,10 +36,10 @@ namespace Canopee.Core.Hosting.Console
 
         public override void Stop()
         {
-            Logger.Log("");
-            Logger.Log("Clearing collector instance");
+            Logger.LogInfo("");
+            Logger.LogInfo("Clearing collector instance");
             _collectPipelineManager.Stop();
-            Logger.Log("Exiting the host");
+            Logger.LogInfo("Exiting the host");
             _exitEvent.Set();
         }
 

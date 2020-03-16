@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Composition;
 using Canopee.Common;
 using Canopee.Common.Events;
+using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Triggers.Hub
@@ -10,7 +11,7 @@ namespace Canopee.StandardLibrary.Triggers.Hub
     [Export("HubTrigger", typeof(ITrigger))]
     [Export("Default", typeof(ITrigger))]
     [Shared]
-    public class HubTrigger : ITrigger
+    public class HubTrigger : BaseTrigger
     {
         
         private readonly Dictionary<string,EventHandler<TriggerEventArgs>> _eventTriggeredByPipelineId;
@@ -24,21 +25,21 @@ namespace Canopee.StandardLibrary.Triggers.Hub
         
         public string OwnerId { get; set; }
 
-        public void Initialize(IConfigurationSection triggerParameters)
+        public override void Initialize(IConfigurationSection triggerParameters)
         {
         }
 
-        public void Start()
+        public override void Start()
         {
             _isStarted = true;
         }
         
-        public void Stop()
+        public override void Stop()
         {
             _isStarted = false;
         }
 
-        public void RaiseEvent(object sender, TriggerEventArgs triggerArgs)
+        public override void RaiseEvent(object sender, TriggerEventArgs triggerArgs)
         {
             if (_isStarted)
             {
@@ -49,7 +50,7 @@ namespace Canopee.StandardLibrary.Triggers.Hub
             }
         }
 
-        public void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, TriggerSubscriptionContext context)
+        public override void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, TriggerSubscriptionContext context)
         {
             if (!_eventTriggeredByPipelineId.ContainsKey(context.PipelineId))
             {
@@ -61,23 +62,9 @@ namespace Canopee.StandardLibrary.Triggers.Hub
             }
         }
 
-        public void Dispose()
+        protected override void InternalDispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private bool _disposed = false;
-
-        private void Dispose(bool disposing)
-        {
-            if (_disposed) return;
-
-            if (disposing)
-            {
-                _eventTriggeredByPipelineId.Clear();
-                _disposed = true;
-            }
+            _eventTriggeredByPipelineId.Clear();
         }
     }
 }

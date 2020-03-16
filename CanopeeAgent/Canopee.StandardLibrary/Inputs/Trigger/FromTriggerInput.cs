@@ -15,10 +15,19 @@ namespace Canopee.StandardLibrary.Inputs.Trigger
     {
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
-            var collectedEvents = new List<ICollectedEvent>();
-            ICollectedEvent collectedEvent = fromTriggerEventArgs.Raw as ICollectedEvent;
-            collectedEvents.Add(collectedEvent);
-            return collectedEvents;
+            Logger.LogDebug($"Received events from trigger : {fromTriggerEventArgs}");
+            try
+            {
+                var collectedEvents = new List<ICollectedEvent>();
+                ICollectedEvent collectedEvent = fromTriggerEventArgs.Raw as ICollectedEvent;
+                collectedEvents.Add(collectedEvent);
+                return collectedEvents;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error when collecting events from trigger : {ex}");
+                throw;
+            }
         }
     }
 }

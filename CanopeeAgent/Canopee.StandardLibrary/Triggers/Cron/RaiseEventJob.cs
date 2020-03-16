@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Threading.Tasks;
+using Canopee.Common;
 using Canopee.Common.Events;
+using Canopee.Core.Logging;
+using Canopee.Core.Configuration;
 using Quartz;
 
 namespace Canopee.StandardLibrary.Triggers.Cron
@@ -14,6 +18,14 @@ namespace Canopee.StandardLibrary.Triggers.Cron
         {
             _subscriptions = new Dictionary<string, EventHandler<TriggerEventArgs>>();
         }
+
+        private ICanopeeLogger Logger = null;
+        
+        public RaiseEventJob()
+        {
+            var configuration = ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
+        }
         
         public Task Execute(IJobExecutionContext context)
         {
@@ -24,7 +36,14 @@ namespace Canopee.StandardLibrary.Triggers.Cron
                     FireTimeInUtc = context.ScheduledFireTimeUtc.ToString()
                 };
                 var exists = _subscriptions.TryGetValue(context.JobDetail.Key.Name,out var eventToTrigger);
-                eventToTrigger?.Invoke(this, args);
+                try
+                {
+                    eventToTrigger?.Invoke(this, args);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError($"Error while invoking a job on cron {context.JobDetail}");
+                }
             });
         }
 

@@ -1,4 +1,5 @@
-﻿using Canopee.Common;
+﻿using System;
+using Canopee.Common;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Composition;
@@ -35,41 +36,51 @@ namespace Canopee.StandardLibrary.Inputs.File
 
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
-            var collectedEvents = new List<ICollectedEvent>();
-            var headers = new List<string>();
-            using(FileStream fs = new FileStream(_filePath, FileMode.Open, FileAccess.Read))
-            using(StreamReader sr = new StreamReader(fs))
+            Logger.LogDebug($"Collecting events from {_filePath}");
+            try
             {
-                int lineIndex = 0;
-                while (!sr.EndOfStream)
+                var collectedEvents = new List<ICollectedEvent>();
+                var headers = new List<string>();
+                using(FileStream fs = new FileStream(_filePath, FileMode.Open, FileAccess.Read))
+                using(StreamReader sr = new StreamReader(fs))
                 {
-                    if(_withHeader && lineIndex == 0)
+                    int lineIndex = 0;
+                    while (!sr.EndOfStream)
                     {
-                        headers.AddRange(sr.ReadLine().Split(_fieldSeparator));
-                        lineIndex++;
-                    } 
-                    else
-                    {
-                        var line = sr.ReadLine();
-                        var info = new RawFileLineInfo(AgentId)
+                        if(_withHeader && lineIndex == 0)
                         {
-                            Raw = line
-                        };
-                        if (_withHeader && _fileType.ToUpper() == "CSV") {
-                            var fields = line.Split(_fieldSeparator);
-                            for(int fieldIndex=0;fieldIndex < headers.Count; fieldIndex++)
+                            headers.AddRange(sr.ReadLine().Split(_fieldSeparator));
+                            lineIndex++;
+                        } 
+                        else
+                        {
+                            var line = sr.ReadLine();
+                            var info = new RawFileLineInfo(AgentId)
                             {
-                                if (!string.IsNullOrWhiteSpace(headers[fieldIndex]))
+                                Raw = line
+                            };
+                            if (_withHeader && _fileType.ToUpper() == "CSV") {
+                                var fields = line.Split(_fieldSeparator);
+                                for(int fieldIndex=0;fieldIndex < headers.Count; fieldIndex++)
                                 {
-                                    info.SetFieldValue(headers[fieldIndex], fields[fieldIndex]);
+                                    if (!string.IsNullOrWhiteSpace(headers[fieldIndex]))
+                                    {
+                                        info.SetFieldValue(headers[fieldIndex], fields[fieldIndex]);
+                                    }
                                 }
                             }
+                            collectedEvents.Add(info);
                         }
-                        collectedEvents.Add(info);
                     }
                 }
+                return collectedEvents;
             }
-            return collectedEvents;    
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error when collecting events from {_filePath} : {ex}");
+                throw;
+            }
+                
         }
     }
 }

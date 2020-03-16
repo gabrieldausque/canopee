@@ -5,13 +5,15 @@ using System.Data;
 using System.Security.Cryptography.Xml;
 using Canopee.Common;
 using Canopee.Common.Events;
+using Canopee.Core.Pipelines;
 using FirebirdSql.Data.FirebirdClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
 {
     [Export("FirebirdLookup", typeof(ITransform))]
-    public class FirebirdLookupTransform : ITransform
+    public class FirebirdLookupTransform : BaseTransform
     {
         private string _connectionString;
         private string _selectStatement;
@@ -23,7 +25,7 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
             _requestedFieldMappings = new List<TransformFieldMapping>();
         }
         
-        public ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent input)
         {
             FbDataAdapter da = null;
             try
@@ -44,7 +46,8 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
             }
             catch (Exception ex)
             {
-                //TODO : log error
+                Logger.LogError($"Error while transforming : {ex}");
+                throw;
             }
             finally
             {
@@ -54,7 +57,7 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
             return input;
         }
 
-        public void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration)
         {
             _connectionString = transformConfiguration["ConnectionString"];
             _selectStatement = transformConfiguration["SelectStatement"];

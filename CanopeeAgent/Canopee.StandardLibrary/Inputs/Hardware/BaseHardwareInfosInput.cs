@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Canopee.Common;
@@ -25,19 +26,28 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
 
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
-            var result = new List<ICollectedEvent>();
-            var infos = new HardwareInfos(AgentId);
-            SetCpuInfos(infos);
-            SetMemoryInfos(infos);
-            SetDiskInfos(infos);
-            SetDisplayInfos(infos);
-            SetUsbPeripherals(infos);
-            result.Add(infos);
-            result.AddRange(infos.Disks);
-            result.AddRange(infos.Displays);
-            result.AddRange(infos.GraphicalCards);
-            result.AddRange(infos.USBPeripherals);
-            return result;
+            Logger.LogDebug("Starting collecting hardware informations");
+            try
+            {
+                var result = new List<ICollectedEvent>();
+                var infos = new HardwareInfos(AgentId);
+                SetCpuInfos(infos);
+                SetMemoryInfos(infos);
+                SetDiskInfos(infos);
+                SetDisplayInfos(infos);
+                SetUsbPeripherals(infos);
+                result.Add(infos);
+                result.AddRange(infos.Disks);
+                result.AddRange(infos.Displays);
+                result.AddRange(infos.GraphicalCards);
+                result.AddRange(infos.USBPeripherals);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error while collecting hardware information {ex}");
+                throw;
+            }
         }
 
         protected float GetOptimizedSizeAndUnit(float originalSize, out string unit)

@@ -1,0 +1,8 @@
+{
+  "name": "CanopeeAgent",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^8.1.1"
+  }
+}

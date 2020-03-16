@@ -24,10 +24,10 @@ namespace Canopee.Core.Pipelines
             var config = ConfigurationService.Instance
                 .Configuration.GetSection("Pipelines").GetChildren();
 
-            Logger.Log($"{config.Count()} Pipelines to read");
+            Logger.LogInfo($"{config.Count()} Pipelines to read");
             foreach (var pipelineConfig in config)
             {
-                Logger.Log($"Reading Pipeline {pipelineConfig["Name"]}");
+                Logger.LogInfo($"Reading Pipeline {pipelineConfig["Name"]}");
                 var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
                 _pipelines.Add(pipelineConfig["Name"], pipeline);
             }
@@ -37,7 +37,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
-                Logger.Log($"Starting pipeline {pipeline}");
+                Logger.LogInfo($"Starting pipeline {pipeline}");
                 pipeline.Value.Run();
             }
         }
@@ -46,7 +46,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
-                Logger.Log($"Stopping pipeline {pipeline}");
+                Logger.LogInfo($"Stopping pipeline {pipeline}");
                 pipeline.Value.Stop();
             }
         }

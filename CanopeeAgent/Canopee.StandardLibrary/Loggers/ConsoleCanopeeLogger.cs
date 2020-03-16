@@ -1,6 +1,7 @@
 using System;
 using System.Composition;
 using Canopee.Common;
+using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
 using Nest;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
@@ -9,51 +10,52 @@ namespace Canopee.StandardLibrary.Loggers
 {
     [Export("Console", typeof(ICanopeeLogger))]
     [Export("Default", typeof(ICanopeeLogger))]
-    public class ConsoleCanopeeLogger : ICanopeeLogger
+    public class ConsoleCanopeeLogger : BaseCanopeeLogger
     {
         private static readonly object LockObject = new object();
-        private Type _callerType;
 
-        public void Initialize(IConfiguration loggerConfiguration, Type callerType)
-        {
-            _callerType = callerType;
-        }
-
-        public void Log(string message, LogLevel level = LogLevel.Information, 
+        public override void Log(string message, LogLevel level = LogLevel.Information, 
             [System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
             [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
             [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
         {
-            var suffixString = $"{DateTime.Now:MM/dd/yyyy HH:mm:ss} {_callerType.FullName} {memberName} {level} ";
-            switch (level)
+            try
             {
-                case LogLevel.Information:
-                case LogLevel.None:
+                var suffixString = $"{DateTime.Now:MM/dd/yyyy HH:mm:ss} {level} {CallerType.FullName} {memberName}";
+                switch (level)
                 {
-                    WriteLine($"{suffixString} {message}", ConsoleColor.Blue);
-                    break;
+                    case LogLevel.Information:
+                    case LogLevel.None:
+                    {
+                        WriteLine($"{suffixString} {message}", ConsoleColor.Blue);
+                        break;
+                    }
+                    case LogLevel.Error:
+                    {
+                        WriteLine($"{suffixString} {message}", ConsoleColor.Red);
+                        break;
+                    }
+                    case LogLevel.Debug:
+                    case LogLevel.Trace:
+                    {
+                        WriteLine($"{suffixString} {message}", ConsoleColor.Cyan);
+                        break;
+                    }
+                    case LogLevel.Warning:
+                    {
+                        WriteLine($"{suffixString} {message}", ConsoleColor.Yellow);
+                        break;
+                    }
+                    case LogLevel.Critical:
+                    {
+                        WriteLine($"{suffixString} {message}", ConsoleColor.Magenta);
+                        break;
+                    }
                 }
-                case LogLevel.Error:
-                {
-                    WriteLine($"{suffixString} {message}", ConsoleColor.Red);
-                    break;
-                }
-                case LogLevel.Debug:
-                case LogLevel.Trace:
-                {
-                    WriteLine($"{suffixString} {message}", ConsoleColor.Cyan);
-                    break;
-                }
-                case LogLevel.Warning:
-                {
-                    WriteLine($"{suffixString} {message}", ConsoleColor.Yellow);
-                    break;
-                }
-                case LogLevel.Critical:
-                {
-                    WriteLine($"{suffixString} {message}", ConsoleColor.Magenta);
-                    break;
-                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
 

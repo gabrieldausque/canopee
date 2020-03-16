@@ -1,21 +1,22 @@
 using System.Collections.Generic;
 using System.Composition;
 using Canopee.Common;
+using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Transforms
 {
     [Export("Default", typeof(ITransform))]
-    public class NoTransform : ITransform
+    public class NoTransform : BaseTransform
     {
-        public ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent input)
         {
             return input;
         }
 
-        public void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration)
         {
-            //Do nothing for no transform
+            Logger.LogDebug("No transformation");
         }
     }
 }

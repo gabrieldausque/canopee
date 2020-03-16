@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Data;
 using Canopee.Common;
+using Canopee.Core.Pipelines;
 using FirebirdSql.Data.FirebirdClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
 {
     [Export("FirebirdInsert", typeof(ITransform))]
-    public class FirebirdInsertFieldsTransform : ITransform
+    public class FirebirdInsertFieldsTransform : BaseTransform
     {
         private string _connectionString;
         private string _selectStatement;
@@ -19,7 +21,7 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
         {
             _requestedFieldMappings = new List<TransformFieldMapping>();
         }
-        public ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent input)
         {
             FbDataAdapter da = null;
             try
@@ -37,17 +39,17 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
             }
             catch (Exception ex)
             {
-                //TODO : log error
+                Logger.LogError($"Error while getting datas from Firebird database : {ex}");
+                throw;
             }
             finally
             {
                 da?.Dispose();
             }
-
             return input;        
         }
 
-        public void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration)
         {
             _connectionString = transformConfiguration["ConnectionString"];
             _selectStatement = transformConfiguration["SelectStatement"];

@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Linq;
 using System.Text;
+using Canopee.Core.Pipelines;
+using ITransform = Canopee.Common.ITransform;
 
 namespace Canopee.StandardLibrary.Transforms
 {
-    [Export("ElasticVLookup", typeof(Canopee.Common.ITransform))]
-    class ElasticLookupTransform : Canopee.Common.ITransform
+    [Export("ElasticVLookup", typeof(ITransform))]
+    public class ElasticLookupTransform : BaseTransform
     {
         private string _elasticUrl;
         private string _searchedIndex;
@@ -23,7 +25,7 @@ namespace Canopee.StandardLibrary.Transforms
         {
             _requestedFieldMappings = new List<TransformFieldMapping>();
         }
-        public void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration)
         {
             _elasticUrl = transformConfiguration["Url"];
             _searchedIndex = transformConfiguration["SearchedIndex"];
@@ -45,61 +47,69 @@ namespace Canopee.StandardLibrary.Transforms
             }
         }
 
-        public ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent input)
         {
-            object keyValue = null;
-            if(input.GetType().GetProperty(_key.LocalName) != null)
+            try
             {
-                keyValue = input.GetType().GetProperty(_key.LocalName).GetValue(input);
-            } 
-            else if (input.ExtractedFields.ContainsKey(_key.LocalName))
-            {
-                keyValue = input.ExtractedFields[_key.LocalName];
-            }
-            else
-            {
-                throw new MissingMethodException($"Property {_key.LocalName} not found in type {input.GetType().ToString()}");
-            }
-            var response = _client.Search<dynamic>(sd => sd
-                .Index(_searchedIndex)
-                .Sort(s => s
-                    .Descending("EventDate"))
-                .Query(q => q
-                    .Match( s => s
-                        .Field(_key.SearchedName)
-                        .Query(keyValue.ToString())
-                        )
-                    )
-                .Source(sf => sf
-                    .Includes(i => i
-                        .Fields(_requestedFieldMappings.Select(m => m.SearchedName).ToArray())
-                        )
-                    )
-                .Size(1)
-            );
-            foreach(var document in response.Documents)
-            {
-                var inputProperties = input.GetType().GetProperties();
-                foreach(var prop in document.Keys)
+                object keyValue = null;
+                if(input.GetType().GetProperty(_key.LocalName) != null)
                 {
-                    var destinationPropertyName = _requestedFieldMappings.First(p => p.SearchedName == prop).LocalName;
-                    if(inputProperties.Any(p => p.Name == destinationPropertyName))
+                    keyValue = input.GetType().GetProperty(_key.LocalName).GetValue(input);
+                } 
+                else if (input.ExtractedFields.ContainsKey(_key.LocalName))
+                {
+                    keyValue = input.ExtractedFields[_key.LocalName];
+                }
+                else
+                {
+                    throw new MissingMethodException($"Property {_key.LocalName} not found in type {input.GetType().ToString()}");
+                }
+                var response = _client.Search<dynamic>(sd => sd
+                    .Index(_searchedIndex)
+                    .Sort(s => s
+                        .Descending("EventDate"))
+                    .Query(q => q
+                        .Match( s => s
+                            .Field(_key.SearchedName)
+                            .Query(keyValue.ToString())
+                            )
+                        )
+                    .Source(sf => sf
+                        .Includes(i => i
+                            .Fields(_requestedFieldMappings.Select(m => m.SearchedName).ToArray())
+                            )
+                        )
+                    .Size(1)
+                );
+                foreach(var document in response.Documents)
+                {
+                    var inputProperties = input.GetType().GetProperties();
+                    foreach(var prop in document.Keys)
                     {
-                        inputProperties.First(p => p.Name == destinationPropertyName).SetValue(input, document[prop]);
-                    } 
-                    else
-                    {
-                        if (input.ExtractedFields.ContainsKey(destinationPropertyName))
+                        var destinationPropertyName = _requestedFieldMappings.First(p => p.SearchedName == prop).LocalName;
+                        if(inputProperties.Any(p => p.Name == destinationPropertyName))
                         {
-                            input.ExtractedFields[destinationPropertyName] = document[prop];
-                        } else
+                            inputProperties.First(p => p.Name == destinationPropertyName).SetValue(input, document[prop]);
+                        } 
+                        else
                         {
-                            input.ExtractedFields.Add(destinationPropertyName, document[prop]);
+                            if (input.ExtractedFields.ContainsKey(destinationPropertyName))
+                            {
+                                input.ExtractedFields[destinationPropertyName] = document[prop];
+                            } else
+                            {
+                                input.ExtractedFields.Add(destinationPropertyName, document[prop]);
+                            }
                         }
                     }
                 }
+                return input;
             }
-            return input;
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error while transforming : {ex}");
+                throw;
+            }
         }
     }
 }

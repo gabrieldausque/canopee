@@ -16,7 +16,7 @@ namespace Canopee.Core.Pipelines
     {
         private readonly ICanopeeLogger Logger = null;
         protected string _agentId;
-        protected object _lockCollect = new object();
+        protected readonly object LockCollect = new object();
         protected bool _isCollecting;
         public string Name { get; private set; }
         public string Id { get; private set; }
@@ -31,6 +31,7 @@ namespace Canopee.Core.Pipelines
 
         public virtual void Initialize(IConfigurationSection configuration)
         {
+            
             _agentId = ConfigurationService.Instance.AgentId;
             Name = configuration["Name"];
             
@@ -63,12 +64,12 @@ namespace Canopee.Core.Pipelines
 
         public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
         {
-            Logger.Log($"Collecting pipeline {this}");
+            Logger.LogInfo($"Collecting pipeline {this}");
             try
             {
                 if (!_isCollecting)
                 {
-                    lock (_lockCollect)
+                    lock (LockCollect)
                     {
                         if (_isCollecting)
                             return;
@@ -87,11 +88,11 @@ namespace Canopee.Core.Pipelines
             }
             catch(Exception ex)
             {
-                Logger.Log($"Error while collecting {this} : {ex}", LogLevel.Error);
+                Logger.LogError($"Error while collecting {this} : {ex}");
             }
             finally
             {
-                Logger.Log($"Collect finished for {this}");
+                Logger.LogInfo($"Collect finished for {this}");
                 _isCollecting = false;
             }
         }
@@ -133,7 +134,7 @@ namespace Canopee.Core.Pipelines
 
         public override string ToString()
         {
-            return $"{Name}:{Id}";
+            return $"{Name}:{Id}@{_agentId}";
         }
     }
 }

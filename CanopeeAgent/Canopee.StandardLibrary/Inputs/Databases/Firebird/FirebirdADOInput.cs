@@ -26,6 +26,8 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
 
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
+            Logger.LogDebug($"Getting events from FireBird database");
+
             var collectedRows = new List<ICollectedEvent>();
             FbDataAdapter da = null;
             try
@@ -45,13 +47,12 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
             }
             catch (Exception ex)
             {
-                //TODO : log error
+                Logger.LogError($"Error while getting events from database : {ex}");
             }
             finally
             {
                 da?.Dispose();
             }
-
             return collectedRows;
         }
     }

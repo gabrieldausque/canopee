@@ -24,7 +24,17 @@ namespace Canopee.StandardLibrary.Triggers
         public override void Start()
         {
             _timer = new Timer(
-                state => { RaiseEvent(this, new TriggerEventArgs(OwnerName, OwnerId)); },
+                state =>
+                {
+                    try
+                    {
+                        RaiseEvent(this, new TriggerEventArgs(OwnerName, OwnerId));
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogError($"Error while raising event : {ex}");
+                    }
+                },
                 null,
                 _dueTimeInMs,
                 Timeout.Infinite
@@ -33,9 +43,9 @@ namespace Canopee.StandardLibrary.Triggers
 
         public override void Stop()
         {
-            //Nothing to do, timer is started once
+            _timer.Change(0, Timeout.Infinite);
         }
-        
+
         protected override void InternalDispose()
         {
             _timer = null;

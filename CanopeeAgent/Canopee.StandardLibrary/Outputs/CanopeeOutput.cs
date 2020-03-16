@@ -8,31 +8,33 @@ using System.Text.Json;
 using Canopee.Common;
 using Canopee.Common.Events;
 using Canopee.Common.Hosting.Web;
+using Canopee.Core.Pipelines;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Outputs
 {
     [Export("Canopee", typeof(IOutput))]
-    public class CanopeeOutput : IOutput
+    public class CanopeeOutput : BaseOutput
     {
         
         private static readonly string UriPath = "api/events";
         private string _url;
         private string _pipelineId;
-        private bool _noSSLCheck;
+        private bool _noSslCheck = false;
         
-        public void SendToOutput(ICollectedEvent collectedEvent)
+        public override void SendToOutput(ICollectedEvent collectedEvent)
         {
-            collectedEvent.SetFieldValue("EventType", collectedEvent.GetType().FullName);
-            UriBuilder builder = new UriBuilder(_url);
-            builder.Path = UriPath;
-            builder.Query = $"pipelineId={_pipelineId}";
-            string serializedEvent = JsonSerializer.Serialize(collectedEvent, collectedEvent.GetType());
-            var test = JsonSerializer.Deserialize<CollectedEvent>(serializedEvent);
-            using (HttpClient client = GetHttpClient())
+            try
             {
-                try
+                Logger.LogDebug($"Sending datas to {_url}");
+                collectedEvent.SetFieldValue("EventType", collectedEvent.GetType().FullName);
+                UriBuilder builder = new UriBuilder(_url);
+                builder.Path = UriPath;
+                builder.Query = $"pipelineId={_pipelineId}";
+                string serializedEvent = JsonSerializer.Serialize(collectedEvent, collectedEvent.GetType());
+                var test = JsonSerializer.Deserialize<CollectedEvent>(serializedEvent);
+                using (HttpClient client = GetHttpClient())
                 {
                     var response = client.PostAsync(builder.Uri, new StringContent(serializedEvent,  Encoding.UTF8, "application/json")).Result;
                     if (!response.IsSuccessStatusCode)
@@ -40,25 +42,24 @@ namespace Canopee.StandardLibrary.Outputs
                         throw new HttpRequestException(response.ToString());
                     }
                 }
-                catch (Exception e)
-                {
-                    
-                    Console.WriteLine(e.ToString());
-                    //TODO : log error
-                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error while sending to Canopee Service : {ex}");
+                throw;
             }
         }
 
-        public void Initialize(IConfiguration configurationOutput)
+        public override void Initialize(IConfiguration configurationOutput)
         {
             _url = configurationOutput["Url"];
             _pipelineId = configurationOutput["PipelineId"];
-            bool.TryParse(configurationOutput["NoSSLCheck"], out _noSSLCheck);
+            bool.TryParse(configurationOutput["NoSSLCheck"], out _noSslCheck);
         }
         
         private HttpClient GetHttpClient()
         {
-            if (_noSSLCheck)
+            if (_noSslCheck)
             {
                 var handler = new HttpClientHandler();
                 handler.ClientCertificateOptions = ClientCertificateOption.Manual;

@@ -49,6 +49,7 @@ namespace Canopee.StandardLibrary.Inputs.Batch
             {
                 Arguments = configurationInput["Arguments"];
             }
+            
         }
 
         protected OSPlatform GetCurrentPlatform()
@@ -78,6 +79,7 @@ namespace Canopee.StandardLibrary.Inputs.Batch
         protected void SetExecutorByOs()
         {
             var OS = GetCurrentPlatform();
+            Logger.LogDebug($"Set executor for OS {OS} ");
             if (OS == OSPlatform.Linux)
             {
                 ShellExecutor = "/bin/bash";
@@ -95,6 +97,8 @@ namespace Canopee.StandardLibrary.Inputs.Batch
 
         protected virtual string[] GetBatchOutput(string commandLine)
         {
+            Logger.LogDebug($"Starting the command {commandLine}");
+            Stopwatch watcher = Stopwatch.StartNew();
             var psi = new ProcessStartInfo
             {
                 CreateNoWindow = true,
@@ -104,6 +108,8 @@ namespace Canopee.StandardLibrary.Inputs.Batch
                 Arguments = $"{Arguments} {commandLine} "
             };
             var p = Process.Start(psi);
+            watcher.Stop();
+            Logger.LogDebug($"The command {commandLine} took {watcher.Elapsed} of execution.");
             var processOutput = p.StandardOutput.ReadToEnd();
             return processOutput.Split("\n");
         }
