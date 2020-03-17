@@ -54,7 +54,21 @@ namespace CanopeeElectronizedAgent
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+            Bootstrap();
         }
+
+        private async void Bootstrap()
+        {
+            await Electron.WindowManager.CreateWindowAsync();
+            foreach (var window in Electron.WindowManager.BrowserWindows)
+            {
+                window.OnClosed += () =>
+                {
+                    Electron.App.Exit();
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                };
+            }
+        }
+        
     }
 }

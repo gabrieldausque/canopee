@@ -1,0 +1,7 @@
+{
+  "name": "wwwroot",
+  "version": "1.0.0",
+  "dependencies": {
+    "electron": "^8.1.1"
+  }
+}
