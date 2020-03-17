@@ -7,6 +7,12 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <OutputPath>..\bin\Pipelines\Debug</OutputPath>
+      <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>..\bin\Pipelines\Release</OutputPath>
+      <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,6 +34,7 @@
       <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
       <PackageReference Include="NEST" Version="7.5.1" />
       <PackageReference Include="Quartz" Version="3.0.7" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     </ItemGroup>
 
     <!--ItemGroup Label="CopyVariables">

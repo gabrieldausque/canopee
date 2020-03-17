@@ -15,11 +15,13 @@ namespace CanopeeElectronizedAgent
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Launching application...");
             CreateHostBuilder(args).Run();
         }
 
         public static IWebHost CreateHostBuilder(string[] args)
         {
+            Console.WriteLine("Creating host");
             return WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().UseElectron(args).Build();
         }
             

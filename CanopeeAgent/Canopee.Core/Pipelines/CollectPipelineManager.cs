@@ -10,7 +10,6 @@ namespace Canopee.Core.Pipelines
 {
     public class CollectPipelineManager : IDisposable
     {
-        private static ICanopeeLogger _canopeeLogger = null;
         private readonly Dictionary<string, ICollectPipeline> _pipelines;
         private readonly ICanopeeLogger Logger = null;
 

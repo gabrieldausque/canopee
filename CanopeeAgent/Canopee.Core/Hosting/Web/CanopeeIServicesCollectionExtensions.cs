@@ -8,7 +8,7 @@ namespace Canopee.Core.Hosting.Web
 {
     public static class CanopeeIServicesCollectionExtensions
     {
-        public static void AddCanopeeHost(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCanopeeHost(this IServiceCollection services, IConfiguration configuration)
         {
             //ensure the canopee host is instantiated by the dependency injection engine
             //that will ensure the dispose method will be called at the end of the application
@@ -21,6 +21,7 @@ namespace Canopee.Core.Hosting.Web
             }
             canopeeHost.Run();
             services.AddSingleton<ITrigger>(canopeeHost.HostTrigger);
+            return services;
         }
     }
 }

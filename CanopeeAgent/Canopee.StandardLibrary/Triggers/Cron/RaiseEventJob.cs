@@ -42,7 +42,7 @@ namespace Canopee.StandardLibrary.Triggers.Cron
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogError($"Error while invoking a job on cron {context.JobDetail}");
+                    Logger.LogError($"Error while invoking a job on cron {context.JobDetail} : {ex}");
                 }
             });
         }

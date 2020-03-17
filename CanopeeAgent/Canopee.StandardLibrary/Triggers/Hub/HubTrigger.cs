@@ -21,10 +21,6 @@ namespace Canopee.StandardLibrary.Triggers.Hub
             _eventTriggeredByPipelineId = new Dictionary<string, EventHandler<TriggerEventArgs>>();
         }
 
-        public string OwnerName { get; set; }
-        
-        public string OwnerId { get; set; }
-
         public override void Initialize(IConfigurationSection triggerParameters)
         {
         }
