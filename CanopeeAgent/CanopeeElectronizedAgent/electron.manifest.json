@@ -18,6 +18,11 @@
         "from": "./bin",
         "to": "bin",
         "filter": ["**/*"]
+      },
+      {
+        "from": "./binpublish",
+        "to": "bin",
+        "filter": ["**/*"]
       }
     ],
     "files": [

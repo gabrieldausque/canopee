@@ -33,21 +33,18 @@
   </PropertyGroup>
   
   <Target Name="BuildStandardLibrary" AfterTargets="AfterBuild">
+    <Exec Command="echo ======================="/>
     <Exec Command="dotnet msbuild -property:nowarn=1591 -property:Configuration=Release -property:OutputPath=$(OutDir)/PipelinesTemp/ ../Canopee.StandardLibrary/Canopee.StandardLibrary.csproj" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/FirebirdSql.Data.FirebirdClient.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Elasticsearch.Net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Nest.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+    <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+    <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/System.Configuration.ConfigurationManager.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
-  </Target>
-  
-  <ItemGroup>
-    <Pipelines Include="$(OutDir)/Pipelines/**" />
-  </ItemGroup>
-  <Target Name="PublishPipeline" AfterTargets="AfterPublish">
-    <Copy SourceFiles="@(Pipelines)" DestinationFolder="$(PublishDir)Pipelines/" />
+    <Exec Command="echo ======================="/>
   </Target>
   
 </Project>
