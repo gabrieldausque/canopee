@@ -9,7 +9,6 @@ using Canopee.Common;
 using Canopee.Common.Events;
 using Canopee.Common.Hosting.Web;
 using Canopee.Core.Pipelines;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Outputs

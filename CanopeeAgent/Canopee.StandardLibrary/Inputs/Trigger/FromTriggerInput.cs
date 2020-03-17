@@ -6,7 +6,6 @@ using System.Text.Json;
 using Canopee.Common;
 using Canopee.Common.Events;
 using Canopee.Core.Pipelines;
-using Newtonsoft.Json.Linq;
 
 namespace Canopee.StandardLibrary.Inputs.Trigger
 {

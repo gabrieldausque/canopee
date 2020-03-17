@@ -10,6 +10,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
     <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
@@ -37,18 +38,16 @@
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/FirebirdSql.Data.FirebirdClient.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Elasticsearch.Net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Nest.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
-    <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
-    <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/System.Configuration.ConfigurationManager.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
   </Target>
   
   <ItemGroup>
-    <Pipelines Include="$(OutDir)/Pipelines/**"/>
+    <Pipelines Include="$(OutDir)/Pipelines/**" />
   </ItemGroup>
   <Target Name="PublishPipeline" AfterTargets="AfterPublish">
-    <Copy SourceFiles="@(Pipelines)" DestinationFolder="$(PublishDir)Pipelines/"/>
+    <Copy SourceFiles="@(Pipelines)" DestinationFolder="$(PublishDir)Pipelines/" />
   </Target>
   
 </Project>
