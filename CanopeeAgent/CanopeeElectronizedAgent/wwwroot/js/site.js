@@ -5,13 +5,12 @@
 const path = require('path');
 const {remote} = require('electron');
 const {app, Menu, Tray} = remote;
-console.log(__dirname);
 function addTrayIcon() {
     console.log(path.resolve('resources/bin/wwwroot/images/NotifyIcon.png'));
     tray = new Tray(path.resolve('resources/bin/wwwroot/images/NotifyIcon.png'));
     const contextMenu = Menu.buildFromTemplate([
         {label: 'Stop Canopee Agent', type: 'normal'}
-    ])
+    ]);
     tray.setToolTip('Canopee Agent');
     tray.setContextMenu(contextMenu);
 }

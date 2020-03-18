@@ -2,21 +2,20 @@
 bin/
 obj/
 
-/CanopeeAgent/CanopeeAgent.Common/bin/
-/CanopeeAgent/CanopeeAgent.Common/obj/
-/CanopeeAgent/CanopeeAgent/bin/
-/CanopeeAgent/CanopeeAgentStl/obj/
-/CanopeeAgent/CanopeeAgentStl/bin/
-/CanopeeAgent/CanopeeAgent.Core/bin/
-/CanopeeAgent/CanopeeAgent.Core/obj/
-/CanopeeAgent/CanopeeServer/bin/
-/CanopeeAgent/CanopeeServer/obj/
-/CanopeeAgent/POC/bin/
-/CanopeeAgent/POC/obj/
-/.vs/canopee/v16/.suo
-/.vs
+/CanopeeAgent/CanopeeAgent.Common/bin/**
+/CanopeeAgent/CanopeeAgent.Common/obj/**
+/CanopeeAgent/CanopeeAgent/bin/**
+/CanopeeAgent/CanopeeAgentStl/obj/**
+/CanopeeAgent/CanopeeAgentStl/bin/**
+/CanopeeAgent/CanopeeAgent.Core/bin/**
+/CanopeeAgent/CanopeeAgent.Core/obj/**
+/CanopeeAgent/CanopeeServer/bin/**
+/CanopeeAgent/CanopeeServer/obj/**
+/CanopeeAgent/POC/bin/**
+/CanopeeAgent/POC/obj/**
+/.vs/**
 /CanopeeAgent/.vs/CanopeeAgent
-/CanopeeAgent/CanopeeServer/obj/
 /CanopeeAgent/CanopeeElectronizedAgent/bin/
 /CanopeeAgent/CanopeeElectronizedAgent/obj/
+/CanopeeAgent/.idea/**
 

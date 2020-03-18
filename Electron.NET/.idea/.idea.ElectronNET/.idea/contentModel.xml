@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Changelog.md" t="Include" />
+      <e p="ElectronNET.API" t="IncludeRecursive">
+        <e p="App.cs" t="Include" />
+        <e p="AutoUpdater.cs" t="Include" />
+        <e p="BridgeConnector.cs" t="Include" />
+        <e p="BridgeSettings.cs" t="Include" />
+        <e p="BrowserWindow.cs" t="Include" />
+        <e p="Clipboard.cs" t="Include" />
+        <e p="Dialog.cs" t="Include" />
+        <e p="Electron.cs" t="Include" />
+        <e p="ElectronNET.API.csproj" t="IncludeRecursive" />
+        <e p="Entities" t="Include">
+          <e p="AboutPanelOptions.cs" t="Include" />
+          <e p="AppDetailsOptions.cs" t="Include" />
+          <e p="BlockMapDataHolder.cs" t="Include" />
+          <e p="BrowserWindowOptions.cs" t="Include" />
+          <e p="CPUUsage.cs" t="Include" />
+          <e p="Certificate.cs" t="Include" />
+          <e p="CertificatePrincipal.cs" t="Include" />
+          <e p="CertificateTrustDialogOptions.cs" t="Include" />
+          <e p="ClearStorageDataOptions.cs" t="Include" />
+          <e p="CreateInterruptedDownloadOptions.cs" t="Include" />
+          <e p="Data.cs" t="Include" />
+          <e p="DefaultFontFamily.cs" t="Include" />
+          <e p="DevToolsMode.cs" t="Include" />
+          <e p="Display.cs" t="Include" />
+          <e p="DisplayBalloonOptions.cs" t="Include" />
+          <e p="DockBounceType.cs" t="Include" />
+          <e p="EnableNetworkEmulationOptions.cs" t="Include" />
+          <e p="Error.cs" t="Include" />
+          <e p="FileFilter.cs" t="Include" />
+          <e p="FileIconOptions.cs" t="Include" />
+          <e p="FileIconSize.cs" t="Include" />
+          <e p="GPUFeatureStatus.cs" t="Include" />
+          <e p="HighlightMode.cs" t="Include" />
+          <e p="ImportCertificateOptions.cs" t="Include" />
+          <e p="JumpListCategory.cs" t="Include" />
+          <e p="JumpListCategoryType.cs" t="Include" />
+          <e p="JumpListItem.cs" t="Include" />
+          <e p="JumpListItemType.cs" t="Include" />
+          <e p="JumpListSettings.cs" t="Include" />
+          <e p="LoadURLOptions.cs" t="Include" />
+          <e p="LoginItemSettings.cs" t="Include" />
+          <e p="LoginItemSettingsOptions.cs" t="Include" />
+          <e p="LoginSettings.cs" t="Include" />
+          <e p="MemoryInfo.cs" t="Include" />
+          <e p="MenuItem.cs" t="Include" />
+          <e p="MenuRole.cs" t="Include" />
+          <e p="MenuType.cs" t="Include" />
+          <e p="MessageBoxOptions.cs" t="Include" />
+          <e p="MessageBoxResult.cs" t="Include" />
+          <e p="MessageBoxType.cs" t="Include" />
+          <e p="NativeImage.cs" t="Include" />
+          <e p="NotificationAction.cs" t="Include" />
+          <e p="NotificationOptions.cs" t="Include" />
+          <e p="OnTopLevel.cs" t="Include" />
+          <e p="OpenDevToolsOptions.cs" t="Include" />
+          <e p="OpenDialogOptions.cs" t="Include" />
+          <e p="OpenDialogProperty.cs" t="Include" />
+          <e p="OpenExternalOptions.cs" t="Include" />
+          <e p="PathName.cs" t="Include" />
+          <e p="Point.cs" t="Include" />
+          <e p="PrintToPDFOptions.cs" t="Include" />
+          <e p="ProcessMetric.cs" t="Include" />
+          <e p="ProgressBarMode.cs" t="Include" />
+          <e p="ProgressBarOptions.cs" t="Include" />
+          <e p="ProgressInfo.cs" t="Include" />
+          <e p="ProxyConfig.cs" t="Include" />
+          <e p="ReadBookmark.cs" t="Include" />
+          <e p="Rectangle.cs" t="Include" />
+          <e p="RelaunchOptions.cs" t="Include" />
+          <e p="ReleaseNoteInfo.cs" t="Include" />
+          <e p="RemoveClientCertificate.cs" t="Include" />
+          <e p="RemovePassword.cs" t="Include" />
+          <e p="SaveDialogOptions.cs" t="Include" />
+          <e p="Scheme.cs" t="Include" />
+          <e p="ShortcutDetails.cs" t="Include" />
+          <e p="ShortcutLinkOperation.cs" t="Include" />
+          <e p="Size.cs" t="Include" />
+          <e p="ThumbarButton.cs" t="Include" />
+          <e p="ThumbarButtonFlag.cs" t="Include" />
+          <e p="TitleBarStyle.cs" t="Include" />
+          <e p="TrayClickEventArgs.cs" t="Include" />
+          <e p="UpdateCancellationToken.cs" t="Include" />
+          <e p="UpdateCheckResult.cs" t="Include" />
+          <e p="UpdateFileInfo.cs" t="Include" />
+          <e p="UpdateInfo.cs" t="Include" />
+          <e p="UserTask.cs" t="Include" />
+          <e p="Vibrancy.cs" t="Include" />
+          <e p="WebPreferences.cs" t="Include" />
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="EnumExtensions.cs" t="Include" />
+          <e p="MenuItemExtensions.cs" t="Include" />
+          <e p="ThumbarButtonExtensions.cs" t="Include" />
+        </e>
+        <e p="GlobalShortcut.cs" t="Include" />
+        <e p="HostHook.cs" t="Include" />
+        <e p="HybridSupport.cs" t="Include" />
+        <e p="IpcMain.cs" t="Include" />
+        <e p="Menu.cs" t="Include" />
+        <e p="Notification.cs" t="Include" />
+        <e p="QuitEventArgs.cs" t="Include" />
+        <e p="Screen.cs" t="Include" />
+        <e p="Session.cs" t="Include" />
+        <e p="Shell.cs" t="Include" />
+        <e p="Tray.cs" t="Include" />
+        <e p="WebContents.cs" t="Include" />
+        <e p="WebHostBuilderExtensions.cs" t="Include" />
+        <e p="WindowManager.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="devCleanup.cmd" t="Include" />
+        <e p="devCleanup.sh" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Release" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="ElectronNET.API.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ElectronNET.CLI" t="IncludeRecursive">
+        <e p="Commands" t="Include">
+          <e p="Actions" t="Include">
+            <e p="DeployEmbeddedElectronFiles.cs" t="Include" />
+            <e p="DirectoryCopy.cs" t="Include" />
+            <e p="GetTargetPlatformInformation.cs" t="Include" />
+          </e>
+          <e p="AddCommand.cs" t="Include" />
+          <e p="BuildCommand.cs" t="Include" />
+          <e p="CommandOption.cs" t="Include" />
+          <e p="ICommand.cs" t="Include" />
+          <e p="InitCommand.cs" t="Include" />
+          <e p="StartElectronCommand.cs" t="Include" />
+          <e p="VersionCommand.cs" t="Include" />
+        </e>
+        <e p="ElectronHost" t="Include" />
+        <e p="ElectronNET.CLI.csproj" t="IncludeRecursive" />
+        <e p="EmbeddedFileHelper.cs" t="Include" />
+        <e p="ProcessHelper.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="SimpleCommandLineParser.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="devCleanup.cmd" t="Include" />
+        <e p="devCleanup.sh" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Release" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="ElectronNET.CLI.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ElectronNET.Host" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p=".vscode" t="Include">
+          <e p="launch.json" t="Include" />
+          <e p="tasks.json" t="Include" />
+        </e>
+        <e p="ElectronHostHook" t="Include">
+          <e p=".gitignore" t="Include" />
+          <e p="connector.js" t="Include" />
+          <e p="connector.js.map" t="Include" />
+          <e p="connector.ts" t="Include" />
+          <e p="index.js" t="Include" />
+          <e p="index.js.map" t="Include" />
+          <e p="index.ts" t="Include" />
+          <e p="package.json" t="Include" />
+          <e p="tsconfig.json" t="Include" />
+        </e>
+        <e p="api" t="Include">
+          <e p="app.js" t="Include" />
+          <e p="app.js.map" t="Include" />
+          <e p="app.ts" t="Include" />
+          <e p="autoUpdater.js" t="Include" />
+          <e p="autoUpdater.js.map" t="Include" />
+          <e p="autoUpdater.ts" t="Include" />
+          <e p="browserWindows.js" t="Include" />
+          <e p="browserWindows.js.map" t="Include" />
+          <e p="browserWindows.ts" t="Include" />
+          <e p="clipboard.js" t="Include" />
+          <e p="clipboard.js.map" t="Include" />
+          <e p="clipboard.ts" t="Include" />
+          <e p="dialog.js" t="Include" />
+          <e p="dialog.js.map" t="Include" />
+          <e p="dialog.ts" t="Include" />
+          <e p="globalShortcut.js" t="Include" />
+          <e p="globalShortcut.js.map" t="Include" />
+          <e p="globalShortcut.ts" t="Include" />
+          <e p="ipc.js" t="Include" />
+          <e p="ipc.js.map" t="Include" />
+          <e p="ipc.ts" t="Include" />
+          <e p="menu.js" t="Include" />
+          <e p="menu.js.map" t="Include" />
+          <e p="menu.ts" t="Include" />
+          <e p="notification.js" t="Include" />
+          <e p="notification.js.map" t="Include" />
+          <e p="notification.ts" t="Include" />
+          <e p="screen.js" t="Include" />
+          <e p="screen.js.map" t="Include" />
+          <e p="screen.ts" t="Include" />
+          <e p="shell.js" t="Include" />
+          <e p="shell.js.map" t="Include" />
+          <e p="shell.ts" t="Include" />
+          <e p="tray.js" t="Include" />
+          <e p="tray.js.map" t="Include" />
+          <e p="tray.ts" t="Include" />
+          <e p="webContents.js" t="Include" />
+          <e p="webContents.js.map" t="Include" />
+          <e p="webContents.ts" t="Include" />
+        </e>
+        <e p="build-helper.js" t="Include" />
+        <e p="electron.manifest.json" t="Include" />
+        <e p="main.js" t="Include" />
+        <e p="package-lock.json" t="Include" />
+        <e p="package.json" t="Include" />
+        <e p="splashscreen" t="Include">
+          <e p="index.html" t="Include" />
+        </e>
+        <e p="tsconfig.json" t="Include" />
+        <e p="tslint.json" t="Include" />
+      </e>
+      <e p="ElectronNET.WebApp" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="electron.ico" t="Include" />
+          <e p="electron_32x32.png" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="AboutController.cs" t="Include" />
+          <e p="AppSysInformationController.cs" t="Include" />
+          <e p="ClipboardController.cs" t="Include" />
+          <e p="CrashHangController.cs" t="Include" />
+          <e p="DesktopCapturerController.cs" t="Include" />
+          <e p="DialogsController.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+          <e p="HostHookController.cs" t="Include" />
+          <e p="IpcController.cs" t="Include" />
+          <e p="MenusController.cs" t="Include" />
+          <e p="NotificationsController.cs" t="Include" />
+          <e p="PdfController.cs" t="Include" />
+          <e p="ShellController.cs" t="Include" />
+          <e p="ShortcutsController.cs" t="Include" />
+          <e p="TrayController.cs" t="Include" />
+          <e p="UpdateController.cs" t="Include" />
+          <e p="WindowsController.cs" t="Include" />
+        </e>
+        <e p="ElectronHostHook" t="Include">
+          <e p=".gitignore" t="Include" />
+          <e p="connector.js" t="Include" />
+          <e p="connector.js.map" t="Include" />
+          <e p="connector.ts" t="Include" />
+          <e p="excelCreator.js" t="Include" />
+          <e p="excelCreator.js.map" t="Include" />
+          <e p="excelCreator.ts" t="Include" />
+          <e p="index.js" t="Include" />
+          <e p="index.js.map" t="Include" />
+          <e p="index.ts" t="Include" />
+          <e p="package.json" t="Include" />
+          <e p="tsconfig.json" t="Include" />
+        </e>
+        <e p="ElectronNET.WebApp.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Views" t="Include">
+          <e p="About" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="AppSysInformation" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Clipboard" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="CrashHang" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="ProcessCrash.cshtml" t="Include" />
+            <e p="ProcessHang.cshtml" t="Include" />
+          </e>
+          <e p="DesktopCapturer" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Dialogs" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Home" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="HostHook" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Ipc" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Menus" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Notifications" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Pdf" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shell" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shortcuts" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Tray" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Update" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Windows" t="Include">
+            <e p="DemoWindow.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="electron.manifest.json" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Release" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="ElectronNET.WebApp.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="assets" t="Include">
+            <e p="app-icon" t="Include">
+              <e p="mac" t="Include">
+                <e p="app.icns" t="Include" />
+              </e>
+              <e p="png" t="Include">
+                <e p="1024.png" t="Include" />
+                <e p="128.png" t="Include" />
+                <e p="16.png" t="Include" />
+                <e p="24.png" t="Include" />
+                <e p="256.png" t="Include" />
+                <e p="32.png" t="Include" />
+                <e p="48.png" t="Include" />
+                <e p="512.png" t="Include" />
+                <e p="64.png" t="Include" />
+              </e>
+              <e p="win" t="Include">
+                <e p="app.ico" t="Include" />
+              </e>
+            </e>
+            <e p="code-blocks.js" t="Include" />
+            <e p="css" t="Include">
+              <e p="about.css" t="Include" />
+              <e p="demo.css" t="Include" />
+              <e p="fonts" t="Include">
+                <e p="SourceCodePro-Regular.ttf" t="Include" />
+                <e p="SourceSansPro-Black.otf" t="Include" />
+                <e p="SourceSansPro-BlackIt.otf" t="Include" />
+                <e p="SourceSansPro-Bold.otf" t="Include" />
+                <e p="SourceSansPro-BoldIt.otf" t="Include" />
+                <e p="SourceSansPro-ExtraLight.otf" t="Include" />
+                <e p="SourceSansPro-ExtraLightIt.otf" t="Include" />
+                <e p="SourceSansPro-It.otf" t="Include" />
+                <e p="SourceSansPro-Light.otf" t="Include" />
+                <e p="SourceSansPro-LightIt.otf" t="Include" />
+                <e p="SourceSansPro-Regular.otf" t="Include" />
+                <e p="SourceSansPro-Semibold.otf" t="Include" />
+                <e p="SourceSansPro-SemiboldIt.otf" t="Include" />
+              </e>
+              <e p="github.css" t="Include" />
+              <e p="global.css" t="Include" />
+              <e p="highlight.min.css" t="Include" />
+              <e p="nativize.css" t="Include" />
+              <e p="nav.css" t="Include" />
+              <e p="print.css" t="Include" />
+              <e p="section.css" t="Include" />
+              <e p="variables.css" t="Include" />
+            </e>
+            <e p="demo-btns.js" t="Include" />
+            <e p="ex-links.js" t="Include" />
+            <e p="highlight.min.js" t="Include" />
+            <e p="img" t="Include">
+              <e p="about.png" t="Include" />
+              <e p="about@2x.png" t="Include" />
+              <e p="diagram.png" t="Include" />
+              <e p="heart.jpg" t="Include" />
+              <e p="icons.svg" t="Include" />
+              <e p="loading.gif" t="Include" />
+              <e p="programming.png" t="Include" />
+              <e p="ui-terminology.png" t="Include" />
+            </e>
+            <e p="imports.js" t="Include" />
+            <e p="mac" t="Include">
+              <e p="child.plist" t="Include" />
+              <e p="info.plist" t="Include" />
+              <e p="parent.plist" t="Include" />
+            </e>
+            <e p="nav.js" t="Include" />
+            <e p="tiles" t="Include">
+              <e p="SampleAppx.150x150.png" t="Include" />
+              <e p="SampleAppx.310x150.png" t="Include" />
+              <e p="SampleAppx.44x44.png" t="Include" />
+              <e p="SampleAppx.50x50.png" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ElectronNET.sln" t="IncludeFlat" />
+      <e p="Solution Items" t="Include" />
+      <e p="buildAll.cmd" t="Include" />
+      <e p="buildAll.sh" t="Include" />
+      <e p="buildReleaseNuGetPackages.cmd" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_ElectronNET.291411396.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.dotnet/store/|arch|" t="Include">
+      <e p="|tfm|" t="Include" />
+    </e>
+    <e p="/usr/share" t="Include">
+      <e p="dotnet" t="Include" />
+    </e>
+  </component>
+</project>

@@ -1,0 +1,161 @@
+{
+  "format": 1,
+  "restore": {
+    "/datas/canopee/Electron.NET/ElectronNET.WebApp/ElectronNET.WebApp.csproj": {}
+  },
+  "projects": {
+    "/datas/canopee/Electron.NET/ElectronNET.API/ElectronNET.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/datas/canopee/Electron.NET/ElectronNET.API/ElectronNET.API.csproj",
+        "projectName": "ElectronNET.API",
+        "projectPath": "/datas/canopee/Electron.NET/ElectronNET.API/ElectronNET.API.csproj",
+        "packagesPath": "/home/gabriel/.nuget/packages/",
+        "outputPath": "/datas/canopee/Electron.NET/ElectronNET.API/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/datas/canopee/Electron.NET/NuGet.config",
+          "/home/gabriel/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "/datas/canopee/Electron.NET/artifacts": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.SourceLink.GitHub": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0-beta2-18618-05, )"
+            },
+            "SocketIoClientDotNet": {
+              "target": "Package",
+              "version": "[1.0.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/datas/canopee/Electron.NET/ElectronNET.WebApp/ElectronNET.WebApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/datas/canopee/Electron.NET/ElectronNET.WebApp/ElectronNET.WebApp.csproj",
+        "projectName": "ElectronNET.WebApp",
+        "projectPath": "/datas/canopee/Electron.NET/ElectronNET.WebApp/ElectronNET.WebApp.csproj",
+        "packagesPath": "/home/gabriel/.nuget/packages/",
+        "outputPath": "/datas/canopee/Electron.NET/ElectronNET.WebApp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/datas/canopee/Electron.NET/NuGet.config",
+          "/home/gabriel/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "/datas/canopee/Electron.NET/artifacts": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "/datas/canopee/Electron.NET/ElectronNET.API/ElectronNET.API.csproj": {
+                "projectPath": "/datas/canopee/Electron.NET/ElectronNET.API/ElectronNET.API.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.BrowserLink": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
