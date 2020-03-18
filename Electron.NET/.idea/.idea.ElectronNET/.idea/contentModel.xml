@@ -150,6 +150,9 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="devCleanup.cmd" t="Include" />
         <e p="devCleanup.sh" t="Include" />
+        <e p="nupkg" t="Include">
+          <e p="ElectronNET.CLI.1.0.0.nupkg" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Release" t="Include">
             <e p="netcoreapp3.1" t="Include">

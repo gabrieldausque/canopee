@@ -1,15 +1,11 @@
 {
   "runtimeOptions": {
     "tfm": "netcoreapp3.1",
-    "framework": {
-      "name": "Microsoft.NETCore.App",
-      "version": "3.1.0"
-    },
-    "additionalProbingPaths": [
-      "/usr/share/dotnet",
-      "/home/gabriel/.dotnet/store/|arch|/|tfm|",
-      "/home/gabriel/.nuget/packages"
+    "includedFrameworks": [
+      {
+        "name": "Microsoft.NETCore.App",
+        "version": "3.1.2"
+      }
     ]
-
   }
 }
