@@ -25,11 +25,11 @@ namespace Canopee.StandardLibrary.Loggers
         public override void Initialize(IConfiguration loggerConfiguration, Type callerType)
         {
             base.Initialize(loggerConfiguration, callerType);
+            _callerType=(callerType == null)?this.GetType():callerType;
             lock (LockObject)
             {
                 if (!_isInitialized)
                 {
-                    _callerType=(callerType == null)?this.GetType():callerType;
                     var log4NetConfigurationFileName = string.IsNullOrWhiteSpace(loggerConfiguration["configurationFile"])?"log4net.config":loggerConfiguration["configurationFile"];
                     var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
                     XmlConfigurator.ConfigureAndWatch(logRepository, new FileInfo(log4NetConfigurationFileName));
@@ -45,7 +45,8 @@ namespace Canopee.StandardLibrary.Loggers
         {
             try
             {
-                if (_loggers.TryGetValue(_callerType.FullName, out var logger))
+                log4net.LogicalThreadContext.Properties["CallerType"] = _callerType.FullName;
+                if (!_loggers.TryGetValue(_callerType.FullName, out var logger))
                 {
                     logger = LogManager.GetLogger(this.GetType());
                     _loggers.Add(_callerType.FullName, logger);
@@ -80,6 +81,7 @@ namespace Canopee.StandardLibrary.Loggers
                         break;
                     }
                 }
+                log4net.LogicalThreadContext.Properties["CallerType"] = string.Empty;
             }
             catch (Exception e)
             {

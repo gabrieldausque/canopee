@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3271b1dc-852a-4002-a9e2-53247fa3b0d2" name="Default Changelist" comment="fix no frameowrk found ....">
+      <change afterPath="$PROJECT_DIR$/../CanopeeAgent/Canopee.StandardLibrary/Loggers/MultiCanopeeLogger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CanopeeAgent/CanopeeAgent/log4net.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CanopeeAgent/Canopee.Core/Configuration/ConfigurationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CanopeeAgent/Canopee.Core/Configuration/ConfigurationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CanopeeAgent/Canopee.StandardLibrary/Loggers/Log4NetCanopeeLogger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../CanopeeAgent/Canopee.StandardLibrary/Loggers/Log4NetCanopeeLogger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CanopeeAgent/CanopeeAgent/CanopeeAgent.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../CanopeeAgent/CanopeeAgent/CanopeeAgent.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CanopeeAgent/CanopeeAgent/appsettings.RagnarokLinux.json" beforeDir="false" afterPath="$PROJECT_DIR$/../CanopeeAgent/CanopeeAgent/appsettings.RagnarokLinux.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ElectronNET/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ElectronNET/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,9 +21,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ElectronNET.CLI/Commands/StartElectronCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ElectronNET.CLI/Commands/BuildCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../CanopeeAgent/Canopee.StandardLibrary/Loggers/MultiCanopeeLogger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ElectronNET.Host/electron.manifest.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../CanopeeAgent/custom-electronize/electronize.runtimeconfig.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../CanopeeAgent/custom-electronize/electronize.deps.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ElectronNET.CLI/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ElectronNET.WebApp/Views/About/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
@@ -145,6 +150,7 @@
       <workItem from="1584479577136" duration="540000" />
       <workItem from="1584520522280" duration="3297000" />
       <workItem from="1584526427300" duration="5380000" />
+      <workItem from="1584562632095" duration="748000" />
     </task>
     <task id="LOCAL-00001" summary="fix no frameowrk found ....">
       <created>1584531797125</created>

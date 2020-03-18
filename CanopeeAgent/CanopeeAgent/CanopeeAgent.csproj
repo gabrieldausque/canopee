@@ -85,6 +85,13 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="log4net.config" />
+      <Content Include="log4net.config">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
     <Target Name="BuildStandardLibrary" AfterTargets="AfterBuild">
         <Exec Command="dotnet build -c $(Configuration) -o $(OutDir)/PipelinesTemp/ ../Canopee.StandardLibrary/Canopee.StandardLibrary.csproj" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
@@ -95,6 +102,7 @@
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/System.Configuration.ConfigurationManager.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/log4net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
     </Target>
     

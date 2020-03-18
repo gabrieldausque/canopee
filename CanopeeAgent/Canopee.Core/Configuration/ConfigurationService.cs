@@ -46,7 +46,7 @@ namespace Canopee.Core.Configuration
                     builder.AddJsonFile($"appsettings.{currentEnvironment}.json", true);
                 }
                 Configuration = builder.Build();
-                CanopeeLogger = CanopeeLoggerFactory.Instance().GetLogger(Configuration.GetSection("Logging"), this.GetType());
+                CanopeeLogger = CanopeeLoggerFactory.Instance().GetLogger(Configuration.GetSection("Canopee:Logging"), this.GetType());
             }
             catch (Exception ex)
             {
