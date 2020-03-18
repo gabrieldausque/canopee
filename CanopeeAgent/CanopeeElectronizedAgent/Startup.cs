@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Canopee.Common;
 using Canopee.Core.Hosting.Web;
+using CanopeeElectronizedAgent.Host;
 using ElectronNET.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +30,7 @@ namespace CanopeeElectronizedAgent
         {
             Console.WriteLine("Configuring services ...");
             var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
-            services.AddCanopeeHost(Configuration)
+            services.AddElectronHost(Configuration)
                 .AddControllersWithViews()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));
             services.AddHttpContextAccessor();
@@ -61,21 +63,10 @@ namespace CanopeeElectronizedAgent
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            Bootstrap();
-        }
+            //TODO : add a method on host to be executed after initialization of context;
+            var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as CanopeeElectronHost;
+            canopeeHost.CreateElectronRenderer();
 
-        private async void Bootstrap()
-        {
-            await Electron.WindowManager.CreateWindowAsync();
-            foreach (var window in Electron.WindowManager.BrowserWindows)
-            {
-                window.OnClosed += () =>
-                {
-                    Electron.App.Exit();
-                    System.Diagnostics.Process.GetCurrentProcess().Kill();
-                };
-            }
         }
-        
     }
 }

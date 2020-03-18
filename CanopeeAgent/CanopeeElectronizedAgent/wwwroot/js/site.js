@@ -3,18 +3,18 @@
 
 // Write your JavaScript code.
 const path = require('path');
-const {remote} = require('electron');
+const {remote, ipcRenderer} = require('electron');
 const {app, Menu, Tray} = remote;
-function addTrayIcon() {
-    console.log(path.resolve('resources/bin/wwwroot/images/NotifyIcon.png'));
-    tray = new Tray(path.resolve('resources/bin/wwwroot/images/NotifyIcon.png'));
-    const contextMenu = Menu.buildFromTemplate([
-        {label: 'Stop Canopee Agent', type: 'normal'}
-    ]);
+
+function addTrayIcon(fullpathToIcon, menuItem) {
+    tray = new Tray(fullpathToIcon);
+    console.log(menuItem);
     tray.setToolTip('Canopee Agent');
-    tray.setContextMenu(contextMenu);
 }
 
 let tray = null;
-console.log('before app.on');
-app.whenReady().then(addTrayIcon);
+ipcRenderer.on('create-tray', (arg) => {
+    console.log(arg);
+    alert("create tray asked")
+});
+//app.whenReady().then(addTrayIcon);
