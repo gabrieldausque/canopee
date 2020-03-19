@@ -28,7 +28,16 @@ namespace Canopee.Core.Pipelines
             {
                 Logger.LogInfo($"Reading Pipeline {pipelineConfig["Name"]}");
                 var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
-                _pipelines.Add(pipelineConfig["Name"], pipeline);
+                if (!_pipelines.ContainsKey(pipelineConfig["Name"]))
+                {
+                    _pipelines.Add(pipelineConfig["Name"], pipeline);    
+                }
+                else
+                {
+                    Logger.LogWarning($"A pipeline with name {pipelineConfig["Name"]} already exists. Replacing with the new one");
+                    _pipelines[pipelineConfig["Name"]] = pipeline;
+                }
+                
             }
         }
 

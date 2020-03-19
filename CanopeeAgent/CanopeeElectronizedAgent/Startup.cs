@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Canopee.Common;
+using Canopee.Core.Configuration;
 using Canopee.Core.Hosting.Web;
+using Canopee.Core.Logging;
 using CanopeeElectronizedAgent.Host;
 using ElectronNET.API;
 using Microsoft.AspNetCore.Builder;
@@ -13,14 +15,17 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace CanopeeElectronizedAgent
 {
     public class Startup
     {
+        private readonly ICanopeeLogger _logger = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _logger = CanopeeLoggerFactory.Instance().GetLogger(ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging"), this.GetType());
         }
 
         public IConfiguration Configuration { get; }
@@ -32,6 +37,7 @@ namespace CanopeeElectronizedAgent
             var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
             services.AddElectronHost(Configuration)
                 .AddControllersWithViews()
+                .AddRazorRuntimeCompilation()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));
             services.AddHttpContextAccessor();
         }
@@ -64,6 +70,7 @@ namespace CanopeeElectronizedAgent
             });
 
             //TODO : add a method on host to be executed after initialization of context;
+            _logger.LogInfo($"Create renderer");
             var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as CanopeeElectronHost;
             canopeeHost.CreateElectronRenderer();
 

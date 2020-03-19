@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ElectronNET.API" Version="7.30.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.2" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="electron.manifest.json">
@@ -42,6 +43,7 @@
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/System.Configuration.ConfigurationManager.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+    <Copy SourceFiles="$(OutDir)/PipelinesTemp/log4net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/FirebirdSql.Data.FirebirdClient.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Elasticsearch.Net.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
@@ -50,6 +52,7 @@
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
     <Copy SourceFiles="$(OutDir)/PipelinesTemp/System.Configuration.ConfigurationManager.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
+    <Copy SourceFiles="$(OutDir)/PipelinesTemp/log4net.dll" DestinationFolder="$(BaseIntermediateOutputPath)Host/bin/Pipelines/" OverwriteReadOnlyFiles="true" />
     <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
   </Target>
   

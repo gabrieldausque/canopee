@@ -24,6 +24,7 @@ namespace CanopeeElectronizedAgent.Host
                 Electron.App.BrowserWindowCreated += () =>
                 {
                     var iconPath = Path.GetFullPath("./wwwroot/images/NotifyIcon.png");
+                    Logger.Log($"Loading icon from {iconPath}");
                     if (Electron.Tray.MenuItems.Count == 0)
                     {
                         MenuItem[] menu =

@@ -65,6 +65,7 @@
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Newtonsoft.Json.Bson.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Quartz.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/System.Configuration.ConfigurationManager.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/log4net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <RemoveDir Directories="$(OutDir)/PipelinesTemp" />
     </Target>
     
