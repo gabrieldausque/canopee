@@ -30,6 +30,28 @@ a {
   border: solid 1px gray;
   overflow: auto;
   min-height: 72vh;
+  max-height: 72vh;
+  background-color: black;
+}
+
+.canopeelog-error {
+  color: Red;
+}
+
+.canopeelog-information {
+  color:white;
+}
+
+.canopeelog-debug {
+  color:deepskyblue;
+}
+
+.canopeelog-warning {
+  color:orange;
+}
+
+.canopeelog-critical {
+  color:orangered;
 }
 
 /* Sticky footer styles

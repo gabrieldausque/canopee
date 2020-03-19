@@ -1,6 +1,7 @@
 using System;
 using System.Composition.Hosting;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Loader;
 
@@ -21,6 +22,7 @@ namespace Canopee.Core
             }
 
             containerConfiguration.WithAssembly(this.GetType().Assembly);
+            containerConfiguration.WithAssembly(Assembly.GetEntryAssembly());
             Container = containerConfiguration.CreateContainer();
         }
 

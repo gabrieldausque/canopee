@@ -17,4 +17,9 @@ ipcRenderer.on('create-tray', (arg) => {
     console.log(arg);
     alert("create tray asked")
 });
-//app.whenReady().then(addTrayIcon);
+app.whenReady().then(() => {
+    ipcRenderer.on('canopee-logs', (event, args) => {
+       var lastElement = jQuery(args).appendTo('#canopee-logs');
+        jQuery('#canopee-logs').animate({ scrollTop: lastElement.offset().top}, 10);
+    });
+});
