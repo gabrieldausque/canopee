@@ -16,6 +16,13 @@
     <ProjectReference Include="..\Canopee.Common\Canopee.Common.csproj" />
     <ProjectReference Include="..\Canopee.Core\Canopee.Core.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="..\log4net.config">
+      <Link>log4net.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DocumentationFile></DocumentationFile>
