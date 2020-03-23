@@ -47,8 +47,7 @@ namespace CanopeeElectronizedAgent.Host
                         Electron.Tray.SetToolTip("Canopee Agent Menu");
                     }
                 };
-
-                await Electron.WindowManager.CreateWindowAsync(
+               await Electron.WindowManager.CreateWindowAsync(
                     new BrowserWindowOptions()
                     {
                         Show = false
@@ -62,6 +61,7 @@ namespace CanopeeElectronizedAgent.Host
                         Electron.App.Exit();
                         System.Diagnostics.Process.GetCurrentProcess().Kill();
                     };
+                    await window.WebContents.Session.ClearCacheAsync();
                 }
             }
             catch (Exception e)

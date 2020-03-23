@@ -19,7 +19,10 @@ ipcRenderer.on('create-tray', (arg) => {
 });
 app.whenReady().then(() => {
     ipcRenderer.on('canopee-logs', (event, args) => {
-       var lastElement = jQuery(args).appendTo('#canopee-logs');
-        jQuery('#canopee-logs').animate({ scrollTop: lastElement.offset().top}, 10);
+       var logs = jQuery('#canopee-logs');
+       if(logs.length >= 1) {
+           const lastElement = jQuery(args).appendTo('#canopee-logs');
+           logs.animate({scrollTop: lastElement.offset().top}, 10);
+       }
     });
 });
