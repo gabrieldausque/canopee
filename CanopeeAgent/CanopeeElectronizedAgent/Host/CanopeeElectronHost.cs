@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Canopee.Core.Hosting.Web;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
@@ -17,13 +18,20 @@ namespace CanopeeElectronizedAgent.Host
             
         }
 
-        public async void CreateElectronRenderer ()
+        public override void Run()
+        {
+            SetCanRun();
+            CreateElectronRenderer().Wait();
+            base.Run();
+        }
+
+        public async Task CreateElectronRenderer ()
         {
             try
             {
+                var iconPath = Path.GetFullPath("./wwwroot/images/NotifyIcon.png");
                 Electron.App.BrowserWindowCreated += () =>
                 {
-                    var iconPath = Path.GetFullPath("./wwwroot/images/NotifyIcon.png");
                     Logger.Log($"Loading icon from {iconPath}");
                     if (Electron.Tray.MenuItems.Count == 0)
                     {
@@ -34,6 +42,10 @@ namespace CanopeeElectronizedAgent.Host
                                 Click = () => {
                                     Electron.WindowManager.BrowserWindows.FirstOrDefault()?.Show();
                                 }
+                            },
+                            new MenuItem(){
+                                Label = "Hide Canopee Agent",
+                                Click = () => { Electron.WindowManager.BrowserWindows.FirstOrDefault()?.Hide(); }
                             },
                             new MenuItem(){
                                 Label = "Exit Canopee Agent",
@@ -50,18 +62,22 @@ namespace CanopeeElectronizedAgent.Host
                await Electron.WindowManager.CreateWindowAsync(
                     new BrowserWindowOptions()
                     {
-                        Show = false
-                    });
-                foreach (var window in Electron.WindowManager.BrowserWindows)
+                        Show = false,
+                        Icon = iconPath
+                    }); 
+                var window = Electron.WindowManager.BrowserWindows.FirstOrDefault();
+                Logger.LogDebug("Subscribing to close event");
+                window.OnClosed += Stop;
+                window.SetMenuBarVisibility(false);
+                window.SetMinimumSize(1280, 768);
+                window.SetMaximumSize(1280, 768);
+                window.SetMinimizable(false);
+                window.SetMaximizable(false);
+                await window.WebContents.Session.ClearCacheAsync();
+                if (!CanRun)
                 {
-                    Logger.LogDebug("Subscribing to close event");
-                    window.OnClosed += () =>
-                    {
-                        Stop();
-                        Electron.App.Exit();
-                        System.Diagnostics.Process.GetCurrentProcess().Kill();
-                    };
-                    await window.WebContents.Session.ClearCacheAsync();
+                    Logger.LogWarning($"Host can't run, another instance already running. Exiting");
+                    this.Stop();
                 }
             }
             catch (Exception e)
@@ -69,6 +85,13 @@ namespace CanopeeElectronizedAgent.Host
                 Logger.LogError($"Error while creating electron renderer ${e}");
                 throw;
             }
+        }
+
+        public override void Stop()
+        {
+            Logger.LogInfo("Stopping the Electron app");
+            Electron.App.Exit();
+            base.Stop();        
         }
     }
 }

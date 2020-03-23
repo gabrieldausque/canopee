@@ -21,14 +21,22 @@ namespace Canopee.Core.Hosting.Console
 
         public override void Run()
         {
+            base.Run();
             Logger.LogInfo("Start the collector");
-            System.Console.CancelKeyPress += this.Stop;
+            System.Console.CancelKeyPress += this.StopFromInput;
             Logger.LogInfo("Press [CTRL+C] to close agent");
-            _collectPipelineManager.Run();
-            _exitEvent.WaitOne();
+            if (CanRun)
+            {
+                _collectPipelineManager.Run();
+                _exitEvent.WaitOne();
+            }
+            else
+            {
+                Logger.LogWarning("Host can't run ! Exiting ...");
+            }
         }
 
-        private void Stop(object sender, ConsoleCancelEventArgs e)
+        private void StopFromInput(object sender, ConsoleCancelEventArgs e)
         {
             e.Cancel = true;
             this.Stop();

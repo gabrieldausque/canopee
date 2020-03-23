@@ -25,10 +25,12 @@ namespace CanopeeServer
         }
 
         public IConfiguration Configuration { get; }
+        private IServiceCollection _services;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _services = services;
             var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
             services.AddCanopeeHost(Configuration);
             services.AddHttpContextAccessor();
@@ -67,6 +69,9 @@ namespace CanopeeServer
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as ICanopeeHost;
+            canopeeHost.Run();
         }
     }
 }

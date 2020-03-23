@@ -7,6 +7,6 @@ namespace Canopee.Common
         public void Run();
 
         public void Stop();
-
+        
     }
 }

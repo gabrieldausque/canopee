@@ -69,11 +69,8 @@ namespace CanopeeElectronizedAgent
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //TODO : add a method on host to be executed after initialization of context;
-            _logger.LogInfo($"Create renderer");
-            var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as CanopeeElectronHost;
-            canopeeHost.CreateElectronRenderer();
-
+            var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as ICanopeeHost;
+            canopeeHost.Run();
         }
     }
 }

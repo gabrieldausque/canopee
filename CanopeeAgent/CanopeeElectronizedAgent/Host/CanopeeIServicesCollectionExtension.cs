@@ -12,13 +12,8 @@ namespace CanopeeElectronizedAgent.Host
         public static IServiceCollection AddElectronHost(this IServiceCollection services, IConfiguration configuration)
         {
             services.TryAddSingleton<IConfiguration>(configuration);
-            services.AddSingleton<ICanopeeHost>(provider => new CanopeeElectronHost(configuration));
-            var canopeeHost = services.BuildServiceProvider().GetService(typeof(ICanopeeHost)) as CanopeeElectronHost;
-            if (canopeeHost == null)
-            {
-                throw new NullReferenceException("The CanopeeHost instance is null, please check the assemblies you are using.");
-            }
-            canopeeHost.Run();
+            var canopeeHost = new CanopeeElectronHost(configuration);
+            services.AddSingleton<ICanopeeHost>(canopeeHost);
             services.AddSingleton<ITrigger>(canopeeHost.HostTrigger);
             return services;
         }
