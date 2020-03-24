@@ -29,7 +29,7 @@ namespace CanopeeElectronizedAgent.Host
         {
             try
             {
-                var iconPath = Path.GetFullPath("./wwwroot/images/NotifyIcon.png");
+                var iconPath = Path.GetFullPath("./wwwroot/images/CanopeeLogo.png");
                 Electron.App.BrowserWindowCreated += () =>
                 {
                     Logger.Log($"Loading icon from {iconPath}");
@@ -41,6 +41,7 @@ namespace CanopeeElectronizedAgent.Host
                                 Label = "Show Canopee Agent",
                                 Click = () => {
                                     Electron.WindowManager.BrowserWindows.FirstOrDefault()?.Show();
+                                    Electron.WindowManager.BrowserWindows.FirstOrDefault()?.Reload();
                                 }
                             },
                             new MenuItem(){
