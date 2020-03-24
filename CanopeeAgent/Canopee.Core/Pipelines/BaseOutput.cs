@@ -11,7 +11,7 @@ namespace Canopee.Core.Pipelines
 
         public BaseOutput()
         {
-            var configuration = ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
         }
 

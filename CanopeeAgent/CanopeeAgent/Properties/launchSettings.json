@@ -3,6 +3,12 @@
     "CanopeeAgent": {
       "commandName": "Executable"
     },
+    "Kaamelot:NoId": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": ""
+      }
+    },
     "Kaamelot": {
       "commandName": "Project",
       "environmentVariables": {

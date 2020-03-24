@@ -23,7 +23,7 @@ namespace Canopee.StandardLibrary.Triggers.Cron
         
         public RaiseEventJob()
         {
-            var configuration = ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
         }
         

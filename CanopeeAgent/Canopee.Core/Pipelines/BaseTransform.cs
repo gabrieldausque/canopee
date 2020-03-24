@@ -10,7 +10,7 @@ namespace Canopee.Core.Pipelines
 
         public BaseTransform()
         {
-            var configuration = Configuration.ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            var configuration = Configuration.ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
         }
         public abstract ICollectedEvent Transform(ICollectedEvent input);

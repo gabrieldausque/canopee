@@ -15,7 +15,7 @@ namespace Canopee.Core.Hosting
         protected bool CanRun = false;
         public BaseCanopeeHost()
         {
-            var configuration = Configuration.ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            var configuration = Configuration.ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType());   
         }
 
@@ -31,18 +31,20 @@ namespace Canopee.Core.Hosting
 
         protected void SetCanRun()
         {
-            var currentProcess = Process.GetCurrentProcess();
-            foreach (var p in Process.GetProcessesByName(currentProcess.ProcessName))
+            if (Configuration.ConfigurationService.Instance.IsUniqueInstance())
             {
-                if (p.Id != currentProcess.Id)
+                var currentProcess = Process.GetCurrentProcess();
+                foreach (var p in Process.GetProcessesByName(currentProcess.ProcessName))
                 {
-                    Logger.LogInfo(
-                        $"Other instance of {currentProcess.ProcessName} is running with pid {p.Id.ToString()}.Stopping ...");
-                    CanRun = false;
-                    return;
+                    if (p.Id != currentProcess.Id)
+                    {
+                        Logger.LogInfo(
+                            $"Other instance of {currentProcess.ProcessName} is running with pid {p.Id.ToString()}.Stopping ...");
+                        CanRun = false;
+                        return;
+                    }
                 }
             }
-
             CanRun = true;
         }
 

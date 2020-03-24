@@ -26,7 +26,7 @@ namespace CanopeeElectronizedAgent
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _logger = CanopeeLoggerFactory.Instance().GetLogger(ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging"), this.GetType());
+            _logger = CanopeeLoggerFactory.Instance().GetLogger(ConfigurationService.Instance.GetLoggingConfiguration(), this.GetType());
         }
 
         public IConfiguration Configuration { get; }

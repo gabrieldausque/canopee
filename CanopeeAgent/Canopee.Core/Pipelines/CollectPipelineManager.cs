@@ -15,13 +15,12 @@ namespace Canopee.Core.Pipelines
 
         public CollectPipelineManager()
         {
-            var loggingConfiguration = ConfigurationService.Instance.GetCanopeeConfiguration().GetSection("Logging");
+            var loggingConfiguration = ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
             _pipelines = new Dictionary<string, ICollectPipeline>();
             var collectPipelinesFactory = new CollectPipelineFactory();
 
-            var config = ConfigurationService.Instance
-                .Configuration.GetSection("Pipelines").GetChildren();
+            var config = ConfigurationService.Instance.GetPipelinesConfiguration().GetChildren();
 
             Logger.LogInfo($"{config.Count()} Pipelines to read");
             foreach (var pipelineConfig in config)
