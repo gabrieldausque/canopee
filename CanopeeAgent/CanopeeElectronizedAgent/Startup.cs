@@ -6,6 +6,7 @@ using Canopee.Common;
 using Canopee.Core.Configuration;
 using Canopee.Core.Hosting.Web;
 using Canopee.Core.Logging;
+using CanopeeElectronizedAgent.Datas;
 using CanopeeElectronizedAgent.Host;
 using ElectronNET.API;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +37,7 @@ namespace CanopeeElectronizedAgent
             Console.WriteLine("Configuring services ...");
             var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
             services.AddElectronHost(Configuration)
+                .AddSingleton<ILogRepository>(LogRepository.Instance)
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation()
                 .PartManager.ApplicationParts.Add(new AssemblyPart(canopeeCoreAssembly));

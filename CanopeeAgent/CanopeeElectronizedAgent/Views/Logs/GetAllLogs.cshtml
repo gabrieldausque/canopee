@@ -1,3 +1,5 @@
+@model CanopeeElectronizedAgent.Models.LogsViewModel
+
 @{
     ViewBag.Title = "Logs";
     Layout = "_Layout";
@@ -6,5 +8,8 @@
 <h1 class="display-4">Activity Logs</h1>
 
 <div id="canopee-logs" class="logs">
-    
+    @foreach (var logFormatted in Model.Logs)
+    {
+        @Html.Raw(logFormatted);
+    }
 </div>

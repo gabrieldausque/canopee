@@ -3,6 +3,7 @@ using System.Composition;
 using System.Linq;
 using Canopee.Common;
 using Canopee.Core.Logging;
+using CanopeeElectronizedAgent.Datas;
 using ElectronNET.API;
 using Microsoft.Extensions.Logging;
 
@@ -22,6 +23,7 @@ namespace CanopeeElectronizedAgent.Loggers
                     var formattedMessage =
                         $"<div class=\"canopeelog-{level.ToString().ToLower()}\">{DateTime.Now:MM/dd/yyyy HH:mm:ss} {level} {CallerType.FullName} {memberName} {message}</div>";
                     Electron.IpcMain.Send(browserWindow, "canopee-logs", formattedMessage);
+                    LogRepository.Instance.AddLog(formattedMessage);
                 }
             }
             catch (Exception ex)
