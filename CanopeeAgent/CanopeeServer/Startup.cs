@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Canopee.Common;
 using Canopee.Core.Hosting;
 using Canopee.Core.Hosting.Web;
+using CanopeeServer.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,7 @@ namespace CanopeeServer
             _services = services;
             var canopeeCoreAssembly = typeof(CollectedEventController).Assembly;
             services.AddCanopeeHost(Configuration);
+            services.AddCanopeeServerDbContext(Configuration);
             services.AddHttpContextAccessor();
             services.AddSwaggerGen(options =>
             {

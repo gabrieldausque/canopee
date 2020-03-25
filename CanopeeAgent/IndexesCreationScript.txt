@@ -1,3 +1,37 @@
+PUT canopee-agentgroups 
+{
+  "mappings":{
+    "properties":{
+      "AgentId":{
+        "type": "text"
+      },
+      "Group":{
+        "type":"text"
+      },
+      "Priority":{
+        "type":"integer"
+      }
+    }
+  }
+}
+
+PUT canopee-configurations 
+{
+  "mappings":{
+    "properties":{
+      "Configuration":{
+        "type": "nested"
+      },
+      "AgentId":{
+        "type": "text"
+      },
+      "Group":{
+        "type":"text"
+      }
+    }
+  }
+}
+
 PUT canopee-agentlocation
 {
   "mappings": {

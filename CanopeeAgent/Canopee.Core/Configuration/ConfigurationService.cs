@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
-using System.Text.Json;
 using Canopee.Common;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Configuration
 {
@@ -78,8 +74,8 @@ namespace Canopee.Core.Configuration
                 {
                     agentId = Guid.NewGuid().ToString();
                     SetValueInFile("AgentId", agentId);
+                    Configuration["Canopee:AgentId"] = agentId;
                 }
-                Configuration["Canopee:AgentId"] = agentId;
                 return agentId;
             }
         }

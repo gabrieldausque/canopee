@@ -43,7 +43,7 @@ namespace Canopee.StandardLibrary.Triggers
 
         public override void Stop()
         {
-            _timer.Change(0, Timeout.Infinite);
+            _timer?.Change(0, Timeout.Infinite);
         }
 
         protected override void InternalDispose()
