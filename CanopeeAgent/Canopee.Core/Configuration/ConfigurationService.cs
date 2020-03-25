@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Canopee.Common;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
@@ -27,10 +28,12 @@ namespace Canopee.Core.Configuration
             }
         }
 
+        public event EventHandler OnNewConfiguration;
         public IConfiguration Configuration { get; private set; }
 
         private readonly string lastConfigurationFilePath = "appsettings.json";
-        
+        private IConfigurationSynchronizer _synchronizer;
+
         public ConfigurationService()
         {
             var messages = new List<string>();
@@ -49,7 +52,23 @@ namespace Canopee.Core.Configuration
                     lastConfigurationFilePath = environmentFile;
                 }
                 Configuration = builder.Build();
-                Logger = CanopeeLoggerFactory.Instance().GetLogger(Configuration.GetSection("Canopee:Logging"), this.GetType());
+                Logger = CanopeeLoggerFactory.Instance().GetLogger(GetLoggingConfiguration(), this.GetType());
+                if(!string.IsNullOrWhiteSpace(GetCanopeeConfiguration()["Configuration:IsSync"]) &&
+                   GetCanopeeConfiguration().GetSection("Configuration").GetValue<bool>("IsSync"))
+                {
+                    Logger.LogInfo("Configuration is synchronized");
+                    _synchronizer = ConfigurationSynchronizerFactory.Instance()
+                        .GetSynchronizer(GetConfigurationServiceConfiguration());
+                    _synchronizer.OnNewConfiguration += (sender, arg) =>
+                    {
+                        SetNewConfiguration(arg.NewConfiguration);
+                        RaiseOnNewConfiguration();
+                    };
+                }
+                else
+                {
+                    Logger.LogInfo("Configuration is only local");
+                }
             }
             catch (Exception ex)
             {
@@ -65,6 +84,37 @@ namespace Canopee.Core.Configuration
             }
         }
 
+        private void RaiseOnNewConfiguration()
+        {
+            try
+            {
+                OnNewConfiguration?.Invoke(this, new EventArgs());
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Error while raising event for new configuration {ex}");
+            }
+        }
+
+        private void SetNewConfiguration(JsonObject newConfiguration)
+        {
+            //TODO : implement the edition of the configuration file read for db, trigger, group, pipelines. 
+        }
+
+        public IConfiguration GetConfigurationServiceConfiguration()
+        {
+            return GetCanopeeConfiguration().GetSection("Configuration");
+        }
+
+        public ICollection<string> Groups
+        {
+            get
+            {
+                var test = Configuration.GetSection("Canopee:Groups").GetChildren();
+                return null;
+            }
+        }
+        
         public string AgentId
         {
             get
@@ -115,5 +165,50 @@ namespace Canopee.Core.Configuration
         {
             return GetCanopeeConfiguration().GetSection("Pipelines");
         }
+    }
+
+    public class ConfigurationSynchronizerFactory : FactoryFromDirectoryBase
+    {
+        private static readonly object LockInstance = new object();
+        private static ConfigurationSynchronizerFactory _instance;
+
+        public static ConfigurationSynchronizerFactory Instance(string directoryCatalog=@"./Pipelines")  {
+            lock (LockInstance)
+            {
+                if (_instance == null)
+                {
+                    _instance = new ConfigurationSynchronizerFactory(directoryCatalog);
+                }
+            }
+            return _instance;
+        }
+        public ConfigurationSynchronizerFactory(string directoryCatalog = @"./Pipelines") : base(directoryCatalog)
+        {
+        }
+
+        public IConfigurationSynchronizer GetSynchronizer(IConfiguration configurationServiceConfiguration)
+        {
+            var type = string.IsNullOrWhiteSpace(configurationServiceConfiguration["SynchronizerType"]) ? "Default" 
+                : configurationServiceConfiguration["SynchronizerType"];
+            var synchronizer = Container.GetExport<IConfigurationSynchronizer>(type);
+            synchronizer.Start();
+            return synchronizer;
+        }
+    }
+
+    public interface IConfigurationSynchronizer
+    {
+        JsonObject GetConfigFromSource();
+
+        void Start();
+
+        void Stop();
+
+        event EventHandler<NewConfigurationEventArg> OnNewConfiguration;
+    }
+
+    public class NewConfigurationEventArg : EventArgs
+    {
+        public JsonObject NewConfiguration { get; set; }
     }
 }

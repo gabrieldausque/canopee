@@ -1,3 +1,6 @@
+using CanopeeServer.Datas;
+using CanopeeServer.Repository;
+using CanopeeServer.Repository.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
