@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Firebird", "Firebird", "{4F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeElectronizedAgent", "CanopeeElectronizedAgent\CanopeeElectronizedAgent.csproj", "{945CA410-EF74-4A32-8551-9EB7AB263B9B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BBFE666A-B43D-4EC0-BB21-E8BF0AFFFEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestJsonObject", "TestJsonObject\TestJsonObject.csproj", "{73C7EE8B-C245-4958-9C80-66BB310DC78B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,11 +77,18 @@ Global
 		{945CA410-EF74-4A32-8551-9EB7AB263B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{945CA410-EF74-4A32-8551-9EB7AB263B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{945CA410-EF74-4A32-8551-9EB7AB263B9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {662CFBF3-8B11-4AE4-A232-B8712BDF3F14}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{73C7EE8B-C245-4958-9C80-66BB310DC78B} = {BBFE666A-B43D-4EC0-BB21-E8BF0AFFFEC3}
 	EndGlobalSection
 EndGlobal

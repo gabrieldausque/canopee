@@ -1,0 +1,7 @@
+{
+  "PropertyString": "aStringValue",
+  "PropertyBool": true,
+  "PropertyNumeric": 1.0,
+  "PropertyInt": 1,
+  "PropertyNull": null
+}

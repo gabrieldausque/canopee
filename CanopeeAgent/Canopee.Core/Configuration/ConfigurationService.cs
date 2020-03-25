@@ -86,15 +86,14 @@ namespace Canopee.Core.Configuration
 
         private void SetValueInFile(string key, object value)
         {
-            string configurationFileContent = File.ReadAllText(lastConfigurationFilePath);
-            var deserialized = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, object>>>(configurationFileContent);
-            deserialized["Canopee"][key] = value;
-            configurationFileContent = JsonSerializer.Serialize(deserialized, new JsonSerializerOptions()
+            var configurationFile = JsonObject.LoadFromFile(lastConfigurationFilePath);
+            var canopeeJsonObject = configurationFile["Canopee"] as JsonObject;
+            if (canopeeJsonObject == null)
             {
-                WriteIndented = true
-            });
-            Logger.LogDebug($"Write agent Id to {Path.GetFullPath(lastConfigurationFilePath)}");
-            File.WriteAllText(lastConfigurationFilePath, configurationFileContent);
+                throw new NotSupportedException($"The application must have a Canopee section in {lastConfigurationFilePath}. Please correct and relaunch application");
+            }
+            canopeeJsonObject.SetProperty(key, value);
+            configurationFile.WriteTo(lastConfigurationFilePath);
         }
 
         public IConfiguration GetCanopeeConfiguration()

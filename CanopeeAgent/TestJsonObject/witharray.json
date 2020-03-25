@@ -1,0 +1,9 @@
+{
+  "PropertyString": "aStringValue",
+  "PropertyBool": true,
+  "PropertyNumeric": 1.0,
+  "PropertyInt": 1,
+  "PropertyNull": null,
+  "PropertyArray": ["a","b"],
+  "PropertyVariousArray": ["a","b",1,1.0]
+}

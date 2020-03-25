@@ -1,0 +1,34 @@
+{
+  "PropertyString": "aStringValue",
+  "PropertyBool": true,
+  "PropertyNumeric": 1.56,
+  "PropertyInt": 1,
+  "PropertyNull": null,
+  "PropertyArray": [
+    "a",
+    "b"
+  ],
+  "PropertyVariousArray": [
+    "a",
+    "b",
+    1,
+    1.64
+  ],
+  "PropertyObject": {
+    "PropertyString": "anotherStringValue",
+    "PropertyBool": false,
+    "PropertyNumeric": 2.59,
+    "PropertyInt": 2,
+    "PropertyNull": null,
+    "PropertyArray": [
+      "c",
+      "d"
+    ],
+    "PropertyVariousArray": [
+      "c",
+      "d",
+      2,
+      2.78
+    ]
+  }
+}
