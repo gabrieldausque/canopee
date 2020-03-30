@@ -27,6 +27,11 @@ namespace Canopee.Core.Pipelines
         public ITransform GetTransform(IConfigurationSection configurationTransform)
         {
             var type = string.IsNullOrWhiteSpace(configurationTransform["TransformType"]) ? "Default" : configurationTransform["TransformType"];
+            bool.TryParse(configurationTransform["OSSpecific"], out var isOsSpecific);
+            if(isOsSpecific && type != "Default")
+            {
+                type = $"{type}{GetCurrentPlatform()}";
+            }
             var transformer = Container.GetExport<ITransform>(type);
             transformer?.Initialize(configurationTransform);
             return transformer;
