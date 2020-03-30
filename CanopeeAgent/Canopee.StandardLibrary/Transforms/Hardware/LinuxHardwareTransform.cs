@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Composition;
 using System.Text.RegularExpressions;
 using Canopee.Common;
@@ -5,7 +6,7 @@ using Canopee.Common;
 namespace Canopee.StandardLibrary.Transforms.Hardware
 {
     [Export("HardwareLINUX",typeof(ITransform))]
-    public class HardwareTransform : BatchTransform
+    public class HardwareTransform : BaseHardwareTransform
     {
         public override ICollectedEvent Transform(ICollectedEvent input)
         {
@@ -21,7 +22,8 @@ namespace Canopee.StandardLibrary.Transforms.Hardware
             regex = new Regex(".+:[ ]+(?<size>[0-9\\.,]+)(?<unit>[a-zA-Z]+)[ ]+.*");
             matches = regex.Match(lines[1]);
             input.SetFieldValue("MemorySize", float.Parse(matches.Groups["size"].Value));
-            infos.MemoryUnit = GetSizeUnit(matches.Groups["unit"].Value);
+            input.SetFieldValue("MemoryUnit" , GetSizeUnit(matches.Groups["unit"].Value));
+            return input;
         }
     }
 }
