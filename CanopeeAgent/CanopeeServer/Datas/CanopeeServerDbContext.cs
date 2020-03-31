@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Canopee.Common;
+using CanopeeServer.Datas.Entities;
 using Microsoft.Extensions.Options;
 using Nest;
 
@@ -9,6 +11,7 @@ namespace CanopeeServer.Datas
     public class CanopeeServerDbContext
     {
         private ElasticClient _client;
+        private static readonly string CanopeeAgentGroupsIndexName = "canopee-agentgroups";
 
         public CanopeeServerDbContext(IOptions<CanopeeServerDbSettings> dbSettings)
         {
@@ -16,31 +19,39 @@ namespace CanopeeServer.Datas
             _client = new ElasticClient(elasticSettings);
         }
 
-        public ICollection<JsonObject> Groups()
+        public ICollection<AgentGroup> Groups()
         {
-            List<JsonObject> groups = new List<JsonObject>();
-            var response = _client.Search<dynamic>(sd => sd
-                .Index("canopee-agentgroups")
+            List<AgentGroup> groups = new List<AgentGroup>();
+            var response = _client.Search<AgentGroup>(sd => sd
+                .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q.MatchAll())
             );
-            //TODO : manage unsucessfull request
-            foreach(var document in response.Documents)
+            return response.Documents.ToList();
+        }
+
+        public AgentGroup AddGroup(AgentGroup newAgentGroup)
+        {
+            if (!Exists(newAgentGroup.AgentId, newAgentGroup.Group))
             {
-                JsonObject group = new JsonObject();
-                foreach(var prop in document.Keys)
-                {
-                    if (prop == "Priority")
-                    {
-                        group.SetProperty(prop,int.Parse(document[prop]));
-                    }
-                    else
-                    {
-                        group.SetProperty(prop, document[prop]);    
-                    }
-                }
-                groups.Add(group);
+                _client.Index(new IndexRequest<AgentGroup>(newAgentGroup, CanopeeAgentGroupsIndexName));
+                return newAgentGroup;
             }
-            return groups;
+            else
+            {
+                return null;
+            }
+        }
+
+        private bool Exists(string agentId, string @group)
+        {
+            var response = _client.Search<AgentGroup>(sd => sd
+                .Index(CanopeeAgentGroupsIndexName)
+                .Query(q => q
+                    .Term(g => g.AgentId, agentId ) && q
+                    .Term(g => g.Group, group)
+                )
+            );
+            return response.IsValid && response.Documents.Count >= 1;
         }
     }
 }
