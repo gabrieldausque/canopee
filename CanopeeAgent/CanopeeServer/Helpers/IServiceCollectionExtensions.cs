@@ -14,8 +14,10 @@ namespace CanopeeServer.Helpers
             services.Configure<CanopeeServerDbSettings>(configuration.GetSection("Canopee:Db"));
             services.AddSingleton<CanopeeServerDbContext>();
             services.AddSingleton<IGroupRepository, GroupRepository>();
+            services.AddSingleton<ICanopeeConfigurationRepository, CanopeeConfigurationRepository>();
             return services;
         } 
+        
         
     }
 }

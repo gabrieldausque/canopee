@@ -12,6 +12,7 @@ namespace CanopeeServer.Datas
     {
         private ElasticClient _client;
         private static readonly string CanopeeAgentGroupsIndexName = "canopee-agentgroups";
+        private static readonly string CanopeeConfigurationIndexName = "canopee-configurations";
 
         public CanopeeServerDbContext(IOptions<CanopeeServerDbSettings> dbSettings)
         {
@@ -23,7 +24,6 @@ namespace CanopeeServer.Datas
 
         public ICollection<AgentGroup> Groups()
         {
-            List<AgentGroup> groups = new List<AgentGroup>();
             var response = _client.Search<AgentGroup>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q.MatchAll())
@@ -33,7 +33,7 @@ namespace CanopeeServer.Datas
 
         public AgentGroup AddGroup(AgentGroup newAgentGroup)
         {
-            if (Exists(newAgentGroup.AgentId, newAgentGroup.Group))
+            if (GroupExists(newAgentGroup.AgentId, newAgentGroup.Group))
             {
                 DeleteGroup(newAgentGroup);    
             }
@@ -63,9 +63,13 @@ namespace CanopeeServer.Datas
                     )
                 )
             );
+            if (!deleteResponse.IsValid)
+            {
+                throw new ApplicationException(deleteResponse.DebugInformation);
+            }
         }
         
-        private bool Exists(string agentId, string group)
+        private bool GroupExists(string agentId, string group)
         {
             var response = _client.Search<AgentGroup>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
@@ -79,6 +83,85 @@ namespace CanopeeServer.Datas
                             .Match(mq => mq
                                 .Field("Group")
                                 .Query(group)))
+                    )
+                )
+            );
+            return response.IsValid && response.Documents.Count >= 1;
+        }
+
+        public ICollection<CanopeeConfiguration> Configurations()
+        {
+            var response = _client.Search<JsonObject>(sd => sd
+                .Index(CanopeeAgentGroupsIndexName)
+                .Query(q => q.MatchAll())
+            );
+            var configs = new List<CanopeeConfiguration>();
+            foreach (var config in response.Documents)
+            {
+                configs.Add(new CanopeeConfiguration()
+                {
+                    AgentId = config.GetProperty<string>("AgentId"),
+                    Configuration = config.GetProperty<JsonObject>("Configuration"),
+                    EventDate = config.GetProperty<string>("EventDate"),
+                    EventId = config.GetProperty<string>("EventId"),
+                    Priority = config.GetProperty<int>("Priority")
+                });
+            }
+            return configs;
+        }
+
+        public CanopeeConfiguration AddConfiguration(CanopeeConfiguration canopeeConfiguration)
+        {
+            if (CanopeeConfigurationExists(canopeeConfiguration))
+            {
+                DeleteConfiguration(canopeeConfiguration);
+            }
+            var response = _client.Index(new IndexRequest<CanopeeConfiguration>(canopeeConfiguration, CanopeeConfigurationIndexName));
+            if (!response.IsValid)
+            {
+                throw new ApplicationException(response.DebugInformation);
+            }
+            return canopeeConfiguration;
+
+        }
+
+        public void DeleteConfiguration(CanopeeConfiguration canopeeConfiguration)
+        {
+            var deleteResponse = _client.DeleteByQuery<CanopeeConfiguration>(s => s
+                .Index(CanopeeConfigurationIndexName)
+                .Query(q => q
+                    .Bool(b => b
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("AgentId")
+                                .Query(canopeeConfiguration.AgentId)))
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("Group")
+                                .Query(canopeeConfiguration.Group)))
+                    )
+                )
+            );
+            if (!deleteResponse.IsValid)
+            {
+                throw new ApplicationException(deleteResponse.DebugInformation);
+            }
+        }
+
+        private bool CanopeeConfigurationExists(CanopeeConfiguration canopeeConfiguration)
+        {
+            var response = _client.Search<CanopeeConfiguration>(sd => sd
+                .Index(CanopeeAgentGroupsIndexName)
+                .Query(q => q
+                    .Bool(b => b
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("AgentId")
+                                .Query(canopeeConfiguration.AgentId)))
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("Group")
+                                .Query(canopeeConfiguration.Group)))
                     )
                 )
             );
