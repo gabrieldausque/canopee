@@ -46,7 +46,7 @@ namespace CanopeeServer.Repository
             return uniques;
         }
 
-        public AgentGroup AddGroupForAgent(string agentId, string group,int priority)
+        public AgentGroup CreateOrUpdateAgentGroup(string agentId, string group,int priority)
         {
             return _db.AddGroup(new AgentGroup()
             {

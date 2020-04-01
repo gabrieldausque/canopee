@@ -15,7 +15,9 @@ namespace CanopeeServer.Datas
 
         public CanopeeServerDbContext(IOptions<CanopeeServerDbSettings> dbSettings)
         {
-            var elasticSettings = new ConnectionSettings(new Uri(dbSettings.Value.Url)).EnableDebugMode();
+            var elasticSettings = new ConnectionSettings(new Uri(dbSettings.Value.Url))
+                .EnableDebugMode()
+                .DefaultFieldNameInferrer(f => f);
             _client = new ElasticClient(elasticSettings);
         }
 
@@ -31,24 +33,53 @@ namespace CanopeeServer.Datas
 
         public AgentGroup AddGroup(AgentGroup newAgentGroup)
         {
-            if (!Exists(newAgentGroup.AgentId, newAgentGroup.Group))
+            if (Exists(newAgentGroup.AgentId, newAgentGroup.Group))
             {
-                _client.Index(new IndexRequest<AgentGroup>(newAgentGroup, CanopeeAgentGroupsIndexName));
-                return newAgentGroup;
+                DeleteGroup(newAgentGroup);    
             }
-            else
+            
+            var response = _client.Index(new IndexRequest<AgentGroup>(newAgentGroup, CanopeeAgentGroupsIndexName));
+            if (!response.IsValid)
             {
-                return null;
+                throw new ApplicationException(response.DebugInformation);
             }
+            return newAgentGroup;
         }
 
-        private bool Exists(string agentId, string @group)
+        public void DeleteGroup(AgentGroup agentGroupToDelete)
+        {
+            var deleteResponse = _client.DeleteByQuery<AgentGroup>(s => s
+                .Index(CanopeeAgentGroupsIndexName)
+                .Query(q => q
+                    .Bool(b => b
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("AgentId")
+                                .Query(agentGroupToDelete.AgentId)))
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("Group")
+                                .Query(agentGroupToDelete.Group)))
+                    )
+                )
+            );
+        }
+        
+        private bool Exists(string agentId, string group)
         {
             var response = _client.Search<AgentGroup>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q
-                    .Term(g => g.AgentId, agentId ) && q
-                    .Term(g => g.Group, group)
+                    .Bool(b => b
+                        .Should(s => s
+                             .Match(mq => mq
+                                 .Field("AgentId")
+                                 .Query(agentId)))
+                        .Should(s => s
+                            .Match(mq => mq
+                                .Field("Group")
+                                .Query(group)))
+                    )
                 )
             );
             return response.IsValid && response.Documents.Count >= 1;
