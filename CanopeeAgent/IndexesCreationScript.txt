@@ -153,3 +153,41 @@ PUT canopee-operatingsystem
     }
   }
 }
+
+=======
+Helper
+=======
+GET canopee-installationlogs/_search
+{
+  "query":{
+    "bool":{
+      "must":[
+        {
+          "match":{"PRODUCT":"ClicDoc"}
+        }]
+    }
+  }
+}
+
+PUT _ingest/pipeline/set-clicdoc
+{
+  "description" : "sets clicdoc to clickdoc",
+  "processors" : [ {
+      "set" : {
+        "field": "PRODUCT",
+        "value": "ClickDoc"
+      }
+  } ]
+}
+
+POST canopee-products/_update_by_query?conflicts=proceed&pipeline=set-clicdoc
+{
+  "query":{
+    "bool":{
+      "must":[
+        {
+          "match":{"PRODUCT":"ClicDoc"}
+        }]
+    }
+  }
+}
