@@ -27,6 +27,7 @@ namespace Canopee.Core.Configuration
             var type = string.IsNullOrWhiteSpace(configurationServiceConfiguration["SynchronizerType"]) ? "Default" 
                 : configurationServiceConfiguration["SynchronizerType"];
             var synchronizer = Container.GetExport<IConfigurationSynchronizer>(type);
+            synchronizer.Initialize(configurationServiceConfiguration);
             synchronizer.Start();
             return synchronizer;
         }

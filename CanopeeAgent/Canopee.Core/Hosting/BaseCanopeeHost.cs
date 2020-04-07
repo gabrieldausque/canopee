@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using Canopee.Common;
+using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
 
@@ -15,7 +16,7 @@ namespace Canopee.Core.Hosting
         protected bool CanRun = false;
         public BaseCanopeeHost()
         {
-            var configuration = Configuration.ConfigurationService.Instance.GetLoggingConfiguration();
+            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType());   
         }
 

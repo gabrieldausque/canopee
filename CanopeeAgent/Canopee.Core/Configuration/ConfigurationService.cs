@@ -53,6 +53,7 @@ namespace Canopee.Core.Configuration
                 }
                 Configuration = builder.Build();
                 Logger = CanopeeLoggerFactory.Instance().GetLogger(GetLoggingConfiguration(), this.GetType());
+                
                 if(!string.IsNullOrWhiteSpace(GetCanopeeConfiguration()["Configuration:IsSync"]) &&
                    GetCanopeeConfiguration().GetSection("Configuration").GetValue<bool>("IsSync"))
                 {
@@ -61,7 +62,7 @@ namespace Canopee.Core.Configuration
                         .GetSynchronizer(GetConfigurationServiceConfiguration());
                     _synchronizer.OnNewConfiguration += (sender, arg) =>
                     {
-                        SetNewConfiguration(arg.NewConfiguration);
+                        arg.NewConfiguration.WriteTo(this.lastConfigurationFilePath);
                         RaiseOnNewConfiguration();
                     };
                 }
@@ -96,23 +97,9 @@ namespace Canopee.Core.Configuration
             }
         }
 
-        private void SetNewConfiguration(JsonObject newConfiguration)
-        {
-            //TODO : implement the edition of the configuration file read for db, trigger, group, pipelines. 
-        }
-
         public IConfiguration GetConfigurationServiceConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Configuration");
-        }
-
-        public ICollection<string> Groups
-        {
-            get
-            {
-                var test = Configuration.GetSection("Canopee:Groups").GetChildren();
-                return null;
-            }
         }
         
         public string AgentId
@@ -164,6 +151,11 @@ namespace Canopee.Core.Configuration
         public IConfiguration GetPipelinesConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Pipelines");
+        }
+
+        public JsonObject GetConfigurationAsJsonObject()
+        {
+            return JsonObject.LoadFromFile(this.lastConfigurationFilePath);
         }
     }
 }

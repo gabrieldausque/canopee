@@ -1,5 +1,6 @@
 using System;
 using Canopee.Common.Events;
+using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Common
 {
@@ -12,5 +13,6 @@ namespace Canopee.Common
         void Stop();
 
         event EventHandler<NewConfigurationEventArg> OnNewConfiguration;
+        void Initialize(IConfiguration configurationServiceConfiguration);
     }
 }
