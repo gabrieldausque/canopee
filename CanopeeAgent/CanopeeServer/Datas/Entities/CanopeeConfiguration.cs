@@ -9,7 +9,7 @@ namespace CanopeeServer.Datas.Entities
         public CanopeeConfiguration()
         {
             EventId = Guid.NewGuid().ToString();
-            EventDate = JsonSerializer.Serialize(DateTime.Now);
+            EventDate = DateTime.Now;
         }
         
         public JsonObject Configuration { get; set; }
@@ -18,9 +18,21 @@ namespace CanopeeServer.Datas.Entities
 
         public string EventId { get; set; }
 
-        public string EventDate { get; set; }
+        public DateTime EventDate { get; set; }
         
         public string Group { get; set; }
         public int Priority { get; set; }
+
+        public override string ToString()
+        {
+            var serialized = new JsonObject();
+            serialized.SetProperty("Configuration",this.Configuration);
+            serialized.SetProperty("AgentId", this.AgentId);
+            serialized.SetProperty("EventId",this.EventId);
+            serialized.SetProperty("EventDate",this.EventDate);
+            serialized.SetProperty("Group",this.Group);
+            serialized.SetProperty("Priority",this.Priority);
+            return serialized.ToString();
+        }
     }
 }

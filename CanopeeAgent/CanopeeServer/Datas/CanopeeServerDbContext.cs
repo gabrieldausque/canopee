@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using Canopee.Common;
 using CanopeeServer.Datas.Entities;
+using Elasticsearch.Net;
 using Microsoft.Extensions.Options;
 using Nest;
 
@@ -92,19 +94,20 @@ namespace CanopeeServer.Datas
         public ICollection<CanopeeConfiguration> Configurations()
         {
             var response = _client.Search<JsonObject>(sd => sd
-                .Index(CanopeeAgentGroupsIndexName)
+                .Index(CanopeeConfigurationIndexName)
                 .Query(q => q.MatchAll())
             );
             var configs = new List<CanopeeConfiguration>();
             foreach (var config in response.Documents)
             {
+                var cleanObject = JsonObject.CleanDocument(config);
                 configs.Add(new CanopeeConfiguration()
                 {
-                    AgentId = config.GetProperty<string>("AgentId"),
-                    Configuration = config.GetProperty<JsonObject>("Configuration"),
-                    EventDate = config.GetProperty<string>("EventDate"),
-                    EventId = config.GetProperty<string>("EventId"),
-                    Priority = config.GetProperty<int>("Priority")
+                    AgentId = cleanObject.GetProperty<string>("AgentId"),
+                    Configuration = cleanObject.GetProperty<JsonObject>("Configuration"),
+                    EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
+                    EventId = cleanObject.GetProperty<string>("EventId"),
+                    Priority = cleanObject.GetProperty<int>("Priority")
                 });
             }
             return configs;
@@ -116,13 +119,14 @@ namespace CanopeeServer.Datas
             {
                 DeleteConfiguration(canopeeConfiguration);
             }
-            var response = _client.Index(new IndexRequest<CanopeeConfiguration>(canopeeConfiguration, CanopeeConfigurationIndexName));
+
+            var serializedConfiguration = canopeeConfiguration.ToString();
+            var response = _client.LowLevel.Index<IndexResponse>(CanopeeConfigurationIndexName, PostData.String(serializedConfiguration));
             if (!response.IsValid)
             {
                 throw new ApplicationException(response.DebugInformation);
             }
             return canopeeConfiguration;
-
         }
 
         public void DeleteConfiguration(CanopeeConfiguration canopeeConfiguration)
@@ -150,8 +154,8 @@ namespace CanopeeServer.Datas
 
         private bool CanopeeConfigurationExists(CanopeeConfiguration canopeeConfiguration)
         {
-            var response = _client.Search<CanopeeConfiguration>(sd => sd
-                .Index(CanopeeAgentGroupsIndexName)
+            var response = _client.Search<JsonDocument>(sd => sd
+                .Index(CanopeeConfigurationIndexName)
                 .Query(q => q
                     .Bool(b => b
                         .Should(s => s

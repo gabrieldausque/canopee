@@ -13,6 +13,11 @@ namespace Canopee.Common
             string jsonFileContent = File.ReadAllText(filePath);
             return Load(JsonDocument.Parse(jsonFileContent).RootElement);
         }
+
+        public static JsonObject LoadFromJsonDocument(JsonDocument document)
+        {
+            return Load(document.RootElement);
+        }
         
         private static JsonObject Load(in JsonElement element)
         {
@@ -192,6 +197,11 @@ namespace Canopee.Common
         public void WriteTo(string filePath)
         {
             File.WriteAllText(filePath, this.ToString());
+        }
+
+        public static JsonObject CleanDocument(JsonObject config)
+        {
+            return LoadFromJsonDocument(JsonDocument.Parse(config.ToString()));
         }
     }
 }
