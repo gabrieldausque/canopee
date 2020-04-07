@@ -17,5 +17,7 @@ obj/
 /CanopeeAgent/.vs/CanopeeAgent
 /CanopeeAgent/CanopeeElectronizedAgent/bin/
 /CanopeeAgent/CanopeeElectronizedAgent/obj/
+/CanopeeAgent/Canopee.StandardLibrary/bin/
+/CanopeeAgent/Canopee.StandardLibrary/obj/
 /CanopeeAgent/.idea/**
 
