@@ -101,13 +101,15 @@ namespace CanopeeServer.Datas
             foreach (var config in response.Documents)
             {
                 var cleanObject = JsonObject.CleanDocument(config);
+                cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate")));
                 configs.Add(new CanopeeConfiguration()
                 {
                     AgentId = cleanObject.GetProperty<string>("AgentId"),
                     Configuration = cleanObject.GetProperty<JsonObject>("Configuration"),
                     EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
                     EventId = cleanObject.GetProperty<string>("EventId"),
-                    Priority = cleanObject.GetProperty<int>("Priority")
+                    Priority = cleanObject.GetProperty<short>("Priority"),
+                    Group = cleanObject.GetProperty<string>("Group")
                 });
             }
             return configs;
@@ -170,6 +172,38 @@ namespace CanopeeServer.Datas
                 )
             );
             return response.IsValid && response.Documents.Count >= 1;
+        }
+
+        public ICollection<CanopeeConfiguration> GetConfiguration(string agentId, string @group)
+        {
+            var response = _client.Search<JsonObject>(sd => sd
+                            .Index(CanopeeConfigurationIndexName)
+                            .Query(q => q
+                                .Bool(b => b
+                                    .Should(s => s
+                                        .Match(mq => mq
+                                            .Field("AgentId")
+                                            .Query(agentId)))
+                                    .Should(s => s
+                                        .Match(mq => mq
+                                            .Field("Group")
+                                            .Query(group))))));
+            var configs = new List<CanopeeConfiguration>();
+            foreach (var config in response.Documents)
+            {
+                var cleanObject = JsonObject.CleanDocument(config);
+                cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate")));
+                configs.Add(new CanopeeConfiguration()
+                {
+                    AgentId = cleanObject.GetProperty<string>("AgentId"),
+                    Configuration = cleanObject.GetProperty<JsonObject>("Configuration"),
+                    EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
+                    EventId = cleanObject.GetProperty<string>("EventId"),
+                    Priority = cleanObject.GetProperty<short>("Priority"),
+                    Group = cleanObject.GetProperty<string>("Group")
+                });
+            }
+            return configs;
         }
     }
 }

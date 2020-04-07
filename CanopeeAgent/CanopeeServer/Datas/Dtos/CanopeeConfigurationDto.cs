@@ -10,5 +10,6 @@ namespace CanopeeServer.Datas.Dtos
         
         public string Group { get; set; }
         public int Priority { get; set; }
+        
     }
 }

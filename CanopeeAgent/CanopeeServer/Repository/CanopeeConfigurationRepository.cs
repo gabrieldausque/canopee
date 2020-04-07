@@ -31,7 +31,7 @@ namespace CanopeeServer.Repository
 
         public ICollection<CanopeeConfiguration> GetConfigurations(string agentId, string group)
         {
-            return _db.Configurations().Where((c) => c.AgentId == agentId && c.Group == group).ToList();
+            return _db.GetConfiguration(agentId, group);
         }
 
         public CanopeeConfiguration Delete(string agentId, string @group)
