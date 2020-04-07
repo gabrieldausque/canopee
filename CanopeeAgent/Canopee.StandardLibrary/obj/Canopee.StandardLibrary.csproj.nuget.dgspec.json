@@ -1,0 +1,263 @@
+{
+  "format": 1,
+  "restore": {
+    "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {}
+  },
+  "projects": {
+    "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj",
+        "projectName": "Canopee.Common",
+        "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj",
+        "packagesPath": "/home/gabriel/.nuget/packages/",
+        "outputPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/gabriel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj",
+        "projectName": "Canopee.Core",
+        "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj",
+        "packagesPath": "/home/gabriel/.nuget/packages/",
+        "outputPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/gabriel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Composition": {
+              "target": "Package",
+              "version": "[1.0.31, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Newtonsoft.Json.Bson": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj",
+        "projectName": "Canopee.StandardLibrary",
+        "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj",
+        "packagesPath": "/home/gabriel/.nuget/packages/",
+        "outputPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.StandardLibrary/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/gabriel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+              },
+              "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+                "projectPath": "/opt/developments/Canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "FirebirdSql.Data.FirebirdClient": {
+              "target": "Package",
+              "version": "[7.1.1, )"
+            },
+            "Microsoft.Composition": {
+              "target": "Package",
+              "version": "[1.0.31, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.5.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Newtonsoft.Json.Bson": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.0.7, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

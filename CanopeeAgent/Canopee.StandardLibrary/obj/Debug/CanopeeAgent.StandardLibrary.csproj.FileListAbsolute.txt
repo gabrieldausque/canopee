@@ -1,0 +1,10 @@
+/opt/developments/Canopee/CanopeeAgent/bin/Debug/Indicators/CanopeeAgent.StandardLibrary.deps.json
+/opt/developments/Canopee/CanopeeAgent/bin/Debug/Indicators/CanopeeAgent.StandardLibrary.dll
+/opt/developments/Canopee/CanopeeAgent/bin/Debug/Indicators/CanopeeAgent.StandardLibrary.pdb
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.csprojAssemblyReference.cache
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.csproj.CoreCompileInputs.cache
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.AssemblyInfoInputs.cache
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.AssemblyInfo.cs
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.csproj.CopyComplete
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.dll
+/opt/developments/Canopee/CanopeeAgent/CanopeeAgent.StandardLibrary/obj/Debug/CanopeeAgent.StandardLibrary.pdb
