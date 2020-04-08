@@ -74,10 +74,8 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
 
         public JsonObject GetConfiguration(string agentId = "Default", string @group = "Default")
         {
-            CanopeeConfigurationDto configuration = null;
             try
             {
-                
                 var uriBuilder = new UriBuilder($"{_url}/api/Configuration")
                 {
                     Query=$"agentId={agentId}&group={group}"
@@ -85,12 +83,15 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
                 var response = _httpClient.GetAsync(uriBuilder.Uri).Result;
                 var resultAsString = response.Content.ReadAsStringAsync().Result;
                 var jsonObjects = JsonSerializer.Deserialize<List<JsonObject>>(resultAsString);
-                return JsonObject.CleanDocument(jsonObjects.FirstOrDefault()).GetProperty<JsonObject>("configuration");
+                var configAsJsonObject = jsonObjects.FirstOrDefault();
+                if(configAsJsonObject != null)
+                    return JsonObject.CleanDocument(configAsJsonObject).GetProperty<JsonObject>("configuration");
             }
             catch (Exception ex)
             {
-                Logger?.LogError($"Error while getting configuration for agentId:{agentId} group:{group} : {ex}");
+                Logger?.LogWarning($"Error while getting configuration : {ex}");
             }
+            Logger?.LogWarning($"No configuration for agentId:{agentId} and group:{group}");
             return null;
         }
     }

@@ -49,10 +49,9 @@ namespace CanopeeServer.Controllers
         }
         
         [HttpDelete]
-        public IActionResult Delete([FromBody] AgentGroupDto agentGroupToUpdate)
+        public IActionResult Delete([FromQuery] string agentId, [FromQuery] string group)
         {
-            _repository.CreateOrUpdateAgentGroup(agentGroupToUpdate.AgentId, agentGroupToUpdate.Group,
-                agentGroupToUpdate.Priority);
+            _repository.Delete(agentId, group);
             return Ok();
         }
     }

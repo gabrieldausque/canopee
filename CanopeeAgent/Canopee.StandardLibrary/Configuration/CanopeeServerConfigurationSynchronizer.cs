@@ -99,6 +99,10 @@ namespace Canopee.StandardLibrary.Configuration
                             }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Logger?.LogError($"Error while synchronizing configuration : {ex}");
+                    }
                     finally
                     {
                         _running = false;

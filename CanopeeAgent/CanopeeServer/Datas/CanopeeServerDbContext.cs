@@ -30,7 +30,7 @@ namespace CanopeeServer.Datas
                 .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q
                     .Bool(b => b
-                    .Should(s => s
+                    .Must(s => s
                         .Match(mq => mq
                             .Field("AgentId")
                             .Query(agentId)))))
@@ -73,17 +73,18 @@ namespace CanopeeServer.Datas
                 .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q
                     .Bool(b => b
-                        .Should(s => s
+                        .Must(s => s
                             .Match(mq => mq
                                 .Field("AgentId")
-                                .Query(agentGroupToDelete.AgentId)))
-                        .Should(s => s
-                            .Match(mq => mq
-                                .Field("Group")
-                                .Query(agentGroupToDelete.Group)))
+                                .Query(agentGroupToDelete.AgentId)),
+                            s => s
+                                .Match(mq => mq
+                                    .Field("Group")
+                                    .Query(agentGroupToDelete.Group))
+                            )
+                        )
                     )
-                )
-            );
+                );
             if (!deleteResponse.IsValid)
             {
                 throw new ApplicationException(deleteResponse.DebugInformation);
@@ -96,42 +97,19 @@ namespace CanopeeServer.Datas
                 .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q
                     .Bool(b => b
-                        .Should(s => s
+                        .Must(s => s
                              .Match(mq => mq
                                  .Field("AgentId")
-                                 .Query(agentId)))
-                        .Should(s => s
-                            .Match(mq => mq
-                                .Field("Group")
-                                .Query(group)))
+                                 .Query(agentId)),
+                            s => s
+                                .Match(mq => mq
+                                    .Field("Group")
+                                    .Query(group))
+                            )
                     )
                 )
             );
             return response.IsValid && response.Documents.Count >= 1;
-        }
-
-        public ICollection<CanopeeConfiguration> Configurations()
-        {
-            var response = _client.Search<JsonObject>(sd => sd
-                .Index(CanopeeConfigurationIndexName)
-                .Query(q => q.MatchAll())
-            );
-            var configs = new List<CanopeeConfiguration>();
-            foreach (var config in response.Documents)
-            {
-                var cleanObject = JsonObject.CleanDocument(config);
-                cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate")));
-                configs.Add(new CanopeeConfiguration()
-                {
-                    AgentId = cleanObject.GetProperty<string>("AgentId"),
-                    Configuration = cleanObject.GetProperty<JsonObject>("Configuration"),
-                    EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
-                    EventId = cleanObject.GetProperty<string>("EventId"),
-                    Priority = cleanObject.GetProperty<short>("Priority"),
-                    Group = cleanObject.GetProperty<string>("Group")
-                });
-            }
-            return configs;
         }
 
         public CanopeeConfiguration AddConfiguration(CanopeeConfiguration canopeeConfiguration)
@@ -156,17 +134,17 @@ namespace CanopeeServer.Datas
                 .Index(CanopeeConfigurationIndexName)
                 .Query(q => q
                     .Bool(b => b
-                        .Should(s => s
+                        .Must(s => s
                             .Match(mq => mq
                                 .Field("AgentId")
-                                .Query(canopeeConfiguration.AgentId)))
-                        .Should(s => s
-                            .Match(mq => mq
-                                .Field("Group")
-                                .Query(canopeeConfiguration.Group)))
+                                .Query(canopeeConfiguration.AgentId)),
+                            s => s
+                                .Match(mq => mq
+                                    .Field("Group")
+                                    .Query(canopeeConfiguration.Group)
+                            )
                     )
-                )
-            );
+                )));
             if (!deleteResponse.IsValid)
             {
                 throw new ApplicationException(deleteResponse.DebugInformation);
@@ -179,14 +157,15 @@ namespace CanopeeServer.Datas
                 .Index(CanopeeConfigurationIndexName)
                 .Query(q => q
                     .Bool(b => b
-                        .Should(s => s
+                        .Must(s => s
                             .Match(mq => mq
                                 .Field("AgentId")
-                                .Query(canopeeConfiguration.AgentId)))
-                        .Should(s => s
-                            .Match(mq => mq
-                                .Field("Group")
-                                .Query(canopeeConfiguration.Group)))
+                                .Query(canopeeConfiguration.AgentId)),
+                            s => s
+                                .Match(mq => mq
+                                    .Field("Group")
+                                    .Query(canopeeConfiguration.Group))
+                            )
                     )
                 )
             );
@@ -202,11 +181,15 @@ namespace CanopeeServer.Datas
                                     .Must(s => s
                                         .Match(mq => mq
                                             .Field("AgentId")
-                                            .Query(agentId)))
-                                    .Must(s => s
-                                        .Match(mq => mq
-                                            .Field("Group")
-                                            .Query(group))))));
+                                            .Query(agentId)),
+                                        s => s
+                                            .Match(mq => mq
+                                                .Field("Group")
+                                                .Query(group))
+                                        )
+                                    )
+                                )
+            );
             var configs = new List<CanopeeConfiguration>();
             foreach (var config in response.Documents)
             {

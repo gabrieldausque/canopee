@@ -263,7 +263,9 @@ namespace Canopee.Common
 
         public static JsonObject CleanDocument(JsonObject config)
         {
-            return LoadFromJsonDocument(JsonDocument.Parse(config.ToString()));
+            if(config != null)
+                return LoadFromJsonDocument(JsonDocument.Parse(config.ToString()));
+            return null;
         }
     }
 }

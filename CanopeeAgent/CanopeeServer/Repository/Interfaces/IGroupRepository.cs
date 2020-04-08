@@ -9,5 +9,6 @@ namespace CanopeeServer.Repository.Interfaces
     {
         ICollection<AgentGroup> GetGroupsForAgent(string agentId);
         AgentGroup CreateOrUpdateAgentGroup(string agentId, string group, long priority);
+        void Delete(string agentId, string @group);
     }
 }

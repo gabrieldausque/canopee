@@ -55,5 +55,14 @@ namespace CanopeeServer.Repository
                 Priority = priority
             });
         }
+
+        public void Delete(string agentId, string @group)
+        {
+            _db.DeleteGroup(new AgentGroup()
+            {
+                AgentId = agentId,
+                Group = group
+            });
+        }
     }
 }

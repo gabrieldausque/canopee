@@ -49,9 +49,9 @@ namespace CanopeeServer.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete([FromBody] CanopeeConfigurationDto configToDelete)
+        public IActionResult Delete([FromQuery]string agentId, string group)
         {
-            _repository.Delete(configToDelete.AgentId, configToDelete.Group);
+            _repository.Delete(agentId, group);
             return Ok();
         }
     }
