@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using Canopee.Common;
+using Canopee.Common.Pipelines;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 

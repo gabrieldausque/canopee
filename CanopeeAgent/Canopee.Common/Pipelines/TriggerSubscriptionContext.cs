@@ -1,4 +1,4 @@
-namespace Canopee.Common
+namespace Canopee.Common.Pipelines
 {
     public class TriggerSubscriptionContext
     {

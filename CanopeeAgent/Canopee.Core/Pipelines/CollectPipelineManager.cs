@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Canopee.Common;
+using Canopee.Common.Logging;
+using Canopee.Common.Pipelines;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Logging;

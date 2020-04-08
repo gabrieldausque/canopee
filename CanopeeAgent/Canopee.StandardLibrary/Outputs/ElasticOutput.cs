@@ -6,6 +6,8 @@ using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
 using Nest;
 using System.Text.Json;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Logging;
 

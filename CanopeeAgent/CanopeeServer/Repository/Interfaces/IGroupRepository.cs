@@ -8,6 +8,6 @@ namespace CanopeeServer.Repository.Interfaces
     public interface IGroupRepository
     {
         ICollection<AgentGroup> GetGroupsForAgent(string agentId);
-        AgentGroup CreateOrUpdateAgentGroup(string agentId, string group, int priority);
+        AgentGroup CreateOrUpdateAgentGroup(string agentId, string group, long priority);
     }
 }

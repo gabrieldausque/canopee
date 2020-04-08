@@ -1,77 +1,127 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Composition;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using Canopee.Common;
-using Canopee.Common.Events;
+using Canopee.Common.Configuration;
+using Canopee.Common.Configuration.AspNet.Dtos;
+using Canopee.Common.Configuration.Events;
+using Canopee.Common.Logging;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
+using Nest;
 
 namespace Canopee.StandardLibrary.Configuration
 {
-    [Export("CanopeeServer",typeof(IConfigurationSynchronizer))]
+    [Export("Default",typeof(IConfigurationSynchronizer))]
     public class CanopeeServerConfigurationSynchronizer : IConfigurationSynchronizer
     {
+        private readonly ICanopeeConfigurationReader _reader;
         private static ICanopeeLogger Logger = null;
         
-        private string _url;
         private int _dueTime;
         private int _period;
         private Timer _timer;
+        private bool _running;
 
-        public CanopeeServerConfigurationSynchronizer()
+        [ImportingConstructor]
+        public CanopeeServerConfigurationSynchronizer([Import("Default")] ICanopeeConfigurationReader reader)
         {
-            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType());   
+            _reader = reader;
         }
         
         public JsonObject GetConfigFromSource()
         {
-            //TODO : first get the list of group for agent Id
-            //TODO : get the default conf, 
-            //TODO : foreach agentgroup get the configuration
-            //TODO : get the agent conf
-            //TODO : foreach configuration property, override based on default < agentgroup by priority < agent
-            //TODO : foreach pipelines, overrides pipeline based on name, following priority order default < agentgroup by priority < agent
-            //TODO : return the object
-            return null;
+            var agentId = ConfigurationService.Instance.AgentId;
+            var agentGroups = _reader.GetGroups(agentId).ToList();
+            agentGroups.Sort(((left, right) => left.Priority.CompareTo(right.Priority)));
+            var currentConfig = _reader.GetConfiguration("*", "*");
+            foreach (var group in agentGroups)
+            {
+                MergeCanopeeConfiguration(currentConfig, _reader.GetConfiguration(group.AgentId, group.Group));
+            }
+
+            MergeCanopeeConfiguration(currentConfig, _reader.GetConfiguration(agentId, "*"));
+            return currentConfig;
+        }
+
+        private bool MergeCanopeeConfiguration(JsonObject currentConfig, JsonObject configToMerge)
+        {
+            return SynchronizeJsonObjectProperty(currentConfig, configToMerge, "Logging") &&
+                SynchronizeJsonObjectProperty(currentConfig, configToMerge, "Trigger") &&
+                SynchronizeJsonObjectProperty(currentConfig, configToMerge, "Db") &&
+                SynchronizePipelines(currentConfig, configToMerge);
         }
 
         public void Start()
         {
+            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType());
             this._timer = new Timer((state) =>
             {
-                var newConfig = GetConfigFromSource();
-                var currentConfig = ConfigurationService.Instance.GetConfigurationAsJsonObject();
-                
-                //TODO : synchronize Logging section
-                //TODO : synchronize Trigger Section
-                //TODO : synchronize UniqueInstance value
-                //TODO : synchronize DB section
-                
-                var isNewConfigurationToLoad = SynchronizePipelines(newConfig, currentConfig);
-                
-
-                if (isNewConfigurationToLoad)
+                if (!_running)
                 {
-                    if (OnNewConfiguration != null)
+                    _running = true;
+                    try
                     {
-                        try
+                        var isNewConfigurationToLoad = false;
+                        var currentConfig = ConfigurationService.Instance.GetConfigurationAsJsonObject();
+                        var newConfig = GetConfigFromSource();
+                        isNewConfigurationToLoad = MergeCanopeeConfiguration(currentConfig, newConfig);
+                        if (isNewConfigurationToLoad)
                         {
-                            OnNewConfiguration.Invoke(this, new NewConfigurationEventArg()
+                            if (OnNewConfiguration != null)
                             {
-                                NewConfiguration = currentConfig
-                            });
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogError($"Error while synchronizing configuration : {ex}");
+                                try
+                                {
+                                    OnNewConfiguration.Invoke(this, new NewConfigurationEventArg()
+                                    {
+                                        NewConfiguration = currentConfig
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    Logger.LogError($"Error while synchronizing configuration : {ex}");
+                                }
+                            }
                         }
                     }
+                    finally
+                    {
+                        _running = false;
+                    }
                 }
+                
             }, null,_dueTime,_period);
+        }
+
+        private bool SynchronizeJsonObjectProperty(JsonObject currentConfig, JsonObject newConfig, string propertyName)
+        {
+            if(newConfig.TryGetProperty<JsonObject>("Canopee", out var newCanopeeConfig))
+            {
+                if (currentConfig.TryGetProperty<JsonObject>("Canopee", out var currentCanopeeConfig))
+                {
+                    newCanopeeConfig.TryGetProperty<JsonObject>(propertyName, out var newLogging);
+                    currentCanopeeConfig.TryGetProperty<JsonObject>(propertyName,out var currentLogging);
+                    if ((currentLogging == null && newLogging != null) ||
+                        (currentLogging != null &&
+                         newLogging != null &&
+                         currentLogging.ToString() != newLogging.ToString()))
+                    {
+                        currentConfig.SetProperty(propertyName, newLogging);
+                        return true;
+                    }    
+                }
+                else
+                {
+                    currentConfig.SetProperty("Canopee", newCanopeeConfig);
+                }
+            } 
+            return false;
         }
 
         private bool SynchronizePipelines(JsonObject newConfig, JsonObject currentConfig)
@@ -81,6 +131,19 @@ namespace Canopee.StandardLibrary.Configuration
             var currentPipelines = currentConfig.GetProperty<JsonObject>("Canopee")
                 .GetProperty<List<object>>("Pipelines");
             bool isNewConfigurationToLoad = false;
+
+            foreach (var pipelineConfig in currentPipelines.ToArray())
+            {
+                var existingPipeline = newPipelines.FirstOrDefault(p =>
+                    ((JsonObject) p).GetProperty<string>("Id") ==
+                    ((JsonObject) pipelineConfig).GetProperty<string>("Id"));
+                if (existingPipeline == null)
+                {
+                    currentPipelines.Remove(pipelineConfig);
+                }
+            }
+            
+            //get new pipelines
             foreach (var pipelineConfig in newPipelines)
             {
                 var currentPipeline = currentPipelines
@@ -101,7 +164,7 @@ namespace Canopee.StandardLibrary.Configuration
                     isNewConfigurationToLoad = true;
                 }
             }
-
+            //cleaning deleted pipelines
             return isNewConfigurationToLoad;
         }
 
@@ -111,11 +174,21 @@ namespace Canopee.StandardLibrary.Configuration
         }
 
         public event EventHandler<NewConfigurationEventArg> OnNewConfiguration;
-        public void Initialize(IConfiguration configurationServiceConfiguration)
+        public void Initialize(IConfiguration serviceConfiguration, IConfiguration loggingConfiguration)
         {
-            this._url = configurationServiceConfiguration["url"];
-            this._dueTime = configurationServiceConfiguration.GetValue<int>("DueTimeInMs");
-            this._period = configurationServiceConfiguration.GetValue<int>("PeriodInMs");
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
+            _reader.Initialize(serviceConfiguration, loggingConfiguration);
+            this._dueTime = serviceConfiguration.GetValue<int>("DueTimeInMs");
+            this._period = serviceConfiguration.GetValue<int>("PeriodInMs");
         }
+    }
+
+    public interface ICanopeeConfigurationReader
+    {
+        void Initialize(IConfiguration serviceConfiguration, IConfiguration loggingConfiguration);
+        
+        ICollection<AgentGroupDto> GetGroups(string agentId);
+        
+        JsonObject GetConfiguration(string agentId, string group);
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Data;
 using Canopee.Common;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 using FirebirdSql.Data.FirebirdClient;
 using Microsoft.Extensions.Configuration;

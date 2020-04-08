@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Canopee.Common;
-using Canopee.Common.Events;
+using Canopee.Common.Logging;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;

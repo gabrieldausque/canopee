@@ -173,11 +173,73 @@ namespace Canopee.Common
                 if (valueAsObject is T valueAsExpectedType)
                 {
                     return valueAsExpectedType;
+                } 
+                
+                if (valueAsObject is string)
+                {
+                    try
+                    {
+                        if (typeof(T) == typeof(DateTime))
+                        {
+                            var date = DateTime.Parse(valueAsObject.ToString());
+                            if (date is T expectedDate)
+                            {
+                                return expectedDate;
+                            }
+                        }
+                        else
+                        {
+                            return JsonSerializer.Deserialize<T>(valueAsObject.ToString());    
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}");
+                    }
+                }
+
+                if (IsNumeric(valueAsObject))
+                {
+                    try
+                    {
+                        return JsonSerializer.Deserialize<T>(valueAsObject.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}");
+                    }
                 }
 
                 throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}");
             }
             throw new ArgumentOutOfRangeException($"Property {propertyName} not found ! ");
+        }
+
+        public bool IsNumeric(object objToTest)
+        {
+            return objToTest is float ||
+                   objToTest is double ||
+                   objToTest is long ||
+                   objToTest is int ||
+                   objToTest is short ||
+                   objToTest is ulong ||
+                   objToTest is uint ||
+                   objToTest is ushort;
+        }
+        
+        public bool TryGetProperty<T>(string propertyName, out T propertyValue)
+        {
+            var isPropertyObtained = false;
+            try
+            {
+                propertyValue = GetProperty<T>(propertyName);
+            }
+            catch (Exception ex)
+            {
+                propertyValue = default(T);
+                //swallow exception and do nothing
+            }
+            return isPropertyObtained;
         }
 
         public override string ToString()

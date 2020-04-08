@@ -4,6 +4,8 @@ using System.Composition;
 using Canopee.Common;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 
 namespace Canopee.StandardLibrary.Outputs

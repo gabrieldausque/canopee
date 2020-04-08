@@ -1,6 +1,6 @@
 using System;
 
-namespace Canopee.Common
+namespace Canopee.Common.Hosting
 {
     public interface ICanopeeHost : IDisposable
     {

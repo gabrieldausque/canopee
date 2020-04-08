@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Canopee.Common.Events
+namespace Canopee.Common.Pipelines.Events
 {
     public class CollectedEvent : ICollectedEvent
     {

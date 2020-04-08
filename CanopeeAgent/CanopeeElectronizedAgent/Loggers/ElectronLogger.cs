@@ -2,6 +2,7 @@ using System;
 using System.Composition;
 using System.Linq;
 using Canopee.Common;
+using Canopee.Common.Logging;
 using Canopee.Core.Logging;
 using CanopeeElectronizedAgent.Datas;
 using ElectronNET.API;

@@ -6,8 +6,8 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
 using Canopee.Common;
-using Canopee.Common.Events;
-using Canopee.Common.Hosting.Web;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 

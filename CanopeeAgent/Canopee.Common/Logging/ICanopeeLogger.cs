@@ -2,7 +2,7 @@ using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Canopee.Common
+namespace Canopee.Common.Logging
 {
     public interface ICanopeeLogger
     {

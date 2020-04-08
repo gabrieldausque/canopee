@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Canopee.Common;
-using Canopee.Common.Events;
 using System.Text.Json;
+using Canopee.Common.Pipelines.Events;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {

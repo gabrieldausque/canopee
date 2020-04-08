@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Text.RegularExpressions;
 using Canopee.Common;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 
 namespace Canopee.StandardLibrary.Transforms.Hardware
 {

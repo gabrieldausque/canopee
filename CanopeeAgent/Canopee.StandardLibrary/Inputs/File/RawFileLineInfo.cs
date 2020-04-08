@@ -1,6 +1,6 @@
 ﻿using Canopee.Common;
-using Canopee.Common.Events;
 using System.Composition;
+using Canopee.Common.Pipelines.Events;
 
 namespace Canopee.StandardLibrary.Inputs.File
 {

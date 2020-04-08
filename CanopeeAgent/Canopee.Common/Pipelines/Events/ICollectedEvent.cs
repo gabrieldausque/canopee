@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Canopee.Common
+namespace Canopee.Common.Pipelines.Events
 {
     public interface ICollectedEvent
     {

@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+using Canopee.Common.Pipelines.Events;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Common
+namespace Canopee.Common.Pipelines
 {
     public interface IOutput
     {

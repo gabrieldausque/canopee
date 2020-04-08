@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using CanopeeServer.Datas.Dtos;
+using Canopee.Common.Configuration.AspNet.Dtos;
 using CanopeeServer.Datas.Entities;
 
 namespace CanopeeServer.Repository.Interfaces

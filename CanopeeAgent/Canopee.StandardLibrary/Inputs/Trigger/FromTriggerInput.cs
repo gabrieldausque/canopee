@@ -4,7 +4,8 @@ using System.Composition;
 using System.Reflection;
 using System.Text.Json;
 using Canopee.Common;
-using Canopee.Common.Events;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 
 namespace Canopee.StandardLibrary.Inputs.Trigger

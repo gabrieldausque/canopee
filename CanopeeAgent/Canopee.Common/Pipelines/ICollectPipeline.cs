@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Canopee.Common.Events;
+using Canopee.Common.Pipelines.Events;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Common
+namespace Canopee.Common.Pipelines
 {
     public interface ICollectPipeline : IDisposable
     {

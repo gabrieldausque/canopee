@@ -1,5 +1,6 @@
 using System;
 using Canopee.Common;
+using Canopee.Common.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 

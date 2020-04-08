@@ -1,6 +1,7 @@
 using System;
 using System.Composition;
 using Canopee.Common;
+using Canopee.Common.Logging;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
 using Nest;

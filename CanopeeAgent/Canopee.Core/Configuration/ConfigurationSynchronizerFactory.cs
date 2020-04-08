@@ -1,4 +1,5 @@
 using Canopee.Common;
+using Canopee.Common.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Configuration
@@ -22,13 +23,13 @@ namespace Canopee.Core.Configuration
         {
         }
 
-        public IConfigurationSynchronizer GetSynchronizer(IConfiguration configurationServiceConfiguration)
+        public IConfigurationSynchronizer GetSynchronizer(IConfiguration configurationServiceConfiguration,
+            IConfiguration loggingConfiguration)
         {
             var type = string.IsNullOrWhiteSpace(configurationServiceConfiguration["SynchronizerType"]) ? "Default" 
                 : configurationServiceConfiguration["SynchronizerType"];
             var synchronizer = Container.GetExport<IConfigurationSynchronizer>(type);
-            synchronizer.Initialize(configurationServiceConfiguration);
-            synchronizer.Start();
+            synchronizer.Initialize(configurationServiceConfiguration, loggingConfiguration);
             return synchronizer;
         }
     }

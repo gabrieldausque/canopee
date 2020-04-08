@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Canopee.Common;
-using Canopee.Common.Events;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 using Canopee.StandardLibrary.Inputs.Batch;
 using Microsoft.Extensions.Configuration;

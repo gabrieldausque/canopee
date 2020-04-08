@@ -7,8 +7,9 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Linq;
 using System.Text;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
-using ITransform = Canopee.Common.ITransform;
+using ITransform = Canopee.Common.Pipelines.ITransform;
 
 namespace Canopee.StandardLibrary.Transforms
 {

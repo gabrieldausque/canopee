@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Canopee.Common;
+using Canopee.Common.Hosting;
+using Canopee.Common.Logging;
 using Canopee.Core.Configuration;
 using Canopee.Core.Hosting.Web;
 using Canopee.Core.Logging;

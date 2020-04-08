@@ -14,7 +14,7 @@ namespace CanopeeServer.Datas.Entities
 
         public string Group { get; set; }
         
-        public int Priority { get; set; }
+        public long Priority { get; set; }
 
         public DateTime EventDate { get; set; }
 

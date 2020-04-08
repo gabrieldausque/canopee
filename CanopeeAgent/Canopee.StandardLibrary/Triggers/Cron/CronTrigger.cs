@@ -1,12 +1,11 @@
 using System;
 using System.Composition;
 using Canopee.Common;
-using Canopee.Common.Events;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 using Quartz;
 using Quartz.Impl;
-using ITrigger = Canopee.Common.ITrigger;
+using ITrigger = Canopee.Common.Pipelines.ITrigger;
 
 namespace Canopee.StandardLibrary.Triggers.Cron
 {

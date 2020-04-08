@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using Canopee.Common.Events;
+using Canopee.Common.Pipelines.Events;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {

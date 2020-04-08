@@ -1,6 +1,6 @@
 using System;
 
-namespace Canopee.Common.Events
+namespace Canopee.Common.Configuration.Events
 {
     public class NewConfigurationEventArg : EventArgs
     {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using Canopee.Common.Configuration.AspNet.Dtos;
 using CanopeeServer.Controllers;
 using CanopeeServer.Datas;
-using CanopeeServer.Datas.Dtos;
 using CanopeeServer.Datas.Entities;
 using CanopeeServer.Repository.Interfaces;
 

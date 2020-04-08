@@ -19,7 +19,7 @@ namespace CanopeeServer.Repository
 
         public ICollection<AgentGroup> GetGroupsForAgent(string agentId)
         {
-            var fromDb = _db.Groups().Where(g => g.AgentId == agentId).ToList();
+            var fromDb = _db.GetGroups(agentId).ToList();
             var uniques = new List<AgentGroup>();
             var keys = new List<string>();
             foreach (var group in fromDb)
@@ -46,7 +46,7 @@ namespace CanopeeServer.Repository
             return uniques;
         }
 
-        public AgentGroup CreateOrUpdateAgentGroup(string agentId, string group,int priority)
+        public AgentGroup CreateOrUpdateAgentGroup(string agentId, string group,long priority)
         {
             return _db.AddGroup(new AgentGroup()
             {

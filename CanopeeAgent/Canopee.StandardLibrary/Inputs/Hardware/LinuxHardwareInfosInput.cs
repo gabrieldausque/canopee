@@ -1,6 +1,7 @@
 using Canopee.Common;
 using System.Composition;
 using System.Text.RegularExpressions;
+using Canopee.Common.Pipelines;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware

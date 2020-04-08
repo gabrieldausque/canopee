@@ -1,4 +1,5 @@
 using Canopee.Common;
+using Canopee.Common.Pipelines;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Pipelines

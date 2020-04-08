@@ -1,8 +1,8 @@
 using System;
-using Canopee.Common.Events;
+using Canopee.Common.Configuration.Events;
 using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Common
+namespace Canopee.Common.Configuration
 {
     public interface IConfigurationSynchronizer
     {
@@ -13,6 +13,6 @@ namespace Canopee.Common
         void Stop();
 
         event EventHandler<NewConfigurationEventArg> OnNewConfiguration;
-        void Initialize(IConfiguration configurationServiceConfiguration);
+        void Initialize(IConfiguration serviceConfiguration, IConfiguration configurationServiceConfiguration);
     }
 }

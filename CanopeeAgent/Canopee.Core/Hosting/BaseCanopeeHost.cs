@@ -4,6 +4,8 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using Canopee.Common;
+using Canopee.Common.Hosting;
+using Canopee.Common.Logging;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +30,8 @@ namespace Canopee.Core.Hosting
         {
             Logger.LogInfo("Check if a process already exists");
             SetCanRun();
+            Logger.LogInfo("Start configuration synchronisation if needed");
+            ConfigurationService.Instance.Start();
         }
 
         protected void SetCanRun()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Text.RegularExpressions;
 using System.Web;
+using Canopee.Common.Pipelines;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {

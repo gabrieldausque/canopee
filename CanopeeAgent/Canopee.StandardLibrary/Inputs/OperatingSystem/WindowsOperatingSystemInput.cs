@@ -1,11 +1,12 @@
 ﻿using Canopee.Common;
-using Canopee.Common.Events;
 using Canopee.StandardLibrary.Inputs.Batch;
 using System;
 using System.Collections.Generic;
 using System.Composition;
 using System.Text;
 using System.Text.RegularExpressions;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 
 namespace Canopee.StandardLibrary.Inputs.OperatingSystem
 {

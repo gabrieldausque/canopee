@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Composition;
 using Canopee.Common;
+using Canopee.Common.Logging;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

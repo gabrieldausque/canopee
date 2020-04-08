@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Composition;
 using Canopee.Common;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 

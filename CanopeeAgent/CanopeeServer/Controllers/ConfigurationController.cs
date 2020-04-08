@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using CanopeeServer.Datas.Dtos;
+using Canopee.Common.Configuration.AspNet.Dtos;
 using CanopeeServer.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Nest;

@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Canopee.Common.Events;
+﻿using System.Collections.Generic;
+using Canopee.Common.Pipelines.Events;
+using Microsoft.Extensions.Configuration;
 
-namespace Canopee.Common
+namespace Canopee.Common.Pipelines
 {
     public interface IInput
     {

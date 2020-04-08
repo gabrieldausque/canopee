@@ -1,4 +1,4 @@
-namespace CanopeeServer.Datas.Dtos
+namespace Canopee.Common.Configuration.AspNet.Dtos
 {
     public class AgentGroupDto
     {
@@ -6,6 +6,6 @@ namespace CanopeeServer.Datas.Dtos
 
         public string Group { get; set; }
         
-        public int Priority { get; set; }
+        public long Priority { get; set; }
     }
 }

@@ -24,13 +24,32 @@ namespace CanopeeServer.Datas
             _client = new ElasticClient(elasticSettings);
         }
 
-        public ICollection<AgentGroup> Groups()
+        public ICollection<AgentGroup> GetGroups(string agentId)
         {
-            var response = _client.Search<AgentGroup>(sd => sd
+            var response = _client.Search<JsonObject>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
-                .Query(q => q.MatchAll())
+                .Query(q => q
+                    .Bool(b => b
+                    .Should(s => s
+                        .Match(mq => mq
+                            .Field("AgentId")
+                            .Query(agentId)))))
             );
-            return response.Documents.ToList();
+            var agentGroups = new List<AgentGroup>();
+            foreach (var agentGroupAsJsonObject in response.Documents)
+            {
+                var cleanObject = JsonObject.CleanDocument(agentGroupAsJsonObject);
+                //cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate")));
+                agentGroups.Add(new AgentGroup()
+                    {
+                        Group = cleanObject.GetProperty<string>("Group"),
+                        Priority = cleanObject.GetProperty<long>("Priority"),
+                        AgentId = cleanObject.GetProperty<string>("AgentId"),
+                        EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
+                        EventId = cleanObject.GetProperty<string>("EventId")
+                    });
+            }
+            return agentGroups;
         }
 
         public AgentGroup AddGroup(AgentGroup newAgentGroup)
@@ -73,7 +92,7 @@ namespace CanopeeServer.Datas
         
         private bool GroupExists(string agentId, string group)
         {
-            var response = _client.Search<AgentGroup>(sd => sd
+            var response = _client.Search<JsonObject>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
                 .Query(q => q
                     .Bool(b => b

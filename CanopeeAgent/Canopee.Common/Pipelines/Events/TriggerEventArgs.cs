@@ -1,6 +1,6 @@
 using System;
 
-namespace Canopee.Common.Events
+namespace Canopee.Common.Pipelines.Events
 {
     public class TriggerEventArgs : EventArgs
     {

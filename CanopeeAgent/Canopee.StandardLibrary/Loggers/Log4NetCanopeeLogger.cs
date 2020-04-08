@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using Canopee.Common;
+using Canopee.Common.Logging;
 using Canopee.Core.Logging;
 using log4net;
 using log4net.Config;

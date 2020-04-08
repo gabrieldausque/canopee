@@ -1,5 +1,7 @@
 using System;
 using Canopee.Common;
+using Canopee.Common.Hosting;
+using Canopee.Common.Pipelines;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

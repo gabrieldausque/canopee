@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Canopee.Common;
+using Canopee.Common.Configuration;
+using Canopee.Common.Logging;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
 
@@ -26,6 +28,11 @@ namespace Canopee.Core.Configuration
                 }
                 return _instance;
             }
+        }
+
+        public void Start()
+        {
+            _synchronizer?.Start();
         }
 
         public event EventHandler OnNewConfiguration;
@@ -59,7 +66,7 @@ namespace Canopee.Core.Configuration
                 {
                     Logger.LogInfo("Configuration is synchronized");
                     _synchronizer = ConfigurationSynchronizerFactory.Instance()
-                        .GetSynchronizer(GetConfigurationServiceConfiguration());
+                        .GetSynchronizer(GetConfigurationServiceConfiguration(), GetLoggingConfiguration());
                     _synchronizer.OnNewConfiguration += (sender, arg) =>
                     {
                         arg.NewConfiguration.WriteTo(this.lastConfigurationFilePath);

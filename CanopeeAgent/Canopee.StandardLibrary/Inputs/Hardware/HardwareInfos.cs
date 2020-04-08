@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Canopee.Common;
-using Canopee.Common.Events;
+using Canopee.Common.Pipelines.Events;
 using Canopee.StandardLibrary.Inputs.Hardware;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware

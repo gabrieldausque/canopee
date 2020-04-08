@@ -1,6 +1,4 @@
-using Canopee.Common.Events;
-
-namespace Canopee.Common.Hosting.Web
+namespace Canopee.Common.Pipelines.Events
 {
     public class WebTriggerArg : TriggerEventArgs
     {

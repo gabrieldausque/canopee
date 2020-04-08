@@ -1,4 +1,7 @@
 using Canopee.Common;
+using Canopee.Common.Logging;
+using Canopee.Common.Pipelines;
+using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
 using Microsoft.Extensions.Configuration;
