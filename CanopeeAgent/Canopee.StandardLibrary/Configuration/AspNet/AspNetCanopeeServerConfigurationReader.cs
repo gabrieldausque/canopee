@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Composition;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using Canopee.Common;
+using Canopee.Common.Configuration;
 using Canopee.Common.Configuration.AspNet.Dtos;
 using Canopee.Common.Logging;
 using Canopee.Core.Configuration;
@@ -17,6 +19,7 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
     {
         private HttpClient _httpClient;
         private static ICanopeeLogger Logger = null;
+        private string _url;
 
         [ImportingConstructor]
         public AspNetCanopeeServerConfigurationReader()
@@ -27,6 +30,7 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
         public void Initialize(IConfiguration serviceConfiguration, IConfiguration loggingConfiguration)
         {
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
+            _url = serviceConfiguration["url"];
             if (bool.Parse(serviceConfiguration["NoSSLCheck"]))
             {
                 var handler = new HttpClientHandler();
@@ -41,9 +45,13 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
             var agentGroups = new List<AgentGroupDto>(); 
             try
             {
-                var url =
-                    $"{ConfigurationService.Instance.GetCanopeeConfiguration()["Configuration:url"]}/api/AgentGroup?agentId={agentId}";
-                var response = _httpClient.GetAsync(url).Result;
+                var uriBuilder =
+                    new UriBuilder(
+                        $"{_url}/api/AgentGroup")
+                    {
+                        Query = $"agentId={agentId}"
+                    };
+                var response = _httpClient.GetAsync(uriBuilder.Uri).Result;
                 var resultAsString = response.Content.ReadAsStringAsync().Result;
                 var jsonObjects = JsonSerializer.Deserialize<List<JsonObject>>(resultAsString);
                 foreach (var jsonObj in jsonObjects)
@@ -64,9 +72,26 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
             return agentGroups;
         }
 
-        public JsonObject GetConfiguration(string agentId, string @group)
+        public JsonObject GetConfiguration(string agentId = "Default", string @group = "Default")
         {
-            throw new System.NotImplementedException();
+            CanopeeConfigurationDto configuration = null;
+            try
+            {
+                
+                var uriBuilder = new UriBuilder($"{_url}/api/Configuration")
+                {
+                    Query=$"agentId={agentId}&group={group}"
+                };
+                var response = _httpClient.GetAsync(uriBuilder.Uri).Result;
+                var resultAsString = response.Content.ReadAsStringAsync().Result;
+                var jsonObjects = JsonSerializer.Deserialize<List<JsonObject>>(resultAsString);
+                return JsonObject.CleanDocument(jsonObjects.FirstOrDefault()).GetProperty<JsonObject>("configuration");
+            }
+            catch (Exception ex)
+            {
+                Logger?.LogError($"Error while getting configuration for agentId:{agentId} group:{group} : {ex}");
+            }
+            return null;
         }
     }
 }

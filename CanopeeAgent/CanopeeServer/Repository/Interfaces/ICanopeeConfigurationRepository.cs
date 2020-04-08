@@ -7,7 +7,7 @@ namespace CanopeeServer.Repository.Interfaces
     public interface ICanopeeConfigurationRepository
     {
         CanopeeConfiguration CreateOrUpdate(CanopeeConfigurationDto newCanopeeConfiguration);
-        ICollection<CanopeeConfiguration> GetConfigurations(string agentId, string @group);
+        ICollection<CanopeeConfiguration> GetConfigurations(string agentId = "", string @group ="");
         CanopeeConfiguration Delete(string agentId, string group);
     }
 }

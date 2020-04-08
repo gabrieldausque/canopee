@@ -157,6 +157,13 @@ PUT canopee-operatingsystem
 =======
 Helper
 =======
+POST canopee-configurations/_delete_by_query
+  "query": {
+    "match_all": {}
+  }
+}
+
+
 GET canopee-installationlogs/_search
 {
   "query":{

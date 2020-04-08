@@ -25,7 +25,7 @@ namespace CanopeeServer.Controllers
 
         [HttpGet]
         [ResponseCache(NoStore = true)]
-        public IActionResult Get([FromQuery] string agentId, [FromQuery] string group)
+        public IActionResult Get([FromQuery] string agentId = "", [FromQuery] string group = "")
         {
             var configurations = _repository.GetConfigurations(agentId, group);
             var dtos = new List<CanopeeConfigurationDto>(); 

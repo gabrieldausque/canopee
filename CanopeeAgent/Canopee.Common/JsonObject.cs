@@ -229,17 +229,17 @@ namespace Canopee.Common
         
         public bool TryGetProperty<T>(string propertyName, out T propertyValue)
         {
-            var isPropertyObtained = false;
             try
             {
                 propertyValue = GetProperty<T>(propertyName);
+                return true;
             }
             catch (Exception ex)
             {
                 propertyValue = default(T);
                 //swallow exception and do nothing
             }
-            return isPropertyObtained;
+            return false;
         }
 
         public override string ToString()

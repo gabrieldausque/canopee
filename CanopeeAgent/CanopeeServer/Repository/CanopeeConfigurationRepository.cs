@@ -29,7 +29,7 @@ namespace CanopeeServer.Repository
             return _db.AddConfiguration(canopeeConfiguration);
         }
 
-        public ICollection<CanopeeConfiguration> GetConfigurations(string agentId, string group)
+        public ICollection<CanopeeConfiguration> GetConfigurations(string agentId = "", string group = "")
         {
             return _db.GetConfiguration(agentId, group);
         }

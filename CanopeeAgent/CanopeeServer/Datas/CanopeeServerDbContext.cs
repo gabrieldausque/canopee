@@ -90,7 +90,7 @@ namespace CanopeeServer.Datas
             }
         }
         
-        private bool GroupExists(string agentId, string group)
+        private bool GroupExists(string agentId="", string group="")
         {
             var response = _client.Search<JsonObject>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
@@ -199,11 +199,11 @@ namespace CanopeeServer.Datas
                             .Index(CanopeeConfigurationIndexName)
                             .Query(q => q
                                 .Bool(b => b
-                                    .Should(s => s
+                                    .Must(s => s
                                         .Match(mq => mq
                                             .Field("AgentId")
                                             .Query(agentId)))
-                                    .Should(s => s
+                                    .Must(s => s
                                         .Match(mq => mq
                                             .Field("Group")
                                             .Query(group))))));
