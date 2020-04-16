@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Canopee.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Canopee.Common.Configuration.AspNet.Dtos.AgentGroupDto">
+            <summary>
+            Indicate a group that a specific agent belong to
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.AgentGroupDto.AgentId">
+            <summary>
+            The Agent Id
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.AgentGroupDto.Group">
+            <summary>
+            The group name
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.AgentGroupDto.Priority">
+            <summary>
+            The precedence order of the group for the agent
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Configuration.AspNet.Dtos.CanopeeConfigurationDto">
+            <summary>
+            A configuration associated to a agent and/or a group. 
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.CanopeeConfigurationDto.Configuration">
+            <summary>
+            The configuration as Json
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.CanopeeConfigurationDto.AgentId">
+            <summary>
+            The agent Id. If set to "Default", it concerns all agent
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.CanopeeConfigurationDto.Group">
+            <summary>
+            The group name. If set to "Default", it concerns all group (or no group) 
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.CanopeeConfigurationDto.Priority">
+            <summary>
+            The precedence of the configuration on other configuration (not used for now)
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Configuration.Events.NewConfigurationEventArg">
+            <summary>
+            Args for the new configuration event. When a new configuration is detected by the <see cref="T:Canopee.Common.Configuration.IConfigurationSynchronizer"/>, it raise <see cref="E:Canopee.Common.Configuration.IConfigurationSynchronizer.OnNewConfiguration"/> event.
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Configuration.Events.NewConfigurationEventArg.NewConfiguration">
+            <summary>
+            The new configuration obtained
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Configuration.ICanopeeConfigurationReader">
+            <summary>
+            The contract for an object to obtain groups or configurations
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationReader.Initialize(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initialize the reader, using configuration. 
+            </summary>
+            <param name="serviceConfiguration">the configuration service configuration</param>
+            <param name="loggingConfiguration">the logger configuration, needed to initialize the logger of the class</param>
+        </member>
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationReader.GetGroups(System.String)">
+            <summary>
+            Get all groups for an agent id
+            </summary>
+            <param name="agentId">the agent id to obtain the group for</param>
+            <returns>a collection of <see cref="T:Canopee.Common.Configuration.AspNet.Dtos.AgentGroupDto"/></returns>
+        </member>
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationReader.GetConfiguration(System.String,System.String)">
+            <summary>
+            Get a configuration for specified agent id and group.
+            </summary>
+            <param name="agentId">the agent id</param>
+            <param name="group">the group</param>
+            <returns>a <see cref="T:Canopee.Common.JsonObject"/> that contains all configurations</returns>
+        </member>
+        <member name="T:Canopee.Common.Configuration.IConfigurationSynchronizer">
+            <summary>
+            Contract for the object that will synchronize configuration from an external source.
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.GetConfigFromSource">
+            <summary>
+            Get the actual configuration from the external source 
+            </summary>
+            <returns>a <see cref="T:Canopee.Common.JsonObject"/> that contains all configuration properties</returns>
+        </member>
+        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.Start">
+            <summary>
+            Start the synchronization process
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.Stop">
+            <summary>
+            Stop the synchronization process
+            </summary>
+        </member>
+        <member name="E:Canopee.Common.Configuration.IConfigurationSynchronizer.OnNewConfiguration">
+            <summary>
+            Event raised if a new configuration is obtained from the source
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.Initialize(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initialize the synchronizer after creation
+            </summary>
+            <param name="configurationServiceConfiguration">the configuration service configuration</param>
+            <param name="loggingConfiguration">the logging configuration</param>
+        </member>
+        <member name="T:Canopee.Common.Hosting.ICanopeeHost">
+            <summary>
+            A host that will contain the Canope pipeline engine
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Hosting.ICanopeeHost.Start">
+            <summary>
+            Start the host
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Hosting.ICanopeeHost.Stop">
+            <summary>
+            Stop the host
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Logging.ICanopeeLogger">
+            <summary>
+            Contract for the object that will log information in object
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.Initialize(Microsoft.Extensions.Configuration.IConfiguration,System.Type)">
+            <summary>
+            Initialize the logger object
+            </summary>
+            <param name="loggerConfiguration">the logger configuration</param>
+            <param name="callerType">the type of the object that will call the logger</param>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.Log(System.String,Microsoft.Extensions.Logging.LogLevel,System.String,System.String,System.Int32)">
+            <summary>
+            Log a message with the specified log level
+            </summary>
+            <param name="message">the message to log</param>
+            <param name="level">the <see cref="T:Microsoft.Extensions.Logging.LogLevel"/> of the message</param>
+            <param name="memberName">the member name specified on runtime</param>
+            <param name="sourceFilePath">the source path specified on runtime</param>
+            <param name="sourceLineNumber">the source line number specified on runtime</param>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.LogInfo(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log a message with info level
+            </summary>
+            <param name="message">the message to log</param>
+            <param name="memberName">the member name specified on runtime</param>
+            <param name="sourceFilePath">the source path specified on runtime</param>
+            <param name="sourceLineNumber">the source line number specified on runtime</param>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.LogError(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log a message with error level
+            </summary>
+            <param name="message">the message to log</param>
+            <param name="memberName">the member name specified on runtime</param>
+            <param name="sourceFilePath">the source path specified on runtime</param>
+            <param name="sourceLineNumber">the source line number specified on runtime</param>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.LogWarning(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log a message with warning level
+            </summary>
+            <param name="message">the message to log</param>
+            <param name="memberName">the member name specified on runtime</param>
+            <param name="sourceFilePath">the source path specified on runtime</param>
+            <param name="sourceLineNumber">the source line number specified on runtime</param>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.LogCritical(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log a message with critical level
+            </summary>
+            <param name="message">the message to log</param>
+            <param name="memberName">the member name specified on runtime</param>
+            <param name="sourceFilePath">the source path specified on runtime</param>
+            <param name="sourceLineNumber">the source line number specified on runtime</param>
+        </member>
+        <member name="M:Canopee.Common.Logging.ICanopeeLogger.LogDebug(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Log a message with debug level
+            </summary>
+            <param name="message">the message to log</param>
+            <param name="memberName">the member name specified on runtime</param>
+            <param name="sourceFilePath">the source path specified on runtime</param>
+            <param name="sourceLineNumber">the source line number specified on runtime</param>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.Events.CollectedEvent">
+            <summary>
+            An event collected, transformed and output by a <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/>
+            Implements <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.#ctor">
+            <summary>
+            Default constructor of the constructor event
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.#ctor(System.String)">
+            <summary>
+            Constructor that specified the agentid of the collected event
+            </summary>
+            <param name="agentId"></param>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.CollectedEvent.EventId">
+            <summary>
+            The id of the collected event
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.CollectedEvent.EventDate">
+            <summary>
+              Inherit from <see cref="P:Canopee.Common.Pipelines.Events.ICollectedEvent.EventDate"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.CollectedEvent.AgentId">
+            <summary>
+              Inherit from <see cref="P:Canopee.Common.Pipelines.Events.ICollectedEvent.AgentId"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.CollectedEvent.Raw">
+            <summary>
+            Event as raw string.
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.CollectedEvent.ExtractedFields">
+            <summary>
+              Inherit from <see cref="P:Canopee.Common.Pipelines.Events.ICollectedEvent.ExtractedFields"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.GetFieldValue(System.String)">
+            <summary>
+              Inherit from <see cref="M:Canopee.Common.Pipelines.Events.ICollectedEvent.GetFieldValue(System.String)"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.SetFieldValue(System.String,System.Object)">
+            <summary>
+              Inherit from <see cref="M:Canopee.Common.Pipelines.Events.ICollectedEvent.SetFieldValue(System.String,System.Object)"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Canopee.Common.Pipelines.Events.CollectedEvent.ConvertTo``1" -->
+        <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.GetEventType">
+            <summary>
+              Inherit from <see cref="M:Canopee.Common.Pipelines.Events.ICollectedEvent.GetEventType"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.ICollectedEvent.EventDate">
+            <summary>
+            The <see cref="T:System.DateTime"/> when the event occured/collected
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.ICollectedEvent.AgentId">
+            <summary>
+            The agent id on which the event has been collected
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.ICollectedEvent.ExtractedFields">
+            <summary>
+            Extended fields of the event that may have been extracted or set by a <see cref="T:Canopee.Common.Pipelines.ITransform"/> during pipeline transformation
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.ICollectedEvent.GetFieldValue(System.String)">
+            <summary>
+            Get a field value (standard property or from extracted fields)
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.ICollectedEvent.SetFieldValue(System.String,System.Object)">
+            <summary>
+            Set a field value on standard properties or <see cref="P:Canopee.Common.Pipelines.Events.ICollectedEvent.ExtractedFields"/> if no standard properties are found for given name
+            </summary>
+            <param name="propertyName">the name of the property to set value for</param>
+            <param name="value">the value to set</param>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.ICollectedEvent.ConvertTo``1">
+            <summary>
+            Convert a <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to another <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+            </summary>
+            <typeparam name="T">the target <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> type</typeparam>
+            <returns>an instance of the target <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> type</returns>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.ICollectedEvent.GetEventType">
+            <summary>
+            Get the type of the event. May be a custom string, by default the full name of the class
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

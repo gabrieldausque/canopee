@@ -19,9 +19,9 @@ namespace Canopee.Core.Hosting.Console
             _collectPipelineManager = new CollectPipelineManager();
         }
 
-        public override void Run()
+        public override void Start()
         {
-            base.Run();
+            base.Start();
             Logger.LogInfo("Start the collector");
             System.Console.CancelKeyPress += this.StopFromInput;
             Logger.LogInfo("Press [CTRL+C] to close agent");

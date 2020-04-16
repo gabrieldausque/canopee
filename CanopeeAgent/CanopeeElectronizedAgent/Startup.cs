@@ -74,7 +74,7 @@ namespace CanopeeElectronizedAgent
             });
 
             var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as ICanopeeHost;
-            canopeeHost.Run();
+            canopeeHost.Start();
         }
     }
 }

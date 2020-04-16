@@ -26,7 +26,7 @@ namespace Canopee.Core.Hosting
         {
         }
 
-        public virtual void Run()
+        public virtual void Start()
         {
             Logger.LogInfo("Check if a process already exists");
             SetCanRun();

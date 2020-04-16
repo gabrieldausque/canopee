@@ -28,9 +28,9 @@ namespace Canopee.Core.Hosting.Web
             GC.SuppressFinalize(this);
         }
 
-        public override void Run()
+        public override void Start()
         {
-            base.Run();
+            base.Start();
             if (CanRun)
             {
                 Logger.LogInfo("Starting the trigger and the pipeline manager");

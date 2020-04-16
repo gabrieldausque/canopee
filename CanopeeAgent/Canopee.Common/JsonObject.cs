@@ -194,7 +194,7 @@ namespace Canopee.Common
                     }
                     catch (Exception ex)
                     {
-                        throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}");
+                        throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}", ex);
                     }
                 }
 
@@ -206,7 +206,7 @@ namespace Canopee.Common
                     }
                     catch (Exception ex)
                     {
-                        throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}");
+                        throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}", ex);
                     }
                 }
 
@@ -234,7 +234,7 @@ namespace Canopee.Common
                 propertyValue = GetProperty<T>(propertyName);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 propertyValue = default(T);
                 //swallow exception and do nothing

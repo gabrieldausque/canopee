@@ -22,7 +22,7 @@ namespace CanopeeAgent
                     $"CANOPEE_ENVIRONMENT = {Environment.ExpandEnvironmentVariables("%CANOPEE_ENVIRONMENT%")}");
                 
                 var host = new ConsoleCanopeeHost();
-                host.Run();
+                host.Start();
                 Console.WriteLine("Exiting ...");
             }
             catch (Exception e)

@@ -18,11 +18,11 @@ namespace CanopeeElectronizedAgent.Host
             
         }
 
-        public override void Run()
+        public override void Start()
         {
             SetCanRun();
             CreateElectronRenderer().Wait();
-            base.Run();
+            base.Start();
         }
 
         public async Task CreateElectronRenderer ()

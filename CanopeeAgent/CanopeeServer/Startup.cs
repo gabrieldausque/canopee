@@ -74,7 +74,7 @@ namespace CanopeeServer
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             var canopeeHost = app.ApplicationServices.GetService(typeof(ICanopeeHost)) as ICanopeeHost;
-            canopeeHost.Run();
+            canopeeHost.Start();
         }
     }
 }
