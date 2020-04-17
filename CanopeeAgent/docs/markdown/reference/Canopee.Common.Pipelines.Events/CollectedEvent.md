@@ -17,7 +17,7 @@ public class CollectedEvent : ICollectedEvent
 | [EventId](CollectedEvent/EventId.md) { get; set; } | The id of the collected event |
 | [ExtractedFields](CollectedEvent/ExtractedFields.md) { get; set; } | Inherit from [`ExtractedFields`](ICollectedEvent/ExtractedFields.md) |
 | [Raw](CollectedEvent/Raw.md) { get; set; } | Event as raw string. |
-| [ConvertTo&lt;T&gt;](CollectedEvent/ConvertTo.md)() |  |
+| [ConvertTo&lt;T&gt;](CollectedEvent/ConvertTo.md)() | Inherit from [`ConvertTo`](ICollectedEvent/ConvertTo.md) |
 | [GetEventType](CollectedEvent/GetEventType.md)() | Inherit from [`GetEventType`](ICollectedEvent/GetEventType.md) |
 | [GetFieldValue](CollectedEvent/GetFieldValue.md)(…) | Inherit from [`GetFieldValue`](ICollectedEvent/GetFieldValue.md) |
 | [SetFieldValue](CollectedEvent/SetFieldValue.md)(…) | Inherit from [`SetFieldValue`](ICollectedEvent/SetFieldValue.md) |

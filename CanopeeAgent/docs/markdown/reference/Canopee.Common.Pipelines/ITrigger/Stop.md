@@ -1,5 +1,7 @@
 # ITrigger.Stop method
 
+Stop the listening process
+
 ```csharp
 public void Stop()
 ```

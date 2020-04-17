@@ -1,5 +1,7 @@
 # ITrigger.OwnerName property
 
+The [`Name`](../ICollectPipeline/Name.md) that owns this [`ITrigger`](../ITrigger.md)
+
 ```csharp
 public string OwnerName { get; set; }
 ```

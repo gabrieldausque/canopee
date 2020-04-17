@@ -1,5 +1,7 @@
 # WebTriggerArg class
 
+A [`TriggerEventArgs`](TriggerEventArgs.md) specific to a web context
+
 ```csharp
 public class WebTriggerArg : TriggerEventArgs
 ```
@@ -8,7 +10,7 @@ public class WebTriggerArg : TriggerEventArgs
 
 | name | description |
 | --- | --- |
-| [WebTriggerArg](WebTriggerArg/WebTriggerArg.md)(…) |  |
+| [WebTriggerArg](WebTriggerArg/WebTriggerArg.md)(…) | Constructor that set up a CollectedEvent that may have been transmitted through a web call |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # ITrigger.Start method
 
+Start the listening process that will raise the trigger
+
 ```csharp
 public void Start()
 ```

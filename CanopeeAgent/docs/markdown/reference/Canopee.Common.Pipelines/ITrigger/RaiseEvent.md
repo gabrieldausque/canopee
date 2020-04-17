@@ -1,8 +1,15 @@
 # ITrigger.RaiseEvent method
 
+Raise the trigger when needed
+
 ```csharp
 public void RaiseEvent(object sender, TriggerEventArgs triggerArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| sender | The [`ITrigger`](../ITrigger.md) itself |
+| triggerArgs | The arg specific to the [`ITrigger`](../ITrigger.md) |
 
 ## See Also
 

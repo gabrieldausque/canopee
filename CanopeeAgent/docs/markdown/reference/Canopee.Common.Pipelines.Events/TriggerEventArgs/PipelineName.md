@@ -1,5 +1,7 @@
 # TriggerEventArgs.PipelineName property
 
+The name of the pipeline to trigger
+
 ```csharp
 public string PipelineName { get; set; }
 ```

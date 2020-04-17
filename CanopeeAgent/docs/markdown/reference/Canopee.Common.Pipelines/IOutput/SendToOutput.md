@@ -1,8 +1,14 @@
 # IOutput.SendToOutput method
 
+Send a collected event to a specific output
+
 ```csharp
 public void SendToOutput(ICollectedEvent collectedEvent)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEvent | send a collected event to a specific output |
 
 ## See Also
 

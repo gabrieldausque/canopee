@@ -1,5 +1,7 @@
 # ITransform interface
 
+The interface of the object that is in charge of enrich one or more event in a [`ICollectPipeline`](ICollectPipeline.md) collect process after the extraction of it by a [`IInput`](IInput.md) object
+
 ```csharp
 public interface ITransform
 ```
@@ -9,7 +11,7 @@ public interface ITransform
 | name | description |
 | --- | --- |
 | [Initialize](ITransform/Initialize.md)(…) |  |
-| [Transform](ITransform/Transform.md)(…) |  |
+| [Transform](ITransform/Transform.md)(…) | Transform a [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) to another [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) implementation or simply enrich it by adding properties to the [`ExtractedFields`](../Canopee.Common.Pipelines.Events/ICollectedEvent/ExtractedFields.md) property |
 
 ## See Also
 

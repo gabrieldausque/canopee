@@ -1,5 +1,7 @@
 # ICollectPipeline.Transforms property
 
+The collection of [`ITransform`](../ITransform.md) that will complete extracted information from [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) collected by the [`Input`](Input.md)
+
 ```csharp
 public ICollection<ITransform> Transforms { get; set; }
 ```

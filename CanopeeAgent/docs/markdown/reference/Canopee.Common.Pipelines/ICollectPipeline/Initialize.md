@@ -1,8 +1,14 @@
 # ICollectPipeline.Initialize method
 
+Initialize the pipeline based on a configuration object
+
 ```csharp
 public void Initialize(IConfigurationSection configuration)
 ```
+
+| parameter | description |
+| --- | --- |
+| configuration | the pipeline configuration |
 
 ## See Also
 

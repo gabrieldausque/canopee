@@ -1,5 +1,7 @@
 # ITrigger interface
 
+The interface of the object that is in charge of starting the [`Collect`](ICollectPipeline/Collect.md) process
+
 ```csharp
 public interface ITrigger : IDisposable
 ```
@@ -8,13 +10,13 @@ public interface ITrigger : IDisposable
 
 | name | description |
 | --- | --- |
-| [OwnerId](ITrigger/OwnerId.md) { get; set; } |  |
-| [OwnerName](ITrigger/OwnerName.md) { get; set; } |  |
-| [Initialize](ITrigger/Initialize.md)(…) |  |
-| [RaiseEvent](ITrigger/RaiseEvent.md)(…) |  |
-| [Start](ITrigger/Start.md)() |  |
-| [Stop](ITrigger/Stop.md)() |  |
-| [SubscribeToTrigger](ITrigger/SubscribeToTrigger.md)(…) |  |
+| [OwnerId](ITrigger/OwnerId.md) { get; set; } | The !:ICollectedPipeline.Id that owns this [`ITrigger`](ITrigger.md) |
+| [OwnerName](ITrigger/OwnerName.md) { get; set; } | The [`Name`](ICollectPipeline/Name.md) that owns this [`ITrigger`](ITrigger.md) |
+| [Initialize](ITrigger/Initialize.md)(…) | Initialize this [`ITrigger`](ITrigger.md) with its "Trigger" configuration |
+| [RaiseEvent](ITrigger/RaiseEvent.md)(…) | Raise the trigger when needed |
+| [Start](ITrigger/Start.md)() | Start the listening process that will raise the trigger |
+| [Stop](ITrigger/Stop.md)() | Stop the listening process |
+| [SubscribeToTrigger](ITrigger/SubscribeToTrigger.md)(…) | Subscribe to the trigger event for a specific handler |
 
 ## See Also
 

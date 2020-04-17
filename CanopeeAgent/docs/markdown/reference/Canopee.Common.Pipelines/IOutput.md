@@ -1,5 +1,7 @@
 # IOutput interface
 
+The interface of the object that is in charge of pushing [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) of a [`Collect`](ICollectPipeline/Collect.md) process to an external output
+
 ```csharp
 public interface IOutput
 ```
@@ -8,8 +10,8 @@ public interface IOutput
 
 | name | description |
 | --- | --- |
-| [Initialize](IOutput/Initialize.md)(…) |  |
-| [SendToOutput](IOutput/SendToOutput.md)(…) |  |
+| [Initialize](IOutput/Initialize.md)(…) | Initialize the [`IOutput`](IOutput.md) with its specific "Output" configuration |
+| [SendToOutput](IOutput/SendToOutput.md)(…) | Send a collected event to a specific output |
 
 ## See Also
 

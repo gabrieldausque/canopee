@@ -1,8 +1,15 @@
 # WebTriggerArg constructor
 
+Constructor that set up a CollectedEvent that may have been transmitted through a web call
+
 ```csharp
 public WebTriggerArg(string pipelineId, CollectedEvent collectedEvent)
 ```
+
+| parameter | description |
+| --- | --- |
+| pipelineId | the id of the pipeline to trigger |
+| collectedEvent | the collected event to be treated by the pipeline |
 
 ## See Also
 

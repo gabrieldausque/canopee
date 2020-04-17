@@ -1,8 +1,14 @@
 # ITransform.Transform method
 
+Transform a [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) to another [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) implementation or simply enrich it by adding properties to the [`ExtractedFields`](../../Canopee.Common.Pipelines.Events/ICollectedEvent/ExtractedFields.md) property
+
 ```csharp
 public ICollectedEvent Transform(ICollectedEvent input)
 ```
+
+| parameter | description |
+| --- | --- |
+| input | The [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) to transform or enrich |
 
 ## See Also
 

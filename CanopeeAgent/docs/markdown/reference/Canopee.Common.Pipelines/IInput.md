@@ -1,5 +1,7 @@
 # IInput interface
 
+The interface of the object that is in charge of collecting one or more event in a [`ICollectPipeline`](ICollectPipeline.md) collect process
+
 ```csharp
 public interface IInput
 ```
@@ -8,9 +10,9 @@ public interface IInput
 
 | name | description |
 | --- | --- |
-| [AgentId](IInput/AgentId.md) { get; set; } |  |
-| [Collect](IInput/Collect.md)(…) |  |
-| [Initialize](IInput/Initialize.md)(…) |  |
+| [AgentId](IInput/AgentId.md) { get; set; } | The agent Id that will be populated in all [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
+| [Collect](IInput/Collect.md)(…) | Collect one or more [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) from a source |
+| [Initialize](IInput/Initialize.md)(…) | Initialize the [`IInput`](IInput.md) object with its specific configuration |
 
 ## See Also
 

@@ -1,8 +1,14 @@
 # IInput.Collect method
 
+Collect one or more [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) from a source
+
 ```csharp
 public ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | The arg specific to the [`ITrigger`](../ITrigger.md) that has raised the collect process |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # TriggerEventArgs.Raw property
 
+An object specific to the trigger
+
 ```csharp
 public object Raw { get; set; }
 ```

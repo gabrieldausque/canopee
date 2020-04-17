@@ -1,5 +1,7 @@
 # ITrigger.OwnerId property
 
+The !:ICollectedPipeline.Id that owns this [`ITrigger`](../ITrigger.md)
+
 ```csharp
 public string OwnerId { get; set; }
 ```

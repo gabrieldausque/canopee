@@ -1,5 +1,7 @@
 # CollectedEvent.ConvertTo&lt;T&gt; method
 
+Inherit from [`ConvertTo`](../ICollectedEvent/ConvertTo.md)
+
 ```csharp
 public T ConvertTo<T>()
     where T : ICollectedEvent, new()

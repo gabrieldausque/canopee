@@ -104,7 +104,7 @@ namespace Canopee.Common.Pipelines.Events
         }
 
         /// <summary>
-        ///   Inherit from <see cref="ICollectedEvent.ConvertTo<T>"/>
+        ///   Inherit from <see cref="ICollectedEvent.ConvertTo"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
         public T ConvertTo<T>() where T:ICollectedEvent,new()

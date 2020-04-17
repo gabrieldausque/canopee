@@ -1,5 +1,7 @@
 # ICollectPipeline.Stop method
 
+Stop to listen to the trigger
+
 ```csharp
 public void Stop()
 ```

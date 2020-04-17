@@ -1,8 +1,14 @@
 # ICollectPipeline.Collect method
 
+This method will start immediately the collect, transform and load of one or more [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md). This will be triggered by the trigger of the pipeline
+
 ```csharp
 public void Collect(TriggerEventArgs fromTriggerArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerArgs |  |
 
 ## See Also
 

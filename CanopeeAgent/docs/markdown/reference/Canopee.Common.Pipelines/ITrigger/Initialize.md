@@ -1,8 +1,14 @@
 # ITrigger.Initialize method
 
+Initialize this [`ITrigger`](../ITrigger.md) with its "Trigger" configuration
+
 ```csharp
 public void Initialize(IConfigurationSection triggerParameters)
 ```
+
+| parameter | description |
+| --- | --- |
+| triggerParameters | The "Trigger" configuration |
 
 ## See Also
 

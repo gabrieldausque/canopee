@@ -1,5 +1,7 @@
 # ICollectPipeline.Run method
 
+Start to listen to the trigger to make the collect of [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) wanted
+
 ```csharp
 public void Run()
 ```

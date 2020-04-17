@@ -1,5 +1,7 @@
 # ICollectPipeline.Output property
 
+The [`IOutput`](../IOutput.md) object that will send the collection of extracted and transformed [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md)
+
 ```csharp
 public IOutput Output { get; set; }
 ```

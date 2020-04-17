@@ -1,8 +1,14 @@
 # IOutput.Initialize method
 
+Initialize the [`IOutput`](../IOutput.md) with its specific "Output" configuration
+
 ```csharp
 public void Initialize(IConfiguration configurationOutput)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationOutput | configuration output |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # ICollectPipeline.Input property
 
+The [`IInput`](../IInput.md) that will collect one or more [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) when the trigger is raised
+
 ```csharp
 public IInput Input { get; set; }
 ```

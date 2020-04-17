@@ -259,7 +259,12 @@
             </summary>
             <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Canopee.Common.Pipelines.Events.CollectedEvent.ConvertTo``1" -->
+        <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.ConvertTo``1">
+            <summary>
+              Inherit from <see cref="M:Canopee.Common.Pipelines.Events.ICollectedEvent.ConvertTo``1"/>
+            </summary>
+            <inheritdoc cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+        </member>
         <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.GetEventType">
             <summary>
               Inherit from <see cref="M:Canopee.Common.Pipelines.Events.ICollectedEvent.GetEventType"/>
@@ -307,6 +312,205 @@
             Get the type of the event. May be a custom string, by default the full name of the class
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.Events.TriggerEventArgs">
+            <summary>
+            The arg of an event that triggered a pipeline.
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.TriggerEventArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.TriggerEventArgs.#ctor(System.String,System.String)">
+            <summary>
+            Create a trigger event arg with setting the name of the pipeline to trigger and its Id
+            </summary>
+            <param name="name">The name of the pipeline</param>
+            <param name="Id">The id of the pipeline</param>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.TriggerEventArgs.PipelineName">
+            <summary>
+            The name of the pipeline to trigger 
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.TriggerEventArgs.PipelineId">
+            <summary>
+            The id of the pipeline to trigger
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.Events.TriggerEventArgs.Raw">
+            <summary>
+            An object specific to the trigger
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.Events.WebTriggerArg">
+            <summary>
+            A <see cref="T:Canopee.Common.Pipelines.Events.TriggerEventArgs"/> specific to a web context
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.Events.WebTriggerArg.#ctor(System.String,Canopee.Common.Pipelines.Events.CollectedEvent)">
+            <summary>
+            Constructor that set up a CollectedEvent that may have been transmitted through a web call
+            </summary>
+            <param name="pipelineId">the id of the pipeline to trigger</param>
+            <param name="collectedEvent">the collected event to be treated by the pipeline</param>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.ICollectPipeline">
+            <summary>
+            The interface for an extract, transform and load process that is the heart of Canopee platform.
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Name">
+            <summary>
+            The name of the current <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/>
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Id">
+            <summary>
+            The id of the current <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/>. Must be unique over the application.
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Initialize the pipeline based on a configuration object
+            </summary>
+            <param name="configuration">the pipeline configuration</param>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Collect(Canopee.Common.Pipelines.Events.TriggerEventArgs)">
+            <summary>
+            This method will start immediately the collect, transform and load of one or more <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>. This will be triggered by the trigger of the pipeline
+            </summary>
+            <param name="fromTriggerArgs"></param>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Run">
+            <summary>
+            Start to listen to the trigger to make the collect of <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> wanted
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Stop">
+            <summary>
+            Stop to listen to the trigger
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Input">
+            <summary>
+            The <see cref="T:Canopee.Common.Pipelines.IInput"/> that will collect one or more <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> when the trigger is raised
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Transforms">
+            <summary>
+            The collection of <see cref="T:Canopee.Common.Pipelines.ITransform"/> that will complete extracted information from <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> collected by the <see cref="P:Canopee.Common.Pipelines.ICollectPipeline.Input"/>
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Output">
+            <summary>
+            The <see cref="T:Canopee.Common.Pipelines.IOutput"/> object that will send the collection of extracted and transformed <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Trigger">
+            <summary>
+            The <see cref="T:Canopee.Common.Pipelines.ITrigger"/> that will be start the collect of the <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/> that owns it
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.IInput">
+            <summary>
+            The interface of the object that is in charge of collecting one or more event in a <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/> collect process
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.IInput.Collect(Canopee.Common.Pipelines.Events.TriggerEventArgs)">
+            <summary>
+            Collect one or more <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> from a source
+            </summary>
+            <param name="fromTriggerEventArgs">The arg specific to the <see cref="T:Canopee.Common.Pipelines.ITrigger"/> that has raised the collect process</param>
+            <returns></returns>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.IInput.Initialize(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Initialize the <see cref="T:Canopee.Common.Pipelines.IInput"/> object with its specific configuration
+            </summary>
+            <param name="configurationInput">the "Input" configuration</param>
+            <param name="agentId">the agentId that will be populated in all <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/></param>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.IInput.AgentId">
+            <summary>
+            The agent Id that will be populated in all <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+            </summary>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.IOutput">
+            <summary>
+            The interface of the object that is in charge of pushing <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> of a <see cref="M:Canopee.Common.Pipelines.ICollectPipeline.Collect(Canopee.Common.Pipelines.Events.TriggerEventArgs)"/> process to an external output
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.IOutput.SendToOutput(Canopee.Common.Pipelines.Events.ICollectedEvent)">
+            <summary>
+            Send a collected event to a specific output
+            </summary>
+            <param name="collectedEvent">send a collected event to a specific output</param>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.IOutput.Initialize(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initialize the <see cref="T:Canopee.Common.Pipelines.IOutput"/> with its specific "Output" configuration
+            </summary>
+            <param name="configurationOutput">configuration output</param>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.ITransform">
+            <summary>
+            The interface of the object that is in charge of enrich one or more event in a <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/> collect process after the extraction of it by a <see cref="T:Canopee.Common.Pipelines.IInput"/> object
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITransform.Transform(Canopee.Common.Pipelines.Events.ICollectedEvent)">
+            <summary>
+            Transform a <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to another <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> implementation or simply enrich it by adding properties to the <see cref="P:Canopee.Common.Pipelines.Events.ICollectedEvent.ExtractedFields"/> property
+            </summary>
+            <param name="input">The <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to transform or enrich</param>
+            <returns></returns>
+        </member>
+        <member name="T:Canopee.Common.Pipelines.ITrigger">
+            <summary>
+            The interface of the object that is in charge of starting the <see cref="M:Canopee.Common.Pipelines.ICollectPipeline.Collect(Canopee.Common.Pipelines.Events.TriggerEventArgs)"/> process
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ITrigger.OwnerName">
+            <summary>
+            The <see cref="P:Canopee.Common.Pipelines.ICollectPipeline.Name"/> that owns this <see cref="T:Canopee.Common.Pipelines.ITrigger"/>
+            </summary>
+        </member>
+        <member name="P:Canopee.Common.Pipelines.ITrigger.OwnerId">
+            <summary>
+            The <see cref="!:ICollectedPipeline.Id" /> that owns this <see cref="T:Canopee.Common.Pipelines.ITrigger"/>
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITrigger.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Initialize this <see cref="T:Canopee.Common.Pipelines.ITrigger"/> with its "Trigger" configuration
+            </summary>
+            <param name="triggerParameters">The "Trigger" configuration </param>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITrigger.Start">
+            <summary>
+            Start the listening process that will raise the trigger
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITrigger.Stop">
+            <summary>
+            Stop the listening process
+            </summary>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITrigger.RaiseEvent(System.Object,Canopee.Common.Pipelines.Events.TriggerEventArgs)">
+            <summary>
+            Raise the trigger when needed
+            </summary>
+            <param name="sender">The <see cref="T:Canopee.Common.Pipelines.ITrigger"/> itself</param>
+            <param name="triggerArgs">The arg specific to the <see cref="T:Canopee.Common.Pipelines.ITrigger"/></param>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITrigger.SubscribeToTrigger(System.EventHandler{Canopee.Common.Pipelines.Events.TriggerEventArgs},Canopee.Common.Pipelines.TriggerSubscriptionContext)">
+            <summary>
+            Subscribe to the trigger event for a specific handler
+            </summary>
+            <param name="eventHandler">The eventHandler that will be executed when needed by the trigger</param>
+            <param name="context">The context of the subscription, often the name and id of a <see cref="!:ICollectedPipeline"/></param>
         </member>
     </members>
 </doc>

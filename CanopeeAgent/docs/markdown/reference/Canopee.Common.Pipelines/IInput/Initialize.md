@@ -1,8 +1,15 @@
 # IInput.Initialize method
 
+Initialize the [`IInput`](../IInput.md) object with its specific configuration
+
 ```csharp
 public void Initialize(IConfiguration configurationInput, string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationInput | the "Input" configuration |
+| agentId | the agentId that will be populated in all [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
 
 ## See Also
 

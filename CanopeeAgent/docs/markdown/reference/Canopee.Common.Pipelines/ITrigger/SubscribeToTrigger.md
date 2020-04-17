@@ -1,9 +1,16 @@
 # ITrigger.SubscribeToTrigger method
 
+Subscribe to the trigger event for a specific handler
+
 ```csharp
 public void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, 
     TriggerSubscriptionContext context)
 ```
+
+| parameter | description |
+| --- | --- |
+| eventHandler | The eventHandler that will be executed when needed by the trigger |
+| context | The context of the subscription, often the name and id of a !:ICollectedPipeline |
 
 ## See Also
 

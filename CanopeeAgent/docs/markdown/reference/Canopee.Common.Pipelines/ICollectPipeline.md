@@ -1,5 +1,7 @@
 # ICollectPipeline interface
 
+The interface for an extract, transform and load process that is the heart of Canopee platform.
+
 ```csharp
 public interface ICollectPipeline : IDisposable
 ```
@@ -8,14 +10,16 @@ public interface ICollectPipeline : IDisposable
 
 | name | description |
 | --- | --- |
-| [Input](ICollectPipeline/Input.md) { get; set; } |  |
-| [Output](ICollectPipeline/Output.md) { get; set; } |  |
-| [Transforms](ICollectPipeline/Transforms.md) { get; set; } |  |
-| [Trigger](ICollectPipeline/Trigger.md) { get; set; } |  |
-| [Collect](ICollectPipeline/Collect.md)(…) |  |
-| [Initialize](ICollectPipeline/Initialize.md)(…) |  |
-| [Run](ICollectPipeline/Run.md)() |  |
-| [Stop](ICollectPipeline/Stop.md)() |  |
+| [Id](ICollectPipeline/Id.md) { get; } | The id of the current [`ICollectPipeline`](ICollectPipeline.md). Must be unique over the application. |
+| [Input](ICollectPipeline/Input.md) { get; set; } | The [`IInput`](IInput.md) that will collect one or more [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) when the trigger is raised |
+| [Name](ICollectPipeline/Name.md) { get; } | The name of the current [`ICollectPipeline`](ICollectPipeline.md) |
+| [Output](ICollectPipeline/Output.md) { get; set; } | The [`IOutput`](IOutput.md) object that will send the collection of extracted and transformed [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
+| [Transforms](ICollectPipeline/Transforms.md) { get; set; } | The collection of [`ITransform`](ITransform.md) that will complete extracted information from [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) collected by the [`Input`](ICollectPipeline/Input.md) |
+| [Trigger](ICollectPipeline/Trigger.md) { get; set; } | The [`ITrigger`](ITrigger.md) that will be start the collect of the [`ICollectPipeline`](ICollectPipeline.md) that owns it |
+| [Collect](ICollectPipeline/Collect.md)(…) | This method will start immediately the collect, transform and load of one or more [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md). This will be triggered by the trigger of the pipeline |
+| [Initialize](ICollectPipeline/Initialize.md)(…) | Initialize the pipeline based on a configuration object |
+| [Run](ICollectPipeline/Run.md)() | Start to listen to the trigger to make the collect of [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) wanted |
+| [Stop](ICollectPipeline/Stop.md)() | Stop to listen to the trigger |
 
 ## See Also
 

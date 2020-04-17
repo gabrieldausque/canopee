@@ -1,5 +1,7 @@
 # TriggerEventArgs class
 
+The arg of an event that triggered a pipeline.
+
 ```csharp
 public class TriggerEventArgs : EventArgs
 ```
@@ -8,11 +10,11 @@ public class TriggerEventArgs : EventArgs
 
 | name | description |
 | --- | --- |
-| [TriggerEventArgs](TriggerEventArgs/TriggerEventArgs.md)() | The default constructor. |
-| [TriggerEventArgs](TriggerEventArgs/TriggerEventArgs.md)(…) |  |
-| [PipelineId](TriggerEventArgs/PipelineId.md) { get; set; } |  |
-| [PipelineName](TriggerEventArgs/PipelineName.md) { get; set; } |  |
-| [Raw](TriggerEventArgs/Raw.md) { get; set; } |  |
+| [TriggerEventArgs](TriggerEventArgs/TriggerEventArgs.md)() | Default constructor |
+| [TriggerEventArgs](TriggerEventArgs/TriggerEventArgs.md)(…) | Create a trigger event arg with setting the name of the pipeline to trigger and its Id |
+| [PipelineId](TriggerEventArgs/PipelineId.md) { get; set; } | The id of the pipeline to trigger |
+| [PipelineName](TriggerEventArgs/PipelineName.md) { get; set; } | The name of the pipeline to trigger |
+| [Raw](TriggerEventArgs/Raw.md) { get; set; } | An object specific to the trigger |
 
 ## See Also
 

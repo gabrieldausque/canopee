@@ -1,5 +1,7 @@
 # ICollectPipeline.Trigger property
 
+The [`ITrigger`](../ITrigger.md) that will be start the collect of the [`ICollectPipeline`](../ICollectPipeline.md) that owns it
+
 ```csharp
 public ITrigger Trigger { get; set; }
 ```

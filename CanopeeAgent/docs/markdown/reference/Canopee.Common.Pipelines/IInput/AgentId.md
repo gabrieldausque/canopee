@@ -1,5 +1,7 @@
 # IInput.AgentId property
 
+The agent Id that will be populated in all [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md)
+
 ```csharp
 public string AgentId { get; set; }
 ```
