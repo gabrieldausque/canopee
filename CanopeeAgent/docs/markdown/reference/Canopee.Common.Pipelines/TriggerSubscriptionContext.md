@@ -1,5 +1,7 @@
 # TriggerSubscriptionContext class
 
+The context of a subscription done on a [`ITrigger`](ITrigger.md)
+
 ```csharp
 public class TriggerSubscriptionContext
 ```
@@ -9,8 +11,8 @@ public class TriggerSubscriptionContext
 | name | description |
 | --- | --- |
 | [TriggerSubscriptionContext](TriggerSubscriptionContext/TriggerSubscriptionContext.md)() | The default constructor. |
-| [PipelineId](TriggerSubscriptionContext/PipelineId.md) { get; set; } |  |
-| [PipelineName](TriggerSubscriptionContext/PipelineName.md) { get; set; } |  |
+| [PipelineId](TriggerSubscriptionContext/PipelineId.md) { get; set; } | The id of the pipeline that make the subscription |
+| [PipelineName](TriggerSubscriptionContext/PipelineName.md) { get; set; } | The name of the pipeline that make a subscription |
 
 ## See Also
 

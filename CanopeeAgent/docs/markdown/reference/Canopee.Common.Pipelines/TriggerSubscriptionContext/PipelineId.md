@@ -1,5 +1,7 @@
 # TriggerSubscriptionContext.PipelineId property
 
+The id of the pipeline that make the subscription
+
 ```csharp
 public string PipelineId { get; set; }
 ```

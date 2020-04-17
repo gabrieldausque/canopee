@@ -14,7 +14,7 @@ namespace Canopee.Common.Pipelines
         /// </summary>
         string OwnerName { get; set; }
         /// <summary>
-        /// The <see cref="ICollectedPipeline.Id" /> that owns this <see cref="ITrigger"/>
+        /// The <see cref="ICollectPipeline.Id" /> that owns this <see cref="ITrigger"/>
         /// </summary>
         public string OwnerId { get; set; }
         /// <summary>
@@ -40,7 +40,7 @@ namespace Canopee.Common.Pipelines
         /// Subscribe to the trigger event for a specific handler
         /// </summary>
         /// <param name="eventHandler">The eventHandler that will be executed when needed by the trigger</param>
-        /// <param name="context">The context of the subscription, often the name and id of a <see cref="ICollectedPipeline"/></param>
+        /// <param name="context">The context of the subscription, often the name and id of a <see cref="ICollectPipeline"/></param>
         void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler, TriggerSubscriptionContext context);
     }
 }

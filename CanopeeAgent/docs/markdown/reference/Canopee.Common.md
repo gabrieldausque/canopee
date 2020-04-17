@@ -4,7 +4,7 @@
 
 | public type | description |
 | --- | --- |
-| class [JsonObject](Canopee.Common/JsonObject.md) |  |
+| class [JsonObject](Canopee.Common/JsonObject.md) | This class represent a json structure as an object, and allow some features as load from a text file, a JsonDocument, and write a json to a file. This class was created to manage issues on managing configuration file easily and dynamically, but it is also useful for exchange between purpose. |
 
 ## Canopee.Common.Configuration namespace
 
@@ -47,7 +47,7 @@
 | interface [IOutput](Canopee.Common.Pipelines/IOutput.md) | The interface of the object that is in charge of pushing [`ICollectedEvent`](Canopee.Common.Pipelines.Events/ICollectedEvent.md) of a [`Collect`](Canopee.Common.Pipelines/ICollectPipeline/Collect.md) process to an external output |
 | interface [ITransform](Canopee.Common.Pipelines/ITransform.md) | The interface of the object that is in charge of enrich one or more event in a [`ICollectPipeline`](Canopee.Common.Pipelines/ICollectPipeline.md) collect process after the extraction of it by a [`IInput`](Canopee.Common.Pipelines/IInput.md) object |
 | interface [ITrigger](Canopee.Common.Pipelines/ITrigger.md) | The interface of the object that is in charge of starting the [`Collect`](Canopee.Common.Pipelines/ICollectPipeline/Collect.md) process |
-| class [TriggerSubscriptionContext](Canopee.Common.Pipelines/TriggerSubscriptionContext.md) |  |
+| class [TriggerSubscriptionContext](Canopee.Common.Pipelines/TriggerSubscriptionContext.md) | The context of a subscription done on a [`ITrigger`](Canopee.Common.Pipelines/ITrigger.md) |
 
 ## Canopee.Common.Pipelines.Events namespace
 

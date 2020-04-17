@@ -1,8 +1,14 @@
 # JsonObject.WriteTo method
 
+Write the current [`JsonObject`](../JsonObject.md) to the specified filepath
+
 ```csharp
 public void WriteTo(string filePath)
 ```
+
+| parameter | description |
+| --- | --- |
+| filePath | the filepath to write to |
 
 ## See Also
 

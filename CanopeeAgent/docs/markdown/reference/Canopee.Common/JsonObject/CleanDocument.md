@@ -1,8 +1,18 @@
 # JsonObject.CleanDocument method
 
+Convert all JsonDocument that may have been loaded from a webcontext without correct conversion
+
 ```csharp
-public static JsonObject CleanDocument(JsonObject config)
+public static JsonObject CleanDocument(JsonObject incompleteLoadedJsonObject)
 ```
+
+| parameter | description |
+| --- | --- |
+| incompleteLoadedJsonObject | a JsonObject that may have not been loaded correctly (through [`LoadFromFile`](LoadFromFile.md) or [`LoadFromJsonDocument`](LoadFromJsonDocument.md) |
+
+## Return Value
+
+A clean and correctly load JsonObject with complete conversion of child element
 
 ## See Also
 

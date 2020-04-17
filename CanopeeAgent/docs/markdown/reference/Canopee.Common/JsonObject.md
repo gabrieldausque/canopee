@@ -1,5 +1,7 @@
 # JsonObject class
 
+This class represent a json structure as an object, and allow some features as load from a text file, a JsonDocument, and write a json to a file. This class was created to manage issues on managing configuration file easily and dynamically, but it is also useful for exchange between purpose.
+
 ```csharp
 public class JsonObject : Dictionary<string, object>
 ```
@@ -9,15 +11,15 @@ public class JsonObject : Dictionary<string, object>
 | name | description |
 | --- | --- |
 | [JsonObject](JsonObject/JsonObject.md)() | The default constructor. |
-| static [CleanDocument](JsonObject/CleanDocument.md)(…) |  |
-| static [LoadFromFile](JsonObject/LoadFromFile.md)(…) |  |
-| static [LoadFromJsonDocument](JsonObject/LoadFromJsonDocument.md)(…) |  |
-| [GetProperty&lt;T&gt;](JsonObject/GetProperty.md)(…) |  |
-| [IsNumeric](JsonObject/IsNumeric.md)(…) |  |
-| [SetProperty](JsonObject/SetProperty.md)(…) |  |
-| override [ToString](JsonObject/ToString.md)() |  |
-| [TryGetProperty&lt;T&gt;](JsonObject/TryGetProperty.md)(…) |  |
-| [WriteTo](JsonObject/WriteTo.md)(…) |  |
+| static [CleanDocument](JsonObject/CleanDocument.md)(…) | Convert all JsonDocument that may have been loaded from a webcontext without correct conversion |
+| static [LoadFromFile](JsonObject/LoadFromFile.md)(…) | Load a file that contains a json structure into a [`JsonObject`](JsonObject.md) |
+| static [LoadFromJsonDocument](JsonObject/LoadFromJsonDocument.md)(…) | Load a JsonDocument object into a [`JsonObject`](JsonObject.md) |
+| [GetProperty&lt;T&gt;](JsonObject/GetProperty.md)(…) | Get the value of a property stored in the JsonObject in the type expected. |
+| [IsNumeric](JsonObject/IsNumeric.md)(…) | test if the is of numeric type |
+| [SetProperty](JsonObject/SetProperty.md)(…) | Set or Add a property to the current [`JsonObject`](JsonObject.md) |
+| override [ToString](JsonObject/ToString.md)() | Get the stringified version of the current [`JsonObject`](JsonObject.md) |
+| [TryGetProperty&lt;T&gt;](JsonObject/TryGetProperty.md)(…) | Try to get a property and return false if the property is not in the JSonObject |
+| [WriteTo](JsonObject/WriteTo.md)(…) | Write the current [`JsonObject`](JsonObject.md) to the specified filepath |
 
 ## See Also
 

@@ -1,8 +1,18 @@
 # JsonObject.LoadFromFile method
 
+Load a file that contains a json structure into a [`JsonObject`](../JsonObject.md)
+
 ```csharp
 public static JsonObject LoadFromFile(string filePath)
 ```
+
+| parameter | description |
+| --- | --- |
+| filePath | the filePath to load |
+
+## Return Value
+
+The [`JsonObject`](../JsonObject.md) loaded
 
 ## See Also
 

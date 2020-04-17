@@ -1,8 +1,20 @@
 # JsonObject.TryGetProperty&lt;T&gt; method
 
+Try to get a property and return false if the property is not in the JSonObject
+
 ```csharp
 public bool TryGetProperty<T>(string propertyName, out T propertyValue)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | the type of the value expected |
+| propertyName | the property you want to get |
+| propertyValue | the reference value you want to set from the property |
+
+## Return Value
+
+true if the value is in it, false if the value is not
 
 ## See Also
 

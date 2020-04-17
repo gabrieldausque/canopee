@@ -10,7 +10,7 @@ public interface ITrigger : IDisposable
 
 | name | description |
 | --- | --- |
-| [OwnerId](ITrigger/OwnerId.md) { get; set; } | The !:ICollectedPipeline.Id that owns this [`ITrigger`](ITrigger.md) |
+| [OwnerId](ITrigger/OwnerId.md) { get; set; } | The [`Id`](ICollectPipeline/Id.md) that owns this [`ITrigger`](ITrigger.md) |
 | [OwnerName](ITrigger/OwnerName.md) { get; set; } | The [`Name`](ICollectPipeline/Name.md) that owns this [`ITrigger`](ITrigger.md) |
 | [Initialize](ITrigger/Initialize.md)(…) | Initialize this [`ITrigger`](ITrigger.md) with its "Trigger" configuration |
 | [RaiseEvent](ITrigger/RaiseEvent.md)(…) | Raise the trigger when needed |

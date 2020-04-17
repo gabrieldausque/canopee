@@ -1,8 +1,26 @@
 # JsonObject.GetProperty&lt;T&gt; method
 
+Get the value of a property stored in the JsonObject in the type expected.
+
 ```csharp
 public T GetProperty<T>(string propertyName)
 ```
+
+| parameter | description |
+| --- | --- |
+| T | the type of the value expected |
+| propertyName | the property you want to get the value |
+
+## Return Value
+
+the value as type expected
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| NotSupportedException | If no conversion of type can be done |
+| ArgumentOutOfRangeException | If the property name doesn't exist in this [`JsonObject`](../JsonObject.md) |
 
 ## See Also
 

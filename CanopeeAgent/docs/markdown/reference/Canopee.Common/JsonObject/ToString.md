@@ -1,5 +1,7 @@
 # JsonObject.ToString method
 
+Get the stringified version of the current [`JsonObject`](../JsonObject.md)
+
 ```csharp
 public override string ToString()
 ```

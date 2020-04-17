@@ -1,8 +1,18 @@
 # JsonObject.IsNumeric method
 
+test if the is of numeric type
+
 ```csharp
 public bool IsNumeric(object objToTest)
 ```
+
+| parameter | description |
+| --- | --- |
+| objToTest | an object to test |
+
+## Return Value
+
+True if the object is float, double, long, int, short, ulong, uint, ushort
 
 ## See Also
 

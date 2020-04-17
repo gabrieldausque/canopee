@@ -10,7 +10,7 @@ public void SubscribeToTrigger(EventHandler<TriggerEventArgs> eventHandler,
 | parameter | description |
 | --- | --- |
 | eventHandler | The eventHandler that will be executed when needed by the trigger |
-| context | The context of the subscription, often the name and id of a !:ICollectedPipeline |
+| context | The context of the subscription, often the name and id of a [`ICollectPipeline`](../ICollectPipeline.md) |
 
 ## See Also
 
