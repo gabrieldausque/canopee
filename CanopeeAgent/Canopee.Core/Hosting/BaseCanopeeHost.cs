@@ -12,20 +12,40 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Hosting
 {
+    /// <summary>
+    /// Abstract class that reduce host implementation time
+    /// </summary>
     public abstract class BaseCanopeeHost : ICanopeeHost
     {
+        /// <summary>
+        /// The internal logger
+        /// </summary>
         protected ICanopeeLogger Logger = null;
+        
+        /// <summary>
+        /// Check if the instance can run 
+        /// </summary>
         protected bool CanRun = false;
+        
+        /// <summary>
+        /// Default constructor. Instanciate the logger in it
+        /// </summary>
         public BaseCanopeeHost()
         {
             var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType());   
         }
 
+        /// <summary>
+        /// Dispose the host. Currently do nothing. Override it in your host implementation.
+        /// </summary>
         public virtual void Dispose()
         {
         }
 
+        /// <summary>
+        /// Starting the current host. Set the CanRun property and start the ConfigurationService (for synchronization) 
+        /// </summary>
         public virtual void Start()
         {
             Logger.LogInfo("Check if a process already exists");
@@ -34,6 +54,9 @@ namespace Canopee.Core.Hosting
             ConfigurationService.Instance.Start();
         }
 
+        /// <summary>
+        /// Set the CanRun property to true if UniqueInstance configuration is set to false or if no other process with the same name is running
+        /// </summary>
         protected void SetCanRun()
         {
             if (Configuration.ConfigurationService.Instance.IsUniqueInstance())
@@ -53,6 +76,9 @@ namespace Canopee.Core.Hosting
             CanRun = true;
         }
 
+        /// <summary>
+        /// Stop the current process
+        /// </summary>
         public abstract void Stop();
     }
 }

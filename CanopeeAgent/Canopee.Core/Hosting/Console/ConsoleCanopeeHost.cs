@@ -10,15 +10,28 @@ namespace Canopee.Core.Hosting.Console
     /// </summary>
     public class ConsoleCanopeeHost : BaseCanopeeHost
     {
+        /// <summary>
+        /// The ManualResetEvent used to exit the process on user input
+        /// </summary>
         private readonly ManualResetEvent _exitEvent;
+        
+        /// <summary>
+        /// The pipelines manager
+        /// </summary>
         private readonly CollectPipelineManager _collectPipelineManager;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ConsoleCanopeeHost()
         {
             _exitEvent = new ManualResetEvent(false);
             _collectPipelineManager = new CollectPipelineManager();
         }
 
+        /// <summary>
+        /// Start the console and wait for [Ctrl+C] to stop agent
+        /// </summary>
         public override void Start()
         {
             base.Start();
@@ -36,12 +49,20 @@ namespace Canopee.Core.Hosting.Console
             }
         }
 
+        /// <summary>
+        /// Execute stop method on User input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StopFromInput(object sender, ConsoleCancelEventArgs e)
         {
             e.Cancel = true;
             this.Stop();
         }
 
+        /// <summary>
+        /// Stop all collect 
+        /// </summary>
         public override void Stop()
         {
             Logger.LogInfo("");
@@ -51,13 +72,24 @@ namespace Canopee.Core.Hosting.Console
             _exitEvent.Set();
         }
 
+        /// <summary>
+        /// The internal disposed flag
+        /// </summary>
         private bool _disposed = false;
+        
+        /// <summary>
+        /// Dispose the current host and suppress finalization
+        /// </summary>
         public override void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// If the host is not already disposed, dispose pipeline manager and all needed component.
+        /// </summary>
+        /// <param name="disposing"></param>
         private void Dispose(bool disposing)
         {
             if (_disposed) return;

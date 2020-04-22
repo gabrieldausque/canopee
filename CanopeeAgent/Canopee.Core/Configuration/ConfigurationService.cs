@@ -10,11 +10,29 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Configuration
 {
+    /// <summary>
+    /// Object in charge of managing the configuration :
+    ///     - read from local
+    ///     - write modification to local file
+    ///     - synchronize from a CanopeeServer that exposes the centralized configuration (Experimental feature)
+    /// </summary>
     public class ConfigurationService
     {
+        /// <summary>
+        /// The internal logger. By default a console logger
+        /// </summary>
         private static ICanopeeLogger Logger = null; 
+        /// <summary>
+        /// The lock object used for singleton 
+        /// </summary>
         private static readonly object InstanceLock = new object();
+        /// <summary>
+        /// The singleton instance
+        /// </summary>
         private static ConfigurationService _instance;
+        /// <summary>
+        /// Get the singleton instance
+        /// </summary>
         public static ConfigurationService Instance
         {
             get
@@ -30,17 +48,39 @@ namespace Canopee.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// Start the synchronization of configuration if needed
+        /// </summary>
         public void Start()
         {
             _synchronizer?.Start();
         }
 
+        /// <summary>
+        /// Raised if a new configuration is obtained through the synchronization process
+        /// </summary>
         public event EventHandler OnNewConfiguration;
+        
+        /// <summary>
+        /// All configurations sections
+        /// </summary>
         public IConfiguration Configuration { get; private set; }
 
+        /// <summary>
+        /// The last configuration file read, depending on the CANOPEE_ENVIRONMENT environment variable. If the variable is defined, the last file to be read will be :
+        /// appsettings.[environment variable value].json
+        /// Default : appsettings.json
+        /// </summary>
         private readonly string lastConfigurationFilePath = "appsettings.json";
+        
+        /// <summary>
+        /// The synchronizer object, in charge of evaluating if a new configuration has been setup
+        /// </summary>
         private IConfigurationSynchronizer _synchronizer;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ConfigurationService()
         {
             var messages = new List<string>();
@@ -92,6 +132,9 @@ namespace Canopee.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// Raise the <see cref="ConfigurationService.OnNewConfiguration"/> event
+        /// </summary>
         private void RaiseOnNewConfiguration()
         {
             try
@@ -104,11 +147,18 @@ namespace Canopee.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// Get the Configuration section of the Canopee section
+        /// </summary>
+        /// <returns>the Configuration section as IConfiguration</returns>
         public IConfiguration GetConfigurationServiceConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Configuration");
         }
         
+        /// <summary>
+        /// Get the agent id configured. If no agent id is configured, will set up a new one as a Guid
+        /// </summary>
         public string AgentId
         {
             get
@@ -124,6 +174,12 @@ namespace Canopee.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// Write a new value for a specific property in the Canopee Section to the last configuration file read
+        /// </summary>
+        /// <param name="key">the name of the section or value to modify</param>
+        /// <param name="value">the value to set</param>
+        /// <exception cref="NotSupportedException">If no Canopee section, raise this exception</exception>
         private void SetValueInFile(string key, object value)
         {
             var configurationFile = JsonObject.LoadFromFile(lastConfigurationFilePath);
@@ -136,11 +192,20 @@ namespace Canopee.Core.Configuration
             configurationFile.WriteTo(lastConfigurationFilePath);
         }
 
+        /// <summary>
+        /// Get the whole Canopee Section
+        /// </summary>
+        /// <returns></returns>
         public IConfiguration GetCanopeeConfiguration()
         {
             return Configuration.GetSection("Canopee");
         }
 
+        /// <summary>
+        /// Get the UniqueInstance parameter value.
+        /// Default : true
+        /// </summary>
+        /// <returns></returns>
         public bool IsUniqueInstance()
         {
             if(string.IsNullOrWhiteSpace(GetCanopeeConfiguration()["UniqueInstance"]))
@@ -150,16 +215,28 @@ namespace Canopee.Core.Configuration
             return GetCanopeeConfiguration().GetValue<bool>("UniqueInstance");
         }
         
+        /// <summary>
+        /// Get the logging configuration section
+        /// </summary>
+        /// <returns></returns>
         public IConfiguration GetLoggingConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Logging");
         }
 
+        /// <summary>
+        /// Get the pipelines configuration section
+        /// </summary>
+        /// <returns></returns>
         public IConfiguration GetPipelinesConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Pipelines");
         }
 
+        /// <summary>
+        /// Get the whole configuration file as a JsonObject. Used for write operation
+        /// </summary>
+        /// <returns></returns>
         public JsonObject GetConfigurationAsJsonObject()
         {
             return JsonObject.LoadFromFile(this.lastConfigurationFilePath);

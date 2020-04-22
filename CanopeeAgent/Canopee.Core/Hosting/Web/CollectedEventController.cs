@@ -12,17 +12,31 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Hosting.Web
 {
+    /// <summary>
+    /// The AspNet Core REST controller that will interact with Canopee Pipeline Engine
+    /// </summary>
     [Route("api/events")]
     [ApiController]
     public class CollectedEventController : Controller
     {
+        /// <summary>
+        /// The Host trigger shared
+        /// </summary>
         private readonly ITrigger _trigger;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="trigger"></param>
         public CollectedEventController(ITrigger trigger)
         {
              _trigger = trigger;
         }
         
+        /// <summary>
+        /// An applicative ping. Check if the service is alive
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("ping")]
         public IActionResult Ping()

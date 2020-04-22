@@ -7,10 +7,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Hosting.Web
 {
+    /// <summary>
+    /// The Host needed for AspNet core hosting of the Canopee pipeline framework
+    /// </summary>
     public class ASPNetCanopeeHost : BaseCanopeeHost
     {
+        /// <summary>
+        /// The pipeline manager
+        /// </summary>
         protected readonly CollectPipelineManager CollectPipelineManager;
         
+        /// <summary>
+        /// Construct a new instance using the passed configuration
+        /// </summary>
+        /// <param name="configuration">The configuration</param>
         public ASPNetCanopeeHost(IConfiguration configuration)
         {
             CollectPipelineManager = new CollectPipelineManager();
@@ -18,16 +28,14 @@ namespace Canopee.Core.Hosting.Web
                 TriggerFactory.Instance().GetTrigger(configuration.GetSection("Canopee").GetSection("Trigger"));
         }
 
+        /// <summary>
+        /// The host trigger used that will be shared to external consumer (for example controller that will start trigger on REST call)
+        /// </summary>
         public ITrigger HostTrigger { get; private set; }
-
-
-        private bool _disposed =false;
-        public override void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
+       
+        /// <summary>
+        /// Start the host trigger and the pipeline manager
+        /// </summary>
         public override void Start()
         {
             base.Start();
@@ -45,6 +53,9 @@ namespace Canopee.Core.Hosting.Web
             }
         }
 
+        /// <summary>
+        /// Stop host trigger and pipeline manager
+        /// </summary>
         public override void Stop()
         {
             Logger.LogInfo("Stopping the trigger and the pipeline manager");
@@ -54,7 +65,25 @@ namespace Canopee.Core.Hosting.Web
             Logger.LogInfo("Exiting the process");
             Process.GetCurrentProcess().Kill();
         }
+
+        /// <summary>
+        /// The dispose internal flag
+        /// </summary>
+        private bool _disposed =false;
         
+        /// <summary>
+        /// Dispose the current host
+        /// </summary>
+        public override void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        
+        /// <summary>
+        /// Dispose hosttrigger, pipelinemanager and all other components that needs to be disposed
+        /// </summary>
+        /// <param name="disposing"></param>
         private void Dispose(bool disposing)
         {
             if (_disposed) return;
