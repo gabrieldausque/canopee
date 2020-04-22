@@ -1,5 +1,7 @@
 # BaseInput class
 
+Base class for the IInput contract
+
 ```csharp
 public abstract class BaseInput : IInput
 ```
@@ -8,16 +10,16 @@ public abstract class BaseInput : IInput
 
 | name | description |
 | --- | --- |
-| [BaseInput](BaseInput/BaseInput.md)() | The default constructor. |
-| [AgentId](BaseInput/AgentId.md) { get; set; } |  |
-| abstract [Collect](BaseInput/Collect.md)(…) |  |
-| virtual [Initialize](BaseInput/Initialize.md)(…) |  |
+| [BaseInput](BaseInput/BaseInput.md)() | Default constructor. Create Logger. |
+| [AgentId](BaseInput/AgentId.md) { get; set; } | The unique Id of the agent (the host) |
+| abstract [Collect](BaseInput/Collect.md)(…) | Collect one or more ICollectedEvent |
+| virtual [Initialize](BaseInput/Initialize.md)(…) | Initialize the current [`BaseInput`](BaseInput.md) from the configuration. Set the agent from the argument |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| [Logger](BaseInput/Logger.md) |  |
+| [Logger](BaseInput/Logger.md) | The internal ICanopeeLogger |
 
 ## See Also
 

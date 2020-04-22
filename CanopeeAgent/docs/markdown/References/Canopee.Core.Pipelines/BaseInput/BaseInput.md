@@ -1,6 +1,6 @@
 # BaseInput constructor
 
-The default constructor.
+Default constructor. Create Logger.
 
 ```csharp
 public BaseInput()

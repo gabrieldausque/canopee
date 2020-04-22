@@ -1,5 +1,7 @@
 # BaseInput.AgentId property
 
+The unique Id of the agent (the host)
+
 ```csharp
 public string AgentId { get; set; }
 ```

@@ -44,9 +44,9 @@
 
 | public type | description |
 | --- | --- |
-| abstract class [BaseInput](Canopee.Core.Pipelines/BaseInput.md) |  |
-| abstract class [BaseOutput](Canopee.Core.Pipelines/BaseOutput.md) |  |
-| abstract class [BaseTransform](Canopee.Core.Pipelines/BaseTransform.md) |  |
+| abstract class [BaseInput](Canopee.Core.Pipelines/BaseInput.md) | Base class for the IInput contract |
+| abstract class [BaseOutput](Canopee.Core.Pipelines/BaseOutput.md) | The base class for IOutput. Initialize the logger |
+| abstract class [BaseTransform](Canopee.Core.Pipelines/BaseTransform.md) | The base implementation for ITransform contract |
 | abstract class [BaseTrigger](Canopee.Core.Pipelines/BaseTrigger.md) |  |
 | class [CollectPipeline](Canopee.Core.Pipelines/CollectPipeline.md) |  |
 | class [CollectPipelineManager](Canopee.Core.Pipelines/CollectPipelineManager.md) |  |

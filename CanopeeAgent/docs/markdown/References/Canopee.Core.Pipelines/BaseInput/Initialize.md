@@ -1,8 +1,15 @@
 # BaseInput.Initialize method
 
+Initialize the current [`BaseInput`](../BaseInput.md) from the configuration. Set the agent from the argument
+
 ```csharp
 public virtual void Initialize(IConfiguration configurationInput, string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationInput | the Input configuration |
+| agentId | the agentid send from the caller. Prefer Guid format (uuidv4) |
 
 ## See Also
 

@@ -1,8 +1,14 @@
 # BaseOutput.SendToOutput method
 
+Send to output the ICollectedEvent
+
 ```csharp
 public abstract void SendToOutput(ICollectedEvent collectedEvent)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEvent | the collected event to send |
 
 ## See Also
 

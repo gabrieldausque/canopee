@@ -1,8 +1,18 @@
 # BaseInput.Collect method
 
+Collect one or more ICollectedEvent
+
 ```csharp
 public abstract ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | An arg that can be send by the trigger which has started the collect |
+
+## Return Value
+
+A collection of ICollectedEvent, even for one event
 
 ## See Also
 

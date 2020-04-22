@@ -1,8 +1,14 @@
 # BaseOutput.Initialize method
 
+Initialize the output. In base class do nothing
+
 ```csharp
 public virtual void Initialize(IConfiguration configurationOutput)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationOutput |  |
 
 ## See Also
 

@@ -1,8 +1,14 @@
 # BaseTransform.Initialize method
 
+Initialize using the transform configuration
+
 ```csharp
 public abstract void Initialize(IConfigurationSection transformConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| transformConfiguration | the Transform configuration section for the current ITransform |
 
 ## See Also
 

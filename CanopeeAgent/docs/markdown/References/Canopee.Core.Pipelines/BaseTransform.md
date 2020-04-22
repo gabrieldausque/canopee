@@ -1,5 +1,7 @@
 # BaseTransform class
 
+The base implementation for ITransform contract
+
 ```csharp
 public abstract class BaseTransform : ITransform
 ```
@@ -8,15 +10,15 @@ public abstract class BaseTransform : ITransform
 
 | name | description |
 | --- | --- |
-| [BaseTransform](BaseTransform/BaseTransform.md)() | The default constructor. |
-| abstract [Initialize](BaseTransform/Initialize.md)(…) |  |
-| abstract [Transform](BaseTransform/Transform.md)(…) |  |
+| [BaseTransform](BaseTransform/BaseTransform.md)() | The default constructor. Create the ICanopeeLogger |
+| abstract [Initialize](BaseTransform/Initialize.md)(…) | Initialize using the transform configuration |
+| abstract [Transform](BaseTransform/Transform.md)(…) | Transform a ICollectedEvent : add new field, transform existing field, change type of the collected event |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| [Logger](BaseTransform/Logger.md) |  |
+| [Logger](BaseTransform/Logger.md) | The internal ICanopeeLogger |
 
 ## See Also
 

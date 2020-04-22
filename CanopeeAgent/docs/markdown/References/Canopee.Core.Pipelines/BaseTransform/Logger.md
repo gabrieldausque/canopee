@@ -1,5 +1,7 @@
 # BaseTransform.Logger field
 
+The internal ICanopeeLogger
+
 ```csharp
 protected ICanopeeLogger Logger;
 ```

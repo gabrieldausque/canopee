@@ -1,8 +1,14 @@
 # BaseTransform.Transform method
 
+Transform a ICollectedEvent : add new field, transform existing field, change type of the collected event
+
 ```csharp
 public abstract ICollectedEvent Transform(ICollectedEvent input)
 ```
+
+| parameter | description |
+| --- | --- |
+| input | the ICollectedEvent to transform |
 
 ## See Also
 

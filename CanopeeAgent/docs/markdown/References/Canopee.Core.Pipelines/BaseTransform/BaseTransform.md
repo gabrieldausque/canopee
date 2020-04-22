@@ -1,6 +1,6 @@
 # BaseTransform constructor
 
-The default constructor.
+The default constructor. Create the ICanopeeLogger
 
 ```csharp
 public BaseTransform()

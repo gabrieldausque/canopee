@@ -1,5 +1,7 @@
 # BaseOutput class
 
+The base class for IOutput. Initialize the logger
+
 ```csharp
 public abstract class BaseOutput : IOutput
 ```
@@ -8,15 +10,15 @@ public abstract class BaseOutput : IOutput
 
 | name | description |
 | --- | --- |
-| [BaseOutput](BaseOutput/BaseOutput.md)() | The default constructor. |
-| virtual [Initialize](BaseOutput/Initialize.md)(…) |  |
-| abstract [SendToOutput](BaseOutput/SendToOutput.md)(…) |  |
+| [BaseOutput](BaseOutput/BaseOutput.md)() | Default constructor. Instanciate the ICanopeeLogger |
+| virtual [Initialize](BaseOutput/Initialize.md)(…) | Initialize the output. In base class do nothing |
+| abstract [SendToOutput](BaseOutput/SendToOutput.md)(…) | Send to output the ICollectedEvent |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| [Logger](BaseOutput/Logger.md) |  |
+| [Logger](BaseOutput/Logger.md) | The internal ICanopeeLogger |
 
 ## See Also
 
