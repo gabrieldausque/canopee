@@ -18,9 +18,9 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
         private string _connectionString;
         private string _selectStatement;
 
-        public override void Initialize(IConfiguration configurationInput, string agentId)
+        public override void Initialize(IConfigurationSection configurationInput, IConfigurationSection loggingConfiguration, string agentId)
         {
-            base.Initialize(configurationInput, agentId);
+            base.Initialize(configurationInput, loggingConfiguration, agentId);
             _connectionString = configurationInput["ConnectionString"];
             _selectStatement = configurationInput["SelectStatement"];
         }

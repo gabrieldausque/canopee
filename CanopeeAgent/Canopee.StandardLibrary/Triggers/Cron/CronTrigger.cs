@@ -19,8 +19,9 @@ namespace Canopee.StandardLibrary.Triggers.Cron
             _scheduler = schedulerFactory.GetScheduler().Result;
         }
         
-        public override void Initialize(IConfigurationSection triggerParameters)
+        public override void Initialize(IConfigurationSection triggerConfiguration, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(triggerConfiguration, loggingConfiguration);
             var raiseEventTaskId = Guid.NewGuid().ToString();
             RaiseEventJob.SubscribeTo(raiseEventTaskId, RaiseEvent);
             var jobDetail = JobBuilder.Create<RaiseEventJob>()
@@ -28,7 +29,7 @@ namespace Canopee.StandardLibrary.Triggers.Cron
                 .Build();
 
             var trigger = TriggerBuilder.Create()
-                .WithCronSchedule(triggerParameters["When"])
+                .WithCronSchedule(triggerConfiguration["When"])
                 .StartNow()
                 .WithIdentity(raiseEventTaskId)
                 .Build();

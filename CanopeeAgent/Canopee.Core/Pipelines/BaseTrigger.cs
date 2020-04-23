@@ -15,15 +15,6 @@ namespace Canopee.Core.Pipelines
     public abstract class BaseTrigger : ITrigger
     {
         /// <summary>
-        /// Default constructor. Set the Logger
-        /// </summary>
-        public BaseTrigger()
-        {
-            var configuration = Configuration.ConfigurationService.Instance.GetLoggingConfiguration();
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
-        }
-
-        /// <summary>
         /// The internal <see cref="ICanopeeLogger"/>
         /// </summary>
         protected ICanopeeLogger Logger;
@@ -42,12 +33,17 @@ namespace Canopee.Core.Pipelines
         /// The id of the owner object ( a <see cref="CollectPipeline"/>)
         /// </summary>
         public string OwnerId { get; set; }
-        
+
         /// <summary>
-        /// Initialize the trigger with the Trigger configuration
+        /// Initialize the trigger with the Trigger configuration and its logger
         /// </summary>
-        /// <param name="triggerParameters"></param>
-        public abstract void Initialize(IConfigurationSection triggerParameters);
+        /// <param name="triggerConfiguration">the trigger configuration</param>
+        /// <param name="loggingConfiguration">the logger configuration</param>
+        public virtual void Initialize(IConfigurationSection triggerConfiguration,
+            IConfigurationSection loggingConfiguration)
+        {
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
+        }
         
         /// <summary>
         /// Start the watch of the trigger

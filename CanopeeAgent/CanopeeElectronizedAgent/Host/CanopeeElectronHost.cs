@@ -13,7 +13,7 @@ namespace CanopeeElectronizedAgent.Host
 {
     public class CanopeeElectronHost : ASPNetCanopeeHost
     {
-        public CanopeeElectronHost(IConfiguration configuration) : base(configuration)
+        public CanopeeElectronHost(IConfigurationSection canopeeConfiguration) : base(canopeeConfiguration)
         {
             
         }

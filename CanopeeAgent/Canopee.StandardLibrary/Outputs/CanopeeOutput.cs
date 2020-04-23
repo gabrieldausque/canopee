@@ -49,8 +49,9 @@ namespace Canopee.StandardLibrary.Outputs
             }
         }
 
-        public override void Initialize(IConfiguration configurationOutput)
+        public override void Initialize(IConfiguration configurationOutput, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(configurationOutput, loggingConfiguration);
             _url = configurationOutput["Url"];
             _pipelineId = configurationOutput["PipelineId"];
             bool.TryParse(configurationOutput["NoSSLCheck"], out _noSslCheck);

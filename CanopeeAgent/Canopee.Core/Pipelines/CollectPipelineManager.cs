@@ -6,29 +6,34 @@ using Canopee.Common.Logging;
 using Canopee.Common.Pipelines;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Pipelines
 {
+    /// <summary>
+    /// Manage all pipelines :
+    /// - create them
+    /// - 
+    /// </summary>
     public class CollectPipelineManager : IDisposable
     {
         private readonly Dictionary<string, ICollectPipeline> _pipelines;
         private readonly ICanopeeLogger Logger = null;
 
-        public CollectPipelineManager()
+        public CollectPipelineManager(IConfigurationSection pipelinesConfiguration, IConfigurationSection loggingConfiguration)
         {
-            var loggingConfiguration = ConfigurationService.Instance.GetLoggingConfiguration();
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
             _pipelines = new Dictionary<string, ICollectPipeline>();
             var collectPipelinesFactory = new CollectPipelineFactory();
 
-            var config = ConfigurationService.Instance.GetPipelinesConfiguration().GetChildren();
-
-            Logger.LogInfo($"{config.Count()} Pipelines to read");
+            var config = pipelinesConfiguration.GetChildren();
+            
+            Logger.LogInfo($"{config.ToArray().Length.ToString()} Pipelines to read");
             foreach (var pipelineConfig in config)
             {
                 Logger.LogInfo($"Reading Pipeline {pipelineConfig["Name"]}");
-                var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig);
+                var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig, loggingConfiguration);
                 if (!_pipelines.ContainsKey(pipelineConfig["Name"]))
                 {
                     _pipelines.Add(pipelineConfig["Name"], pipeline);    
@@ -46,7 +51,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
-                Logger.LogInfo($"Starting pipeline {pipeline}");
+                Logger.LogInfo($"Starting pipeline {pipeline.ToString()}");
                 pipeline.Value.Run();
             }
         }
@@ -55,7 +60,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
-                Logger.LogInfo($"Stopping pipeline {pipeline}");
+                Logger.LogInfo($"Stopping pipeline {pipeline.ToString()}");
                 pipeline.Value.Stop();
             }
         }

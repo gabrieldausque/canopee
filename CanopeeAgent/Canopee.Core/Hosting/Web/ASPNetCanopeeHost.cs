@@ -20,12 +20,12 @@ namespace Canopee.Core.Hosting.Web
         /// <summary>
         /// Construct a new instance using the passed configuration
         /// </summary>
-        /// <param name="configuration">The configuration</param>
-        public ASPNetCanopeeHost(IConfiguration configuration)
+        /// <param name="canopeeConfiguration">The Canopee section configuration</param>
+        public ASPNetCanopeeHost(IConfigurationSection canopeeConfiguration):base(canopeeConfiguration.GetSection("Logging"))
         {
-            CollectPipelineManager = new CollectPipelineManager();
+            CollectPipelineManager = new CollectPipelineManager(canopeeConfiguration.GetSection("Pipelines"),canopeeConfiguration.GetSection("Logging"));
             HostTrigger =
-                TriggerFactory.Instance().GetTrigger(configuration.GetSection("Canopee").GetSection("Trigger"));
+                TriggerFactory.Instance().GetTrigger(canopeeConfiguration.GetSection("Trigger"), canopeeConfiguration.GetSection("Logging"));
         }
 
         /// <summary>

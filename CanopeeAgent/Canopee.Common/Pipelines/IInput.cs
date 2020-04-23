@@ -20,8 +20,9 @@ namespace Canopee.Common.Pipelines
         /// Initialize the <see cref="IInput"/> object with its specific configuration
         /// </summary>
         /// <param name="configurationInput">the "Input" configuration</param>
-        /// <param name="agentId">the agentId that will be populated in all <see cref="ICollectedEvent"/></param>
-        void Initialize(IConfiguration configurationInput, string agentId);
+        /// <param name="loggingConfiguration">the logging configuration section</param>
+        /// <param name="agentId">The agent id that will be populated in <see cref="ICollectedEvent"/></param>
+        void Initialize(IConfigurationSection configurationInput, IConfigurationSection loggingConfiguration, string agentId);
 
         /// <summary>
         /// The agent Id that will be populated in all <see cref="ICollectedEvent"/>

@@ -15,6 +15,12 @@
         "CANOPEE_ENVIRONMENT": "Kaamelot"
       }
     },
+    "KaamelotProduction": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CANOPEE_ENVIRONMENT": "KaamelotProduction"
+      }
+    },
     "Kaamelot2": {
       "commandName": "Project",
       "environmentVariables": {

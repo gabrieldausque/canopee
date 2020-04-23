@@ -51,8 +51,9 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
             return input;        
         }
 
-        public override void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(transformConfiguration, loggingConfiguration);
             _connectionString = transformConfiguration["ConnectionString"];
             _selectStatement = transformConfiguration["SelectStatement"];
             foreach(var field in transformConfiguration.GetSection("Fields").GetChildren())

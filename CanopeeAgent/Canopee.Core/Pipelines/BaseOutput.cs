@@ -19,15 +19,6 @@ namespace Canopee.Core.Pipelines
         protected ICanopeeLogger Logger;
 
         /// <summary>
-        /// Default constructor. Instanciate the <see cref="ICanopeeLogger"/>
-        /// </summary>
-        public BaseOutput()
-        {
-            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
-        }
-
-        /// <summary>
         /// Send to output the <see cref="ICollectedEvent"/>
         /// </summary>
         /// <param name="collectedEvent">the collected event to send</param>
@@ -37,9 +28,10 @@ namespace Canopee.Core.Pipelines
         /// Initialize the output. In base class do nothing
         /// </summary>
         /// <param name="configurationOutput"></param>
-        public virtual void Initialize(IConfiguration configurationOutput)
+        /// <param name="loggingConfiguration">the ICanopeeLogger configuration </param>
+        public virtual void Initialize(IConfiguration configurationOutput, IConfigurationSection loggingConfiguration)
         {
-            
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());     
         }
     }
 }

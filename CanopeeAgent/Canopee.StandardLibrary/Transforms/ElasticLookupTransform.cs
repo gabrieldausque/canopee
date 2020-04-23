@@ -26,8 +26,9 @@ namespace Canopee.StandardLibrary.Transforms
         {
             _requestedFieldMappings = new List<TransformFieldMapping>();
         }
-        public override void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(transformConfiguration, loggingConfiguration);
             _elasticUrl = transformConfiguration["Url"];
             _searchedIndex = transformConfiguration["SearchedIndex"];
             var uri = new Uri(_elasticUrl);

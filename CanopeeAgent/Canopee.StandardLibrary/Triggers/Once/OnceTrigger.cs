@@ -17,9 +17,10 @@ namespace Canopee.StandardLibrary.Triggers
         private Timer _timer;
         private long _dueTimeInMs;
         
-        public override void Initialize(IConfigurationSection triggerParameters)
+        public override void Initialize(IConfigurationSection triggerConfiguration, IConfigurationSection loggingConfiguration)
         {
-            long.TryParse(triggerParameters["DueTimeInMs"], out _dueTimeInMs);
+            base.Initialize(triggerConfiguration, loggingConfiguration);
+            long.TryParse(triggerConfiguration["DueTimeInMs"], out _dueTimeInMs);
         }
 
         public override void Start()

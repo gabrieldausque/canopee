@@ -196,7 +196,7 @@ namespace Canopee.Core.Configuration
         /// Get the whole Canopee Section
         /// </summary>
         /// <returns></returns>
-        public IConfiguration GetCanopeeConfiguration()
+        public IConfigurationSection GetCanopeeConfiguration()
         {
             return Configuration.GetSection("Canopee");
         }

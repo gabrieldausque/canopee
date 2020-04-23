@@ -25,16 +25,16 @@ namespace Canopee.Core.Pipelines
         {
         }
 
-        public IInput GetInput(IConfiguration configurationInput, string agentId)
+        public IInput GetInput(IConfigurationSection configurationInput,IConfigurationSection loggingConfiguration, string agentId)
         {
             var type = string.IsNullOrWhiteSpace(configurationInput["InputType"]) ? "Default" : configurationInput["InputType"];
             bool.TryParse(configurationInput["OSSpecific"], out var isOsSpecific);
             if(isOsSpecific && type != "Default")
             {
-                type = $"{type}{GetCurrentPlatform()}";
+                type = $"{type}{GetCurrentPlatform().ToString()}";
             }
             var input = Container.GetExport<IInput>(type);
-            input?.Initialize(configurationInput, agentId);
+            input?.Initialize(configurationInput,loggingConfiguration, agentId);
             return input;
         }
     }

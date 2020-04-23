@@ -22,7 +22,7 @@ namespace Canopee.Core.Pipelines
         /// <summary>
         /// The internal <see cref="ICanopeeLogger"/>
         /// </summary>
-        protected readonly ICanopeeLogger Logger = null;
+        protected ICanopeeLogger Logger = null;
         
         /// <summary>
         /// The agent id (uuidv4 format)
@@ -54,8 +54,6 @@ namespace Canopee.Core.Pipelines
         /// </summary>
         public CollectPipeline()
         {
-            Logger = CanopeeLoggerFactory.Instance()
-                .GetLogger(ConfigurationService.Instance.GetLoggingConfiguration(), this.GetType());
             Transforms = new List<ITransform>();
             Id = Guid.NewGuid().ToString();
         }
@@ -64,9 +62,12 @@ namespace Canopee.Core.Pipelines
         /// Initialize the current pipeline with a pipelineConfigurationSection. Set the id if specified, create trigger, input, all transformations and output.
         /// </summary>
         /// <param name="pipelineConfigurationSection">a pipeline pipelineConfigurationSection section</param>
-        public virtual void Initialize(IConfigurationSection pipelineConfigurationSection)
+        /// <param name="loggingConfiguration">the Logger configuration</param>
+        public virtual void Initialize(IConfigurationSection pipelineConfigurationSection, IConfigurationSection loggingConfiguration)
         {
             
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
+
             AgentId = ConfigurationService.Instance.AgentId;
             Name = pipelineConfigurationSection["Name"];
             
@@ -76,7 +77,7 @@ namespace Canopee.Core.Pipelines
             }
             
             var triggerConfiguration = pipelineConfigurationSection.GetSection("Trigger");
-            Trigger = TriggerFactory.Instance().GetTrigger(triggerConfiguration);
+            Trigger = TriggerFactory.Instance().GetTrigger(triggerConfiguration, loggingConfiguration);
             Trigger.SubscribeToTrigger((sender, args) => { this.Collect(args); }, new TriggerSubscriptionContext()
             {
                 PipelineId =  Id,
@@ -84,17 +85,17 @@ namespace Canopee.Core.Pipelines
             });
 
             var inputConfiguration = pipelineConfigurationSection.GetSection("Input");
-            Input = InputFactory.Instance().GetInput(inputConfiguration, AgentId);
+            Input = InputFactory.Instance().GetInput(inputConfiguration, loggingConfiguration, AgentId);
             
             var transformsConfiguration = pipelineConfigurationSection.GetSection("Transforms");
             foreach(var transformConfiguration in transformsConfiguration.GetChildren())
             {
-                var transform = TransformFactory.Instance().GetTransform(transformConfiguration);
+                var transform = TransformFactory.Instance().GetTransform(transformConfiguration, loggingConfiguration);
                 Transforms.Add(transform);
             }
 
             var outputConfiguration = pipelineConfigurationSection.GetSection("Output");
-            Output = OutputFactory.Instance().GetOutput(outputConfiguration);
+            Output = OutputFactory.Instance().GetOutput(outputConfiguration, loggingConfiguration);
         }
 
         /// <summary>
@@ -104,16 +105,20 @@ namespace Canopee.Core.Pipelines
         public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             Logger.LogInfo($"Collecting pipeline {this}");
-            try
+            if (!IsCollecting)
             {
-                if (!IsCollecting)
+                lock (LockCollect)
                 {
-                    lock (LockCollect)
+                    if (IsCollecting)
                     {
-                        if (IsCollecting)
-                            return;
-                        IsCollecting = true;
+                        Logger.LogWarning($"Collect already running for {this}. No new collect started.");
+                        return;
                     }
+                    IsCollecting = true;
+                }
+                
+                try
+                {
                     var collectedEvents = Input.Collect(fromTriggerEventArgs);
                     foreach (var collectedEvent in collectedEvents)
                     {
@@ -122,17 +127,18 @@ namespace Canopee.Core.Pipelines
                             transformer.Transform(collectedEvent);
                         }
                         Output.SendToOutput(collectedEvent);
-                    }
+                    }    
                 }
-            }
-            catch(Exception ex)
-            {
-                Logger.LogError($"Error while collecting {this} : {ex}");
-            }
-            finally
-            {
-                Logger.LogInfo($"Collect finished for {this}");
-                IsCollecting = false;
+                catch(Exception ex)
+                {
+                    Logger.LogError($"Error while collecting {this} : {ex}");
+                }
+                finally
+                {
+                    Logger.LogInfo($"Collect finished for {this}");
+                    IsCollecting = false;
+                }
+                
             }
         }
 

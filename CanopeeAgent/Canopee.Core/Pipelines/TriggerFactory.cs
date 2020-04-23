@@ -26,11 +26,11 @@ namespace Canopee.Core.Pipelines
             
         }
 
-        public ITrigger GetTrigger(IConfigurationSection configurationTrigger)
+        public ITrigger GetTrigger(IConfigurationSection configurationTrigger, IConfigurationSection loggingConfiguration)
         {
             var type = string.IsNullOrWhiteSpace(configurationTrigger["TriggerType"]) ? "Default" : configurationTrigger["TriggerType"];
             var trigger = Container.GetExport<ITrigger>(type);
-            trigger?.Initialize(configurationTrigger);
+            trigger?.Initialize(configurationTrigger, loggingConfiguration);
             return trigger;
         }
     }

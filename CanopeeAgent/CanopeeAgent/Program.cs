@@ -5,6 +5,7 @@ using System.Net.Mime;
 using System.Runtime.Loader;
 using System.Threading;
 using Canopee.Common;
+using Canopee.Core.Configuration;
 using Canopee.Core.Hosting;
 using Canopee.Core.Hosting.Console;
 
@@ -21,7 +22,7 @@ namespace CanopeeAgent
                 Console.WriteLine(
                     $"CANOPEE_ENVIRONMENT = {Environment.ExpandEnvironmentVariables("%CANOPEE_ENVIRONMENT%")}");
                 
-                var host = new ConsoleCanopeeHost();
+                var host = new ConsoleCanopeeHost(ConfigurationService.Instance.GetCanopeeConfiguration());
                 host.Start();
                 Console.WriteLine("Exiting ...");
             }

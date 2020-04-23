@@ -16,8 +16,9 @@ namespace Canopee.StandardLibrary.Transforms
             return input;
         }
 
-        public override void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(transformConfiguration, loggingConfiguration);
             Logger.LogDebug("No transformation");
         }
     }

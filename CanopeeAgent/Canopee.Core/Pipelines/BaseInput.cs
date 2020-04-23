@@ -14,15 +14,7 @@ namespace Canopee.Core.Pipelines
     /// </summary>
     public abstract class BaseInput : IInput
     {
-        /// <summary>
-        /// Default constructor. Create Logger.
-        /// </summary>
-        public BaseInput()
-        {
-            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
-        }
-        
+       
         /// <summary>
         /// The internal <see cref="ICanopeeLogger"/>
         /// </summary>
@@ -44,9 +36,11 @@ namespace Canopee.Core.Pipelines
         /// Initialize the current <see cref="BaseInput"/> from the configuration. Set the agent from the argument
         /// </summary>
         /// <param name="configurationInput">the Input configuration</param>
+        /// <param name="loggingConfiguration">the ICanopeeLogger configuration </param>
         /// <param name="agentId">the agentid send from the caller. Prefer Guid format (uuidv4)</param>
-        public virtual void Initialize(IConfiguration configurationInput, string agentId)
+        public virtual void Initialize(IConfigurationSection configurationInput, IConfigurationSection loggingConfiguration, string agentId)
         {
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
             AgentId = agentId;
         }
     }

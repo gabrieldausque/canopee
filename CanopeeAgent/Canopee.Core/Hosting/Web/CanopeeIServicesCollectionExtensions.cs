@@ -24,7 +24,7 @@ namespace Canopee.Core.Hosting.Web
             //ensure the canopee host is instantiated by the dependency injection engine
             //that will ensure the dispose method will be called at the end of the application
             services.TryAddSingleton<IConfiguration>(configuration);
-            var canopeeHost = new ASPNetCanopeeHost(configuration);
+            var canopeeHost = new ASPNetCanopeeHost(configuration.GetSection("Canopee"));
             services.AddSingleton<ICanopeeHost>(canopeeHost);
             services.AddSingleton<ITrigger>(canopeeHost.HostTrigger);
             return services;

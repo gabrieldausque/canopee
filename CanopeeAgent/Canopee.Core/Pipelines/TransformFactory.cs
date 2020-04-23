@@ -25,16 +25,16 @@ namespace Canopee.Core.Pipelines
         {
         }
 
-        public ITransform GetTransform(IConfigurationSection configurationTransform)
+        public ITransform GetTransform(IConfigurationSection configurationTransform, IConfigurationSection loggingConfiguration)
         {
             var type = string.IsNullOrWhiteSpace(configurationTransform["TransformType"]) ? "Default" : configurationTransform["TransformType"];
             bool.TryParse(configurationTransform["OSSpecific"], out var isOsSpecific);
             if(isOsSpecific && type != "Default")
             {
-                type = $"{type}{GetCurrentPlatform()}";
+                type = $"{type}{GetCurrentPlatform().ToString()}";
             }
             var transformer = Container.GetExport<ITransform>(type);
-            transformer?.Initialize(configurationTransform);
+            transformer?.Initialize(configurationTransform, loggingConfiguration);
             return transformer;
         }
     }

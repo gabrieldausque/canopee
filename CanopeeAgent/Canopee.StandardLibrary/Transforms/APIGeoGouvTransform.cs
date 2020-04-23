@@ -20,8 +20,9 @@ namespace Canopee.StandardLibrary.Transforms
         private string _entity = "communes";
         private TransformFieldMapping _key;
 
-        public override void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(transformConfiguration, loggingConfiguration);
             _key = new TransformFieldMapping()
             {
                 LocalName = transformConfiguration["Key:LocalName"],

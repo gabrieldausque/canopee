@@ -21,11 +21,6 @@ namespace Canopee.StandardLibrary.Triggers.Hub
         {
             _eventTriggeredByPipelineId = new Dictionary<string, EventHandler<TriggerEventArgs>>();
         }
-
-        public override void Initialize(IConfigurationSection triggerParameters)
-        {
-        }
-
         public override void Start()
         {
             _isStarted = true;

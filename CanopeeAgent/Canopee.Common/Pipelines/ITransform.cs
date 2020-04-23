@@ -14,6 +14,11 @@ namespace Canopee.Common.Pipelines
         /// <param name="input">The <see cref="ICollectedEvent"/> to transform or enrich</param>
         /// <returns></returns>
         ICollectedEvent Transform(ICollectedEvent input);
-        void Initialize(IConfigurationSection transformConfiguration);
+        /// <summary>
+        /// Initialize the <see cref="ITransform"/> with configurations
+        /// </summary>
+        /// <param name="transformConfiguration">the configuration for the transform object</param>
+        /// <param name="loggingConfiguration">the logging configuration section</param>
+        void Initialize(IConfigurationSection transformConfiguration,IConfigurationSection loggingConfiguration);
     }
 }

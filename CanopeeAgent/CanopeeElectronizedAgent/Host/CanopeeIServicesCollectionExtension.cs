@@ -14,7 +14,7 @@ namespace CanopeeElectronizedAgent.Host
         public static IServiceCollection AddElectronHost(this IServiceCollection services, IConfiguration configuration)
         {
             services.TryAddSingleton<IConfiguration>(configuration);
-            var canopeeHost = new CanopeeElectronHost(configuration);
+            var canopeeHost = new CanopeeElectronHost(configuration.GetSection("Canopee"));
             services.AddSingleton<ICanopeeHost>(canopeeHost);
             services.AddSingleton<ITrigger>(canopeeHost.HostTrigger);
             return services;

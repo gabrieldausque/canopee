@@ -9,9 +9,9 @@ namespace Canopee.Core
 {
     public class FactoryFromDirectoryBase
     {
-        protected CompositionHost Container;
+        protected readonly CompositionHost Container;
 
-        public FactoryFromDirectoryBase(string directoryCatalog)
+        protected FactoryFromDirectoryBase(string directoryCatalog)
         {
             var containerConfiguration = new ContainerConfiguration();
             foreach (var assemblyPath in Directory.EnumerateFiles(directoryCatalog, "*.dll"))

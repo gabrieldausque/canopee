@@ -17,6 +17,7 @@ namespace Canopee.Common.Pipelines
         /// Initialize the <see cref="IOutput"/> with its specific "Output" configuration
         /// </summary>
         /// <param name="configurationOutput">configuration output</param>
-        void Initialize(IConfiguration configurationOutput);
+        /// <param name="loggingConfiguration">the logging configuration section</param>
+        void Initialize(IConfiguration configurationOutput, IConfigurationSection loggingConfiguration);
     }
 }

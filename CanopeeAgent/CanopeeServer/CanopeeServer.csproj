@@ -9,6 +9,7 @@
     </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <NoWarn>$(NoWarn);1591</NoWarn>
       <OutputPath>..\bin\Server\Release</OutputPath>
       <DocumentationFile>..\bin\Server\Release\CanopeeServer.xml</DocumentationFile>
     </PropertyGroup>

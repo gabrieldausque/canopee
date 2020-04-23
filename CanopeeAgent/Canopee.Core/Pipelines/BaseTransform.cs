@@ -18,15 +18,6 @@ namespace Canopee.Core.Pipelines
         protected ICanopeeLogger Logger;
 
         /// <summary>
-        /// The default constructor. Create the <see cref="ICanopeeLogger"/>
-        /// </summary>
-        public BaseTransform()
-        {
-            var configuration = Configuration.ConfigurationService.Instance.GetLoggingConfiguration();
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType()); 
-        }
-        
-        /// <summary>
         /// Transform a <see cref="ICollectedEvent"/> : add new field, transform existing field, change type of the collected event
         /// </summary>
         /// <param name="input">the <see cref="ICollectedEvent"/> to transform</param>
@@ -37,6 +28,11 @@ namespace Canopee.Core.Pipelines
         /// Initialize using the transform configuration
         /// </summary>
         /// <param name="transformConfiguration">the Transform configuration section for the current <see cref="ITransform"/></param>
-        public abstract void Initialize(IConfigurationSection transformConfiguration);
+        /// <param name="loggingConfiguration">the ICanopeeLogger configuration </param>
+        public virtual void Initialize(IConfigurationSection transformConfiguration,
+            IConfigurationSection loggingConfiguration)
+        {
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());            
+        }
     }
 }

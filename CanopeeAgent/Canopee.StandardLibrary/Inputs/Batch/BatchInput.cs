@@ -22,7 +22,6 @@ namespace Canopee.StandardLibrary.Inputs.Batch
         public BatchInput()
         {
             UnitsRepository = new Dictionary<string, string>();
-            SetExecutorByOs();
         }
 
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
@@ -35,9 +34,10 @@ namespace Canopee.StandardLibrary.Inputs.Batch
             return collectedEvents;
         }
 
-        public override void Initialize(IConfiguration configurationInput, string agentId)
+        public override void Initialize(IConfigurationSection configurationInput,IConfigurationSection loggingConfiguration, string agentId)
         {
-            base.Initialize(configurationInput, agentId);
+            base.Initialize(configurationInput, loggingConfiguration, agentId);
+            SetExecutorByOs();
             if (!string.IsNullOrWhiteSpace(configurationInput["CommandLine"]))
             {
                 CommandLine = configurationInput["CommandLine"];

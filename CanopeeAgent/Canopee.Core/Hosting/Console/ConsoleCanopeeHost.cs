@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Canopee.Core.Pipelines;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Hosting.Console
@@ -23,10 +24,10 @@ namespace Canopee.Core.Hosting.Console
         /// <summary>
         /// Default constructor
         /// </summary>
-        public ConsoleCanopeeHost()
+        public ConsoleCanopeeHost(IConfigurationSection canopeeConfiguration):base(canopeeConfiguration.GetSection("Logging"))
         {
             _exitEvent = new ManualResetEvent(false);
-            _collectPipelineManager = new CollectPipelineManager();
+            _collectPipelineManager = new CollectPipelineManager(canopeeConfiguration.GetSection("Pipelines"), canopeeConfiguration.GetSection("Logging"));
         }
 
         /// <summary>

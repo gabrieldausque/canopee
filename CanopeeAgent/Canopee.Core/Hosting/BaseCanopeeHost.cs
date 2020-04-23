@@ -30,10 +30,9 @@ namespace Canopee.Core.Hosting
         /// <summary>
         /// Default constructor. Instanciate the logger in it
         /// </summary>
-        public BaseCanopeeHost()
+        public BaseCanopeeHost(IConfigurationSection loggingConfiguration)
         {
-            var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(configuration, this.GetType());   
+            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());   
         }
 
         /// <summary>

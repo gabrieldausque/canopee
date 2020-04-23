@@ -53,8 +53,9 @@ namespace Canopee.StandardLibrary.Outputs
             return (_indexesByType.ContainsKey(eventTypeFullName)) ? _indexesByType[eventTypeFullName] : _defaultIndex;
         }
 
-        public override void Initialize(IConfiguration configurationOutput)
+        public override void Initialize(IConfiguration configurationOutput, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(configurationOutput, loggingConfiguration);
             _defaultIndex = configurationOutput["DefaultIndex"];
             _url = configurationOutput["Url"];
             

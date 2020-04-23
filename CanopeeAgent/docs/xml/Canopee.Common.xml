@@ -480,11 +480,12 @@
             The id of the current <see cref="T:Canopee.Common.Pipelines.ICollectPipeline"/>. Must be unique over the application.
             </summary>
         </member>
-        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection)">
+        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.Extensions.Configuration.IConfigurationSection)">
             <summary>
             Initialize the pipeline based on a pipelineConfigurationSection object
             </summary>
             <param name="pipelineConfigurationSection">the pipeline pipelineConfigurationSection</param>
+            <param name="loggingConfiguration">the logging configuration section</param>
         </member>
         <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Collect(Canopee.Common.Pipelines.Events.TriggerEventArgs)">
             <summary>
@@ -534,12 +535,13 @@
             <param name="fromTriggerEventArgs">The arg specific to the <see cref="T:Canopee.Common.Pipelines.ITrigger"/> that has raised the collect process</param>
             <returns></returns>
         </member>
-        <member name="M:Canopee.Common.Pipelines.IInput.Initialize(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+        <member name="M:Canopee.Common.Pipelines.IInput.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.Extensions.Configuration.IConfigurationSection,System.String)">
             <summary>
             Initialize the <see cref="T:Canopee.Common.Pipelines.IInput"/> object with its specific configuration
             </summary>
             <param name="configurationInput">the "Input" configuration</param>
-            <param name="agentId">the agentId that will be populated in all <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/></param>
+            <param name="loggingConfiguration">the logging configuration section</param>
+            <param name="agentId">The agent id that will be populated in <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/></param>
         </member>
         <member name="P:Canopee.Common.Pipelines.IInput.AgentId">
             <summary>
@@ -557,11 +559,12 @@
             </summary>
             <param name="collectedEvent">send a collected event to a specific output</param>
         </member>
-        <member name="M:Canopee.Common.Pipelines.IOutput.Initialize(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:Canopee.Common.Pipelines.IOutput.Initialize(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfigurationSection)">
             <summary>
             Initialize the <see cref="T:Canopee.Common.Pipelines.IOutput"/> with its specific "Output" configuration
             </summary>
             <param name="configurationOutput">configuration output</param>
+            <param name="loggingConfiguration">the logging configuration section</param>
         </member>
         <member name="T:Canopee.Common.Pipelines.ITransform">
             <summary>
@@ -574,6 +577,13 @@
             </summary>
             <param name="input">The <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to transform or enrich</param>
             <returns></returns>
+        </member>
+        <member name="M:Canopee.Common.Pipelines.ITransform.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Initialize the <see cref="T:Canopee.Common.Pipelines.ITransform"/> with configurations
+            </summary>
+            <param name="transformConfiguration">the configuration for the transform object</param>
+            <param name="loggingConfiguration">the logging configuration section</param>
         </member>
         <member name="T:Canopee.Common.Pipelines.ITrigger">
             <summary>
@@ -590,11 +600,12 @@
             The <see cref="P:Canopee.Common.Pipelines.ICollectPipeline.Id" /> that owns this <see cref="T:Canopee.Common.Pipelines.ITrigger"/>
             </summary>
         </member>
-        <member name="M:Canopee.Common.Pipelines.ITrigger.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection)">
+        <member name="M:Canopee.Common.Pipelines.ITrigger.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.Extensions.Configuration.IConfigurationSection)">
             <summary>
             Initialize this <see cref="T:Canopee.Common.Pipelines.ITrigger"/> with its "Trigger" configuration
             </summary>
-            <param name="triggerParameters">The "Trigger" configuration </param>
+            <param name="triggerConfiguration">The "Trigger" configuration </param>
+            <param name="loggingConfiguration">the logging configuration section</param>
         </member>
         <member name="M:Canopee.Common.Pipelines.ITrigger.Start">
             <summary>

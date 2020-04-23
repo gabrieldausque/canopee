@@ -20,8 +20,9 @@ namespace Canopee.Common.Pipelines
         /// <summary>
         /// Initialize this <see cref="ITrigger"/> with its "Trigger" configuration
         /// </summary>
-        /// <param name="triggerParameters">The "Trigger" configuration </param>
-        void Initialize(IConfigurationSection triggerParameters);
+        /// <param name="triggerConfiguration">The "Trigger" configuration </param>
+        /// <param name="loggingConfiguration">the logging configuration section</param>
+        void Initialize(IConfigurationSection triggerConfiguration, IConfigurationSection loggingConfiguration);
         /// <summary>
         /// Start the listening process that will raise the trigger
         /// </summary>

@@ -24,11 +24,11 @@ namespace Canopee.Core.Pipelines
         {
         }
         
-        public IOutput GetOutput(IConfiguration configurationOutput)
+        public IOutput GetOutput(IConfiguration configurationOutput, IConfigurationSection loggingConfiguration)
         {
             var type = string.IsNullOrWhiteSpace(configurationOutput["OutputType"]) ? "Default" : configurationOutput["OutputType"];
             var output = Container.GetExport<IOutput>(type);
-            output?.Initialize(configurationOutput);
+            output?.Initialize(configurationOutput, loggingConfiguration);
             return output;
         }
     }

@@ -75,8 +75,9 @@ namespace Canopee.StandardLibrary.Transforms
             return processOutput.Split("\n");
         }
    
-        public override void Initialize(IConfigurationSection transformConfiguration)
+        public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)
         {
+            base.Initialize(transformConfiguration, loggingConfiguration);
             SetExecutorByOs();
         }
 

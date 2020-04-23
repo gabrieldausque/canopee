@@ -20,9 +20,9 @@ namespace Canopee.StandardLibrary.Inputs.File
         private bool _withHeader;
         private string _fieldSeparator;
 
-        public override void Initialize(IConfiguration inputConfiguration, string agentId)
+        public override void Initialize(IConfigurationSection inputConfiguration, IConfigurationSection loggingConfiguration, string agentId)
         {
-            base.Initialize(inputConfiguration, agentId);
+            base.Initialize(inputConfiguration, loggingConfiguration, agentId);
             _filePath = Path.GetFullPath(inputConfiguration["File"]);
             _fileInfo = FileVersionInfo.GetVersionInfo(_filePath);
             _fileType = inputConfiguration["FileType"];

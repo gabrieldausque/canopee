@@ -24,7 +24,8 @@ namespace Canopee.Common.Pipelines
         /// Initialize the pipeline based on a pipelineConfigurationSection object
         /// </summary>
         /// <param name="pipelineConfigurationSection">the pipeline pipelineConfigurationSection</param>
-        void Initialize(IConfigurationSection pipelineConfigurationSection);
+        /// <param name="loggingConfiguration">the logging configuration section</param>
+        void Initialize(IConfigurationSection pipelineConfigurationSection, IConfigurationSection loggingConfiguration);
         /// <summary>
         /// This method will start immediately the collect, transform and load of one or more <see cref="ICollectedEvent"/>. This will be triggered by the trigger of the pipeline
         /// </summary>
