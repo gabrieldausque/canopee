@@ -1,6 +1,6 @@
 # BaseTrigger constructor
 
-The default constructor.
+Default constructor. Set the Logger
 
 ```csharp
 public BaseTrigger()

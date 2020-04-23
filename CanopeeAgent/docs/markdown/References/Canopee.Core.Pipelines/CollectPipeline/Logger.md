@@ -1,9 +1,9 @@
-# CollectPipeline.Stop method
+# CollectPipeline.Logger field
 
-Stop the ITrigger watch
+The internal ICanopeeLogger
 
 ```csharp
-public virtual void Stop()
+protected readonly ICanopeeLogger Logger;
 ```
 
 ## See Also

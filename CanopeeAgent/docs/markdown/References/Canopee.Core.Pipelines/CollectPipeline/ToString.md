@@ -1,5 +1,7 @@
 # CollectPipeline.ToString method
 
+Display the current pipeline in the format : Name:Id@AgentId
+
 ```csharp
 public override string ToString()
 ```

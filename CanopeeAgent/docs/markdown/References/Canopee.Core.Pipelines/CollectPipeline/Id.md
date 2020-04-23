@@ -1,5 +1,7 @@
 # CollectPipeline.Id property
 
+The Id of the current ICollectPipeline. We recommend uuidv4
+
 ```csharp
 public string Id { get; }
 ```

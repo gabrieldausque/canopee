@@ -1,8 +1,14 @@
 # CollectPipeline.Collect method
 
+Collect, transforms and output one or more ICollectedEvent
+
 ```csharp
 public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | a event that the ITrigger that has started this collect can pass to give informations |
 
 ## See Also
 

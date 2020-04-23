@@ -1,8 +1,14 @@
 # CollectPipeline.Initialize method
 
+Initialize the current pipeline with a pipelineConfigurationSection. Set the id if specified, create trigger, input, all transformations and output.
+
 ```csharp
-public virtual void Initialize(IConfigurationSection configuration)
+public virtual void Initialize(IConfigurationSection pipelineConfigurationSection)
 ```
+
+| parameter | description |
+| --- | --- |
+| pipelineConfigurationSection | a pipeline pipelineConfigurationSection section |
 
 ## See Also
 

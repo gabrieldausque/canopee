@@ -1,5 +1,7 @@
 # BaseTrigger.OwnerId property
 
+The id of the owner object ( a [`CollectPipeline`](../CollectPipeline.md))
+
 ```csharp
 public string OwnerId { get; set; }
 ```

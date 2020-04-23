@@ -1,8 +1,14 @@
 # BaseTrigger.Initialize method
 
+Initialize the trigger with the Trigger configuration
+
 ```csharp
 public abstract void Initialize(IConfigurationSection triggerParameters)
 ```
+
+| parameter | description |
+| --- | --- |
+| triggerParameters |  |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # CollectPipeline class
 
+The pipeline that will collect, transforms and send to an output ICollectedEvent
+
 ```csharp
 public class CollectPipeline : ICollectPipeline
 ```
@@ -8,28 +10,29 @@ public class CollectPipeline : ICollectPipeline
 
 | name | description |
 | --- | --- |
-| [CollectPipeline](CollectPipeline/CollectPipeline.md)() | The default constructor. |
-| [Id](CollectPipeline/Id.md) { get; } |  |
-| [Input](CollectPipeline/Input.md) { get; set; } |  |
-| [Name](CollectPipeline/Name.md) { get; } |  |
-| [Output](CollectPipeline/Output.md) { get; set; } |  |
-| [Transforms](CollectPipeline/Transforms.md) { get; set; } |  |
-| [Trigger](CollectPipeline/Trigger.md) { get; set; } |  |
-| virtual [Collect](CollectPipeline/Collect.md)(…) |  |
-| virtual [Dispose](CollectPipeline/Dispose.md)() |  |
-| virtual [Initialize](CollectPipeline/Initialize.md)(…) |  |
-| virtual [Run](CollectPipeline/Run.md)() |  |
-| virtual [Stop](CollectPipeline/Stop.md)() |  |
-| override [ToString](CollectPipeline/ToString.md)() |  |
+| [CollectPipeline](CollectPipeline/CollectPipeline.md)() | Default constructor. Initialize the logger and the guid |
+| [Id](CollectPipeline/Id.md) { get; } | The Id of the current ICollectPipeline. We recommend uuidv4 |
+| [Input](CollectPipeline/Input.md) { get; set; } | The input that will collect one or more ICollectedEvent |
+| [Name](CollectPipeline/Name.md) { get; } | The name of the current ICollectPipeline |
+| [Output](CollectPipeline/Output.md) { get; set; } | The IOutput that will send the output to external output (service, database, file, etc ...) |
+| [Transforms](CollectPipeline/Transforms.md) { get; set; } | All ITransform that will transform ICollectedEvent collected by the [`Input`](CollectPipeline/Input.md) |
+| [Trigger](CollectPipeline/Trigger.md) { get; set; } | The ITrigger that start the [`Collect`](CollectPipeline/Collect.md) when needed |
+| virtual [Collect](CollectPipeline/Collect.md)(…) | Collect, transforms and output one or more ICollectedEvent |
+| virtual [Dispose](CollectPipeline/Dispose.md)() | Dispose the current object |
+| virtual [Initialize](CollectPipeline/Initialize.md)(…) | Initialize the current pipeline with a pipelineConfigurationSection. Set the id if specified, create trigger, input, all transformations and output. |
+| virtual [Run](CollectPipeline/Run.md)() | Start the ITrigger watch |
+| virtual [Stop](CollectPipeline/Stop.md)() | Stop the ITrigger watch |
+| override [ToString](CollectPipeline/ToString.md)() | Display the current pipeline in the format : Name:Id@AgentId |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| readonly [LockCollect](CollectPipeline/LockCollect.md) |  |
-| [_agentId](CollectPipeline/_agentId.md) |  |
-| [_isCollecting](CollectPipeline/_isCollecting.md) |  |
-| virtual [Dispose](CollectPipeline/Dispose.md)(…) |  |
+| [AgentId](CollectPipeline/AgentId.md) | The agent id (uuidv4 format) |
+| [IsCollecting](CollectPipeline/IsCollecting.md) | The is collecting flag |
+| readonly [LockCollect](CollectPipeline/LockCollect.md) | The lock object used to avoid that two collect of the same pipeline run simultaneously |
+| readonly [Logger](CollectPipeline/Logger.md) | The internal ICanopeeLogger |
+| virtual [Dispose](CollectPipeline/Dispose.md)(…) | Dispose all needed internal object |
 
 ## See Also
 

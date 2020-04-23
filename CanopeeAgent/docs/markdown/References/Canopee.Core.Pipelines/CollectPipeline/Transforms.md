@@ -1,5 +1,7 @@
 # CollectPipeline.Transforms property
 
+All ITransform that will transform ICollectedEvent collected by the [`Input`](Input.md)
+
 ```csharp
 public ICollection<ITransform> Transforms { get; set; }
 ```

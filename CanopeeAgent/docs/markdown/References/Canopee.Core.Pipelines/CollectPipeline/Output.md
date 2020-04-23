@@ -1,5 +1,7 @@
 # CollectPipeline.Output property
 
+The IOutput that will send the output to external output (service, database, file, etc ...)
+
 ```csharp
 public IOutput Output { get; set; }
 ```

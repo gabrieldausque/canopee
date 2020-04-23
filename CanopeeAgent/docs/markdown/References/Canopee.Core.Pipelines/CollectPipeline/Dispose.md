@@ -1,5 +1,7 @@
 # CollectPipeline.Dispose method (1 of 2)
 
+Dispose the current object
+
 ```csharp
 public virtual void Dispose()
 ```
@@ -13,9 +15,15 @@ public virtual void Dispose()
 
 # CollectPipeline.Dispose method (2 of 2)
 
+Dispose all needed internal object
+
 ```csharp
 protected virtual void Dispose(bool disposing)
 ```
+
+| parameter | description |
+| --- | --- |
+| disposing |  |
 
 ## See Also
 

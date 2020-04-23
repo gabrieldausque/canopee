@@ -1,5 +1,7 @@
 # BaseTrigger.InternalDispose method
 
+Will dispose all needed internal object of the current implementation
+
 ```csharp
 protected abstract void InternalDispose()
 ```

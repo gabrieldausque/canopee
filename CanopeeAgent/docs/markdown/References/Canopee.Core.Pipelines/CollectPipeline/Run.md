@@ -1,5 +1,7 @@
 # CollectPipeline.Run method
 
+Start the ITrigger watch
+
 ```csharp
 public virtual void Run()
 ```

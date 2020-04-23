@@ -1,5 +1,7 @@
 # CollectPipeline.Input property
 
+The input that will collect one or more ICollectedEvent
+
 ```csharp
 public IInput Input { get; set; }
 ```

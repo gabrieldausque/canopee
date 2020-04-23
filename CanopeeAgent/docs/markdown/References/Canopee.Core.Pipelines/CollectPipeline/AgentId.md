@@ -1,9 +1,9 @@
-# CollectPipeline.Stop method
+# CollectPipeline.AgentId field
 
-Stop the ITrigger watch
+The agent id (uuidv4 format)
 
 ```csharp
-public virtual void Stop()
+protected string AgentId;
 ```
 
 ## See Also

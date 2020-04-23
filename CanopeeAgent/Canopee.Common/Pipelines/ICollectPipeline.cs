@@ -21,10 +21,10 @@ namespace Canopee.Common.Pipelines
         public string Id { get; }
         
         /// <summary>
-        /// Initialize the pipeline based on a configuration object
+        /// Initialize the pipeline based on a pipelineConfigurationSection object
         /// </summary>
-        /// <param name="configuration">the pipeline configuration</param>
-        void Initialize(IConfigurationSection configuration);
+        /// <param name="pipelineConfigurationSection">the pipeline pipelineConfigurationSection</param>
+        void Initialize(IConfigurationSection pipelineConfigurationSection);
         /// <summary>
         /// This method will start immediately the collect, transform and load of one or more <see cref="ICollectedEvent"/>. This will be triggered by the trigger of the pipeline
         /// </summary>

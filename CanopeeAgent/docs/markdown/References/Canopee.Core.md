@@ -47,8 +47,8 @@
 | abstract class [BaseInput](Canopee.Core.Pipelines/BaseInput.md) | Base class for the IInput contract |
 | abstract class [BaseOutput](Canopee.Core.Pipelines/BaseOutput.md) | The base class for IOutput. Initialize the logger |
 | abstract class [BaseTransform](Canopee.Core.Pipelines/BaseTransform.md) | The base implementation for ITransform contract |
-| abstract class [BaseTrigger](Canopee.Core.Pipelines/BaseTrigger.md) |  |
-| class [CollectPipeline](Canopee.Core.Pipelines/CollectPipeline.md) |  |
+| abstract class [BaseTrigger](Canopee.Core.Pipelines/BaseTrigger.md) | The base implementation of ITrigger |
+| class [CollectPipeline](Canopee.Core.Pipelines/CollectPipeline.md) | The pipeline that will collect, transforms and send to an output ICollectedEvent |
 | class [CollectPipelineManager](Canopee.Core.Pipelines/CollectPipelineManager.md) |  |
 | class [InputFactory](Canopee.Core.Pipelines/InputFactory.md) |  |
 | class [OutputFactory](Canopee.Core.Pipelines/OutputFactory.md) |  |

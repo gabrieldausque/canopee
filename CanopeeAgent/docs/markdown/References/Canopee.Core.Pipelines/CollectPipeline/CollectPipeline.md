@@ -1,6 +1,6 @@
 # CollectPipeline constructor
 
-The default constructor.
+Default constructor. Initialize the logger and the guid
 
 ```csharp
 public CollectPipeline()

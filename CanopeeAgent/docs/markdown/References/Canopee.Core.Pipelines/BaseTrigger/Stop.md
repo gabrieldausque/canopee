@@ -1,5 +1,7 @@
 # BaseTrigger.Stop method
 
+Stop the watch of the trigger
+
 ```csharp
 public abstract void Stop()
 ```

@@ -1,5 +1,7 @@
 # CollectPipeline.LockCollect field
 
+The lock object used to avoid that two collect of the same pipeline run simultaneously
+
 ```csharp
 protected readonly object LockCollect;
 ```

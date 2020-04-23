@@ -1,5 +1,7 @@
 # BaseTrigger.Dispose method (1 of 2)
 
+Dispose the current ITrigger
+
 ```csharp
 public void Dispose()
 ```
@@ -13,9 +15,15 @@ public void Dispose()
 
 # BaseTrigger.Dispose method (2 of 2)
 
+Dispose the current ITrigger
+
 ```csharp
 protected virtual void Dispose(bool disposing)
 ```
+
+| parameter | description |
+| --- | --- |
+| disposing |  |
 
 ## See Also
 

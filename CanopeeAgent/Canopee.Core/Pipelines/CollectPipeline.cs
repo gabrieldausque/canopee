@@ -13,16 +13,45 @@ using Microsoft.Extensions.Logging;
 
 namespace Canopee.Core.Pipelines
 {
+    /// <summary>
+    /// The pipeline that will collect, transforms and send to an output <see cref="ICollectedEvent"/>
+    /// </summary>
     [Export("Default", typeof(ICollectPipeline))]
     public class CollectPipeline : ICollectPipeline
     {
-        private readonly ICanopeeLogger Logger = null;
-        protected string _agentId;
+        /// <summary>
+        /// The internal <see cref="ICanopeeLogger"/>
+        /// </summary>
+        protected readonly ICanopeeLogger Logger = null;
+        
+        /// <summary>
+        /// The agent id (uuidv4 format)
+        /// </summary>
+        protected string AgentId;
+        
+        /// <summary>
+        /// The lock object used to avoid that two collect of the same pipeline run simultaneously
+        /// </summary>
         protected readonly object LockCollect = new object();
-        protected bool _isCollecting;
+        
+        /// <summary>
+        /// The is collecting flag
+        /// </summary>
+        protected bool IsCollecting;
+        
+        /// <summary>
+        /// The name of the current <see cref="ICollectPipeline"/>
+        /// </summary>
         public string Name { get; private set; }
+        
+        /// <summary>
+        /// The Id of the current <see cref="ICollectPipeline"/>. We recommend uuidv4
+        /// </summary>
         public string Id { get; private set; }
 
+        /// <summary>
+        /// Default constructor. Initialize the logger and the guid
+        /// </summary>
         public CollectPipeline()
         {
             Logger = CanopeeLoggerFactory.Instance()
@@ -31,18 +60,22 @@ namespace Canopee.Core.Pipelines
             Id = Guid.NewGuid().ToString();
         }
 
-        public virtual void Initialize(IConfigurationSection configuration)
+        /// <summary>
+        /// Initialize the current pipeline with a pipelineConfigurationSection. Set the id if specified, create trigger, input, all transformations and output.
+        /// </summary>
+        /// <param name="pipelineConfigurationSection">a pipeline pipelineConfigurationSection section</param>
+        public virtual void Initialize(IConfigurationSection pipelineConfigurationSection)
         {
             
-            _agentId = ConfigurationService.Instance.AgentId;
-            Name = configuration["Name"];
+            AgentId = ConfigurationService.Instance.AgentId;
+            Name = pipelineConfigurationSection["Name"];
             
-            if (!string.IsNullOrWhiteSpace(configuration["Id"]))
+            if (!string.IsNullOrWhiteSpace(pipelineConfigurationSection["Id"]))
             {
-                Id = configuration["Id"];
+                Id = pipelineConfigurationSection["Id"];
             }
             
-            var triggerConfiguration = configuration.GetSection("Trigger");
+            var triggerConfiguration = pipelineConfigurationSection.GetSection("Trigger");
             Trigger = TriggerFactory.Instance().GetTrigger(triggerConfiguration);
             Trigger.SubscribeToTrigger((sender, args) => { this.Collect(args); }, new TriggerSubscriptionContext()
             {
@@ -50,32 +83,36 @@ namespace Canopee.Core.Pipelines
                 PipelineName = Name
             });
 
-            var inputConfiguration = configuration.GetSection("Input");
-            Input = InputFactory.Instance().GetInput(inputConfiguration, _agentId);
+            var inputConfiguration = pipelineConfigurationSection.GetSection("Input");
+            Input = InputFactory.Instance().GetInput(inputConfiguration, AgentId);
             
-            var transformsConfiguration = configuration.GetSection("Transforms");
+            var transformsConfiguration = pipelineConfigurationSection.GetSection("Transforms");
             foreach(var transformConfiguration in transformsConfiguration.GetChildren())
             {
                 var transform = TransformFactory.Instance().GetTransform(transformConfiguration);
                 Transforms.Add(transform);
             }
 
-            var outputConfiguration = configuration.GetSection("Output");
+            var outputConfiguration = pipelineConfigurationSection.GetSection("Output");
             Output = OutputFactory.Instance().GetOutput(outputConfiguration);
         }
 
+        /// <summary>
+        /// Collect, transforms and output one or more <see cref="ICollectedEvent"/>
+        /// </summary>
+        /// <param name="fromTriggerEventArgs">a event that the <see cref="ITrigger"/> that has started this collect can pass to give informations</param>
         public virtual void Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             Logger.LogInfo($"Collecting pipeline {this}");
             try
             {
-                if (!_isCollecting)
+                if (!IsCollecting)
                 {
                     lock (LockCollect)
                     {
-                        if (_isCollecting)
+                        if (IsCollecting)
                             return;
-                        _isCollecting = true;
+                        IsCollecting = true;
                     }
                     var collectedEvents = Input.Collect(fromTriggerEventArgs);
                     foreach (var collectedEvent in collectedEvents)
@@ -95,28 +132,45 @@ namespace Canopee.Core.Pipelines
             finally
             {
                 Logger.LogInfo($"Collect finished for {this}");
-                _isCollecting = false;
+                IsCollecting = false;
             }
         }
 
+        /// <summary>
+        /// Start the <see cref="ITrigger"/> watch
+        /// </summary>
         public virtual void Run()
         {
             Trigger.Start();
         }
 
+        /// <summary>
+        /// Stop the <see cref="ITrigger"/> watch
+        /// </summary>
         public virtual void Stop()
         {
             Trigger.Stop();
         }
 
 
+        /// <summary>
+        /// The internal disposed flag
+        /// </summary>
         private bool _disposed = false;
+        
+        /// <summary>
+        /// Dispose the current object
+        /// </summary>
         public virtual void Dispose()
         {
             Dispose(true); 
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Dispose all needed internal object
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed) return;
@@ -129,14 +183,33 @@ namespace Canopee.Core.Pipelines
             }
         }
 
+        /// <summary>
+        /// The input that will collect one or more <see cref="ICollectedEvent"/>
+        /// </summary>
         public IInput Input { get; set; }
+        
+        /// <summary>
+        /// All <see cref="ITransform"/> that will transform <see cref="ICollectedEvent"/> collected by the <see cref="CollectPipeline.Input"/> 
+        /// </summary>
         public ICollection<ITransform> Transforms { get; set; }
+        
+        /// <summary>
+        /// The <see cref="IOutput"/> that will send the output to external output (service, database, file, etc ...) 
+        /// </summary>
         public IOutput Output { get; set; }
+        
+        /// <summary>
+        /// The <see cref="ITrigger"/> that start the <see cref="CollectPipeline.Collect"/> when needed
+        /// </summary>
         public ITrigger Trigger { get; set; }
 
+        /// <summary>
+        /// Display the current pipeline in the format : Name:Id@AgentId
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return $"{Name}:{Id}@{_agentId}";
+            return $"{Name}:{Id}@{AgentId}";
         }
     }
 }

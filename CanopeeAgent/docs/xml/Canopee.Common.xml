@@ -482,9 +482,9 @@
         </member>
         <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection)">
             <summary>
-            Initialize the pipeline based on a configuration object
+            Initialize the pipeline based on a pipelineConfigurationSection object
             </summary>
-            <param name="configuration">the pipeline configuration</param>
+            <param name="pipelineConfigurationSection">the pipeline pipelineConfigurationSection</param>
         </member>
         <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Collect(Canopee.Common.Pipelines.Events.TriggerEventArgs)">
             <summary>

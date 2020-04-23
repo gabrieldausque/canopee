@@ -1,5 +1,7 @@
 # CollectPipeline.Name property
 
+The name of the current ICollectPipeline
+
 ```csharp
 public string Name { get; }
 ```

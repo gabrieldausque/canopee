@@ -1,5 +1,7 @@
 # BaseTrigger.EventTriggered event
 
+Event raise when the trigger check that a collect needs to be done
+
 ```csharp
 protected event EventHandler<TriggerEventArgs> EventTriggered;
 ```

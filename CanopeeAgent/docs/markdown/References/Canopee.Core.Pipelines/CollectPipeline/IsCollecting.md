@@ -1,9 +1,9 @@
-# CollectPipeline.Stop method
+# CollectPipeline.IsCollecting field
 
-Stop the ITrigger watch
+The is collecting flag
 
 ```csharp
-public virtual void Stop()
+protected bool IsCollecting;
 ```
 
 ## See Also

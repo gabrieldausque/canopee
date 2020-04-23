@@ -1,5 +1,7 @@
 # BaseTrigger.Start method
 
+Start the watch of the trigger
+
 ```csharp
 public abstract void Start()
 ```
