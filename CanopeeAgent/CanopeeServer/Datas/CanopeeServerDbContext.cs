@@ -28,6 +28,7 @@ namespace CanopeeServer.Datas
         {
             var response = _client.Search<JsonObject>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
+                .Size(500)
                 .Query(q => q
                     .Bool(b => b
                     .Must(s => s
@@ -42,11 +43,11 @@ namespace CanopeeServer.Datas
                 //cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate")));
                 agentGroups.Add(new AgentGroup()
                     {
-                        Group = cleanObject.GetProperty<string>("Group"),
-                        Priority = cleanObject.GetProperty<long>("Priority"),
-                        AgentId = cleanObject.GetProperty<string>("AgentId"),
-                        EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
-                        EventId = cleanObject.GetProperty<string>("EventId")
+                        Group = cleanObject.GetProperty<string>("Group", true),
+                        Priority = cleanObject.GetProperty<long>("Priority", true),
+                        AgentId = cleanObject.GetProperty<string>("AgentId", true),
+                        EventDate = cleanObject.GetProperty<DateTime>("EventDate", true),
+                        EventId = cleanObject.GetProperty<string>("EventId", true)
                     });
             }
             return agentGroups;
@@ -95,6 +96,7 @@ namespace CanopeeServer.Datas
         {
             var response = _client.Search<JsonObject>(sd => sd
                 .Index(CanopeeAgentGroupsIndexName)
+                .Size(500)
                 .Query(q => q
                     .Bool(b => b
                         .Must(s => s
@@ -155,6 +157,7 @@ namespace CanopeeServer.Datas
         {
             var response = _client.Search<JsonDocument>(sd => sd
                 .Index(CanopeeConfigurationIndexName)
+                .Size(500)
                 .Query(q => q
                     .Bool(b => b
                         .Must(s => s
@@ -176,6 +179,7 @@ namespace CanopeeServer.Datas
         {
             var response = _client.Search<JsonObject>(sd => sd
                             .Index(CanopeeConfigurationIndexName)
+                            .Size(500)
                             .Query(q => q
                                 .Bool(b => b
                                     .Must(s => s
@@ -194,15 +198,15 @@ namespace CanopeeServer.Datas
             foreach (var config in response.Documents)
             {
                 var cleanObject = JsonObject.CleanDocument(config);
-                cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate")));
+                cleanObject.SetProperty("EventDate", DateTime.Parse(cleanObject.GetProperty<string>("EventDate", true)));
                 configs.Add(new CanopeeConfiguration()
                 {
-                    AgentId = cleanObject.GetProperty<string>("AgentId"),
-                    Configuration = cleanObject.GetProperty<JsonObject>("Configuration"),
-                    EventDate = cleanObject.GetProperty<DateTime>("EventDate"),
-                    EventId = cleanObject.GetProperty<string>("EventId"),
-                    Priority = cleanObject.GetProperty<short>("Priority"),
-                    Group = cleanObject.GetProperty<string>("Group")
+                    AgentId = cleanObject.GetProperty<string>("AgentId", true),
+                    Configuration = cleanObject.GetProperty<JsonObject>("Configuration", true),
+                    EventDate = cleanObject.GetProperty<DateTime>("EventDate", true),
+                    EventId = cleanObject.GetProperty<string>("EventId", true),
+                    Priority = cleanObject.GetProperty<short>("Priority", true),
+                    Group = cleanObject.GetProperty<string>("Group", true)
                 });
             }
             return configs;

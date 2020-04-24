@@ -14,7 +14,7 @@ public class CollectPipeline : ICollectPipeline
 | [Id](CollectPipeline/Id.md) { get; } | The Id of the current ICollectPipeline. We recommend uuidv4 |
 | [Input](CollectPipeline/Input.md) { get; set; } | The input that will collect one or more ICollectedEvent |
 | [Name](CollectPipeline/Name.md) { get; } | The name of the current ICollectPipeline |
-| [Output](CollectPipeline/Output.md) { get; set; } | The IOutput that will send the output to external output (service, database, file, etc ...) |
+| [Outputs](CollectPipeline/Outputs.md) { get; set; } | The collection of IOutput where to send a ICollectedEvent |
 | [Transforms](CollectPipeline/Transforms.md) { get; set; } | All ITransform that will transform ICollectedEvent collected by the [`Input`](CollectPipeline/Input.md) |
 | [Trigger](CollectPipeline/Trigger.md) { get; set; } | The ITrigger that start the [`Collect`](CollectPipeline/Collect.md) when needed |
 | virtual [Collect](CollectPipeline/Collect.md)(…) | Collect, transforms and output one or more ICollectedEvent |

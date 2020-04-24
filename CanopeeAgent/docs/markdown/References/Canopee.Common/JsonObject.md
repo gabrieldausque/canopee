@@ -19,6 +19,7 @@ public class JsonObject : Dictionary<string, object>
 | [SetProperty](JsonObject/SetProperty.md)(…) | Set or Add a property to the current [`JsonObject`](JsonObject.md) |
 | override [ToString](JsonObject/ToString.md)() | Get the stringified version of the current [`JsonObject`](JsonObject.md) |
 | [TryGetProperty&lt;T&gt;](JsonObject/TryGetProperty.md)(…) | Try to get a property and return false if the property is not in the JSonObject |
+| [TryGetValueInsensitive](JsonObject/TryGetValueInsensitive.md)(…) | Try get value with insensitive case for key |
 | [WriteTo](JsonObject/WriteTo.md)(…) | Write the current [`JsonObject`](JsonObject.md) to the specified filepath |
 
 ## See Also

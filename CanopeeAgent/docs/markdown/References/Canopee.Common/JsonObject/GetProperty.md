@@ -3,13 +3,14 @@
 Get the value of a property stored in the JsonObject in the type expected.
 
 ```csharp
-public T GetProperty<T>(string propertyName)
+public T GetProperty<T>(string propertyName, bool caseInsensitive = false)
 ```
 
 | parameter | description |
 | --- | --- |
 | T | the type of the value expected |
 | propertyName | the property you want to get the value |
+| caseInsensitive | True to search a property without case sensitivity Optional. Default : false |
 
 ## Return Value
 

@@ -13,6 +13,7 @@ public class OutputFactory : FactoryFromDirectoryBase
 | [OutputFactory](OutputFactory/OutputFactory.md)(…) | Default constructor |
 | static [Instance](OutputFactory/Instance.md)(…) | Get and create if needed the singleton instance |
 | [GetOutput](OutputFactory/GetOutput.md)(…) | Create an instance of IOutput with the specified configuration |
+| [GetOutputs](OutputFactory/GetOutputs.md)(…) |  |
 
 ## See Also
 

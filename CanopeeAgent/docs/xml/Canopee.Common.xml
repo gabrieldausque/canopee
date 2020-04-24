@@ -190,15 +190,28 @@
             <returns></returns>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
-        <member name="M:Canopee.Common.JsonObject.GetProperty``1(System.String)">
+        <member name="M:Canopee.Common.JsonObject.TryGetValueInsensitive(System.String,System.Object@)">
+            <summary>
+            Try get value with insensitive case for key
+            </summary>
+            <param name="key">the key to get value from it</param>
+            <param name="value">the value to return. Null if the value is not found</param>
+            <returns>True if the current JsonObject has a value for the current key, no matter the case. False otherwise.</returns>
+        </member>
+        <member name="M:Canopee.Common.JsonObject.GetProperty``1(System.String,System.Boolean)">
             <summary>
             Get the value of a property stored in the JsonObject in the type expected.
             </summary>
             <param name="propertyName">the property you want to get the value</param>
+            <param name="caseInsensitive">
+            True to search a property without case sensitivity
+            Optional. Default : false
+            </param>
             <typeparam name="T">the type of the value expected</typeparam>
             <returns>the value as type expected</returns>
             <exception cref="T:System.NotSupportedException">If no conversion of type can be done</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">If the property name doesn't exist in this <see cref="T:Canopee.Common.JsonObject"/></exception>
+            
         </member>
         <member name="M:Canopee.Common.JsonObject.IsNumeric(System.Object)">
             <summary>

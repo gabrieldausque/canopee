@@ -88,9 +88,9 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
                     var cleanObject = JsonObject.CleanDocument(jsonObj);
                     agentGroups.Add(new AgentGroupDto()
                     {
-                        AgentId = cleanObject.GetProperty<string>("agentId"),
-                        Group = cleanObject.GetProperty<string>("group"),
-                        Priority = cleanObject.GetProperty<long>("priority")
+                        AgentId = cleanObject.GetProperty<string>("agentId", true),
+                        Group = cleanObject.GetProperty<string>("group", true),
+                        Priority = cleanObject.GetProperty<long>("priority", true)
                     });
                 }
             }
@@ -126,7 +126,7 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
                 var jsonObjects = JsonSerializer.Deserialize<List<JsonObject>>(resultAsString);
                 var configAsJsonObject = jsonObjects.FirstOrDefault();
                 if(configAsJsonObject != null)
-                    return JsonObject.CleanDocument(configAsJsonObject).GetProperty<JsonObject>("configuration");
+                    return JsonObject.CleanDocument(configAsJsonObject).GetProperty<JsonObject>("configuration", true);
             }
             catch (Exception ex)
             {

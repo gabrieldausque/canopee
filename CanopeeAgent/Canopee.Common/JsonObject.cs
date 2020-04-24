@@ -208,16 +208,51 @@ namespace Canopee.Common
         }
 
         /// <summary>
+        /// Try get value with insensitive case for key
+        /// </summary>
+        /// <param name="key">the key to get value from it</param>
+        /// <param name="value">the value to return. Null if the value is not found</param>
+        /// <returns>True if the current JsonObject has a value for the current key, no matter the case. False otherwise.</returns>
+        public bool TryGetValueInsensitive(string key, out object value)
+        {
+            foreach (var keyToTest in Keys)
+            {
+                if (keyToTest.Equals(key, StringComparison.OrdinalIgnoreCase))
+                {
+                    value = this[keyToTest];
+                    return true;
+                }
+            }
+            value = null;
+            return false;
+        }
+        
+        /// <summary>
         /// Get the value of a property stored in the JsonObject in the type expected.
         /// </summary>
         /// <param name="propertyName">the property you want to get the value</param>
+        /// <param name="caseInsensitive">
+        /// True to search a property without case sensitivity
+        /// Optional. Default : false
+        /// </param>
         /// <typeparam name="T">the type of the value expected</typeparam>
         /// <returns>the value as type expected</returns>
         /// <exception cref="NotSupportedException">If no conversion of type can be done</exception>
         /// <exception cref="ArgumentOutOfRangeException">If the property name doesn't exist in this <see cref="JsonObject"/></exception>
-        public T GetProperty<T>(string propertyName)
+        /// 
+        public T GetProperty<T>(string propertyName, bool caseInsensitive = false)
         {
-            if (TryGetValue(propertyName, out object valueAsObject))
+            bool propertyExists = false;
+            object valueAsObject = null;
+            if (caseInsensitive)
+            {
+                propertyExists = TryGetValueInsensitive(propertyName, out valueAsObject);
+            }
+            else
+            {
+                propertyExists = TryGetValue(propertyName, out valueAsObject);
+            }
+            if (propertyExists)
             {
                 if (valueAsObject == null)
                     return default(T);
@@ -261,7 +296,6 @@ namespace Canopee.Common
                         throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}", ex);
                     }
                 }
-
                 throw new NotSupportedException($"Property {propertyName} is not of type {typeof(T).FullName}");
             }
             throw new ArgumentOutOfRangeException($"Property {propertyName} not found ! ");

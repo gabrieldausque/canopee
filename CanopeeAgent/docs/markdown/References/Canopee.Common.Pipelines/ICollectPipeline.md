@@ -13,7 +13,7 @@ public interface ICollectPipeline : IDisposable
 | [Id](ICollectPipeline/Id.md) { get; } | The id of the current [`ICollectPipeline`](ICollectPipeline.md). Must be unique over the application. |
 | [Input](ICollectPipeline/Input.md) { get; set; } | The [`IInput`](IInput.md) that will collect one or more [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) when the trigger is raised |
 | [Name](ICollectPipeline/Name.md) { get; } | The name of the current [`ICollectPipeline`](ICollectPipeline.md) |
-| [Output](ICollectPipeline/Output.md) { get; set; } | The [`IOutput`](IOutput.md) object that will send the collection of extracted and transformed [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
+| [Outputs](ICollectPipeline/Outputs.md) { get; set; } | The collection of [`IOutput`](IOutput.md) where to send a [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
 | [Transforms](ICollectPipeline/Transforms.md) { get; set; } | The collection of [`ITransform`](ITransform.md) that will complete extracted information from [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) collected by the [`Input`](ICollectPipeline/Input.md) |
 | [Trigger](ICollectPipeline/Trigger.md) { get; set; } | The [`ITrigger`](ITrigger.md) that will be start the collect of the [`ICollectPipeline`](ICollectPipeline.md) that owns it |
 | [Collect](ICollectPipeline/Collect.md)(…) | This method will start immediately the collect, transform and load of one or more [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md). This will be triggered by the trigger of the pipeline |

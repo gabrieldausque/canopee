@@ -85,5 +85,16 @@ namespace TestJsonObject
             var fileContent = File.ReadAllText(tempFile);
             Assert.AreEqual(jsonObject.ToString(),fileContent);
         }
+
+        [Test]
+        public void Should_get_property_using_case_insensitive_option()
+        {
+            var jsonObject = JsonObject.LoadFromFile("simple.json");
+            Assert.AreEqual("aStringValue", jsonObject.GetProperty<String>("propertystring", true));
+            Assert.IsTrue(jsonObject.GetProperty<bool>("propertybool", true));
+            Assert.AreEqual(1.0f, jsonObject.GetProperty<float>("propertynumeric", true));
+            Assert.AreEqual(1, jsonObject.GetProperty<short>("propertyint", true));
+            Assert.IsNull(jsonObject.GetProperty<String>("propertynull", true));
+        }
     }
 }
