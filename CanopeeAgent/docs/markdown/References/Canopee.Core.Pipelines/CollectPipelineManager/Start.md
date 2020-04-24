@@ -1,9 +1,9 @@
-# CollectPipelineManager constructor
+# CollectPipelineManager.Start method
 
-Default Constructor
+Start all pipeline
 
 ```csharp
-public CollectPipelineManager()
+public void Start()
 ```
 
 ## See Also

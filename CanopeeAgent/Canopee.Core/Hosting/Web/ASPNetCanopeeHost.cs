@@ -13,17 +13,12 @@ namespace Canopee.Core.Hosting.Web
     public class ASPNetCanopeeHost : BaseCanopeeHost
     {
         /// <summary>
-        /// The pipeline manager
-        /// </summary>
-        protected readonly CollectPipelineManager CollectPipelineManager;
-        
-        /// <summary>
         /// Construct a new instance using the passed configuration
         /// </summary>
         /// <param name="canopeeConfiguration">The Canopee section configuration</param>
         public ASPNetCanopeeHost(IConfigurationSection canopeeConfiguration):base(canopeeConfiguration.GetSection("Logging"))
         {
-            CollectPipelineManager = new CollectPipelineManager(canopeeConfiguration.GetSection("Pipelines"),canopeeConfiguration.GetSection("Logging"));
+            CollectPipelineManager.Initialize(canopeeConfiguration.GetSection("Pipelines"),canopeeConfiguration.GetSection("Logging"));
             HostTrigger =
                 TriggerFactory.Instance().GetTrigger(canopeeConfiguration.GetSection("Trigger"), canopeeConfiguration.GetSection("Logging"));
         }
@@ -43,7 +38,7 @@ namespace Canopee.Core.Hosting.Web
             {
                 Logger.LogInfo("Starting the trigger and the pipeline manager");
                 HostTrigger.Start();
-                CollectPipelineManager.Run();
+                CollectPipelineManager.Start();
                 Logger.LogInfo("Pipeline manager Started");
             }
             else

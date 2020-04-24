@@ -10,9 +10,10 @@ public class CollectPipelineManager : IDisposable
 
 | name | description |
 | --- | --- |
-| [CollectPipelineManager](CollectPipelineManager/CollectPipelineManager.md)(…) | Create the CollectPipelineManager from pipelines and logger configuration |
+| [CollectPipelineManager](CollectPipelineManager/CollectPipelineManager.md)() | Default Constructor |
 | [Dispose](CollectPipelineManager/Dispose.md)() | Dispose the instance |
-| [Run](CollectPipelineManager/Run.md)() | Start all pipeline |
+| [Initialize](CollectPipelineManager/Initialize.md)(…) | Initialize the CollectPipelineManager from pipelines and logger configuration |
+| [Start](CollectPipelineManager/Start.md)() | Start all pipeline |
 | [Stop](CollectPipelineManager/Stop.md)() | Stop all pipelines |
 
 ## See Also

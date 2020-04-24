@@ -16,12 +16,6 @@ public class ASPNetCanopeeHost : BaseCanopeeHost
 | override [Start](ASPNetCanopeeHost/Start.md)() | Start the host trigger and the pipeline manager |
 | override [Stop](ASPNetCanopeeHost/Stop.md)() | Stop host trigger and pipeline manager |
 
-## Protected Members
-
-| name | description |
-| --- | --- |
-| readonly [CollectPipelineManager](ASPNetCanopeeHost/CollectPipelineManager.md) | The pipeline manager |
-
 ## See Also
 
 * class [BaseCanopeeHost](../Canopee.Core.Hosting/BaseCanopeeHost.md)

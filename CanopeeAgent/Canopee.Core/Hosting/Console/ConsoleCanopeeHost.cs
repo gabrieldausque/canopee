@@ -15,11 +15,6 @@ namespace Canopee.Core.Hosting.Console
         /// The ManualResetEvent used to exit the process on user input
         /// </summary>
         private readonly ManualResetEvent _exitEvent;
-        
-        /// <summary>
-        /// The pipelines manager
-        /// </summary>
-        private readonly CollectPipelineManager _collectPipelineManager;
 
         /// <summary>
         /// Default constructor
@@ -27,7 +22,7 @@ namespace Canopee.Core.Hosting.Console
         public ConsoleCanopeeHost(IConfigurationSection canopeeConfiguration):base(canopeeConfiguration.GetSection("Logging"))
         {
             _exitEvent = new ManualResetEvent(false);
-            _collectPipelineManager = new CollectPipelineManager(canopeeConfiguration.GetSection("Pipelines"), canopeeConfiguration.GetSection("Logging"));
+            CollectPipelineManager.Initialize(canopeeConfiguration.GetSection("Pipelines"), canopeeConfiguration.GetSection("Logging"));
         }
 
         /// <summary>
@@ -41,7 +36,7 @@ namespace Canopee.Core.Hosting.Console
             Logger.LogInfo("Press [CTRL+C] to close agent");
             if (CanRun)
             {
-                _collectPipelineManager.Run();
+                CollectPipelineManager.Start();
                 _exitEvent.WaitOne();
             }
             else
@@ -68,7 +63,7 @@ namespace Canopee.Core.Hosting.Console
         {
             Logger.LogInfo("");
             Logger.LogInfo("Clearing collector instance");
-            _collectPipelineManager.Stop();
+            CollectPipelineManager.Stop();
             Logger.LogInfo("Exiting the host");
             _exitEvent.Set();
         }
@@ -98,7 +93,7 @@ namespace Canopee.Core.Hosting.Console
             if (disposing)
             {
                 _exitEvent?.Dispose();
-                _collectPipelineManager?.Dispose();
+                CollectPipelineManager?.Dispose();
                 _disposed = true;
             }
         }

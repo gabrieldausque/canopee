@@ -8,6 +8,7 @@ using Canopee.Common.Hosting;
 using Canopee.Common.Logging;
 using Canopee.Core.Configuration;
 using Canopee.Core.Logging;
+using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.Core.Hosting
@@ -17,6 +18,11 @@ namespace Canopee.Core.Hosting
     /// </summary>
     public abstract class BaseCanopeeHost : ICanopeeHost
     {
+        /// <summary>
+        /// The pipeline manager
+        /// </summary>
+        protected CollectPipelineManager CollectPipelineManager;
+        
         /// <summary>
         /// The internal logger
         /// </summary>
@@ -33,6 +39,7 @@ namespace Canopee.Core.Hosting
         public BaseCanopeeHost(IConfigurationSection loggingConfiguration)
         {
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());   
+            CollectPipelineManager = new CollectPipelineManager();
         }
 
         /// <summary>

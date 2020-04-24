@@ -20,6 +20,7 @@ public abstract class BaseCanopeeHost : ICanopeeHost
 | name | description |
 | --- | --- |
 | [CanRun](BaseCanopeeHost/CanRun.md) | Check if the instance can run |
+| [CollectPipelineManager](BaseCanopeeHost/CollectPipelineManager.md) | The pipeline manager |
 | [Logger](BaseCanopeeHost/Logger.md) | The internal logger |
 | [SetCanRun](BaseCanopeeHost/SetCanRun.md)() | Set the CanRun property to true if UniqueInstance configuration is set to false or if no other process with the same name is running |
 

@@ -28,25 +28,33 @@ namespace Canopee.Core.Pipelines
         /// <summary>
         /// The internal <see cref="ICanopeeLogger"/>
         /// </summary>
-        private readonly ICanopeeLogger Logger = null;
+        private ICanopeeLogger _logger = null;
 
         /// <summary>
-        /// Create the CollectPipelineManager from pipelines and logger configuration
+        /// Default Constructor
         /// </summary>
-        /// <param name="pipelinesConfiguration">the pipelines configuration collection</param>
-        /// <param name="loggingConfiguration">the logger configuration</param>
-        public CollectPipelineManager(IConfigurationSection pipelinesConfiguration, IConfigurationSection loggingConfiguration)
+        public CollectPipelineManager()
         {
-            Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
             _pipelines = new Dictionary<string, ICollectPipeline>();
+        }
+
+
+        /// <summary>
+        /// Initialize the CollectPipelineManager from pipelines and logger configuration
+        /// </summary>
+        /// <param name="pipelinesConfiguration"></param>
+        /// <param name="loggingConfiguration"></param>
+        public void Initialize(IConfigurationSection pipelinesConfiguration, IConfigurationSection loggingConfiguration)
+        {
+            _logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
             var collectPipelinesFactory = new CollectPipelineFactory();
 
             var config = pipelinesConfiguration.GetChildren();
             
-            Logger.LogInfo($"{config.ToArray().Length.ToString()} Pipelines to read");
+            _logger.LogInfo($"{config.ToArray().Length.ToString()} Pipelines to read");
             foreach (var pipelineConfig in config)
             {
-                Logger.LogInfo($"Reading Pipeline {pipelineConfig["Name"]}");
+                _logger.LogInfo($"Reading Pipeline {pipelineConfig["Name"]}");
                 var pipeline = collectPipelinesFactory.GetPipeline(pipelineConfig, loggingConfiguration);
                 if (!_pipelines.ContainsKey(pipelineConfig["Name"]))
                 {
@@ -54,21 +62,21 @@ namespace Canopee.Core.Pipelines
                 }
                 else
                 {
-                    Logger.LogWarning($"A pipeline with name {pipelineConfig["Name"]} already exists. Replacing with the new one");
+                    _logger.LogWarning($"A pipeline with name {pipelineConfig["Name"]} already exists. Replacing with the new one");
                     _pipelines[pipelineConfig["Name"]] = pipeline;
                 }
                 
             }
         }
-
+        
         /// <summary>
         /// Start all pipeline
         /// </summary>
-        public void Run()
+        public void Start()
         {
             foreach (var pipeline in _pipelines)
             {
-                Logger.LogInfo($"Starting pipeline {pipeline.ToString()}");
+                _logger.LogInfo($"Starting pipeline {pipeline.ToString()}");
                 pipeline.Value.Start();
             }
         }
@@ -80,7 +88,7 @@ namespace Canopee.Core.Pipelines
         {
             foreach (var pipeline in _pipelines)
             {
-                Logger.LogInfo($"Stopping pipeline {pipeline.ToString()}");
+                _logger.LogInfo($"Stopping pipeline {pipeline.ToString()}");
                 pipeline.Value.Stop();
             }
         }

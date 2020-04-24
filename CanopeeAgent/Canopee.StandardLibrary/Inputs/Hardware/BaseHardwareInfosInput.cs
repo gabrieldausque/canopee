@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using Canopee.Common;
 using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
@@ -29,6 +30,7 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             Logger.LogDebug("Starting collecting hardware informations");
             try
             {
+                Thread.Sleep(5000);
                 var result = new List<ICollectedEvent>();
                 var infos = new HardwareInfos(AgentId);
                 SetCpuInfos(infos);

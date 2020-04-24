@@ -116,20 +116,22 @@ namespace Canopee.Core.Pipelines
                     }
                     IsCollecting = true;
                 }
-                
+
                 try
                 {
                     var collectedEvents = Input.Collect(fromTriggerEventArgs);
                     foreach (var collectedEvent in collectedEvents)
                     {
-                        foreach(var transformer in Transforms)
+                        var finalEvent = collectedEvent;
+                        foreach (var transformer in Transforms)
                         {
-                            transformer.Transform(collectedEvent);
+                            finalEvent = transformer.Transform(finalEvent);
                         }
-                        Output.SendToOutput(collectedEvent);
-                    }    
+
+                        Output.SendToOutput(finalEvent);
+                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Logger.LogError($"Error while collecting {this} : {ex}");
                 }
@@ -138,7 +140,10 @@ namespace Canopee.Core.Pipelines
                     Logger.LogInfo($"Collect finished for {this}");
                     IsCollecting = false;
                 }
-                
+            }
+            else
+            {
+                Logger.LogWarning($"Collect already running for {this}. No new collect started.");
             }
         }
 
