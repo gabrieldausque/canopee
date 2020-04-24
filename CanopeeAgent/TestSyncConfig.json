@@ -42,7 +42,7 @@
                 ]
               }
             ],
-            "Output": {
+            "Outputs" : {
               "OutputType": "Console"
             }
           }
@@ -106,7 +106,7 @@
                 "OSSpecific": "true"
               }
             ],
-            "Output": {
+            "Outputs" : {
               "OutputType": "Console"
             }
           }
@@ -160,7 +160,7 @@
                 ]
               }
             ],
-            "Output": {
+            "Outputs" : {
               "OutputType": "Console"
             }
           },
@@ -192,7 +192,7 @@
                 ]
               }
             ],
-            "Output": {
+            "Outputs" : {
               "OutputType": "Console"
             }
           },
@@ -233,7 +233,7 @@
                 "OSSpecific": "true"
               }
             ],
-            "Output": {
+            "Outputs" : {
               "OutputType": "Console"
             }
           }

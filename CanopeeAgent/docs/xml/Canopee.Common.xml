@@ -513,9 +513,9 @@
             The collection of <see cref="T:Canopee.Common.Pipelines.ITransform"/> that will complete extracted information from <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> collected by the <see cref="P:Canopee.Common.Pipelines.ICollectPipeline.Input"/>
             </summary>
         </member>
-        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Output">
+        <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Outputs">
             <summary>
-            The <see cref="T:Canopee.Common.Pipelines.IOutput"/> object that will send the collection of extracted and transformed <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
+            The collection of <see cref="T:Canopee.Common.Pipelines.IOutput"/> where to send a <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/>
             </summary>
         </member>
         <member name="P:Canopee.Common.Pipelines.ICollectPipeline.Trigger">

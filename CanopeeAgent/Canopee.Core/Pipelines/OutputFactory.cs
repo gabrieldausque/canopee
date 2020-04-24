@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Canopee.Common;
 using Canopee.Common.Pipelines;
 using Microsoft.Extensions.Configuration;
@@ -55,6 +57,24 @@ namespace Canopee.Core.Pipelines
             var output = Container.GetExport<IOutput>(type);
             output?.Initialize(configurationOutput, loggingConfiguration);
             return output;
+        }
+
+        public ICollection<IOutput> GetOutputs(IConfigurationSection outputsConfiguration, IConfigurationSection loggingConfiguration)
+        {
+            var toReturn = new List<IOutput>();
+            var outputsCollection = outputsConfiguration.GetChildren()?.ToArray();
+            if (outputsCollection != null && outputsCollection.Length > 0)
+            {
+                foreach (var outputConfiguration in outputsCollection)
+                {
+                    toReturn.Add(GetOutput(outputConfiguration, loggingConfiguration));
+                }
+            }
+            else
+            {
+                toReturn.Add(GetOutput(outputsConfiguration,loggingConfiguration));
+            }
+            return toReturn;
         }
     }
 }

@@ -48,9 +48,9 @@ namespace Canopee.Common.Pipelines
         /// </summary>
         ICollection<ITransform> Transforms { get; set; }
         /// <summary>
-        /// The <see cref="IOutput"/> object that will send the collection of extracted and transformed <see cref="ICollectedEvent"/>
+        /// The collection of <see cref="IOutput"/> where to send a <see cref="ICollectedEvent"/>
         /// </summary>
-        IOutput Output { get; set; }
+        ICollection<IOutput> Outputs { get; set; }
         /// <summary>
         /// The <see cref="ITrigger"/> that will be start the collect of the <see cref="ICollectPipeline"/> that owns it
         /// </summary>

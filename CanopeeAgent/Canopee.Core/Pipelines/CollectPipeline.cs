@@ -56,6 +56,7 @@ namespace Canopee.Core.Pipelines
         {
             Transforms = new List<ITransform>();
             Id = Guid.NewGuid().ToString();
+            Outputs = new List<IOutput>();
         }
 
         /// <summary>
@@ -94,8 +95,11 @@ namespace Canopee.Core.Pipelines
                 Transforms.Add(transform);
             }
 
-            var outputConfiguration = pipelineConfigurationSection.GetSection("Output");
-            Output = OutputFactory.Instance().GetOutput(outputConfiguration, loggingConfiguration);
+            var outputConfiguration = pipelineConfigurationSection.GetSection("Outputs");
+            foreach (var output in OutputFactory.Instance().GetOutputs(outputConfiguration, loggingConfiguration))
+            {
+                Outputs.Add(output);
+            }
         }
 
         /// <summary>
@@ -128,7 +132,18 @@ namespace Canopee.Core.Pipelines
                             finalEvent = transformer.Transform(finalEvent);
                         }
 
-                        Output.SendToOutput(finalEvent);
+                        foreach (var output in Outputs)
+                        {
+                            try
+                            {
+                                output.SendToOutput(finalEvent);
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.LogError($"Exception when sending with output ${output.ToString()} : ${ex.ToString()}");
+                            }
+                        }
+                        
                     }
                 }
                 catch (Exception ex)
@@ -205,9 +220,9 @@ namespace Canopee.Core.Pipelines
         public ICollection<ITransform> Transforms { get; set; }
         
         /// <summary>
-        /// The <see cref="IOutput"/> that will send the output to external output (service, database, file, etc ...) 
+        /// The collection of <see cref="IOutput"/> where to send a <see cref="ICollectedEvent"/>
         /// </summary>
-        public IOutput Output { get; set; }
+        public ICollection<IOutput> Outputs { get; set; }
         
         /// <summary>
         /// The <see cref="ITrigger"/> that start the <see cref="CollectPipeline.Collect"/> when needed
