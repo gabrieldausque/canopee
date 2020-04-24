@@ -1,8 +1,16 @@
 # TriggerFactory.GetTrigger method
 
+Create the ITrigger corresponding to the configuration
+
 ```csharp
-public ITrigger GetTrigger(IConfigurationSection configurationTrigger)
+public ITrigger GetTrigger(IConfigurationSection configurationTrigger, 
+    IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationTrigger | the configuration of the ITrigger |
+| loggingConfiguration | the logger configuration |
 
 ## See Also
 

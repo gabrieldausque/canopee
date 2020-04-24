@@ -3,12 +3,14 @@
 Initialize the output. In base class do nothing
 
 ```csharp
-public virtual void Initialize(IConfiguration configurationOutput)
+public virtual void Initialize(IConfiguration configurationOutput, 
+    IConfigurationSection loggingConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
 | configurationOutput |  |
+| loggingConfiguration | the ICanopeeLogger configuration |
 
 ## See Also
 

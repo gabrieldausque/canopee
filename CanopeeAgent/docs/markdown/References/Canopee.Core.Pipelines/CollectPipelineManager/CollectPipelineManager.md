@@ -1,10 +1,16 @@
 # CollectPipelineManager constructor
 
-The default constructor.
+Create the CollectPipelineManager from pipelines and logger configuration
 
 ```csharp
-public CollectPipelineManager()
+public CollectPipelineManager(IConfigurationSection pipelinesConfiguration, 
+    IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| pipelinesConfiguration | the pipelines configuration collection |
+| loggingConfiguration | the logger configuration |
 
 ## See Also
 

@@ -10,7 +10,7 @@ public abstract class BaseCanopeeHost : ICanopeeHost
 
 | name | description |
 | --- | --- |
-| [BaseCanopeeHost](BaseCanopeeHost/BaseCanopeeHost.md)() | Default constructor. Instanciate the logger in it |
+| [BaseCanopeeHost](BaseCanopeeHost/BaseCanopeeHost.md)(…) | Default constructor. Instanciate the logger in it |
 | virtual [Dispose](BaseCanopeeHost/Dispose.md)() | Dispose the host. Currently do nothing. Override it in your host implementation. |
 | virtual [Start](BaseCanopeeHost/Start.md)() | Starting the current host. Set the CanRun property and start the ConfigurationService (for synchronization) |
 | abstract [Stop](BaseCanopeeHost/Stop.md)() | Stop the current process |

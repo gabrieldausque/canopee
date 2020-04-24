@@ -1,5 +1,7 @@
 # TriggerFactory class
 
+The factory in charge of creating ITrigger
+
 ```csharp
 public class TriggerFactory : FactoryFromDirectoryBase
 ```
@@ -8,9 +10,9 @@ public class TriggerFactory : FactoryFromDirectoryBase
 
 | name | description |
 | --- | --- |
-| [TriggerFactory](TriggerFactory/TriggerFactory.md)(…) |  |
-| static [Instance](TriggerFactory/Instance.md)(…) |  |
-| [GetTrigger](TriggerFactory/GetTrigger.md)(…) |  |
+| [TriggerFactory](TriggerFactory/TriggerFactory.md)(…) | The default constructor. |
+| static [Instance](TriggerFactory/Instance.md)(…) | Get and create if needed the singleton instance |
+| [GetTrigger](TriggerFactory/GetTrigger.md)(…) | Create the ITrigger corresponding to the configuration |
 
 ## See Also
 

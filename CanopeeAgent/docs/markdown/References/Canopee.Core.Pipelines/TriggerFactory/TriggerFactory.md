@@ -1,8 +1,14 @@
 # TriggerFactory constructor
 
+The default constructor.
+
 ```csharp
 public TriggerFactory(string directoryCatalog = "./Pipelines")
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory from which to load the ITransform catalog |
 
 ## See Also
 

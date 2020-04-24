@@ -3,12 +3,14 @@
 Initialize the current [`BaseInput`](../BaseInput.md) from the configuration. Set the agent from the argument
 
 ```csharp
-public virtual void Initialize(IConfiguration configurationInput, string agentId)
+public virtual void Initialize(IConfigurationSection configurationInput, 
+    IConfigurationSection loggingConfiguration, string agentId)
 ```
 
 | parameter | description |
 | --- | --- |
 | configurationInput | the Input configuration |
+| loggingConfiguration | the ICanopeeLogger configuration |
 | agentId | the agentid send from the caller. Prefer Guid format (uuidv4) |
 
 ## See Also

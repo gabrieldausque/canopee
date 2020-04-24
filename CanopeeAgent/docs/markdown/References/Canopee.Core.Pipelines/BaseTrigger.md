@@ -10,11 +10,10 @@ public abstract class BaseTrigger : ITrigger
 
 | name | description |
 | --- | --- |
-| [BaseTrigger](BaseTrigger/BaseTrigger.md)() | Default constructor. Set the Logger |
 | [OwnerId](BaseTrigger/OwnerId.md) { get; set; } | The id of the owner object ( a [`CollectPipeline`](CollectPipeline.md)) |
 | [OwnerName](BaseTrigger/OwnerName.md) { get; set; } | The name of the owner object (a [`CollectPipeline`](CollectPipeline.md)) |
 | [Dispose](BaseTrigger/Dispose.md)() | Dispose the current ITrigger |
-| abstract [Initialize](BaseTrigger/Initialize.md)(…) | Initialize the trigger with the Trigger configuration |
+| virtual [Initialize](BaseTrigger/Initialize.md)(…) | Initialize the trigger with the Trigger configuration and its logger |
 | virtual [RaiseEvent](BaseTrigger/RaiseEvent.md)(…) | Raise the [`EventTriggered`](BaseTrigger/EventTriggered.md) |
 | abstract [Start](BaseTrigger/Start.md)() | Start the watch of the trigger |
 | abstract [Stop](BaseTrigger/Stop.md)() | Stop the watch of the trigger |
@@ -24,6 +23,7 @@ public abstract class BaseTrigger : ITrigger
 
 | name | description |
 | --- | --- |
+| [BaseTrigger](BaseTrigger/BaseTrigger.md)() | The default constructor. |
 | [Logger](BaseTrigger/Logger.md) | The internal ICanopeeLogger |
 | event [EventTriggered](BaseTrigger/EventTriggered.md) | Event raise when the trigger check that a collect needs to be done |
 | virtual [Dispose](BaseTrigger/Dispose.md)(…) | Dispose the current ITrigger |

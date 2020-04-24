@@ -7,10 +7,20 @@ using System.Runtime.Loader;
 
 namespace Canopee.Core
 {
+    /// <summary>
+    /// Base class for all factories that will load a catalog of specific operational contract based on a directory
+    /// </summary>
     public class FactoryFromDirectoryBase
     {
+        /// <summary>
+        /// The MEF container
+        /// </summary>
         protected readonly CompositionHost Container;
 
+        /// <summary>
+        /// Default constructor that initialize the <see cref="FactoryFromDirectoryBase.Container"/> from a directory by loading all assembly in it
+        /// </summary>
+        /// <param name="directoryCatalog">the directory from which to load the catalog</param>
         protected FactoryFromDirectoryBase(string directoryCatalog)
         {
             var containerConfiguration = new ContainerConfiguration();
@@ -26,6 +36,11 @@ namespace Canopee.Core
             Container = containerConfiguration.CreateContainer();
         }
 
+        /// <summary>
+        /// Helper that return the OSPlatform of the current workstation where the hosting process is running
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotSupportedException">If the OS is not a known OS</exception>
         protected OSPlatform GetCurrentPlatform()
         {
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.Linux))

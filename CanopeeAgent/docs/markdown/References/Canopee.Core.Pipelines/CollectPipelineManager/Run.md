@@ -1,5 +1,7 @@
 # CollectPipelineManager.Run method
 
+Start all pipeline
+
 ```csharp
 public void Run()
 ```

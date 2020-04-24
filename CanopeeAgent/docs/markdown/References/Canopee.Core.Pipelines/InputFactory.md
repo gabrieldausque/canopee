@@ -1,5 +1,7 @@
 # InputFactory class
 
+Factory in charge of creating a IInput
+
 ```csharp
 public class InputFactory : FactoryFromDirectoryBase
 ```
@@ -8,9 +10,9 @@ public class InputFactory : FactoryFromDirectoryBase
 
 | name | description |
 | --- | --- |
-| [InputFactory](InputFactory/InputFactory.md)(…) |  |
-| static [Instance](InputFactory/Instance.md)(…) |  |
-| [GetInput](InputFactory/GetInput.md)(…) |  |
+| [InputFactory](InputFactory/InputFactory.md)(…) | Default constructor. Create the input factory using the specified catalog |
+| static [Instance](InputFactory/Instance.md)(…) | Get the singleton instance and create it if needed |
+| [GetInput](InputFactory/GetInput.md)(…) | Get the corresponding IInput from the specified configuration |
 
 ## See Also
 

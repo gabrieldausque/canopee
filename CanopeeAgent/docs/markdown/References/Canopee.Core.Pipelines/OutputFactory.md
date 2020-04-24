@@ -1,5 +1,7 @@
 # OutputFactory class
 
+The factory in charge of creating IOutput
+
 ```csharp
 public class OutputFactory : FactoryFromDirectoryBase
 ```
@@ -8,9 +10,9 @@ public class OutputFactory : FactoryFromDirectoryBase
 
 | name | description |
 | --- | --- |
-| [OutputFactory](OutputFactory/OutputFactory.md)(…) |  |
-| static [Instance](OutputFactory/Instance.md)(…) |  |
-| [GetOutput](OutputFactory/GetOutput.md)(…) |  |
+| [OutputFactory](OutputFactory/OutputFactory.md)(…) | Default constructor |
+| static [Instance](OutputFactory/Instance.md)(…) | Get and create if needed the singleton instance |
+| [GetOutput](OutputFactory/GetOutput.md)(…) | Create an instance of IOutput with the specified configuration |
 
 ## See Also
 

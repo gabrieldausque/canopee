@@ -1,5 +1,7 @@
 # CollectPipelineManager.Dispose method
 
+Dispose the instance
+
 ```csharp
 public void Dispose()
 ```

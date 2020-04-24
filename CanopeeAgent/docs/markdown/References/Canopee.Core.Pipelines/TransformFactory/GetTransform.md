@@ -1,8 +1,16 @@
 # TransformFactory.GetTransform method
 
+Create the ITransform corresponding to the configuration
+
 ```csharp
-public ITransform GetTransform(IConfigurationSection configurationTransform)
+public ITransform GetTransform(IConfigurationSection configurationTransform, 
+    IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationTransform | the configuration of the ITransform |
+| loggingConfiguration | the logger configuration |
 
 ## See Also
 

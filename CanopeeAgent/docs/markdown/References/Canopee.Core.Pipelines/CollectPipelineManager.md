@@ -1,5 +1,7 @@
 # CollectPipelineManager class
 
+Manage all pipelines : - create them - start them - stop them - dispose them
+
 ```csharp
 public class CollectPipelineManager : IDisposable
 ```
@@ -8,16 +10,10 @@ public class CollectPipelineManager : IDisposable
 
 | name | description |
 | --- | --- |
-| [CollectPipelineManager](CollectPipelineManager/CollectPipelineManager.md)() | The default constructor. |
-| [Dispose](CollectPipelineManager/Dispose.md)() |  |
-| [Run](CollectPipelineManager/Run.md)() |  |
-| [Stop](CollectPipelineManager/Stop.md)() |  |
-
-## Protected Members
-
-| name | description |
-| --- | --- |
-| [Disposed](CollectPipelineManager/Disposed.md) |  |
+| [CollectPipelineManager](CollectPipelineManager/CollectPipelineManager.md)(…) | Create the CollectPipelineManager from pipelines and logger configuration |
+| [Dispose](CollectPipelineManager/Dispose.md)() | Dispose the instance |
+| [Run](CollectPipelineManager/Run.md)() | Start all pipeline |
+| [Stop](CollectPipelineManager/Stop.md)() | Stop all pipelines |
 
 ## See Also
 

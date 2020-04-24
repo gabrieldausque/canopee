@@ -1,8 +1,14 @@
 # TransformFactory constructor
 
+Default constructor.
+
 ```csharp
 public TransformFactory(string directoryCatalog = "./Pipelines")
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory from which to load the ITransform catalog |
 
 ## See Also
 

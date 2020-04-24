@@ -3,7 +3,7 @@
 Get the whole Canopee Section
 
 ```csharp
-public IConfiguration GetCanopeeConfiguration()
+public IConfigurationSection GetCanopeeConfiguration()
 ```
 
 ## See Also

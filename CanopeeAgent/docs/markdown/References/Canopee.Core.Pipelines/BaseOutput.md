@@ -10,7 +10,6 @@ public abstract class BaseOutput : IOutput
 
 | name | description |
 | --- | --- |
-| [BaseOutput](BaseOutput/BaseOutput.md)() | Default constructor. Instanciate the ICanopeeLogger |
 | virtual [Initialize](BaseOutput/Initialize.md)(…) | Initialize the output. In base class do nothing |
 | abstract [SendToOutput](BaseOutput/SendToOutput.md)(…) | Send to output the ICollectedEvent |
 
@@ -18,6 +17,7 @@ public abstract class BaseOutput : IOutput
 
 | name | description |
 | --- | --- |
+| [BaseOutput](BaseOutput/BaseOutput.md)() | The default constructor. |
 | [Logger](BaseOutput/Logger.md) | The internal ICanopeeLogger |
 
 ## See Also

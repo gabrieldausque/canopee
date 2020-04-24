@@ -1,8 +1,14 @@
 # OutputFactory constructor
 
+Default constructor
+
 ```csharp
 public OutputFactory(string directoryCatalog = "./Pipelines")
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory from which to load the IOutput catalog available |
 
 ## See Also
 

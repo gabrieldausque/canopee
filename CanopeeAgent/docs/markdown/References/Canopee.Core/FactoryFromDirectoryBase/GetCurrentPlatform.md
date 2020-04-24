@@ -1,8 +1,16 @@
 # FactoryFromDirectoryBase.GetCurrentPlatform method
 
+Helper that return the OSPlatform of the current workstation where the hosting process is running
+
 ```csharp
 protected OSPlatform GetCurrentPlatform()
 ```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| NotSupportedException | If the OS is not a known OS |
 
 ## See Also
 

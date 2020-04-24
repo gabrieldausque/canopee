@@ -3,7 +3,7 @@
 The internal ICanopeeLogger
 
 ```csharp
-protected readonly ICanopeeLogger Logger;
+protected ICanopeeLogger Logger;
 ```
 
 ## See Also

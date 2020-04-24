@@ -3,12 +3,12 @@
 Construct a new instance using the passed configuration
 
 ```csharp
-public ASPNetCanopeeHost(IConfiguration configuration)
+public ASPNetCanopeeHost(IConfigurationSection canopeeConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
-| configuration | The configuration |
+| canopeeConfiguration | The Canopee section configuration |
 
 ## See Also
 

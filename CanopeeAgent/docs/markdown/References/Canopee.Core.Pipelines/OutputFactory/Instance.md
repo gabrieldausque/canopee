@@ -1,8 +1,14 @@
 # OutputFactory.Instance method
 
+Get and create if needed the singleton instance
+
 ```csharp
 public static OutputFactory Instance(string directoryCatalog = "./Pipelines")
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory from which to load the IOutput catalog available |
 
 ## See Also
 

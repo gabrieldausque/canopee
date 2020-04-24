@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 namespace Canopee.Core.Pipelines
 {
     /// <summary>
-    /// Factory responsible for the creation of the collect pipeline
+    /// Factory in charge of creating a <see cref="ICollectPipeline"/>
     /// </summary>
     public class CollectPipelineFactory : FactoryFromDirectoryBase
     {

@@ -1,8 +1,14 @@
 # FactoryFromDirectoryBase constructor
 
+Default constructor that initialize the [`Container`](Container.md) from a directory by loading all assembly in it
+
 ```csharp
-public FactoryFromDirectoryBase(string directoryCatalog)
+protected FactoryFromDirectoryBase(string directoryCatalog)
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory from which to load the catalog |
 
 ## See Also
 

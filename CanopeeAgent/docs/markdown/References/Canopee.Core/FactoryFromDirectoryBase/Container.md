@@ -1,7 +1,9 @@
 # FactoryFromDirectoryBase.Container field
 
+The MEF container
+
 ```csharp
-protected CompositionHost Container;
+protected readonly CompositionHost Container;
 ```
 
 ## See Also

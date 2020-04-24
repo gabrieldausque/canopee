@@ -3,7 +3,7 @@
 Default constructor
 
 ```csharp
-public ConsoleCanopeeHost()
+public ConsoleCanopeeHost(IConfigurationSection canopeeConfiguration)
 ```
 
 ## See Also

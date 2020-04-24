@@ -10,7 +10,7 @@ public class ConsoleCanopeeHost : BaseCanopeeHost
 
 | name | description |
 | --- | --- |
-| [ConsoleCanopeeHost](ConsoleCanopeeHost/ConsoleCanopeeHost.md)() | Default constructor |
+| [ConsoleCanopeeHost](ConsoleCanopeeHost/ConsoleCanopeeHost.md)(…) | Default constructor |
 | override [Dispose](ConsoleCanopeeHost/Dispose.md)() | Dispose the current host and suppress finalization |
 | override [Start](ConsoleCanopeeHost/Start.md)() | Start the console and wait for [Ctrl+C] to stop agent |
 | override [Stop](ConsoleCanopeeHost/Stop.md)() | Stop all collect |

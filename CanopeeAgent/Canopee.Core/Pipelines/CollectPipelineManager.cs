@@ -14,13 +14,27 @@ namespace Canopee.Core.Pipelines
     /// <summary>
     /// Manage all pipelines :
     /// - create them
-    /// - 
+    /// - start them
+    /// - stop them
+    /// - dispose them
     /// </summary>
     public class CollectPipelineManager : IDisposable
     {
+        /// <summary>
+        /// The internal collection for all pipelines
+        /// </summary>
         private readonly Dictionary<string, ICollectPipeline> _pipelines;
+        
+        /// <summary>
+        /// The internal <see cref="ICanopeeLogger"/>
+        /// </summary>
         private readonly ICanopeeLogger Logger = null;
 
+        /// <summary>
+        /// Create the CollectPipelineManager from pipelines and logger configuration
+        /// </summary>
+        /// <param name="pipelinesConfiguration">the pipelines configuration collection</param>
+        /// <param name="loggingConfiguration">the logger configuration</param>
         public CollectPipelineManager(IConfigurationSection pipelinesConfiguration, IConfigurationSection loggingConfiguration)
         {
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
@@ -47,6 +61,9 @@ namespace Canopee.Core.Pipelines
             }
         }
 
+        /// <summary>
+        /// Start all pipeline
+        /// </summary>
         public void Run()
         {
             foreach (var pipeline in _pipelines)
@@ -56,6 +73,9 @@ namespace Canopee.Core.Pipelines
             }
         }
 
+        /// <summary>
+        /// Stop all pipelines
+        /// </summary>
         public void Stop()
         {
             foreach (var pipeline in _pipelines)
@@ -65,16 +85,27 @@ namespace Canopee.Core.Pipelines
             }
         }
 
-        protected bool Disposed = false; 
+        /// <summary>
+        /// Internal disposed flag
+        /// </summary>
+        private bool _disposed = false;
+        
+        /// <summary>
+        /// Dispose the instance
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Dispose the instance and all of its owned pipelines
+        /// </summary>
+        /// <param name="disposing"></param>
         private void Dispose(bool disposing)
         {
-            if (Disposed) return;
+            if (_disposed) return;
 
             if (disposing)
             {
@@ -83,7 +114,7 @@ namespace Canopee.Core.Pipelines
                     pipeline.Value?.Dispose();
                 }
                 _pipelines.Clear();
-                Disposed = true;
+                _disposed = true;
             }
         }
     }

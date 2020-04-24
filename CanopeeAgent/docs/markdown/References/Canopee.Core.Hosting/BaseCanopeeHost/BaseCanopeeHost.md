@@ -3,7 +3,7 @@
 Default constructor. Instanciate the logger in it
 
 ```csharp
-public BaseCanopeeHost()
+public BaseCanopeeHost(IConfigurationSection loggingConfiguration)
 ```
 
 ## See Also

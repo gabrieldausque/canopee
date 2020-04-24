@@ -10,7 +10,6 @@ public abstract class BaseInput : IInput
 
 | name | description |
 | --- | --- |
-| [BaseInput](BaseInput/BaseInput.md)() | Default constructor. Create Logger. |
 | [AgentId](BaseInput/AgentId.md) { get; set; } | The unique Id of the agent (the host) |
 | abstract [Collect](BaseInput/Collect.md)(…) | Collect one or more ICollectedEvent |
 | virtual [Initialize](BaseInput/Initialize.md)(…) | Initialize the current [`BaseInput`](BaseInput.md) from the configuration. Set the agent from the argument |
@@ -19,6 +18,7 @@ public abstract class BaseInput : IInput
 
 | name | description |
 | --- | --- |
+| [BaseInput](BaseInput/BaseInput.md)() | The default constructor. |
 | [Logger](BaseInput/Logger.md) | The internal ICanopeeLogger |
 
 ## See Also

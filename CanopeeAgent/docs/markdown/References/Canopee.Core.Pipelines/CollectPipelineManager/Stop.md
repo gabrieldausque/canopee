@@ -1,5 +1,7 @@
 # CollectPipelineManager.Stop method
 
+Stop all pipelines
+
 ```csharp
 public void Stop()
 ```

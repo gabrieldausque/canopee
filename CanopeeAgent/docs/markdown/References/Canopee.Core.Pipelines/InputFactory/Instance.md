@@ -1,8 +1,14 @@
 # InputFactory.Instance method
 
+Get the singleton instance and create it if needed
+
 ```csharp
 public static InputFactory Instance(string directoryCatalog = "./Pipelines")
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory to load IInput catalog from |
 
 ## See Also
 

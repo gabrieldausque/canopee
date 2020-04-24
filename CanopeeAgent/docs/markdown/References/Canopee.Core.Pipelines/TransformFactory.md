@@ -1,5 +1,7 @@
 # TransformFactory class
 
+The factory in charge of creating ITransform
+
 ```csharp
 public class TransformFactory : FactoryFromDirectoryBase
 ```
@@ -8,9 +10,9 @@ public class TransformFactory : FactoryFromDirectoryBase
 
 | name | description |
 | --- | --- |
-| [TransformFactory](TransformFactory/TransformFactory.md)(…) |  |
-| static [Instance](TransformFactory/Instance.md)(…) |  |
-| [GetTransform](TransformFactory/GetTransform.md)(…) |  |
+| [TransformFactory](TransformFactory/TransformFactory.md)(…) | Default constructor. |
+| static [Instance](TransformFactory/Instance.md)(…) | Get and create if needed the singleton instance |
+| [GetTransform](TransformFactory/GetTransform.md)(…) | Create the ITransform corresponding to the configuration |
 
 ## See Also
 

@@ -1,8 +1,17 @@
 # InputFactory.GetInput method
 
+Get the corresponding IInput from the specified configuration
+
 ```csharp
-public IInput GetInput(IConfiguration configurationInput, string agentId)
+public IInput GetInput(IConfigurationSection configurationInput, 
+    IConfigurationSection loggingConfiguration, string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationInput | the IInput configuration |
+| loggingConfiguration | the logger configuration |
+| agentId | the agentId to set in the IInput |
 
 ## See Also
 

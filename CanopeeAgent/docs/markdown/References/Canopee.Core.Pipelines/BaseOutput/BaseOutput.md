@@ -1,9 +1,9 @@
 # BaseOutput constructor
 
-Default constructor. Instanciate the ICanopeeLogger
+The default constructor.
 
 ```csharp
-public BaseOutput()
+protected BaseOutput()
 ```
 
 ## See Also

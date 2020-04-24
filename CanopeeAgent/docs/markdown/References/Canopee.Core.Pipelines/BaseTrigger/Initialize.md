@@ -1,14 +1,16 @@
 # BaseTrigger.Initialize method
 
-Initialize the trigger with the Trigger configuration
+Initialize the trigger with the Trigger configuration and its logger
 
 ```csharp
-public abstract void Initialize(IConfigurationSection triggerParameters)
+public virtual void Initialize(IConfigurationSection triggerConfiguration, 
+    IConfigurationSection loggingConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
-| triggerParameters |  |
+| triggerConfiguration | the trigger configuration |
+| loggingConfiguration | the logger configuration |
 
 ## See Also
 

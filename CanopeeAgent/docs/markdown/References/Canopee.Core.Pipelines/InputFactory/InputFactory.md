@@ -1,8 +1,14 @@
 # InputFactory constructor
 
+Default constructor. Create the input factory using the specified catalog
+
 ```csharp
 public InputFactory(string directoryCatalog = "./Pipelines")
 ```
+
+| parameter | description |
+| --- | --- |
+| directoryCatalog | the directory to load IInput catalog from |
 
 ## See Also
 

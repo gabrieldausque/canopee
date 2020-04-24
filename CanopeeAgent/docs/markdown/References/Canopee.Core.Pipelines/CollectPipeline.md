@@ -31,7 +31,7 @@ public class CollectPipeline : ICollectPipeline
 | [AgentId](CollectPipeline/AgentId.md) | The agent id (uuidv4 format) |
 | [IsCollecting](CollectPipeline/IsCollecting.md) | The is collecting flag |
 | readonly [LockCollect](CollectPipeline/LockCollect.md) | The lock object used to avoid that two collect of the same pipeline run simultaneously |
-| readonly [Logger](CollectPipeline/Logger.md) | The internal ICanopeeLogger |
+| [Logger](CollectPipeline/Logger.md) | The internal ICanopeeLogger |
 | virtual [Dispose](CollectPipeline/Dispose.md)(…) | Dispose all needed internal object |
 
 ## See Also

@@ -1,9 +1,9 @@
 # BaseTrigger constructor
 
-Default constructor. Set the Logger
+The default constructor.
 
 ```csharp
-public BaseTrigger()
+protected BaseTrigger()
 ```
 
 ## See Also

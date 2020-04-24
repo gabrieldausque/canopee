@@ -3,12 +3,14 @@
 Initialize using the transform configuration
 
 ```csharp
-public abstract void Initialize(IConfigurationSection transformConfiguration)
+public virtual void Initialize(IConfigurationSection transformConfiguration, 
+    IConfigurationSection loggingConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
 | transformConfiguration | the Transform configuration section for the current ITransform |
+| loggingConfiguration | the ICanopeeLogger configuration |
 
 ## See Also
 
