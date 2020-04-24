@@ -1,8 +1,16 @@
 # ITransform.Initialize method
 
+Initialize the [`ITransform`](../ITransform.md) with configurations
+
 ```csharp
-public void Initialize(IConfigurationSection transformConfiguration)
+public void Initialize(IConfigurationSection transformConfiguration, 
+    IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| transformConfiguration | the configuration for the transform object |
+| loggingConfiguration | the logging configuration section |
 
 ## See Also
 

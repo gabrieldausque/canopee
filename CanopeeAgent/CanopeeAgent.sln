@@ -30,8 +30,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeAgent", "CanopeeAgen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CanopeeServer", "CanopeeServer\CanopeeServer.csproj", "{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POC", "POC\POC.csproj", "{4A51D776-F8D0-48FE-8750-DB84FBB78936}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Firebird", "Firebird", "{4FEC0F7B-797B-472A-8DD5-9141A97609CA}"
 	ProjectSection(SolutionItems) = preProject
 		Insert_logs.sql = Insert_logs.sql
@@ -72,10 +70,6 @@ Global
 		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE2B4919-84B1-457B-9C5E-2F78CCEAE4CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A51D776-F8D0-48FE-8750-DB84FBB78936}.Release|Any CPU.Build.0 = Release|Any CPU
 		{945CA410-EF74-4A32-8551-9EB7AB263B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{945CA410-EF74-4A32-8551-9EB7AB263B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{945CA410-EF74-4A32-8551-9EB7AB263B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU

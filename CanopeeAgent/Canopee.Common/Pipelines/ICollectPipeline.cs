@@ -34,7 +34,7 @@ namespace Canopee.Common.Pipelines
         /// <summary>
         /// Start to listen to the trigger to make the collect of <see cref="ICollectedEvent"/> wanted
         /// </summary>
-        void Run();
+        void Start();
         /// <summary>
         /// Stop to listen to the trigger
         /// </summary>

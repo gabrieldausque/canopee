@@ -51,7 +51,7 @@
         </member>
         <member name="T:Canopee.Common.Configuration.Events.NewConfigurationEventArg">
             <summary>
-            Args for the new configuration event. When a new configuration is detected by the <see cref="T:Canopee.Common.Configuration.IConfigurationSynchronizer"/>, it raise <see cref="E:Canopee.Common.Configuration.IConfigurationSynchronizer.OnNewConfiguration"/> event.
+            Args for the new configuration event. When a new configuration is detected by the <see cref="T:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer"/>, it raise <see cref="E:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.OnNewConfiguration"/> event.
             </summary>
         </member>
         <member name="P:Canopee.Common.Configuration.Events.NewConfigurationEventArg.NewConfiguration">
@@ -86,33 +86,33 @@
             <param name="group">the group</param>
             <returns>a <see cref="T:Canopee.Common.JsonObject"/> that contains all configurations</returns>
         </member>
-        <member name="T:Canopee.Common.Configuration.IConfigurationSynchronizer">
+        <member name="T:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer">
             <summary>
             Contract for the object that will synchronize configuration from an external source.
             </summary>
         </member>
-        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.GetConfigFromSource">
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.GetConfigFromSource">
             <summary>
             Get the actual configuration from the external source 
             </summary>
             <returns>a <see cref="T:Canopee.Common.JsonObject"/> that contains all configuration properties</returns>
         </member>
-        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.Start">
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.Start">
             <summary>
             Start the synchronization process
             </summary>
         </member>
-        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.Stop">
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.Stop">
             <summary>
             Stop the synchronization process
             </summary>
         </member>
-        <member name="E:Canopee.Common.Configuration.IConfigurationSynchronizer.OnNewConfiguration">
+        <member name="E:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.OnNewConfiguration">
             <summary>
             Event raised if a new configuration is obtained from the source
             </summary>
         </member>
-        <member name="M:Canopee.Common.Configuration.IConfigurationSynchronizer.Initialize(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.Initialize(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             Initialize the synchronizer after creation
             </summary>
@@ -493,7 +493,7 @@
             </summary>
             <param name="fromTriggerArgs"></param>
         </member>
-        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Run">
+        <member name="M:Canopee.Common.Pipelines.ICollectPipeline.Start">
             <summary>
             Start to listen to the trigger to make the collect of <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> wanted
             </summary>

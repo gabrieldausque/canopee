@@ -3,12 +3,14 @@
 Initialize the [`IOutput`](../IOutput.md) with its specific "Output" configuration
 
 ```csharp
-public void Initialize(IConfiguration configurationOutput)
+public void Initialize(IConfiguration configurationOutput, 
+    IConfigurationSection loggingConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
 | configurationOutput | configuration output |
+| loggingConfiguration | the logging configuration section |
 
 ## See Also
 

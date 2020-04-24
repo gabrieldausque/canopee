@@ -145,7 +145,7 @@ namespace Canopee.Core.Pipelines
         /// <summary>
         /// Start the <see cref="ITrigger"/> watch
         /// </summary>
-        public virtual void Run()
+        public virtual void Start()
         {
             Trigger.Start();
         }

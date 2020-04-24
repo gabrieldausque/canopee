@@ -11,7 +11,7 @@
 | public type | description |
 | --- | --- |
 | interface [ICanopeeConfigurationReader](Canopee.Common.Configuration/ICanopeeConfigurationReader.md) | The contract for an object to obtain groups or configurations |
-| interface [IConfigurationSynchronizer](Canopee.Common.Configuration/IConfigurationSynchronizer.md) | Contract for the object that will synchronize configuration from an external source. |
+| interface [ICanopeeConfigurationSynchronizer](Canopee.Common.Configuration/ICanopeeConfigurationSynchronizer.md) | Contract for the object that will synchronize configuration from an external source. |
 
 ## Canopee.Common.Configuration.AspNet.Dtos namespace
 
@@ -24,7 +24,7 @@
 
 | public type | description |
 | --- | --- |
-| class [NewConfigurationEventArg](Canopee.Common.Configuration.Events/NewConfigurationEventArg.md) | Args for the new configuration event. When a new configuration is detected by the [`IConfigurationSynchronizer`](Canopee.Common.Configuration/IConfigurationSynchronizer.md), it raise [`OnNewConfiguration`](Canopee.Common.Configuration/IConfigurationSynchronizer/OnNewConfiguration.md) event. |
+| class [NewConfigurationEventArg](Canopee.Common.Configuration.Events/NewConfigurationEventArg.md) | Args for the new configuration event. When a new configuration is detected by the [`ICanopeeConfigurationSynchronizer`](Canopee.Common.Configuration/ICanopeeConfigurationSynchronizer.md), it raise [`OnNewConfiguration`](Canopee.Common.Configuration/ICanopeeConfigurationSynchronizer/OnNewConfiguration.md) event. |
 
 ## Canopee.Common.Hosting namespace
 

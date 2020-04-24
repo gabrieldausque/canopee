@@ -3,12 +3,14 @@
 Initialize this [`ITrigger`](../ITrigger.md) with its "Trigger" configuration
 
 ```csharp
-public void Initialize(IConfigurationSection triggerParameters)
+public void Initialize(IConfigurationSection triggerConfiguration, 
+    IConfigurationSection loggingConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
-| triggerParameters | The "Trigger" configuration |
+| triggerConfiguration | The "Trigger" configuration |
+| loggingConfiguration | the logging configuration section |
 
 ## See Also
 

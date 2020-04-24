@@ -3,13 +3,15 @@
 Initialize the [`IInput`](../IInput.md) object with its specific configuration
 
 ```csharp
-public void Initialize(IConfiguration configurationInput, string agentId)
+public void Initialize(IConfigurationSection configurationInput, 
+    IConfigurationSection loggingConfiguration, string agentId)
 ```
 
 | parameter | description |
 | --- | --- |
 | configurationInput | the "Input" configuration |
-| agentId | the agentId that will be populated in all [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
+| loggingConfiguration | the logging configuration section |
+| agentId | The agent id that will be populated in [`ICollectedEvent`](../../Canopee.Common.Pipelines.Events/ICollectedEvent.md) |
 
 ## See Also
 

@@ -16,23 +16,67 @@ using Nest;
 
 namespace Canopee.StandardLibrary.Configuration
 {
-    [Export("Default",typeof(IConfigurationSynchronizer))]
-    public class CanopeeServerConfigurationSynchronizer : IConfigurationSynchronizer
+    /// <summary>
+    /// The object in charge of checking and notifying if a new configuration is available from a source.
+    /// It will :
+    ///  - get the local configuration
+    ///  - get default configuration from distant source
+    ///  - get the associated group configurations for agent Id sorted by ascending priority, merged with the default
+    ///  - get the agent id specific configuration and merged with the previous one
+    ///  - compare the local configuration to the merged configurations
+    /// If the new configuration is different from the local one, it raised an event with the new configuration 
+    /// </summary>
+    [Export("Default",typeof(ICanopeeConfigurationSynchronizer))]
+    public class CanopeeServerConfigurationSynchronizer : ICanopeeConfigurationSynchronizer
     {
+        /// <summary>
+        /// The internal <see cref="ICanopeeConfigurationReader"/>
+        /// </summary>
         private readonly ICanopeeConfigurationReader _reader;
+        
+        /// <summary>
+        /// The internal logger
+        /// </summary>
         private static ICanopeeLogger Logger = null;
         
+        /// <summary>
+        /// The due time in ms before starting the first check
+        /// </summary>
         private int _dueTime;
+        
+        /// <summary>
+        /// The period for each check
+        /// </summary>
         private int _period;
+        
+        /// <summary>
+        /// The timer that will trigger a configuration check
+        /// </summary>
         private Timer _timer;
+        
+        /// <summary>
+        /// The internal flag that indicate if a check is already running
+        /// </summary>
         private bool _running;
 
+        /// <summary>
+        /// The default constructor. 
+        /// </summary>
+        /// <param name="reader">The <see cref="ICanopeeConfigurationReader"/> that will be used to get centralized configuration</param>
         [ImportingConstructor]
         public CanopeeServerConfigurationSynchronizer([Import("Default")] ICanopeeConfigurationReader reader)
         {
             _reader = reader;
         }
         
+        /// <summary>
+        /// Get the merged configuration from the centralized source accessed through the <see cref="ICanopeeConfigurationSynchronizer"/>.
+        /// It will merged in order :
+        ///  - default configuration from distant source
+        ///  - associated group configurations for agent Id sorted by ascending priority, merged with the default
+        ///  - the agent id specific configuration and merged with the previous one
+        /// </summary>
+        /// <returns></returns>
         public JsonObject GetConfigFromSource()
         {
             var agentId = ConfigurationService.Instance.AgentId;
@@ -42,14 +86,14 @@ namespace Canopee.StandardLibrary.Configuration
             var currentConfig = _reader.GetConfiguration();
             foreach (var group in agentGroups)
             {
-                var groupConfig = _reader.GetConfiguration(string.Empty, group.Group);
+                var groupConfig = _reader.GetConfiguration( group: group.Group);
                 if (groupConfig != null)
                 {
                     MergeCanopeeConfiguration(currentConfig, groupConfig);    
                 }
             }
 
-            var agentConfiguration = _reader.GetConfiguration(agentId);
+            var agentConfiguration = _reader.GetConfiguration(agentId: agentId);
             if (agentConfiguration != null)
             {
                 MergeCanopeeConfiguration(currentConfig,agentConfiguration);    
@@ -57,6 +101,18 @@ namespace Canopee.StandardLibrary.Configuration
             return currentConfig;
         }
 
+        /// <summary>
+        /// Merge two Canopee configuration.
+        /// It will merge following configuration :
+        /// - Logging
+        /// - Trigger
+        /// - Db
+        /// - Pipelines
+        /// return true if a merge operation has been done (aka a properties from configToMerge has overwritten a property of the currentConfig)
+        /// </summary>
+        /// <param name="currentConfig">the config to modify</param>
+        /// <param name="configToMerge">the config that will overwrite any corresponding property in the currentConfig</param>
+        /// <returns></returns>
         private bool MergeCanopeeConfiguration(JsonObject currentConfig, JsonObject configToMerge)
         {
             var newLogging = SynchronizeJsonObjectProperty(currentConfig, configToMerge, "Logging");
@@ -66,6 +122,9 @@ namespace Canopee.StandardLibrary.Configuration
             return newLogging || newTrigger || newDb || newPipelines;
         }
 
+        /// <summary>
+        /// Start the synchronization process
+        /// </summary>
         public void Start()
         {
             var configuration = ConfigurationService.Instance.GetLoggingConfiguration();
@@ -112,6 +171,15 @@ namespace Canopee.StandardLibrary.Configuration
             }, null,_dueTime,_period);
         }
 
+
+        /// <summary>
+        /// Helper that will overwrite a property in the currentConfig with the property of the newConfig if the value of newConfig is different.
+        /// Beware : It will not suppress an existing value.
+        /// </summary>
+        /// <param name="currentConfig">the config to modify</param>
+        /// <param name="newConfig">the config that may have new value for property</param>
+        /// <param name="propertyName">the property to check</param>
+        /// <returns>true if a modification has been done, false otherwise</returns>
         private bool SynchronizeJsonObjectProperty(JsonObject currentConfig, JsonObject newConfig, string propertyName)
         {
             if(newConfig.TryGetProperty<JsonObject>("Canopee", out var newCanopeeConfig))
@@ -137,6 +205,12 @@ namespace Canopee.StandardLibrary.Configuration
             return false;
         }
 
+        /// <summary>
+        /// Update existing pipelines and add new ones from the newConfig in the currentConfig
+        /// </summary>
+        /// <param name="currentConfig">the config to modify</param>
+        /// <param name="newConfig">the new config to get updated or new pipelines from</param>
+        /// <returns>true if a modification has been done. false otherwise</returns>
         private bool SynchronizePipelines(JsonObject currentConfig, JsonObject newConfig)
         {
             var newPipelines = newConfig.GetProperty<JsonObject>("Canopee")
@@ -185,12 +259,24 @@ namespace Canopee.StandardLibrary.Configuration
             return isNewConfigurationToLoad;
         }
 
+        /// <summary>
+        /// Stop the synchronization process
+        /// </summary>
         public void Stop()
         {
             _timer.Change(0, Timeout.Infinite);
         }
 
+        /// <summary>
+        /// Event raised if a new configuration is found during synchronization process
+        /// </summary>
         public event EventHandler<NewConfigurationEventArg> OnNewConfiguration;
+        
+        /// <summary>
+        /// Initialize the current synchronizer with the Configuration configuration section and the Logging configuration 
+        /// </summary>
+        /// <param name="serviceConfiguration">the configuration service</param>
+        /// <param name="loggingConfiguration">the logger configuration</param>
         public void Initialize(IConfiguration serviceConfiguration, IConfiguration loggingConfiguration)
         {
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());

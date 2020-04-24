@@ -17,8 +17,8 @@ public interface ICollectPipeline : IDisposable
 | [Transforms](ICollectPipeline/Transforms.md) { get; set; } | The collection of [`ITransform`](ITransform.md) that will complete extracted information from [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) collected by the [`Input`](ICollectPipeline/Input.md) |
 | [Trigger](ICollectPipeline/Trigger.md) { get; set; } | The [`ITrigger`](ITrigger.md) that will be start the collect of the [`ICollectPipeline`](ICollectPipeline.md) that owns it |
 | [Collect](ICollectPipeline/Collect.md)(…) | This method will start immediately the collect, transform and load of one or more [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md). This will be triggered by the trigger of the pipeline |
-| [Initialize](ICollectPipeline/Initialize.md)(…) | Initialize the pipeline based on a configuration object |
-| [Run](ICollectPipeline/Run.md)() | Start to listen to the trigger to make the collect of [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) wanted |
+| [Initialize](ICollectPipeline/Initialize.md)(…) | Initialize the pipeline based on a pipelineConfigurationSection object |
+| [Start](ICollectPipeline/Start.md)() | Start to listen to the trigger to make the collect of [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) wanted |
 | [Stop](ICollectPipeline/Stop.md)() | Stop to listen to the trigger |
 
 ## See Also

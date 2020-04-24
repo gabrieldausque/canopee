@@ -14,19 +14,43 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Configuration.AspNet
 {
+    /// <summary>
+    /// The client of the CanopeeServer instance that will give access to :
+    /// - the list of group for a specified agent id
+    /// - the configuration for a specified agent id and group
+    /// </summary>
     [Export("Default", typeof(ICanopeeConfigurationReader))]
     public class AspNetCanopeeServerConfigurationReader : ICanopeeConfigurationReader
     {
+        /// <summary>
+        /// The internal http 
+        /// </summary>
         private HttpClient _httpClient;
+        
+        /// <summary>
+        /// The internal logger
+        /// </summary>
         private static ICanopeeLogger Logger = null;
+        
+        /// <summary>
+        /// The url of the Canopee Server to get information from
+        /// </summary>
         private string _url;
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
         [ImportingConstructor]
         public AspNetCanopeeServerConfigurationReader()
         {
             _httpClient = new HttpClient();
         }
 
+        /// <summary>
+        /// Initialize the current AspNetCanopeeServer Reader to load configuration from
+        /// </summary>
+        /// <param name="serviceConfiguration">the configuration section object </param>
+        /// <param name="loggingConfiguration">the logger configuration</param>
         public void Initialize(IConfiguration serviceConfiguration, IConfiguration loggingConfiguration)
         {
             Logger = CanopeeLoggerFactory.Instance().GetLogger(loggingConfiguration, this.GetType());
@@ -40,6 +64,11 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
             }
         }
 
+        /// <summary>
+        /// Get one or more <see cref="AgentGroupDto"/> for the corresponding AgentId 
+        /// </summary>
+        /// <param name="agentId">the agent id to get list of groups</param>
+        /// <returns>The list of group associated to the agent id</returns>
         public ICollection<AgentGroupDto> GetGroups(string agentId)
         {
             var agentGroups = new List<AgentGroupDto>(); 
@@ -72,6 +101,18 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
             return agentGroups;
         }
 
+        /// <summary>
+        /// Get a <see cref="JsonObject"/> that represent a Canopee Configuration for the specified AgentId and Group 
+        /// </summary>
+        /// <param name="agentId">
+        /// The agent Id
+        /// Optional. Default: "Default" 
+        /// </param>
+        /// <param name="group">
+        /// The group
+        /// Optional. Default: "Default"
+        /// </param>
+        /// <returns></returns>
         public JsonObject GetConfiguration(string agentId = "Default", string @group = "Default")
         {
             try

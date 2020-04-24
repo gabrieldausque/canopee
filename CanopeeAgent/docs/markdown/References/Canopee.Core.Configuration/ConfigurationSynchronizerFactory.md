@@ -1,6 +1,6 @@
 # ConfigurationSynchronizerFactory class
 
-Factory that create IConfigurationSynchronizer object
+Factory that create ICanopeeConfigurationSynchronizer object
 
 ```csharp
 public class ConfigurationSynchronizerFactory : FactoryFromDirectoryBase
@@ -12,7 +12,7 @@ public class ConfigurationSynchronizerFactory : FactoryFromDirectoryBase
 | --- | --- |
 | [ConfigurationSynchronizerFactory](ConfigurationSynchronizerFactory/ConfigurationSynchronizerFactory.md)(…) | Default constructor |
 | static [Instance](ConfigurationSynchronizerFactory/Instance.md)(…) | Get the singleton instance |
-| [GetSynchronizer](ConfigurationSynchronizerFactory/GetSynchronizer.md)(…) | Get an instance of a IConfigurationSynchronizer object from the specified configuration If no Canopee:Configuration:SynchronizerType value is defined, the contract name used will be Default |
+| [GetSynchronizer](ConfigurationSynchronizerFactory/GetSynchronizer.md)(…) | Get an instance of a ICanopeeConfigurationSynchronizer object from the specified configuration If no Canopee:Configuration:SynchronizerType value is defined, the contract name used will be Default |
 
 ## See Also
 

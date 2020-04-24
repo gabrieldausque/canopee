@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 namespace Canopee.Core.Configuration
 {
     /// <summary>
-    /// Factory that create <see cref="IConfigurationSynchronizer"/> object
+    /// Factory that create <see cref="ICanopeeConfigurationSynchronizer"/> object
     /// </summary>
     public class ConfigurationSynchronizerFactory : FactoryFromDirectoryBase
     {
@@ -50,18 +50,18 @@ namespace Canopee.Core.Configuration
         }
 
         /// <summary>
-        /// Get an instance of a <see cref="IConfigurationSynchronizer"/> object from the specified configuration
+        /// Get an instance of a <see cref="ICanopeeConfigurationSynchronizer"/> object from the specified configuration
         /// If no Canopee:Configuration:SynchronizerType value is defined, the contract name used will be Default
         /// </summary>
         /// <param name="configurationServiceConfiguration">The Canopee:Configuration section</param>
         /// <param name="loggingConfiguration">The Canopee:Logging section</param>
         /// <returns></returns>
-        public IConfigurationSynchronizer GetSynchronizer(IConfiguration configurationServiceConfiguration,
+        public ICanopeeConfigurationSynchronizer GetSynchronizer(IConfiguration configurationServiceConfiguration,
             IConfiguration loggingConfiguration)
         {
             var type = string.IsNullOrWhiteSpace(configurationServiceConfiguration["SynchronizerType"]) ? "Default" 
                 : configurationServiceConfiguration["SynchronizerType"];
-            var synchronizer = Container.GetExport<IConfigurationSynchronizer>(type);
+            var synchronizer = Container.GetExport<ICanopeeConfigurationSynchronizer>(type);
             synchronizer.Initialize(configurationServiceConfiguration, loggingConfiguration);
             return synchronizer;
         }

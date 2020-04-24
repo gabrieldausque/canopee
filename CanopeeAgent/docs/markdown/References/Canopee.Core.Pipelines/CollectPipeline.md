@@ -20,7 +20,7 @@ public class CollectPipeline : ICollectPipeline
 | virtual [Collect](CollectPipeline/Collect.md)(…) | Collect, transforms and output one or more ICollectedEvent |
 | virtual [Dispose](CollectPipeline/Dispose.md)() | Dispose the current object |
 | virtual [Initialize](CollectPipeline/Initialize.md)(…) | Initialize the current pipeline with a pipelineConfigurationSection. Set the id if specified, create trigger, input, all transformations and output. |
-| virtual [Run](CollectPipeline/Run.md)() | Start the ITrigger watch |
+| virtual [Start](CollectPipeline/Start.md)() | Start the ITrigger watch |
 | virtual [Stop](CollectPipeline/Stop.md)() | Stop the ITrigger watch |
 | override [ToString](CollectPipeline/ToString.md)() | Display the current pipeline in the format : Name:Id@AgentId |
 

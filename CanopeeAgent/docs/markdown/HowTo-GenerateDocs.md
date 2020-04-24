@@ -15,6 +15,4 @@ To generate doc
 ``` bash
 xmldocmd ../bin/Agent/Published/Canopee.Common.dll ./markdown/References/
 xmldocmd ../bin/Agent/Published/Canopee.Core.dll ./markdown/References/
-
-```
-
+cp ../bin/Agent/Published/Pipelines/* ../bin/Agent/Published &&  xmldocmd ../bin/Agent/Published/Canopee.StandardLibrary.dll ./markdown/References/

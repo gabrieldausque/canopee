@@ -76,7 +76,7 @@ namespace Canopee.Core.Configuration
         /// <summary>
         /// The synchronizer object, in charge of evaluating if a new configuration has been setup
         /// </summary>
-        private IConfigurationSynchronizer _synchronizer;
+        private ICanopeeConfigurationSynchronizer _synchronizer;
 
         /// <summary>
         /// Default constructor

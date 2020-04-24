@@ -1,14 +1,16 @@
 # ICollectPipeline.Initialize method
 
-Initialize the pipeline based on a configuration object
+Initialize the pipeline based on a pipelineConfigurationSection object
 
 ```csharp
-public void Initialize(IConfigurationSection configuration)
+public void Initialize(IConfigurationSection pipelineConfigurationSection, 
+    IConfigurationSection loggingConfiguration)
 ```
 
 | parameter | description |
 | --- | --- |
-| configuration | the pipeline configuration |
+| pipelineConfigurationSection | the pipeline pipelineConfigurationSection |
+| loggingConfiguration | the logging configuration section |
 
 ## See Also
 

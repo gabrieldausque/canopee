@@ -1,10 +1,10 @@
 # ConfigurationSynchronizerFactory.GetSynchronizer method
 
-Get an instance of a IConfigurationSynchronizer object from the specified configuration If no Canopee:Configuration:SynchronizerType value is defined, the contract name used will be Default
+Get an instance of a ICanopeeConfigurationSynchronizer object from the specified configuration If no Canopee:Configuration:SynchronizerType value is defined, the contract name used will be Default
 
 ```csharp
-public IConfigurationSynchronizer GetSynchronizer(IConfiguration configurationServiceConfiguration, 
-    IConfiguration loggingConfiguration)
+public ICanopeeConfigurationSynchronizer GetSynchronizer(
+    IConfiguration configurationServiceConfiguration, IConfiguration loggingConfiguration)
 ```
 
 | parameter | description |

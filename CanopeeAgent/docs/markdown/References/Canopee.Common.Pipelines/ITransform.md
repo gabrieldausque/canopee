@@ -10,7 +10,7 @@ public interface ITransform
 
 | name | description |
 | --- | --- |
-| [Initialize](ITransform/Initialize.md)(…) |  |
+| [Initialize](ITransform/Initialize.md)(…) | Initialize the [`ITransform`](ITransform.md) with configurations |
 | [Transform](ITransform/Transform.md)(…) | Transform a [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) to another [`ICollectedEvent`](../Canopee.Common.Pipelines.Events/ICollectedEvent.md) implementation or simply enrich it by adding properties to the [`ExtractedFields`](../Canopee.Common.Pipelines.Events/ICollectedEvent/ExtractedFields.md) property |
 
 ## See Also

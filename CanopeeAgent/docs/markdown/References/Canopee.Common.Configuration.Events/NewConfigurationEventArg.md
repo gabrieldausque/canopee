@@ -1,6 +1,6 @@
 # NewConfigurationEventArg class
 
-Args for the new configuration event. When a new configuration is detected by the [`IConfigurationSynchronizer`](../Canopee.Common.Configuration/IConfigurationSynchronizer.md), it raise [`OnNewConfiguration`](../Canopee.Common.Configuration/IConfigurationSynchronizer/OnNewConfiguration.md) event.
+Args for the new configuration event. When a new configuration is detected by the [`ICanopeeConfigurationSynchronizer`](../Canopee.Common.Configuration/ICanopeeConfigurationSynchronizer.md), it raise [`OnNewConfiguration`](../Canopee.Common.Configuration/ICanopeeConfigurationSynchronizer/OnNewConfiguration.md) event.
 
 ```csharp
 public class NewConfigurationEventArg : EventArgs

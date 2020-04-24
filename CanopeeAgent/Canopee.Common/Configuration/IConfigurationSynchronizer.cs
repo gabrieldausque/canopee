@@ -7,7 +7,7 @@ namespace Canopee.Common.Configuration
     /// <summary>
     /// Contract for the object that will synchronize configuration from an external source.
     /// </summary>
-    public interface IConfigurationSynchronizer
+    public interface ICanopeeConfigurationSynchronizer
     {
         /// <summary>
         /// Get the actual configuration from the external source 

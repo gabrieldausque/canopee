@@ -69,7 +69,7 @@ namespace Canopee.Core.Pipelines
             foreach (var pipeline in _pipelines)
             {
                 Logger.LogInfo($"Starting pipeline {pipeline.ToString()}");
-                pipeline.Value.Run();
+                pipeline.Value.Start();
             }
         }
 
