@@ -21,7 +21,6 @@ namespace CanopeeServer.Datas.Entities
         public DateTime EventDate { get; set; }
         
         public string Group { get; set; }
-        public int Priority { get; set; }
 
         public override string ToString()
         {
@@ -31,7 +30,6 @@ namespace CanopeeServer.Datas.Entities
             serialized.SetProperty("EventId",this.EventId);
             serialized.SetProperty("EventDate",this.EventDate);
             serialized.SetProperty("Group",this.Group);
-            serialized.SetProperty("Priority",this.Priority);
             return serialized.ToString();
         }
     }

@@ -205,7 +205,6 @@ namespace CanopeeServer.Datas
                     Configuration = cleanObject.GetProperty<JsonObject>("Configuration", true),
                     EventDate = cleanObject.GetProperty<DateTime>("EventDate", true),
                     EventId = cleanObject.GetProperty<string>("EventId", true),
-                    Priority = cleanObject.GetProperty<short>("Priority", true),
                     Group = cleanObject.GetProperty<string>("Group", true)
                 });
             }

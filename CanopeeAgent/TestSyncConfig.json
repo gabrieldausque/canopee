@@ -42,16 +42,15 @@
                 ]
               }
             ],
-            "Outputs" : {
+            "Outputs" : [{
               "OutputType": "Console"
-            }
+            }]
           }
         ]
       }
     },
     "agentId": "Default",
-    "group": "Default",
-    "priority": 0
+    "group": "Default"
   },
 
   {
@@ -106,16 +105,15 @@
                 "OSSpecific": "true"
               }
             ],
-            "Outputs" : {
+            "Outputs" : [{
               "OutputType": "Console"
-            }
+            }]
           }
         ]
       }
     },
     "agentId": "Default",
-    "group": "DEV",
-    "priority": 0
+    "group": "DEV"
   },
 
   {
@@ -241,7 +239,6 @@
       }
     },
     "agentId": "Default",
-    "group": "TEST",
-    "priority": 0
+    "group": "TEST"
   }
 ]

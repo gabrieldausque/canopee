@@ -91,6 +91,12 @@ namespace Canopee.StandardLibrary.Configuration
                 {
                     MergeCanopeeConfiguration(currentConfig, groupConfig);    
                 }
+
+                var groupConfigForAgent = _reader.GetConfiguration(agentId, group.Group);
+                if(groupConfigForAgent != null)
+                {
+                    MergeCanopeeConfiguration(currentConfig, groupConfigForAgent);
+                }
             }
 
             var agentConfiguration = _reader.GetConfiguration(agentId: agentId);

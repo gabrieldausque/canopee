@@ -44,11 +44,6 @@
             The group name. If set to "Default", it concerns all group (or no group) 
             </summary>
         </member>
-        <member name="P:Canopee.Common.Configuration.AspNet.Dtos.CanopeeConfigurationDto.Priority">
-            <summary>
-            The precedence of the configuration on other configuration (not used for now)
-            </summary>
-        </member>
         <member name="T:Canopee.Common.Configuration.Events.NewConfigurationEventArg">
             <summary>
             Args for the new configuration event. When a new configuration is detected by the <see cref="T:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer"/>, it raise <see cref="E:Canopee.Common.Configuration.ICanopeeConfigurationSynchronizer.OnNewConfiguration"/> event.

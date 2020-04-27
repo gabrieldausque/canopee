@@ -110,6 +110,7 @@ namespace Canopee.Core.Configuration
                     _synchronizer.OnNewConfiguration += (sender, arg) =>
                     {
                         arg.NewConfiguration.WriteTo(this.lastConfigurationFilePath);
+                        Logger.LogWarning("New configuration received from synchronizer and written to file. Raising NewConfiguration Event");
                         RaiseOnNewConfiguration();
                     };
                 }

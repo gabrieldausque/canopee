@@ -14,7 +14,6 @@ public class CanopeeConfigurationDto
 | [AgentId](CanopeeConfigurationDto/AgentId.md) { get; set; } | The agent Id. If set to "Default", it concerns all agent |
 | [Configuration](CanopeeConfigurationDto/Configuration.md) { get; set; } | The configuration as Json |
 | [Group](CanopeeConfigurationDto/Group.md) { get; set; } | The group name. If set to "Default", it concerns all group (or no group) |
-| [Priority](CanopeeConfigurationDto/Priority.md) { get; set; } | The precedence of the configuration on other configuration (not used for now) |
 
 ## See Also
 

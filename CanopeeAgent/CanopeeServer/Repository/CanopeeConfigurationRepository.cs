@@ -23,8 +23,7 @@ namespace CanopeeServer.Repository
             {
                 Configuration = newCanopeeConfiguration.Configuration,
                 Group = newCanopeeConfiguration.Group,
-                AgentId = newCanopeeConfiguration.AgentId,
-                Priority = newCanopeeConfiguration.Priority
+                AgentId = newCanopeeConfiguration.AgentId
             };
             return _db.AddConfiguration(canopeeConfiguration);
         }

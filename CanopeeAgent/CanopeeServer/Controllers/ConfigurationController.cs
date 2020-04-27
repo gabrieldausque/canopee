@@ -35,8 +35,7 @@ namespace CanopeeServer.Controllers
                 {
                     Configuration = config.Configuration,
                     Group = config.Group,
-                    AgentId = config.AgentId,
-                    Priority = config.Priority
+                    AgentId = config.AgentId
                 });
             }
             return Ok(dtos);
