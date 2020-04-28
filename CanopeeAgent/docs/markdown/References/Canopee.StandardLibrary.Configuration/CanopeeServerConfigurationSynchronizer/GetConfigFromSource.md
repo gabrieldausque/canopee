@@ -1,5 +1,7 @@
 # CanopeeServerConfigurationSynchronizer.GetConfigFromSource method
 
+Get the merged configuration from the centralized source accessed through the ICanopeeConfigurationSynchronizer. It will merged in order : - default configuration from distant source - associated group configurations for agent Id sorted by ascending priority, merged with the default - the agent id specific configuration and merged with the previous one
+
 ```csharp
 public JsonObject GetConfigFromSource()
 ```

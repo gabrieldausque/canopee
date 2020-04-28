@@ -1,5 +1,7 @@
 # CanopeeServerConfigurationSynchronizer class
 
+The object in charge of checking and notifying if a new configuration is available from a source. It will : - get the local configuration - get default configuration from distant source - get the associated group configurations for agent Id sorted by ascending priority, merged with the default - get the agent id specific configuration and merged with the previous one - compare the local configuration to the merged configurations If the new configuration is different from the local one, it raised an event with the new configuration
+
 ```csharp
 public class CanopeeServerConfigurationSynchronizer : ICanopeeConfigurationSynchronizer
 ```
@@ -8,12 +10,12 @@ public class CanopeeServerConfigurationSynchronizer : ICanopeeConfigurationSynch
 
 | name | description |
 | --- | --- |
-| [CanopeeServerConfigurationSynchronizer](CanopeeServerConfigurationSynchronizer/CanopeeServerConfigurationSynchronizer.md)(…) |  |
-| event [OnNewConfiguration](CanopeeServerConfigurationSynchronizer/OnNewConfiguration.md) |  |
-| [GetConfigFromSource](CanopeeServerConfigurationSynchronizer/GetConfigFromSource.md)() |  |
-| [Initialize](CanopeeServerConfigurationSynchronizer/Initialize.md)(…) |  |
-| [Start](CanopeeServerConfigurationSynchronizer/Start.md)() |  |
-| [Stop](CanopeeServerConfigurationSynchronizer/Stop.md)() |  |
+| [CanopeeServerConfigurationSynchronizer](CanopeeServerConfigurationSynchronizer/CanopeeServerConfigurationSynchronizer.md)(…) | The default constructor. |
+| event [OnNewConfiguration](CanopeeServerConfigurationSynchronizer/OnNewConfiguration.md) | Event raised if a new configuration is found during synchronization process |
+| [GetConfigFromSource](CanopeeServerConfigurationSynchronizer/GetConfigFromSource.md)() | Get the merged configuration from the centralized source accessed through the ICanopeeConfigurationSynchronizer. It will merged in order : - default configuration from distant source - associated group configurations for agent Id sorted by ascending priority, merged with the default - the agent id specific configuration and merged with the previous one |
+| [Initialize](CanopeeServerConfigurationSynchronizer/Initialize.md)(…) | Initialize the current synchronizer with the Configuration configuration section and the Logging configuration |
+| [Start](CanopeeServerConfigurationSynchronizer/Start.md)() | Start the synchronization process |
+| [Stop](CanopeeServerConfigurationSynchronizer/Stop.md)() | Stop the synchronization process |
 
 ## See Also
 

@@ -1,8 +1,15 @@
 # AspNetCanopeeServerConfigurationReader.GetConfiguration method
 
+Get a JsonObject that represent a Canopee Configuration for the specified AgentId and Group
+
 ```csharp
 public JsonObject GetConfiguration(string agentId = "Default", string group = "Default")
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | The agent Id Optional. Default: "Default" |
+| group | The group Optional. Default: "Default" |
 
 ## See Also
 

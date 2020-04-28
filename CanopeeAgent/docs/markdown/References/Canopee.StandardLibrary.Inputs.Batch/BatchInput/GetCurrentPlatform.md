@@ -1,8 +1,20 @@
 # BatchInput.GetCurrentPlatform method
 
+Get the current platform
+
 ```csharp
 protected OSPlatform GetCurrentPlatform()
 ```
+
+## Return Value
+
+a OSPlatform corresponding to the current platform
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| NotSupportedException | If the platform is not Linux, Windows, FreeBSD or OSX |
 
 ## See Also
 

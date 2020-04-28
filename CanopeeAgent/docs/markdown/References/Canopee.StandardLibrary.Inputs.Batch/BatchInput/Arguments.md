@@ -1,5 +1,7 @@
 # BatchInput.Arguments field
 
+The arguments used with the shell executable, excluding the command line to be executed
+
 ```csharp
 protected string Arguments;
 ```

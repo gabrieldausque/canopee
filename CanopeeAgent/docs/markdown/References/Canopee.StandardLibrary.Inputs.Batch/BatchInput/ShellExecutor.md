@@ -1,5 +1,7 @@
 # BatchInput.ShellExecutor field
 
+The shell executable to use
+
 ```csharp
 protected string ShellExecutor;
 ```

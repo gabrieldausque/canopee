@@ -1,5 +1,7 @@
 # FirebirdADOInput class
 
+Create a collected event for each record returned by the select statement
+
 ```csharp
 public class FirebirdADOInput : BaseInput
 ```

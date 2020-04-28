@@ -1,5 +1,7 @@
 # AspNetCanopeeServerConfigurationReader class
 
+The client of the CanopeeServer instance that will give access to : - the list of group for a specified agent id - the configuration for a specified agent id and group
+
 ```csharp
 public class AspNetCanopeeServerConfigurationReader : ICanopeeConfigurationReader
 ```
@@ -8,10 +10,10 @@ public class AspNetCanopeeServerConfigurationReader : ICanopeeConfigurationReade
 
 | name | description |
 | --- | --- |
-| [AspNetCanopeeServerConfigurationReader](AspNetCanopeeServerConfigurationReader/AspNetCanopeeServerConfigurationReader.md)() | The default constructor. |
-| [GetConfiguration](AspNetCanopeeServerConfigurationReader/GetConfiguration.md)(…) |  |
-| [GetGroups](AspNetCanopeeServerConfigurationReader/GetGroups.md)(…) |  |
-| [Initialize](AspNetCanopeeServerConfigurationReader/Initialize.md)(…) |  |
+| [AspNetCanopeeServerConfigurationReader](AspNetCanopeeServerConfigurationReader/AspNetCanopeeServerConfigurationReader.md)() | The default constructor |
+| [GetConfiguration](AspNetCanopeeServerConfigurationReader/GetConfiguration.md)(…) | Get a JsonObject that represent a Canopee Configuration for the specified AgentId and Group |
+| [GetGroups](AspNetCanopeeServerConfigurationReader/GetGroups.md)(…) | Get one or more AgentGroupDto for the corresponding AgentId |
+| [Initialize](AspNetCanopeeServerConfigurationReader/Initialize.md)(…) | Initialize the current AspNetCanopeeServer Reader to load configuration from |
 
 ## See Also
 

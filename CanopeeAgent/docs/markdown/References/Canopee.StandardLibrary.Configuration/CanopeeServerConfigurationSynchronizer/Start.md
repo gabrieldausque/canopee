@@ -1,5 +1,7 @@
 # CanopeeServerConfigurationSynchronizer.Start method
 
+Start the synchronization process
+
 ```csharp
 public void Start()
 ```

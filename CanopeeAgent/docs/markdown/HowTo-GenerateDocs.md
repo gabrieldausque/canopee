@@ -13,6 +13,7 @@ To generate doc
 2. execute from doc directory following command 
 
 ``` bash
+cd docs
 xmldocmd ../bin/Agent/Published/Canopee.Common.dll ./markdown/References/
 xmldocmd ../bin/Agent/Published/Canopee.Core.dll ./markdown/References/
 cp ../bin/Agent/Published/Pipelines/* ../bin/Agent/Published &&  xmldocmd ../bin/Agent/Published/Canopee.StandardLibrary.dll ./markdown/References/

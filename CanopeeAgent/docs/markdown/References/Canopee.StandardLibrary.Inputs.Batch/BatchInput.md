@@ -1,5 +1,19 @@
 # BatchInput class
 
+This IInput collect each line of the output of a batch command. By default it manage : - dosshell command for windows - bash command for linux You can override the shell executor by configuration :  For a powershell command you will need this configuration for input in a pipeline :
+
+```csharp
+{
+    ...
+    "Input": {
+        "InputType": "Batch",
+        "CommandLine": "Get-ItemProperty -ErrorAction SilentlyContinue -Path HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\* | Select-Object FriendlyName | format-table -hidetableheaders"
+        "ShellExecutor": "powershell.exe"
+        "Arguments": "-Command"
+    },
+}
+```
+
 ```csharp
 public class BatchInput : BaseInput
 ```
@@ -8,21 +22,21 @@ public class BatchInput : BaseInput
 
 | name | description |
 | --- | --- |
-| [BatchInput](BatchInput/BatchInput.md)() | The default constructor. |
-| override [Collect](BatchInput/Collect.md)(…) |  |
-| override [Initialize](BatchInput/Initialize.md)(…) |  |
+| [BatchInput](BatchInput/BatchInput.md)() | Default constructor |
+| override [Collect](BatchInput/Collect.md)(…) | Collect each line of the command line output. |
+| override [Initialize](BatchInput/Initialize.md)(…) | Initialize the current input using the passed IConfigurationSection for the input and the logger. Set default executor by os if not specified in configuration. Override default by the configuration. |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| [Arguments](BatchInput/Arguments.md) |  |
-| [CommandLine](BatchInput/CommandLine.md) |  |
-| [ShellExecutor](BatchInput/ShellExecutor.md) |  |
-| [UnitsRepository](BatchInput/UnitsRepository.md) |  |
-| virtual [GetBatchOutput](BatchInput/GetBatchOutput.md)(…) |  |
-| [GetCurrentPlatform](BatchInput/GetCurrentPlatform.md)() |  |
-| [SetExecutorByOs](BatchInput/SetExecutorByOs.md)() |  |
+| [Arguments](BatchInput/Arguments.md) | The arguments used with the shell executable, excluding the command line to be executed |
+| [CommandLine](BatchInput/CommandLine.md) | The command line to be executed in the shell executor |
+| [ShellExecutor](BatchInput/ShellExecutor.md) | The shell executable to use |
+| [UnitsRepository](BatchInput/UnitsRepository.md) | Internal repository used for unit conversion (bytes to Kb, etc ...) |
+| virtual [GetBatchOutput](BatchInput/GetBatchOutput.md)(…) | Execute the batch in external process and get batch output |
+| [GetCurrentPlatform](BatchInput/GetCurrentPlatform.md)() | Get the current platform |
+| [SetExecutorByOs](BatchInput/SetExecutorByOs.md)() | Set the default executor by OS. Today only Windows and linux are supported |
 
 ## See Also
 

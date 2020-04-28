@@ -1,9 +1,17 @@
 # BatchInput.Initialize method
 
+Initialize the current input using the passed IConfigurationSection for the input and the logger. Set default executor by os if not specified in configuration. Override default by the configuration.
+
 ```csharp
 public override void Initialize(IConfigurationSection configurationInput, 
     IConfigurationSection loggingConfiguration, string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationInput | the IInput configuration |
+| loggingConfiguration | the logger configuration |
+| agentId | the AgentId to set in collected event |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # CanopeeServerConfigurationSynchronizer.OnNewConfiguration event
 
+Event raised if a new configuration is found during synchronization process
+
 ```csharp
 public event EventHandler<NewConfigurationEventArg> OnNewConfiguration;
 ```

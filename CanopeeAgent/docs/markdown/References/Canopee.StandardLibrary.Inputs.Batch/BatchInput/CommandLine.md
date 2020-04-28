@@ -1,5 +1,7 @@
 # BatchInput.CommandLine field
 
+The command line to be executed in the shell executor
+
 ```csharp
 protected string CommandLine;
 ```

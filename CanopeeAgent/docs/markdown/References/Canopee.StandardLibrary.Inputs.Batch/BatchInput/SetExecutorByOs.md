@@ -1,8 +1,16 @@
 # BatchInput.SetExecutorByOs method
 
+Set the default executor by OS. Today only Windows and linux are supported
+
 ```csharp
 protected void SetExecutorByOs()
 ```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| NotSupportedException |  |
 
 ## See Also
 

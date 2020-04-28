@@ -1,5 +1,7 @@
 # BatchInput.UnitsRepository field
 
+Internal repository used for unit conversion (bytes to Kb, etc ...)
+
 ```csharp
 protected Dictionary<string, string> UnitsRepository;
 ```

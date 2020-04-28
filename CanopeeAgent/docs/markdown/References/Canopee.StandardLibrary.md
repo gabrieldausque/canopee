@@ -4,25 +4,25 @@
 
 | public type | description |
 | --- | --- |
-| class [CanopeeServerConfigurationSynchronizer](Canopee.StandardLibrary.Configuration/CanopeeServerConfigurationSynchronizer.md) |  |
+| class [CanopeeServerConfigurationSynchronizer](Canopee.StandardLibrary.Configuration/CanopeeServerConfigurationSynchronizer.md) | The object in charge of checking and notifying if a new configuration is available from a source. It will : - get the local configuration - get default configuration from distant source - get the associated group configurations for agent Id sorted by ascending priority, merged with the default - get the agent id specific configuration and merged with the previous one - compare the local configuration to the merged configurations If the new configuration is different from the local one, it raised an event with the new configuration |
 
 ## Canopee.StandardLibrary.Configuration.AspNet namespace
 
 | public type | description |
 | --- | --- |
-| class [AspNetCanopeeServerConfigurationReader](Canopee.StandardLibrary.Configuration.AspNet/AspNetCanopeeServerConfigurationReader.md) |  |
+| class [AspNetCanopeeServerConfigurationReader](Canopee.StandardLibrary.Configuration.AspNet/AspNetCanopeeServerConfigurationReader.md) | The client of the CanopeeServer instance that will give access to : - the list of group for a specified agent id - the configuration for a specified agent id and group |
 
 ## Canopee.StandardLibrary.Inputs.Batch namespace
 
 | public type | description |
 | --- | --- |
-| class [BatchInput](Canopee.StandardLibrary.Inputs.Batch/BatchInput.md) |  |
+| class [BatchInput](Canopee.StandardLibrary.Inputs.Batch/BatchInput.md) | This IInput collect each line of the output of a batch command. By default it manage : - dosshell command for windows - bash command for linux You can override the shell executor by configuration :  For a powershell command you will need this configuration for input in a pipeline : |
 
 ## Canopee.StandardLibrary.Inputs.Databases.Firebird namespace
 
 | public type | description |
 | --- | --- |
-| class [FirebirdADOInput](Canopee.StandardLibrary.Inputs.Databases.Firebird/FirebirdADOInput.md) |  |
+| class [FirebirdADOInput](Canopee.StandardLibrary.Inputs.Databases.Firebird/FirebirdADOInput.md) | Create a collected event for each record returned by the select statement |
 
 ## Canopee.StandardLibrary.Inputs.File namespace
 

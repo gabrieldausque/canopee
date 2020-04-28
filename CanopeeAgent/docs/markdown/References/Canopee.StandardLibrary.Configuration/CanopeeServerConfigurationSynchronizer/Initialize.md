@@ -1,8 +1,15 @@
 # CanopeeServerConfigurationSynchronizer.Initialize method
 
+Initialize the current synchronizer with the Configuration configuration section and the Logging configuration
+
 ```csharp
 public void Initialize(IConfiguration serviceConfiguration, IConfiguration loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| serviceConfiguration | the configuration service |
+| loggingConfiguration | the logger configuration |
 
 ## See Also
 

@@ -1,8 +1,18 @@
 # AspNetCanopeeServerConfigurationReader.GetGroups method
 
+Get one or more AgentGroupDto for the corresponding AgentId
+
 ```csharp
 public ICollection<AgentGroupDto> GetGroups(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | the agent id to get list of groups |
+
+## Return Value
+
+The list of group associated to the agent id
 
 ## See Also
 

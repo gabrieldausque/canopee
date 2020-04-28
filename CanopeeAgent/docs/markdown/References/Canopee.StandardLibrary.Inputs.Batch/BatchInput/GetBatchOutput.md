@@ -1,8 +1,18 @@
 # BatchInput.GetBatchOutput method
 
+Execute the batch in external process and get batch output
+
 ```csharp
 protected virtual string[] GetBatchOutput(string commandLine)
 ```
+
+| parameter | description |
+| --- | --- |
+| commandLine | the command line to be executed with the current ShellExecutor combined with Arguments |
+
+## Return Value
+
+the batch output converted as a string array
 
 ## See Also
 

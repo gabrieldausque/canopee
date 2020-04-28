@@ -1,6 +1,6 @@
 # BatchInput constructor
 
-The default constructor.
+Default constructor
 
 ```csharp
 public BatchInput()

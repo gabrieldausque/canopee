@@ -1,8 +1,14 @@
 # CanopeeServerConfigurationSynchronizer constructor
 
+The default constructor.
+
 ```csharp
 public CanopeeServerConfigurationSynchronizer(ICanopeeConfigurationReader reader)
 ```
+
+| parameter | description |
+| --- | --- |
+| reader | The ICanopeeConfigurationReader that will be used to get centralized configuration |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # CanopeeServerConfigurationSynchronizer.Stop method
 
+Stop the synchronization process
+
 ```csharp
 public void Stop()
 ```
