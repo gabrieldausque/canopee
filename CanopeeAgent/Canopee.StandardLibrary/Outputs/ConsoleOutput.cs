@@ -16,7 +16,10 @@ namespace Canopee.StandardLibrary.Outputs
     {
         public override void SendToOutput(ICollectedEvent collectedEvent)
         {
-            Console.WriteLine(JsonSerializer.Serialize(collectedEvent,collectedEvent.GetType()));
+            Console.WriteLine(JsonSerializer.Serialize(collectedEvent,collectedEvent.GetType(), new  JsonSerializerOptions()
+            {
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            }));
         }
     }
 }

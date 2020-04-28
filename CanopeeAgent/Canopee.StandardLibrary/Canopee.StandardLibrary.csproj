@@ -8,11 +8,13 @@
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <OutputPath>..\bin\Pipelines\Debug</OutputPath>
       <NoWarn>$(NoWarn);1591</NoWarn>
+      <DocumentationFile>..\bin\Pipelines\Debug\Canopee.StandardLibrary.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
       <OutputPath>..\bin\Pipelines\Release</OutputPath>
       <NoWarn>$(NoWarn);1591</NoWarn>
+      <DocumentationFile>..\bin\Pipelines\Release\Canopee.StandardLibrary.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
