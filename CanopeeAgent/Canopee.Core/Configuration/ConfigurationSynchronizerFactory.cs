@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 namespace Canopee.Core.Configuration
 {
     /// <summary>
-    /// Factory that create <see cref="ICanopeeConfigurationSynchronizer"/> object
+    /// Factory that create <see cref="ICanopeeConfigurationSynchronizer"/>
     /// </summary>
     public class ConfigurationSynchronizerFactory : FactoryFromDirectoryBase
     {

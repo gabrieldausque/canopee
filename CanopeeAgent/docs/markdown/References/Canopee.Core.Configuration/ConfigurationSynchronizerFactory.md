@@ -1,6 +1,6 @@
 # ConfigurationSynchronizerFactory class
 
-Factory that create ICanopeeConfigurationSynchronizer object
+Factory that create ICanopeeConfigurationSynchronizer
 
 ```csharp
 public class ConfigurationSynchronizerFactory : FactoryFromDirectoryBase

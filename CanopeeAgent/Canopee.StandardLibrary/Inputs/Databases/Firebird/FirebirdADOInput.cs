@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
 {
+    /// <summary>
+    /// Create a collected event for each record returned by the select statement
+    /// </summary>
     [Export("FireBirdADO", typeof(IInput))]
     public class FirebirdADOInput : BaseInput
     {

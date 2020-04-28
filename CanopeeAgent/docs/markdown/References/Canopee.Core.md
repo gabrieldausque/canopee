@@ -11,7 +11,7 @@
 | public type | description |
 | --- | --- |
 | class [ConfigurationService](Canopee.Core.Configuration/ConfigurationService.md) | Object in charge of managing the configuration : - read from local - write modification to local file - synchronize from a CanopeeServer that exposes the centralized configuration (Experimental feature) |
-| class [ConfigurationSynchronizerFactory](Canopee.Core.Configuration/ConfigurationSynchronizerFactory.md) | Factory that create ICanopeeConfigurationSynchronizer object |
+| class [ConfigurationSynchronizerFactory](Canopee.Core.Configuration/ConfigurationSynchronizerFactory.md) | Factory that create ICanopeeConfigurationSynchronizer |
 
 ## Canopee.Core.Hosting namespace
 

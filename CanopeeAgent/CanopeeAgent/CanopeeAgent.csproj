@@ -96,6 +96,8 @@
     <Target Name="BuildStandardLibrary" AfterTargets="AfterBuild">
         <Exec Command="dotnet build -c $(Configuration) -o $(OutDir)/PipelinesTemp/ ../Canopee.StandardLibrary/Canopee.StandardLibrary.csproj" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
+        <Exec Command="sleep 2"/>
+        <Copy SourceFiles="$(OutDir)/PipelinesTemp/Canopee.StandardLibrary.xml" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/FirebirdSql.Data.FirebirdClient.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Elasticsearch.Net.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />
         <Copy SourceFiles="$(OutDir)/PipelinesTemp/Nest.dll" DestinationFolder="$(OutDir)/Pipelines/" OverwriteReadOnlyFiles="true" />

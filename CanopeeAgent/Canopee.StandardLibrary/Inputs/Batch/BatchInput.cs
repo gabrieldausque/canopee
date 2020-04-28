@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Composition;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Canopee.Common;
 using Canopee.Common.Pipelines;
 using Canopee.Common.Pipelines.Events;
 using Canopee.Core.Pipelines;
