@@ -1,9 +1,17 @@
 # CSVInput.Initialize method
 
+Initialize the IInput using the input configuration. Set all internal properties and initialize the logger
+
 ```csharp
 public override void Initialize(IConfigurationSection inputConfiguration, 
     IConfigurationSection loggingConfiguration, string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| inputConfiguration | the input configuration |
+| loggingConfiguration | the logger configuration |
+| agentId | the agent id that will be set in all ICollectedEvent |
 
 ## See Also
 

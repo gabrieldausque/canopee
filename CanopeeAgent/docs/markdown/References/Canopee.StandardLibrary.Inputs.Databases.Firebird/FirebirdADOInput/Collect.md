@@ -1,8 +1,18 @@
 # FirebirdADOInput.Collect method
 
+Collect all record from the select statement using the internal connection string
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | the event arg gotten from trigger |
+
+## Return Value
+
+a collection of ICollectedEvent, each corresponding to a record from the select statement
 
 ## See Also
 

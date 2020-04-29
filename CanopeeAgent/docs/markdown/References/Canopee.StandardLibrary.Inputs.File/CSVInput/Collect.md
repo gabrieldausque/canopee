@@ -1,8 +1,18 @@
 # CSVInput.Collect method
 
+Collect all record in the CSV file as ICollectedEvent. For now, no headers csv file are not managed.
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | the event arg that is send by the trigger |
+
+## Return Value
+
+a collection of event corresponding to each line of the csv file
 
 ## See Also
 

@@ -11,8 +11,8 @@ public class FirebirdADOInput : BaseInput
 | name | description |
 | --- | --- |
 | [FirebirdADOInput](FirebirdADOInput/FirebirdADOInput.md)() | The default constructor. |
-| override [Collect](FirebirdADOInput/Collect.md)(…) |  |
-| override [Initialize](FirebirdADOInput/Initialize.md)(…) |  |
+| override [Collect](FirebirdADOInput/Collect.md)(…) | Collect all record from the select statement using the internal connection string |
+| override [Initialize](FirebirdADOInput/Initialize.md)(…) | Initialize this IInput using the configuration input. Set the connection string and the select statement. |
 
 ## See Also
 

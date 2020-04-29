@@ -1,9 +1,17 @@
 # FirebirdADOInput.Initialize method
 
+Initialize this IInput using the configuration input. Set the connection string and the select statement.
+
 ```csharp
 public override void Initialize(IConfigurationSection configurationInput, 
     IConfigurationSection loggingConfiguration, string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationInput | the configuration input |
+| loggingConfiguration | the logger configuration |
+| agentId | the agent id that will be set in all ICollectedEvent |
 
 ## See Also
 

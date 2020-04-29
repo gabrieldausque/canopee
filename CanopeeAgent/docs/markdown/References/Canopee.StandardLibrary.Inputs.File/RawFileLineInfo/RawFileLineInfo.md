@@ -1,6 +1,6 @@
 # RawFileLineInfo constructor (1 of 2)
 
-The default constructor.
+Default constructor
 
 ```csharp
 public RawFileLineInfo()
@@ -15,9 +15,15 @@ public RawFileLineInfo()
 
 # RawFileLineInfo constructor (2 of 2)
 
+Set the agent id on creation
+
 ```csharp
 public RawFileLineInfo(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | the agent id of the current ICollectedEvent |
 
 ## See Also
 

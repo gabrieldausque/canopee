@@ -28,8 +28,8 @@
 
 | public type | description |
 | --- | --- |
-| class [CSVInput](Canopee.StandardLibrary.Inputs.File/CSVInput.md) |  |
-| class [RawFileLineInfo](Canopee.StandardLibrary.Inputs.File/RawFileLineInfo.md) |  |
+| class [CSVInput](Canopee.StandardLibrary.Inputs.File/CSVInput.md) | Work In Progress. Collect all line of a CSV file and get them |
+| class [RawFileLineInfo](Canopee.StandardLibrary.Inputs.File/RawFileLineInfo.md) | A ICollectedEvent that represents a line of a file |
 
 ## Canopee.StandardLibrary.Inputs.Hardware namespace
 

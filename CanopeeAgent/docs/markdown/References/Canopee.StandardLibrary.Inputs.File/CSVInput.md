@@ -1,5 +1,7 @@
 # CSVInput class
 
+Work In Progress. Collect all line of a CSV file and get them
+
 ```csharp
 public class CSVInput : BaseInput
 ```
@@ -9,8 +11,8 @@ public class CSVInput : BaseInput
 | name | description |
 | --- | --- |
 | [CSVInput](CSVInput/CSVInput.md)() | The default constructor. |
-| override [Collect](CSVInput/Collect.md)(…) |  |
-| override [Initialize](CSVInput/Initialize.md)(…) |  |
+| override [Collect](CSVInput/Collect.md)(…) | Collect all record in the CSV file as ICollectedEvent. For now, no headers csv file are not managed. |
+| override [Initialize](CSVInput/Initialize.md)(…) | Initialize the IInput using the input configuration. Set all internal properties and initialize the logger |
 
 ## See Also
 

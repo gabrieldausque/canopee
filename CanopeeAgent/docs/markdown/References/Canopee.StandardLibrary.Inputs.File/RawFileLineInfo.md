@@ -1,5 +1,7 @@
 # RawFileLineInfo class
 
+A ICollectedEvent that represents a line of a file
+
 ```csharp
 public class RawFileLineInfo : CollectedEvent
 ```
@@ -8,8 +10,8 @@ public class RawFileLineInfo : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)() | The default constructor. |
-| [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)(…) |  |
+| [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)() | Default constructor |
+| [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)(…) | Set the agent id on creation |
 
 ## See Also
 

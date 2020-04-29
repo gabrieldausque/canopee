@@ -11,15 +11,44 @@ using Canopee.Core.Pipelines;
 
 namespace Canopee.StandardLibrary.Inputs.File
 {
+    /// <summary>
+    /// Work In Progress.
+    /// Collect all line of a CSV file and get them
+    /// </summary>
     [Export("CSV", typeof(IInput))]
     public class CSVInput : BaseInput
     {
+        /// <summary>
+        /// The file path to extract event from
+        /// </summary>
         private string _filePath;
+        
+        /// <summary>
+        /// the internal fileInfo that give information on the file (creation date, modification date, etc ...)
+        /// </summary>
         private FileVersionInfo _fileInfo;
+        
+        /// <summary>
+        /// the file type
+        /// </summary>
         private string _fileType;
+        
+        /// <summary>
+        /// indicate if the file has headers
+        /// </summary>
         private bool _withHeader;
+        
+        /// <summary>
+        /// The field separator for the file
+        /// </summary>
         private string _fieldSeparator;
 
+        /// <summary>
+        /// Initialize the <see cref="IInput"/> using the input configuration. Set all internal properties and initialize the logger
+        /// </summary>
+        /// <param name="inputConfiguration">the input configuration</param>
+        /// <param name="loggingConfiguration">the logger configuration</param>
+        /// <param name="agentId">the agent id that will be set in all <see cref="ICollectedEvent"/></param>
         public override void Initialize(IConfigurationSection inputConfiguration, IConfigurationSection loggingConfiguration, string agentId)
         {
             base.Initialize(inputConfiguration, loggingConfiguration, agentId);
@@ -35,6 +64,12 @@ namespace Canopee.StandardLibrary.Inputs.File
             //TODO : save data in temporary file for restarting when 
         }
 
+        /// <summary>
+        /// Collect all record in the CSV file as <see cref="ICollectedEvent"/>.
+        /// For now, no headers csv file are not managed.
+        /// </summary>
+        /// <param name="fromTriggerEventArgs">the event arg that is send by the trigger</param>
+        /// <returns>a collection of event corresponding to each line of the csv file</returns>
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             Logger.LogDebug($"Collecting events from {_filePath}");

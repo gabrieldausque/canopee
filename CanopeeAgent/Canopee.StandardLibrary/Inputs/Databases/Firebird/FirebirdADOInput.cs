@@ -18,9 +18,22 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
     [Export("FireBirdADO", typeof(IInput))]
     public class FirebirdADOInput : BaseInput
     {
+        /// <summary>
+        /// The connection string
+        /// </summary>
         private string _connectionString;
+        
+        /// <summary>
+        /// The select statement to get event from
+        /// </summary>
         private string _selectStatement;
 
+        /// <summary>
+        /// Initialize this <see cref="IInput"/> using the configuration input. Set the connection string and the select statement.
+        /// </summary>
+        /// <param name="configurationInput">the configuration input</param>
+        /// <param name="loggingConfiguration">the logger configuration</param>
+        /// <param name="agentId">the agent id that will be set in all <see cref="ICollectedEvent"/></param>
         public override void Initialize(IConfigurationSection configurationInput, IConfigurationSection loggingConfiguration, string agentId)
         {
             base.Initialize(configurationInput, loggingConfiguration, agentId);
@@ -28,6 +41,11 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
             _selectStatement = configurationInput["SelectStatement"];
         }
 
+        /// <summary>
+        /// Collect all record from the select statement using the internal connection string
+        /// </summary>
+        /// <param name="fromTriggerEventArgs">the event arg gotten from trigger</param>
+        /// <returns>a collection of <see cref="ICollectedEvent"/>, each corresponding to a record from the select statement</returns>
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             Logger.LogDebug($"Getting events from FireBird database");
