@@ -1,8 +1,14 @@
 # BaseHardwareInfosInput.SetDisplayInfos method
 
+Set one or more [`DisplayInfos`](../DisplayInfos.md) in the [`Displays`](../HardwareInfos/Displays.md) and one or more [`GraphicalCardInfos`](../GraphicalCardInfos.md) in the [`GraphicalCards`](../HardwareInfos/GraphicalCards.md) in the [`HardwareInfos`](../HardwareInfos.md) arg
+
 ```csharp
 protected abstract void SetDisplayInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos | the [`HardwareInfos`](../HardwareInfos.md) to enrich |
 
 ## See Also
 

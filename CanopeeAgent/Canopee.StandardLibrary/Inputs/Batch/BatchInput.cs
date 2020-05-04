@@ -13,8 +13,11 @@ namespace Canopee.StandardLibrary.Inputs.Batch
     /// <summary>
     /// This <see cref="IInput"/> collect each line of the output of a batch command.
     /// By default it manage :
+    /// 
     /// - dosshell command for windows
+    ///
     /// - bash command for linux
+    /// 
     /// You can override the shell executor by configuration :
     /// <example>
     /// For a powershell command you will need this configuration for input in a pipeline :

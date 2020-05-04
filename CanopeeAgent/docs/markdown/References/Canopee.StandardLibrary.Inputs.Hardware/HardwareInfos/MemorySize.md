@@ -1,5 +1,7 @@
 # HardwareInfos.MemorySize property
 
+The size of the memory in human readable unit
+
 ```csharp
 public float MemorySize { get; set; }
 ```

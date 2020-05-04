@@ -1,5 +1,7 @@
 # OperatingSystemInfo class
 
+Represent the current OS
+
 ```csharp
 public class OperatingSystemInfo : CollectedEvent
 ```
@@ -8,12 +10,12 @@ public class OperatingSystemInfo : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [OperatingSystemInfo](OperatingSystemInfo/OperatingSystemInfo.md)() | The default constructor. |
-| [OperatingSystemInfo](OperatingSystemInfo/OperatingSystemInfo.md)(…) |  |
-| [Hostname](OperatingSystemInfo/Hostname.md) { get; set; } |  |
-| [OperatingSystem](OperatingSystemInfo/OperatingSystem.md) { get; set; } |  |
-| [Processor](OperatingSystemInfo/Processor.md) { get; set; } |  |
-| [Version](OperatingSystemInfo/Version.md) { get; set; } |  |
+| [OperatingSystemInfo](OperatingSystemInfo/OperatingSystemInfo.md)() | Default constructor. Needed for serialization/deserialization. |
+| [OperatingSystemInfo](OperatingSystemInfo/OperatingSystemInfo.md)(…) | Constructor that set the agent id for the current ICollectedEvent |
+| [Hostname](OperatingSystemInfo/Hostname.md) { get; set; } | The hostname of the current workstation/server |
+| [OperatingSystem](OperatingSystemInfo/OperatingSystem.md) { get; set; } | Name of the operating system |
+| [Processor](OperatingSystemInfo/Processor.md) { get; set; } | Used to indicate if the current OS is 32 or 64 bit |
+| [Version](OperatingSystemInfo/Version.md) { get; set; } | Version of the operating system |
 
 ## See Also
 

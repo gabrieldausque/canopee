@@ -1,8 +1,14 @@
 # WindowsHardwareInfosInput.SetDiskInfos method
 
+Get all [`DiskInfos`](../DiskInfos.md). use wmic command
+
 ```csharp
 protected override void SetDiskInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

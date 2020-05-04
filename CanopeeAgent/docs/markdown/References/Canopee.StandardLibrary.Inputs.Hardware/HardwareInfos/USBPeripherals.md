@@ -1,5 +1,7 @@
 # HardwareInfos.USBPeripherals property
 
+The usb peripherals of the current workstation/server, represented by one or more [`UsbPeripheralInfos`](../UsbPeripheralInfos.md)
+
 ```csharp
 public ICollection<UsbPeripheralInfos> USBPeripherals { get; set; }
 ```

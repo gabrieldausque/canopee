@@ -1,8 +1,14 @@
 # WindowsHardwareInfosInput.SetCpuInfos method
 
+Get cpus infos. use echo and wmic command.
+
 ```csharp
 protected override void SetCpuInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

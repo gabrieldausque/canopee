@@ -17,14 +17,39 @@ using Nest;
 namespace Canopee.StandardLibrary.Configuration
 {
     /// <summary>
-    /// The object in charge of checking and notifying if a new configuration is available from a source.
+    /// The object in charge of checking and notifying if a new configuration is available from an ASPNet CanopeeServer.
     /// It will :
     ///  - get the local configuration
     ///  - get default configuration from distant source
     ///  - get the associated group configurations for agent Id sorted by ascending priority, merged with the default
     ///  - get the agent id specific configuration and merged with the previous one
     ///  - compare the local configuration to the merged configurations
-    /// If the new configuration is different from the local one, it raised an event with the new configuration 
+    /// If the new configuration is different from the local one, it raised an event with the new configuration
+    ///
+    /// the behavior of the configuration is set through the configuration :
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Configuration": {
+    ///                     "IsSync": true,
+    ///                     "SynchronizerType":"Default",
+    ///                     "NoSSLCheck": true,
+    ///                     "url": "http://localhost:5000",
+    ///                     "DueTimeInMs": "3000",
+    ///                     "PeriodInMs": "30000"
+    ///                 },
+    ///             ...
+    ///         }
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// All configuration are gotten from the Configuration element of the Canopee configuration
+    /// 
     /// </summary>
     [Export("Default",typeof(ICanopeeConfigurationSynchronizer))]
     public class CanopeeServerConfigurationSynchronizer : ICanopeeConfigurationSynchronizer

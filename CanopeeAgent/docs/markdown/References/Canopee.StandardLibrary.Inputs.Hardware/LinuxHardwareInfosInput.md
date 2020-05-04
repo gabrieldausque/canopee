@@ -1,5 +1,7 @@
 # LinuxHardwareInfosInput class
 
+This class is the [`BaseHardwareInfosInput`](BaseHardwareInfosInput.md) for all LINUX OS
+
 ```csharp
 public class LinuxHardwareInfosInput : BaseHardwareInfosInput
 ```
@@ -8,17 +10,17 @@ public class LinuxHardwareInfosInput : BaseHardwareInfosInput
 
 | name | description |
 | --- | --- |
-| [LinuxHardwareInfosInput](LinuxHardwareInfosInput/LinuxHardwareInfosInput.md)() | The default constructor. |
+| [LinuxHardwareInfosInput](LinuxHardwareInfosInput/LinuxHardwareInfosInput.md)() | Default constructor. Set the shell executor to bash |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| override [SetCpuInfos](LinuxHardwareInfosInput/SetCpuInfos.md)(…) |  |
-| override [SetDiskInfos](LinuxHardwareInfosInput/SetDiskInfos.md)(…) |  |
-| override [SetDisplayInfos](LinuxHardwareInfosInput/SetDisplayInfos.md)(…) |  |
-| override [SetMemoryInfos](LinuxHardwareInfosInput/SetMemoryInfos.md)(…) |  |
-| override [SetUsbPeripherals](LinuxHardwareInfosInput/SetUsbPeripherals.md)(…) |  |
+| override [SetCpuInfos](LinuxHardwareInfosInput/SetCpuInfos.md)(…) | Set the cpu infos. Use lscpu command. |
+| override [SetDiskInfos](LinuxHardwareInfosInput/SetDiskInfos.md)(…) | Set all [`DiskInfos`](DiskInfos.md). Use df command. |
+| override [SetDisplayInfos](LinuxHardwareInfosInput/SetDisplayInfos.md)(…) | Set all [`DisplayInfos`](DisplayInfos.md). Use xrandr command. |
+| override [SetMemoryInfos](LinuxHardwareInfosInput/SetMemoryInfos.md)(…) | Set the memory infos. Use free command. |
+| override [SetUsbPeripherals](LinuxHardwareInfosInput/SetUsbPeripherals.md)(…) | Set all [`UsbPeripheralInfos`](UsbPeripheralInfos.md). use lsusb command. |
 
 ## See Also
 

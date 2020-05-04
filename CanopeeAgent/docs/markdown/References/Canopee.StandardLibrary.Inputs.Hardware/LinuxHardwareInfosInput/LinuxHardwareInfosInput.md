@@ -1,6 +1,6 @@
 # LinuxHardwareInfosInput constructor
 
-The default constructor.
+Default constructor. Set the shell executor to bash
 
 ```csharp
 public LinuxHardwareInfosInput()

@@ -1,5 +1,7 @@
 # UsbPeripheralInfos.DeviceName property
 
+The device name
+
 ```csharp
 public string DeviceName { get; set; }
 ```

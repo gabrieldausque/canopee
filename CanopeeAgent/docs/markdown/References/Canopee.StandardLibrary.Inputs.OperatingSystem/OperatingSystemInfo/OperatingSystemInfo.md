@@ -1,6 +1,6 @@
 # OperatingSystemInfo constructor (1 of 2)
 
-The default constructor.
+Default constructor. Needed for serialization/deserialization.
 
 ```csharp
 public OperatingSystemInfo()
@@ -15,9 +15,15 @@ public OperatingSystemInfo()
 
 # OperatingSystemInfo constructor (2 of 2)
 
+Constructor that set the agent id for the current ICollectedEvent
+
 ```csharp
 public OperatingSystemInfo(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | the agent id |
 
 ## See Also
 

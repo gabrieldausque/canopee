@@ -1,5 +1,7 @@
 # GraphicalCardInfos.GraphicalCardModel property
 
+The model of the graphical card
+
 ```csharp
 public string GraphicalCardModel { get; set; }
 ```

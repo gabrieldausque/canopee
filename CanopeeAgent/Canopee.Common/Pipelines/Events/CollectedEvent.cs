@@ -11,7 +11,7 @@ namespace Canopee.Common.Pipelines.Events
     public class CollectedEvent : ICollectedEvent
     {
         /// <summary>
-        /// Default constructor of the constructor event
+        /// Default constructor of the constructor event. Needed for serialization/deserialization
         /// </summary>
         public CollectedEvent()
         {

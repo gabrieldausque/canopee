@@ -1,8 +1,14 @@
 # WindowsOperatingSystemInput.Collect method
 
+Collect one [`OperatingSystemInfo`](../OperatingSystemInfo.md) using wmic command.
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | the TriggerEventArgs send by the ITrigger |
 
 ## See Also
 

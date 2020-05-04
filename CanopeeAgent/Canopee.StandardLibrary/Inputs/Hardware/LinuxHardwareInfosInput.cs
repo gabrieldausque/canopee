@@ -6,15 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
+    /// <summary>
+    /// This class is the <see cref="BaseHardwareInfosInput"/> for all LINUX OS
+    /// </summary>
     [Export("HardwareLINUX", typeof(IInput))]
     public class LinuxHardwareInfosInput : BaseHardwareInfosInput
     {
+        /// <summary>
+        /// Default constructor. Set the shell executor to bash
+        /// </summary>
         public LinuxHardwareInfosInput()
         {
             ShellExecutor = "/bin/bash";
             Arguments = "-c";
         }
 
+        /// <summary>
+        /// Set the cpu infos. Use lscpu command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetCpuInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("lscpu");
@@ -27,6 +37,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             infos.CpuModel = matches.Groups[1].Value;
         }
 
+        /// <summary>
+        /// Set the memory infos. Use free command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetMemoryInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("\"free -h\"");
@@ -36,6 +50,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             infos.MemoryUnit = GetSizeUnit(matches.Groups["unit"].Value);
         }
 
+        /// <summary>
+        /// Set all <see cref="DiskInfos"/>. Use df command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetDiskInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("\"df --output=source,size,avail \"");
@@ -66,6 +84,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Set all <see cref="DisplayInfos"/>. Use xrandr command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetDisplayInfos(HardwareInfos infos)
         {
             var lines = GetBatchOutput("xrandr");
@@ -101,6 +123,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Set all <see cref="UsbPeripheralInfos"/>. use lsusb command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetUsbPeripherals(HardwareInfos infos)
         {
             foreach (var line in GetBatchOutput("lsusb"))

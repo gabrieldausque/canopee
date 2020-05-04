@@ -1,5 +1,7 @@
 # NetworkInfo.IsComplete method
 
+Indicate all field of this [`NetworkInfo`](../NetworkInfo.md) are filled
+
 ```csharp
 public bool IsComplete()
 ```

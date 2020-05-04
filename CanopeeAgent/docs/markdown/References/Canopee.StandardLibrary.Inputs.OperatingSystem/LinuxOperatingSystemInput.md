@@ -1,5 +1,32 @@
 # LinuxOperatingSystemInput class
 
+collect one [`OperatingSystemInfo`](OperatingSystemInfo.md) for LINUX OS. Configuration will be :
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "OS",
+                ...
+                "Input": {
+                   "InputType": "OperatingSystem",
+                   "OSSpecific": true
+                },
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
+the InputType is OperatingSystem The OSSpecific argument must be set to true.
+
 ```csharp
 public class LinuxOperatingSystemInput : BatchInput
 ```
@@ -9,7 +36,7 @@ public class LinuxOperatingSystemInput : BatchInput
 | name | description |
 | --- | --- |
 | [LinuxOperatingSystemInput](LinuxOperatingSystemInput/LinuxOperatingSystemInput.md)() | The default constructor. |
-| override [Collect](LinuxOperatingSystemInput/Collect.md)(…) |  |
+| override [Collect](LinuxOperatingSystemInput/Collect.md)(…) | Collect one [`OperatingSystemInfo`](OperatingSystemInfo.md) using uname and hostname command. |
 
 ## See Also
 

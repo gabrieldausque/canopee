@@ -1,5 +1,7 @@
 # HardwareInfos.MemoryUnit property
 
+The human readable unit
+
 ```csharp
 public string MemoryUnit { get; set; }
 ```

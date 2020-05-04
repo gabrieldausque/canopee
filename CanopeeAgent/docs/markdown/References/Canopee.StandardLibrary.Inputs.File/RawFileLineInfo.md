@@ -10,7 +10,7 @@ public class RawFileLineInfo : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)() | Default constructor |
+| [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)() | Default constructor. Needed for serialization/deserialization |
 | [RawFileLineInfo](RawFileLineInfo/RawFileLineInfo.md)(…) | Set the agent id on creation |
 
 ## See Also

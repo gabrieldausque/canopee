@@ -1,8 +1,19 @@
 # BaseHardwareInfosInput.GetOptimizedSizeAndUnit method
 
+Get a human readable bytes value in the optimized unit.
+
 ```csharp
 protected float GetOptimizedSizeAndUnit(float originalSize, out string unit)
 ```
+
+| parameter | description |
+| --- | --- |
+| originalSize | a size in bytes |
+| unit | the optimized unit |
+
+## Return Value
+
+the value in the unit out value
 
 ## See Also
 

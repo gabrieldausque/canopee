@@ -14,6 +14,37 @@ namespace Canopee.StandardLibrary.Inputs.Databases.Firebird
 {
     /// <summary>
     /// Create a collected event for each record returned by the select statement
+    ///
+    /// Configuration example :
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Pipelines": [
+    ///                  ...   
+    ///                   {
+    ///                     "Name": "Products",
+    ///                     ...
+    ///                     "Input": {
+    ///                        "InputType": "FireBirdADO",
+    ///                        "ConnectionString": "User=auser;Password=apassword;Database=pathtodatabase;DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0;",
+    ///                        "SelectStatement": "SELECT * FROM INSTALLATIONLOGS"
+    ///                    },
+    ///                  ...
+    ///                 }
+    ///                 ...   
+    ///                 ]
+    ///             ...
+    ///         }
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// you must define the ConnectionString and the SelectStatement to use InputType FirebirdADO
+    /// 
     /// </summary>
     [Export("FireBirdADO", typeof(IInput))]
     public class FirebirdADOInput : BaseInput

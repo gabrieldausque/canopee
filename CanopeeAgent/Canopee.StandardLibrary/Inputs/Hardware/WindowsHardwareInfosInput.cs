@@ -8,9 +8,15 @@ using Canopee.Common.Pipelines;
 
 namespace Canopee.StandardLibrary.Inputs.Hardware
 {
+    /// <summary>
+    /// This class is the <see cref="BaseHardwareInfosInput"/> for all Windows OS
+    /// </summary>
     [Export("HardwareWINDOWS", typeof(IInput))]
     public class WindowsHardwareInfosInput : BaseHardwareInfosInput
     {
+        /// <summary>
+        /// The graphical cards repository. 0 is unknown, 1 is other, 2 is for 2D, 3 is for 3D
+        /// </summary>
         private static readonly Dictionary<int, string> GraphicalCardTypes = new Dictionary<int, string>()
         {
             {0,"unknown" },
@@ -19,12 +25,19 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             {3,"3D" }
         };
 
+        /// <summary>
+        /// Default constructor. Set the shell executor to cmd.
+        /// </summary>
         public WindowsHardwareInfosInput()
         {
             ShellExecutor = "cmd";
             Arguments = "/c";
         }
 
+        /// <summary>
+        /// Get cpus infos. use echo and wmic command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetCpuInfos(HardwareInfos infos)
         {
             var output = GetBatchOutput("echo architecture=%PROCESSOR_ARCHITECTURE% model=%PROCESSOR_IDENTIFIER% ");
@@ -44,6 +57,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Set memory infos. use wmic command
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetMemoryInfos(HardwareInfos infos)
         {
             var output = GetBatchOutput("wmic computersystem get TotalPhysicalMemory /value");
@@ -59,6 +76,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Get all <see cref="DiskInfos"/>. use wmic command
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetDiskInfos(HardwareInfos infos)
         {
             var output = GetBatchOutput("wmic volume get Name,Capacity,\"Free Space\",DriveType");
@@ -90,6 +111,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Get all <see cref="DisplayInfos"/>. Use wmic command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetDisplayInfos(HardwareInfos infos)
         {
             //getting monitor infos
@@ -137,6 +162,10 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Get all <see cref="UsbPeripheralInfos"/>. Use wmic command.
+        /// </summary>
+        /// <param name="infos"></param>
         protected override void SetUsbPeripherals(HardwareInfos infos)
         {
             var usbDevicesIdLines = GetBatchOutput("\"wmic path Win32_UsbControllerDevice get Dependent\"");
@@ -180,6 +209,11 @@ namespace Canopee.StandardLibrary.Inputs.Hardware
             }
         }
 
+        /// <summary>
+        /// Get the graphical card type label for the current graphical card type
+        /// </summary>
+        /// <param name="graphicalCardType">0,1,2 or 3</param>
+        /// <returns></returns>
         private string GetGraphicalCardtype(int graphicalCardType)
         {
             if (GraphicalCardTypes.ContainsKey(graphicalCardType))

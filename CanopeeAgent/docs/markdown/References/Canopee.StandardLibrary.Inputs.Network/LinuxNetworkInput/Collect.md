@@ -1,8 +1,14 @@
 # LinuxNetworkInput.Collect method
 
+Get one or more [`NetworkInfo`](../NetworkInfo.md) that represents a network card. extract interface name, ipv4 and mac address.
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs |  |
 
 ## See Also
 

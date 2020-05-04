@@ -1,5 +1,7 @@
 # HardwareInfos.Displays property
 
+The displays of the current workstation/server, represented by one or more [`DisplayInfos`](../DisplayInfos.md)
+
 ```csharp
 public ICollection<DisplayInfos> Displays { get; set; }
 ```

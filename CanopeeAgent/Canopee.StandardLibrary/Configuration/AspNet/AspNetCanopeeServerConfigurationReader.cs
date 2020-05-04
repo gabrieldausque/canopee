@@ -18,6 +18,33 @@ namespace Canopee.StandardLibrary.Configuration.AspNet
     /// The client of the CanopeeServer instance that will give access to :
     /// - the list of group for a specified agent id
     /// - the configuration for a specified agent id and group
+    ///
+    /// Example of the configuration :
+    ///
+    ///  /// the behavior of the configuration is set through the configuration :
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Configuration": {
+    ///                     "IsSync": true,
+    ///                     "SynchronizerType":"Default",
+    ///                     "NoSSLCheck": true,
+    ///                     "url": "http://localhost:5000",
+    ///                     "DueTimeInMs": "3000",
+    ///                     "PeriodInMs": "30000"
+    ///                 },
+    ///             ...
+    ///         }
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// the url is taken from url element of the Configuration element of the Canopee element.
+    /// 
     /// </summary>
     [Export("Default", typeof(ICanopeeConfigurationReader))]
     public class AspNetCanopeeServerConfigurationReader : ICanopeeConfigurationReader

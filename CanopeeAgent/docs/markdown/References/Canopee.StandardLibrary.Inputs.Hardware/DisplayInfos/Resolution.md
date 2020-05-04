@@ -1,5 +1,7 @@
 # DisplayInfos.Resolution property
 
+The resolution used for this display (in the form width x height)
+
 ```csharp
 public string Resolution { get; set; }
 ```

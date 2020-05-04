@@ -1,5 +1,7 @@
 # OperatingSystemInfo.OperatingSystem property
 
+Name of the operating system
+
 ```csharp
 public string OperatingSystem { get; set; }
 ```

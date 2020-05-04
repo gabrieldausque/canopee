@@ -1,5 +1,7 @@
 # OperatingSystemInfo.Processor property
 
+Used to indicate if the current OS is 32 or 64 bit
+
 ```csharp
 public string Processor { get; set; }
 ```

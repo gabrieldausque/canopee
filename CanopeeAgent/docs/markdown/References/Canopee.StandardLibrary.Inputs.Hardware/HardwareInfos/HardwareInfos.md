@@ -1,6 +1,6 @@
 # HardwareInfos constructor (1 of 2)
 
-The default constructor.
+Default constructor used for serialization/deserialization
 
 ```csharp
 public HardwareInfos()
@@ -15,9 +15,15 @@ public HardwareInfos()
 
 # HardwareInfos constructor (2 of 2)
 
+Constructor that set the agent id of this ICollectedEvent. Initialize also all collections.
+
 ```csharp
 public HardwareInfos(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId |  |
 
 ## See Also
 

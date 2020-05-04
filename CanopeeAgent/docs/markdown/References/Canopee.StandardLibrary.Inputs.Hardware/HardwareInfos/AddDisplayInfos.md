@@ -1,8 +1,14 @@
 # HardwareInfos.AddDisplayInfos method
 
+Add a [`DisplayInfos`](../DisplayInfos.md) in the current [`Displays`](Displays.md) collection
+
 ```csharp
 public void AddDisplayInfos(DisplayInfos displayInfos)
 ```
+
+| parameter | description |
+| --- | --- |
+| displayInfos |  |
 
 ## See Also
 

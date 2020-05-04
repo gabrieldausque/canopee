@@ -31,8 +31,10 @@ namespace Canopee.StandardLibrary.Outputs
                 UriBuilder builder = new UriBuilder(_url);
                 builder.Path = UriPath;
                 builder.Query = $"pipelineId={_pipelineId}";
-                string serializedEvent = JsonSerializer.Serialize(collectedEvent, collectedEvent.GetType());
-                var test = JsonSerializer.Deserialize<CollectedEvent>(serializedEvent);
+                string serializedEvent = JsonSerializer.Serialize(collectedEvent, collectedEvent.GetType(), new JsonSerializerOptions()
+                {
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                });
                 using (HttpClient client = GetHttpClient())
                 {
                     var response = client.PostAsync(builder.Uri, new StringContent(serializedEvent,  Encoding.UTF8, "application/json")).Result;

@@ -1,5 +1,7 @@
 # DiskInfos.Name property
 
+Name of the disk
+
 ```csharp
 public string Name { get; set; }
 ```

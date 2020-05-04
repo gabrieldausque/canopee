@@ -10,7 +10,7 @@ namespace Canopee.StandardLibrary.Inputs.File
     public class RawFileLineInfo : CollectedEvent
     {
         /// <summary>
-        /// Default constructor
+        /// Default constructor. Needed for serialization/deserialization
         /// </summary>
         public RawFileLineInfo()
         {

@@ -1,8 +1,14 @@
 # WindowsHardwareInfosInput.SetMemoryInfos method
 
+Set memory infos. use wmic command
+
 ```csharp
 protected override void SetMemoryInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

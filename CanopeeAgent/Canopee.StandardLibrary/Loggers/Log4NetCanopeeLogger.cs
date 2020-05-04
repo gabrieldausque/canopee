@@ -15,6 +15,32 @@ using Microsoft.Extensions.Logging;
 
 namespace Canopee.StandardLibrary.Loggers
 {
+    /// <summary>
+    /// A Log4net logger wrapper, by default will use the log4net.config file that will exists in the working directory.
+    ///
+    /// The configuration will be :
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///        "Canopee": {
+    ///        ...
+    ///            "Logging": {
+    ///                "LoggerType": "Log4Net",
+    ///                "configurationFile":"mylog4netconfigfile.conf"     
+    ///            },
+    ///        ...
+    ///       }
+    ///     ...
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// The LoggerType is Log4Net
+    /// configurationFile attribute is optional. it define the name of the log4net configuration file. By default it is log4net.config.
+    /// 
+    /// </summary>
     [Export("Log4Net",typeof(ICanopeeLogger) )]
     [Shared]
     public class Log4NetCanopeeLogger:BaseCanopeeLogger

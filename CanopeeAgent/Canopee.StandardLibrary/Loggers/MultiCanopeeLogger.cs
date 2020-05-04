@@ -9,6 +9,44 @@ using Microsoft.Extensions.Logging;
 
 namespace Canopee.StandardLibrary.Loggers
 {
+    /// <summary>
+    /// This logger allow you to have multiple logger define for the current host
+    ///
+    /// Configuration will be :
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///        "Canopee": {
+    ///        ...
+    ///            "Logging": {
+    ///                "LoggerType": "MultiLogger",
+    ///                "Loggers": [
+    ///                     ...
+    ///                    {
+    ///                        "LoggerType": "Console"
+    ///                    },
+    ///                    {
+    ///                        "LoggerType": "Log4Net"
+    ///                    },
+    ///                    {
+    ///                        "LoggerType": "Electron"
+    ///                    }
+    ///                    ...
+    ///                ]    
+    ///            },
+    ///        ...
+    ///       }
+    ///     ...
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// The LoggerType will be MultiLogger
+    /// The Loggers array will contains all configuration for each logger, as defined in their documentation.
+    /// 
+    /// </summary>
     [Export("MultiLogger", typeof(ICanopeeLogger))]
     public class MultiCanopeeLogger : BaseCanopeeLogger
     {

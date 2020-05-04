@@ -1,8 +1,14 @@
 # BaseHardwareInfosInput.SetMemoryInfos method
 
+Set memory infos in the [`MemorySize`](../HardwareInfos/MemorySize.md) and [`MemoryUnit`](../HardwareInfos/MemoryUnit.md)
+
 ```csharp
 protected abstract void SetMemoryInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos | the [`HardwareInfos`](../HardwareInfos.md) to enrich |
 
 ## See Also
 

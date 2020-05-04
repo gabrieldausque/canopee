@@ -1,6 +1,6 @@
 # WindowsHardwareInfosInput constructor
 
-The default constructor.
+Default constructor. Set the shell executor to cmd.
 
 ```csharp
 public WindowsHardwareInfosInput()

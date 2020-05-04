@@ -1,6 +1,6 @@
 # WindowsOperatingSystemInput constructor
 
-The default constructor.
+Default constructor. Set the command line to wmic.
 
 ```csharp
 public WindowsOperatingSystemInput()

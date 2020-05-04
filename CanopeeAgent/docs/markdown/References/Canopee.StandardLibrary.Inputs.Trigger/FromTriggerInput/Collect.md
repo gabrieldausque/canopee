@@ -1,8 +1,14 @@
 # FromTriggerInput.Collect method
 
+Extract the ICollectedEvent from the Raw received
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | The TriggerEventArgs that contains the collected event |
 
 ## See Also
 

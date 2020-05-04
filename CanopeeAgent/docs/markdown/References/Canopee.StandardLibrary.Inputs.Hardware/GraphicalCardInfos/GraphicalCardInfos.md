@@ -1,6 +1,6 @@
 # GraphicalCardInfos constructor (1 of 2)
 
-The default constructor.
+The default constructor. Needed for serialization/deserialization
 
 ```csharp
 public GraphicalCardInfos()
@@ -15,9 +15,15 @@ public GraphicalCardInfos()
 
 # GraphicalCardInfos constructor (2 of 2)
 
+The constructor that set the agent id of this ICollectedEvent
+
 ```csharp
 public GraphicalCardInfos(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | the agent id |
 
 ## See Also
 

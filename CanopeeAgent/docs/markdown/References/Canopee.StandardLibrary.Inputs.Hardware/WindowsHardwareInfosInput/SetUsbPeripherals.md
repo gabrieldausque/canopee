@@ -1,8 +1,14 @@
 # WindowsHardwareInfosInput.SetUsbPeripherals method
 
+Get all [`UsbPeripheralInfos`](../UsbPeripheralInfos.md). Use wmic command.
+
 ```csharp
 protected override void SetUsbPeripherals(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

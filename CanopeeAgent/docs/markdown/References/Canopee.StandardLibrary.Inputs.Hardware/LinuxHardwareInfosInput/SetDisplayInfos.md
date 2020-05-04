@@ -1,8 +1,14 @@
 # LinuxHardwareInfosInput.SetDisplayInfos method
 
+Set all [`DisplayInfos`](../DisplayInfos.md). Use xrandr command.
+
 ```csharp
 protected override void SetDisplayInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

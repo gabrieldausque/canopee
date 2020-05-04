@@ -1,5 +1,7 @@
 # NetworkInfo.NetworkInterfaceName property
 
+The network card name
+
 ```csharp
 public string NetworkInterfaceName { get; set; }
 ```

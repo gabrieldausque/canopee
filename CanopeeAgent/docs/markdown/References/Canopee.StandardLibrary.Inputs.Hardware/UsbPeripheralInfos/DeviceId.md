@@ -1,5 +1,7 @@
 # UsbPeripheralInfos.DeviceId property
 
+The device id
+
 ```csharp
 public string DeviceId { get; set; }
 ```

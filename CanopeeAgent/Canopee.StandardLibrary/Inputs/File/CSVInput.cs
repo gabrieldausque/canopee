@@ -13,7 +13,44 @@ namespace Canopee.StandardLibrary.Inputs.File
 {
     /// <summary>
     /// Work In Progress.
-    /// Collect all line of a CSV file and get them
+    /// Collect all line of a CSV file and get them.
+    ///
+    /// Configuration example :
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Pipelines": [
+    ///                  ...   
+    ///                   {
+    ///                     "Name": "Products",
+    ///                     ...
+    ///                     "Input": {
+    ///                         "InputType": "CSV",
+    ///                         "File": "./AgentLocation.csv",
+    ///                         "FileType": "CSV",
+    ///                         "FieldSeparator": ";",
+    ///                         "WithHeader": true
+    ///                     }
+    ///                  ...
+    ///                 }
+    ///                 ...   
+    ///                 ]
+    ///             ...
+    ///         }
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// The InputType is CSV.
+    /// The File element define the file to load
+    /// The FileType define the algo used to read the file. Currently only CSV is available
+    /// The FieldSeparator define the field separator of the current csv
+    /// WithHeader indicate if the file has header. Today this option must be set to true. 
+    /// 
     /// </summary>
     [Export("CSV", typeof(IInput))]
     public class CSVInput : BaseInput

@@ -1,5 +1,36 @@
 # MultiCanopeeLogger class
 
+This logger allow you to have multiple logger define for the current host Configuration will be :
+
+```csharp
+{
+    ...
+   "Canopee": {
+   ...
+       "Logging": {
+           "LoggerType": "MultiLogger",
+           "Loggers": [
+                ...
+               {
+                   "LoggerType": "Console"
+               },
+               {
+                   "LoggerType": "Log4Net"
+               },
+               {
+                   "LoggerType": "Electron"
+               }
+               ...
+           ]    
+       },
+   ...
+  }
+...
+}
+```
+
+The LoggerType will be MultiLogger The Loggers array will contains all configuration for each logger, as defined in their documentation.
+
 ```csharp
 public class MultiCanopeeLogger : BaseCanopeeLogger
 ```

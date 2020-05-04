@@ -1,5 +1,31 @@
 # FromTriggerInput class
 
+This IInput is used to take the ICollectedEvent from the Raw send by the ITrigger that raise the executing CollectPipeline /// Configuration will be
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "OS",
+                ...
+                "Input": {
+                   "InputType": "FromTrigger"
+                },
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
+the InputType is FromTrigger
+
 ```csharp
 public class FromTriggerInput : BaseInput
 ```
@@ -9,7 +35,7 @@ public class FromTriggerInput : BaseInput
 | name | description |
 | --- | --- |
 | [FromTriggerInput](FromTriggerInput/FromTriggerInput.md)() | The default constructor. |
-| override [Collect](FromTriggerInput/Collect.md)(…) |  |
+| override [Collect](FromTriggerInput/Collect.md)(…) | Extract the ICollectedEvent from the Raw received |
 
 ## See Also
 

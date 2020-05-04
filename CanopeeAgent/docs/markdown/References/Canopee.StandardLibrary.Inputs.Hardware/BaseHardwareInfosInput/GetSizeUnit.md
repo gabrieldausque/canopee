@@ -1,8 +1,18 @@
 # BaseHardwareInfosInput.GetSizeUnit method
 
+Map a customUnit to a standard unit. Used to standardize unit used in some batch.
+
 ```csharp
 protected string GetSizeUnit(string customUnit)
 ```
+
+| parameter | description |
+| --- | --- |
+| customUnit | the custom unit to standardize |
+
+## Return Value
+
+the standardize unit
 
 ## See Also
 

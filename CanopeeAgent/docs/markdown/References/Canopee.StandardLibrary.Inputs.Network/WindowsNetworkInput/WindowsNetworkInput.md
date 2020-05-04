@@ -1,6 +1,6 @@
 # WindowsNetworkInput constructor
 
-The default constructor.
+Default constructor. Set [`CommandLine`](../../Canopee.StandardLibrary.Inputs.Batch/BatchInput/CommandLine.md) to ipconfig
 
 ```csharp
 public WindowsNetworkInput()

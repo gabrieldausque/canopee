@@ -8,14 +8,54 @@ using Canopee.StandardLibrary.Inputs.Batch;
 
 namespace Canopee.StandardLibrary.Inputs.Network
 {
+    /// <summary>
+    /// Collect all <see cref="NetworkInfo"/> of the current workstation/server for LINUX OS
+    ///
+    /// <example>
+    /// <code>
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Pipelines": [
+    ///                  ...   
+    ///                   {
+    ///                     "Name": "Products",
+    ///                     ...
+    ///                     "Input": {
+    ///                        "InputType": "Network",
+    ///                        "OSSpecific": true
+    ///                     },
+    ///                  ...
+    ///                 }
+    ///                 ...   
+    ///                 ]
+    ///             ...
+    ///         }
+    ///     }
+    /// </code>
+    /// </example>
+    ///
+    /// the InputType is Network
+    /// The OSSpecific argument must be set to true.
+    /// 
+    /// </summary>
     [Export("NetworkLINUX", typeof(IInput))]
     public class LinuxNetworkInput : BatchInput
     {
+        /// <summary>
+        /// Default constructor. Set <see cref="BatchInput.CommandLine"/> to ifconfig
+        /// </summary>
         public LinuxNetworkInput()
         {
             CommandLine = "ifconfig";
         }
 
+        /// <summary>
+        /// Get one or more <see cref="NetworkInfo"/> that represents a network card. extract interface name, ipv4 and mac address. 
+        /// </summary>
+        /// <param name="fromTriggerEventArgs"></param>
+        /// <returns></returns>
         public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
         {
             var collectedEvents = new List<ICollectedEvent>();

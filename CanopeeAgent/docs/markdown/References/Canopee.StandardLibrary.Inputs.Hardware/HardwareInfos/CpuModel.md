@@ -1,5 +1,7 @@
 # HardwareInfos.CpuModel property
 
+The cpu model
+
 ```csharp
 public string CpuModel { get; set; }
 ```

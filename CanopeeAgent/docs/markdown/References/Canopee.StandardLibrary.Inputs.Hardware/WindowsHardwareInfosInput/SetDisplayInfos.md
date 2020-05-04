@@ -1,8 +1,14 @@
 # WindowsHardwareInfosInput.SetDisplayInfos method
 
+Get all [`DisplayInfos`](../DisplayInfos.md). Use wmic command.
+
 ```csharp
 protected override void SetDisplayInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

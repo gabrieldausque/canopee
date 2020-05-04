@@ -1,6 +1,34 @@
 # CSVInput class
 
-Work In Progress. Collect all line of a CSV file and get them
+Work In Progress. Collect all line of a CSV file and get them. Configuration example :
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "Products",
+                ...
+                "Input": {
+                    "InputType": "CSV",
+                    "File": "./AgentLocation.csv",
+                    "FileType": "CSV",
+                    "FieldSeparator": ";",
+                    "WithHeader": true
+                }
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
+The InputType is CSV. The File element define the file to load The FileType define the algo used to read the file. Currently only CSV is available The FieldSeparator define the field separator of the current csv WithHeader indicate if the file has header. Today this option must be set to true.
 
 ```csharp
 public class CSVInput : BaseInput

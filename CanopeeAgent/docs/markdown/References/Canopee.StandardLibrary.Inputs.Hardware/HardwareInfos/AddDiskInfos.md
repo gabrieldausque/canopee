@@ -1,8 +1,14 @@
 # HardwareInfos.AddDiskInfos method
 
+Add a [`DiskInfos`](../DiskInfos.md) in the current [`Disks`](Disks.md) collection
+
 ```csharp
 public void AddDiskInfos(DiskInfos diskInfo)
 ```
+
+| parameter | description |
+| --- | --- |
+| diskInfo |  |
 
 ## See Also
 

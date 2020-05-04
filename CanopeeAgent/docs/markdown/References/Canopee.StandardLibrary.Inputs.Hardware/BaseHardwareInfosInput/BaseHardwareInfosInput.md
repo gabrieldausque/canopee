@@ -1,6 +1,6 @@
 # BaseHardwareInfosInput constructor
 
-The default constructor.
+Default constructor. Initialize the units mapping repository.
 
 ```csharp
 protected BaseHardwareInfosInput()

@@ -1,5 +1,7 @@
 # NetworkInfo class
 
+Represent a Network card
+
 ```csharp
 public class NetworkInfo : CollectedEvent
 ```
@@ -8,12 +10,12 @@ public class NetworkInfo : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [NetworkInfo](NetworkInfo/NetworkInfo.md)() | The default constructor. |
-| [NetworkInfo](NetworkInfo/NetworkInfo.md)(…) |  |
-| [IpV4](NetworkInfo/IpV4.md) { get; set; } |  |
-| [MacAddress](NetworkInfo/MacAddress.md) { get; set; } |  |
-| [NetworkInterfaceName](NetworkInfo/NetworkInterfaceName.md) { get; set; } |  |
-| [IsComplete](NetworkInfo/IsComplete.md)() |  |
+| [NetworkInfo](NetworkInfo/NetworkInfo.md)() | Default constructor. Needed for serialization/deserialization |
+| [NetworkInfo](NetworkInfo/NetworkInfo.md)(…) | Constructor that set the agent id for the current ICollectedEvent |
+| [IpV4](NetworkInfo/IpV4.md) { get; set; } | The ip v4 of the network card |
+| [MacAddress](NetworkInfo/MacAddress.md) { get; set; } | The MAC address of the network card |
+| [NetworkInterfaceName](NetworkInfo/NetworkInterfaceName.md) { get; set; } | The network card name |
+| [IsComplete](NetworkInfo/IsComplete.md)() | Indicate all field of this [`NetworkInfo`](NetworkInfo.md) are filled |
 
 ## See Also
 

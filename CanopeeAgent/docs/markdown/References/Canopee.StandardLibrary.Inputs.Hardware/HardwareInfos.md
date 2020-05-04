@@ -1,5 +1,7 @@
 # HardwareInfos class
 
+Represents all hardware infos of the current workstation/server
+
 ```csharp
 public class HardwareInfos : CollectedEvent
 ```
@@ -8,21 +10,21 @@ public class HardwareInfos : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [HardwareInfos](HardwareInfos/HardwareInfos.md)() | The default constructor. |
-| [HardwareInfos](HardwareInfos/HardwareInfos.md)(…) |  |
-| [CpuArchitecture](HardwareInfos/CpuArchitecture.md) { get; set; } |  |
-| [CpuModel](HardwareInfos/CpuModel.md) { get; set; } |  |
-| [CpusAvailable](HardwareInfos/CpusAvailable.md) { get; set; } |  |
-| [Disks](HardwareInfos/Disks.md) { get; set; } |  |
-| [Displays](HardwareInfos/Displays.md) { get; set; } |  |
-| [GraphicalCards](HardwareInfos/GraphicalCards.md) { get; set; } |  |
-| [MemorySize](HardwareInfos/MemorySize.md) { get; set; } |  |
-| [MemoryUnit](HardwareInfos/MemoryUnit.md) { get; set; } |  |
-| [USBPeripherals](HardwareInfos/USBPeripherals.md) { get; set; } |  |
-| [AddDiskInfos](HardwareInfos/AddDiskInfos.md)(…) |  |
-| [AddDisplayInfos](HardwareInfos/AddDisplayInfos.md)(…) |  |
-| [AddGraphicalCardInfos](HardwareInfos/AddGraphicalCardInfos.md)(…) |  |
-| [AddUsbPeripherals](HardwareInfos/AddUsbPeripherals.md)(…) |  |
+| [HardwareInfos](HardwareInfos/HardwareInfos.md)() | Default constructor used for serialization/deserialization |
+| [HardwareInfos](HardwareInfos/HardwareInfos.md)(…) | Constructor that set the agent id of this ICollectedEvent. Initialize also all collections. |
+| [CpuArchitecture](HardwareInfos/CpuArchitecture.md) { get; set; } | The cpus architecture. the format depends of the current OS |
+| [CpuModel](HardwareInfos/CpuModel.md) { get; set; } | The cpu model |
+| [CpusAvailable](HardwareInfos/CpusAvailable.md) { get; set; } | Number of logical cpus available |
+| [Disks](HardwareInfos/Disks.md) { get; set; } | The disks of the current workstation/server, represented by one or more [`DiskInfos`](DiskInfos.md) |
+| [Displays](HardwareInfos/Displays.md) { get; set; } | The displays of the current workstation/server, represented by one or more [`DisplayInfos`](DisplayInfos.md) |
+| [GraphicalCards](HardwareInfos/GraphicalCards.md) { get; set; } | The graphical cards of the current workstation/server, represented by one or more [`GraphicalCardInfos`](GraphicalCardInfos.md) |
+| [MemorySize](HardwareInfos/MemorySize.md) { get; set; } | The size of the memory in human readable unit |
+| [MemoryUnit](HardwareInfos/MemoryUnit.md) { get; set; } | The human readable unit |
+| [USBPeripherals](HardwareInfos/USBPeripherals.md) { get; set; } | The usb peripherals of the current workstation/server, represented by one or more [`UsbPeripheralInfos`](UsbPeripheralInfos.md) |
+| [AddDiskInfos](HardwareInfos/AddDiskInfos.md)(…) | Add a [`DiskInfos`](DiskInfos.md) in the current [`Disks`](HardwareInfos/Disks.md) collection |
+| [AddDisplayInfos](HardwareInfos/AddDisplayInfos.md)(…) | Add a [`DisplayInfos`](DisplayInfos.md) in the current [`Displays`](HardwareInfos/Displays.md) collection |
+| [AddGraphicalCardInfos](HardwareInfos/AddGraphicalCardInfos.md)(…) | Add a [`GraphicalCardInfos`](GraphicalCardInfos.md) in the current [`GraphicalCards`](HardwareInfos/GraphicalCards.md) collection |
+| [AddUsbPeripherals](HardwareInfos/AddUsbPeripherals.md)(…) | Add a [`UsbPeripheralInfos`](UsbPeripheralInfos.md) in the current [`USBPeripherals`](HardwareInfos/USBPeripherals.md) collection |
 
 ## See Also
 

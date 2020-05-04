@@ -1,8 +1,14 @@
 # BaseHardwareInfosInput.Collect method
 
+Collect one [`HardwareInfos`](../HardwareInfos.md) to be treated in the executing pipeline
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | TriggerEventArgs sent by the trigger that has raised the executing pipeline |
 
 ## See Also
 

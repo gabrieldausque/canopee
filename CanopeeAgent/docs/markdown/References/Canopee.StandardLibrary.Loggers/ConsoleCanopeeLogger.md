@@ -1,5 +1,23 @@
 # ConsoleCanopeeLogger class
 
+This is the default logger. Log all message to the console with a color code based on the LogLevel. Configuration will be :
+
+```csharp
+{
+    ...
+   "Canopee": {
+   ...
+       "Logging": {
+               "LoggerType": "Console"
+       },
+   ...
+  }
+...
+}
+```
+
+The LoggerType is Console
+
 ```csharp
 public class ConsoleCanopeeLogger : BaseCanopeeLogger
 ```
@@ -9,7 +27,7 @@ public class ConsoleCanopeeLogger : BaseCanopeeLogger
 | name | description |
 | --- | --- |
 | [ConsoleCanopeeLogger](ConsoleCanopeeLogger/ConsoleCanopeeLogger.md)() | The default constructor. |
-| override [Log](ConsoleCanopeeLogger/Log.md)(…) |  |
+| override [Log](ConsoleCanopeeLogger/Log.md)(…) | Log a message with the corresponding log level |
 
 ## See Also
 

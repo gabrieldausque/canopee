@@ -1,8 +1,14 @@
 # HardwareInfos.AddUsbPeripherals method
 
+Add a [`UsbPeripheralInfos`](../UsbPeripheralInfos.md) in the current [`USBPeripherals`](USBPeripherals.md) collection
+
 ```csharp
 public void AddUsbPeripherals(UsbPeripheralInfos usbInfo)
 ```
+
+| parameter | description |
+| --- | --- |
+| usbInfo |  |
 
 ## See Also
 

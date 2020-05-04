@@ -1,5 +1,32 @@
 # WindowsNetworkInput class
 
+Collect all [`NetworkInfo`](NetworkInfo.md) of the current workstation/server for Windows OS
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "Network",
+                ...
+                "Input": {
+                   "InputType": "Network",
+                   "OSSpecific": true
+                },
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
+the InputType is Network The OSSpecific argument must be set to true.
+
 ```csharp
 public class WindowsNetworkInput : BatchInput
 ```
@@ -8,8 +35,8 @@ public class WindowsNetworkInput : BatchInput
 
 | name | description |
 | --- | --- |
-| [WindowsNetworkInput](WindowsNetworkInput/WindowsNetworkInput.md)() | The default constructor. |
-| override [Collect](WindowsNetworkInput/Collect.md)(…) |  |
+| [WindowsNetworkInput](WindowsNetworkInput/WindowsNetworkInput.md)() | Default constructor. Set [`CommandLine`](../Canopee.StandardLibrary.Inputs.Batch/BatchInput/CommandLine.md) to ipconfig |
+| override [Collect](WindowsNetworkInput/Collect.md)(…) | Get one or more [`NetworkInfo`](NetworkInfo.md) that represents a network card. extract interface name, ipv4 and mac address. |
 
 ## See Also
 

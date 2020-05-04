@@ -1,5 +1,7 @@
 # OperatingSystemInfo.Hostname property
 
+The hostname of the current workstation/server
+
 ```csharp
 public string Hostname { get; set; }
 ```

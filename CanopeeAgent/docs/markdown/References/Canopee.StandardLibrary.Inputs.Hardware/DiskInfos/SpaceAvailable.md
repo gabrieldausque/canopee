@@ -1,5 +1,7 @@
 # DiskInfos.SpaceAvailable property
 
+The space available in human readable unit
+
 ```csharp
 public float SpaceAvailable { get; set; }
 ```

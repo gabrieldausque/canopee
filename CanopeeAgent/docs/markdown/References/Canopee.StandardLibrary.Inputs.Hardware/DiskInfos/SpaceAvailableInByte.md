@@ -1,5 +1,7 @@
 # DiskInfos.SpaceAvailableInByte property
 
+The space available in byte
+
 ```csharp
 public float SpaceAvailableInByte { get; set; }
 ```

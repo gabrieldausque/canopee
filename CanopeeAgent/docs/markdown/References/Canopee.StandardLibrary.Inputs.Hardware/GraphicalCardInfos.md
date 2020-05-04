@@ -8,10 +8,10 @@ public class GraphicalCardInfos : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [GraphicalCardInfos](GraphicalCardInfos/GraphicalCardInfos.md)() | The default constructor. |
-| [GraphicalCardInfos](GraphicalCardInfos/GraphicalCardInfos.md)(…) |  |
-| [GraphicalCardModel](GraphicalCardInfos/GraphicalCardModel.md) { get; set; } |  |
-| [GraphicalCardType](GraphicalCardInfos/GraphicalCardType.md) { get; set; } |  |
+| [GraphicalCardInfos](GraphicalCardInfos/GraphicalCardInfos.md)() | The default constructor. Needed for serialization/deserialization |
+| [GraphicalCardInfos](GraphicalCardInfos/GraphicalCardInfos.md)(…) | The constructor that set the agent id of this ICollectedEvent |
+| [GraphicalCardModel](GraphicalCardInfos/GraphicalCardModel.md) { get; set; } | The model of the graphical card |
+| [GraphicalCardType](GraphicalCardInfos/GraphicalCardType.md) { get; set; } | The type of the graphical card : 3D card or integrated card |
 
 ## See Also
 

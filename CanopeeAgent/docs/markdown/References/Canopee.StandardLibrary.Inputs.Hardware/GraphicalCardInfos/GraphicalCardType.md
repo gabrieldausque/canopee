@@ -1,5 +1,7 @@
 # GraphicalCardInfos.GraphicalCardType property
 
+The type of the graphical card : 3D card or integrated card
+
 ```csharp
 public string GraphicalCardType { get; set; }
 ```

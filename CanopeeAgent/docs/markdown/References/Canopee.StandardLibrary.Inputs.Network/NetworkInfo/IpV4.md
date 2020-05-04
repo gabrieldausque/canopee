@@ -1,5 +1,7 @@
 # NetworkInfo.IpV4 property
 
+The ip v4 of the network card
+
 ```csharp
 public string IpV4 { get; set; }
 ```

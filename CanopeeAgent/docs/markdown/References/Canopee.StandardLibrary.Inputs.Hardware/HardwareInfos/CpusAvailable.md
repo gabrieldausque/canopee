@@ -1,5 +1,7 @@
 # HardwareInfos.CpusAvailable property
 
+Number of logical cpus available
+
 ```csharp
 public int CpusAvailable { get; set; }
 ```

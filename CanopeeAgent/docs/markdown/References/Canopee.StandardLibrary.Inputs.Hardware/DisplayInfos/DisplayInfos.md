@@ -1,6 +1,6 @@
 # DisplayInfos constructor (1 of 2)
 
-The default constructor.
+Default constructor. Needed for serialization/deserialization
 
 ```csharp
 public DisplayInfos()
@@ -15,9 +15,15 @@ public DisplayInfos()
 
 # DisplayInfos constructor (2 of 2)
 
+Constructor that set the agent id of this ICollectedEvent
+
 ```csharp
 public DisplayInfos(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | the agent id |
 
 ## See Also
 

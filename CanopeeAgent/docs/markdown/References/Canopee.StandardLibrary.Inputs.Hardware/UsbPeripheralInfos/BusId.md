@@ -1,5 +1,7 @@
 # UsbPeripheralInfos.BusId property
 
+The Bus id
+
 ```csharp
 public string BusId { get; set; }
 ```

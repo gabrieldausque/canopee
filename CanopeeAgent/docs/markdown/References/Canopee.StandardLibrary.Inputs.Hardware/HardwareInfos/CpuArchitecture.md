@@ -1,5 +1,7 @@
 # HardwareInfos.CpuArchitecture property
 
+The cpus architecture. the format depends of the current OS
+
 ```csharp
 public string CpuArchitecture { get; set; }
 ```

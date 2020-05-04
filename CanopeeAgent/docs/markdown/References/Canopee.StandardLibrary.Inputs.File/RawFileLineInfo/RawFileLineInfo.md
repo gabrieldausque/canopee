@@ -1,6 +1,6 @@
 # RawFileLineInfo constructor (1 of 2)
 
-Default constructor
+Default constructor. Needed for serialization/deserialization
 
 ```csharp
 public RawFileLineInfo()

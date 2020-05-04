@@ -1,8 +1,14 @@
 # BaseHardwareInfosInput.SetDiskInfos method
 
+Set one or more [`DiskInfos`](../DiskInfos.md) in the [`Disks`](../HardwareInfos/Disks.md) in the [`HardwareInfos`](../HardwareInfos.md) arg
+
 ```csharp
 protected abstract void SetDiskInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos | the [`HardwareInfos`](../HardwareInfos.md) to enrich |
 
 ## See Also
 

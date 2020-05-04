@@ -1,10 +1,20 @@
 # ConsoleCanopeeLogger.Log method
 
+Log a message with the corresponding log level
+
 ```csharp
 public override void Log(string message, LogLevel level = LogLevel.Information, 
     [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", 
     [CallerLineNumber] int sourceLineNumber = 0)
 ```
+
+| parameter | description |
+| --- | --- |
+| message | the message to log |
+| level | the log level |
+| memberName | the name of the calling method (set by the runtime) |
+| sourceFilePath | the source file of the calling method (set by the runtime) |
+| sourceLineNumber | the line number of the source file (set by the runtime) |
 
 ## See Also
 

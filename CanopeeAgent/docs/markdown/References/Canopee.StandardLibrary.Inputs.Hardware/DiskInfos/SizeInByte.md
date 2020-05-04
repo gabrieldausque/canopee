@@ -1,5 +1,7 @@
 # DiskInfos.SizeInByte property
 
+The real size in byte
+
 ```csharp
 public float SizeInByte { get; set; }
 ```

@@ -1,5 +1,7 @@
 # DiskInfos class
 
+Represents all information for a physical disk
+
 ```csharp
 public class DiskInfos : CollectedEvent
 ```
@@ -8,15 +10,15 @@ public class DiskInfos : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [DiskInfos](DiskInfos/DiskInfos.md)() | The default constructor. |
-| [DiskInfos](DiskInfos/DiskInfos.md)(…) |  |
-| [Name](DiskInfos/Name.md) { get; set; } |  |
-| [Size](DiskInfos/Size.md) { get; set; } |  |
-| [SizeInByte](DiskInfos/SizeInByte.md) { get; set; } |  |
-| [SizeUnit](DiskInfos/SizeUnit.md) { get; set; } |  |
-| [SpaceAvailable](DiskInfos/SpaceAvailable.md) { get; set; } |  |
-| [SpaceAvailableInByte](DiskInfos/SpaceAvailableInByte.md) { get; set; } |  |
-| [SpaceAvailableUnit](DiskInfos/SpaceAvailableUnit.md) { get; set; } |  |
+| [DiskInfos](DiskInfos/DiskInfos.md)() | Default constructor needed for serialization/deserialization |
+| [DiskInfos](DiskInfos/DiskInfos.md)(…) | The constructor that set the agent id of this ICollectedEvent |
+| [Name](DiskInfos/Name.md) { get; set; } | Name of the disk |
+| [Size](DiskInfos/Size.md) { get; set; } | The size of the disk in human readable unit |
+| [SizeInByte](DiskInfos/SizeInByte.md) { get; set; } | The real size in byte |
+| [SizeUnit](DiskInfos/SizeUnit.md) { get; set; } | The human readable unit |
+| [SpaceAvailable](DiskInfos/SpaceAvailable.md) { get; set; } | The space available in human readable unit |
+| [SpaceAvailableInByte](DiskInfos/SpaceAvailableInByte.md) { get; set; } | The space available in byte |
+| [SpaceAvailableUnit](DiskInfos/SpaceAvailableUnit.md) { get; set; } | the space available human readable unit |
 
 ## See Also
 

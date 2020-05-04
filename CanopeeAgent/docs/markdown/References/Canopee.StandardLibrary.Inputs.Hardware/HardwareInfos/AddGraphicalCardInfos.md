@@ -1,8 +1,14 @@
 # HardwareInfos.AddGraphicalCardInfos method
 
+Add a [`GraphicalCardInfos`](../GraphicalCardInfos.md) in the current [`GraphicalCards`](GraphicalCards.md) collection
+
 ```csharp
 public void AddGraphicalCardInfos(GraphicalCardInfos graphicalCardInfos)
 ```
+
+| parameter | description |
+| --- | --- |
+| graphicalCardInfos |  |
 
 ## See Also
 

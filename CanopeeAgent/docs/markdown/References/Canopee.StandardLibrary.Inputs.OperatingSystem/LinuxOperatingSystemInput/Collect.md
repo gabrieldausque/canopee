@@ -1,8 +1,14 @@
 # LinuxOperatingSystemInput.Collect method
 
+Collect one [`OperatingSystemInfo`](../OperatingSystemInfo.md) using uname and hostname command.
+
 ```csharp
 public override ICollection<ICollectedEvent> Collect(TriggerEventArgs fromTriggerEventArgs)
 ```
+
+| parameter | description |
+| --- | --- |
+| fromTriggerEventArgs | the TriggerEventArgs send by the ITrigger |
 
 ## See Also
 

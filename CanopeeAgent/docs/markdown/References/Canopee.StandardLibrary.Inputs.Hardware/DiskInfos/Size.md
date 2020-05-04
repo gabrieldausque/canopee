@@ -1,5 +1,7 @@
 # DiskInfos.Size property
 
+The size of the disk in human readable unit
+
 ```csharp
 public float Size { get; set; }
 ```

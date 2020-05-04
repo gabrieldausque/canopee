@@ -1,5 +1,7 @@
 # NetworkInfo.MacAddress property
 
+The MAC address of the network card
+
 ```csharp
 public string MacAddress { get; set; }
 ```

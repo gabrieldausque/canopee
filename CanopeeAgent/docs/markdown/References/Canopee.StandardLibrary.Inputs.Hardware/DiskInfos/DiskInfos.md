@@ -1,6 +1,6 @@
 # DiskInfos constructor (1 of 2)
 
-The default constructor.
+Default constructor needed for serialization/deserialization
 
 ```csharp
 public DiskInfos()
@@ -15,9 +15,15 @@ public DiskInfos()
 
 # DiskInfos constructor (2 of 2)
 
+The constructor that set the agent id of this ICollectedEvent
+
 ```csharp
 public DiskInfos(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId | the agent id |
 
 ## See Also
 

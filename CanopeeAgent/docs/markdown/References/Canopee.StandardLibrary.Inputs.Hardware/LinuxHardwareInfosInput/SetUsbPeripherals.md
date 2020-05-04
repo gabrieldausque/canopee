@@ -1,8 +1,14 @@
 # LinuxHardwareInfosInput.SetUsbPeripherals method
 
+Set all [`UsbPeripheralInfos`](../UsbPeripheralInfos.md). use lsusb command.
+
 ```csharp
 protected override void SetUsbPeripherals(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

@@ -1,8 +1,14 @@
 # BaseHardwareInfosInput.SetUsbPeripherals method
 
+Set one or more [`UsbPeripheralInfos`](../UsbPeripheralInfos.md) in the [`USBPeripherals`](../HardwareInfos/USBPeripherals.md) in the [`HardwareInfos`](../HardwareInfos.md) arg
+
 ```csharp
 protected abstract void SetUsbPeripherals(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos | the [`HardwareInfos`](../HardwareInfos.md) to enrich |
 
 ## See Also
 

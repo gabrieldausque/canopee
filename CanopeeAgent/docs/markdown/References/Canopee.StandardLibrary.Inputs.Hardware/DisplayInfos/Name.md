@@ -1,5 +1,7 @@
 # DisplayInfos.Name property
 
+The name of the display
+
 ```csharp
 public string Name { get; set; }
 ```

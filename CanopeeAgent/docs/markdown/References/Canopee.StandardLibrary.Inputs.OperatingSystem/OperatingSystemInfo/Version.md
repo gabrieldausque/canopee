@@ -1,5 +1,7 @@
 # OperatingSystemInfo.Version property
 
+Version of the operating system
+
 ```csharp
 public string Version { get; set; }
 ```

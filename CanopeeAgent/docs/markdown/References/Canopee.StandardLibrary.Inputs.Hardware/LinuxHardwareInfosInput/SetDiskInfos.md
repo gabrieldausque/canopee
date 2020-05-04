@@ -1,8 +1,14 @@
 # LinuxHardwareInfosInput.SetDiskInfos method
 
+Set all [`DiskInfos`](../DiskInfos.md). Use df command.
+
 ```csharp
 protected override void SetDiskInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

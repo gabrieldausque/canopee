@@ -1,5 +1,7 @@
 # HardwareInfos.Disks property
 
+The disks of the current workstation/server, represented by one or more [`DiskInfos`](../DiskInfos.md)
+
 ```csharp
 public ICollection<DiskInfos> Disks { get; set; }
 ```

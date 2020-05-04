@@ -1,8 +1,14 @@
 # LinuxHardwareInfosInput.SetMemoryInfos method
 
+Set the memory infos. Use free command.
+
 ```csharp
 protected override void SetMemoryInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

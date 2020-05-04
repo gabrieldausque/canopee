@@ -1,5 +1,7 @@
 # DisplayInfos class
 
+This ICollectedEvent represents a Display
+
 ```csharp
 public class DisplayInfos : CollectedEvent
 ```
@@ -8,10 +10,10 @@ public class DisplayInfos : CollectedEvent
 
 | name | description |
 | --- | --- |
-| [DisplayInfos](DisplayInfos/DisplayInfos.md)() | The default constructor. |
-| [DisplayInfos](DisplayInfos/DisplayInfos.md)(…) |  |
-| [Name](DisplayInfos/Name.md) { get; set; } |  |
-| [Resolution](DisplayInfos/Resolution.md) { get; set; } |  |
+| [DisplayInfos](DisplayInfos/DisplayInfos.md)() | Default constructor. Needed for serialization/deserialization |
+| [DisplayInfos](DisplayInfos/DisplayInfos.md)(…) | Constructor that set the agent id of this ICollectedEvent |
+| [Name](DisplayInfos/Name.md) { get; set; } | The name of the display |
+| [Resolution](DisplayInfos/Resolution.md) { get; set; } | The resolution used for this display (in the form width x height) |
 
 ## See Also
 

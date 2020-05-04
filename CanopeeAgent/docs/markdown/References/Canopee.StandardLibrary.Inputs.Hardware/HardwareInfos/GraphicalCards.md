@@ -1,5 +1,7 @@
 # HardwareInfos.GraphicalCards property
 
+The graphical cards of the current workstation/server, represented by one or more [`GraphicalCardInfos`](../GraphicalCardInfos.md)
+
 ```csharp
 public ICollection<GraphicalCardInfos> GraphicalCards { get; set; }
 ```

@@ -325,7 +325,7 @@
         </member>
         <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.#ctor">
             <summary>
-            Default constructor of the constructor event
+            Default constructor of the constructor event. Needed for serialization/deserialization
             </summary>
         </member>
         <member name="M:Canopee.Common.Pipelines.Events.CollectedEvent.#ctor(System.String)">

@@ -1,8 +1,14 @@
 # LinuxHardwareInfosInput.SetCpuInfos method
 
+Set the cpu infos. Use lscpu command.
+
 ```csharp
 protected override void SetCpuInfos(HardwareInfos infos)
 ```
+
+| parameter | description |
+| --- | --- |
+| infos |  |
 
 ## See Also
 

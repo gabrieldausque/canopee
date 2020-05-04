@@ -1,6 +1,6 @@
 # UsbPeripheralInfos constructor (1 of 2)
 
-The default constructor.
+Default constructor. Needed for serialization/deserialization
 
 ```csharp
 public UsbPeripheralInfos()
@@ -15,9 +15,15 @@ public UsbPeripheralInfos()
 
 # UsbPeripheralInfos constructor (2 of 2)
 
+Constructor that set the agent id of the current ICollectedEvent
+
 ```csharp
 public UsbPeripheralInfos(string agentId)
 ```
+
+| parameter | description |
+| --- | --- |
+| agentId |  |
 
 ## See Also
 

@@ -1,5 +1,32 @@
 # WindowsOperatingSystemInput class
 
+collect one [`OperatingSystemInfo`](OperatingSystemInfo.md) for Windows OS. Configuration will be :
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "OS",
+                ...
+                "Input": {
+                   "InputType": "OperatingSystem",
+                   "OSSpecific": true
+                },
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
+the InputType is OperatingSystem The OSSpecific argument must be set to true.
+
 ```csharp
 public class WindowsOperatingSystemInput : BatchInput
 ```
@@ -8,8 +35,8 @@ public class WindowsOperatingSystemInput : BatchInput
 
 | name | description |
 | --- | --- |
-| [WindowsOperatingSystemInput](WindowsOperatingSystemInput/WindowsOperatingSystemInput.md)() | The default constructor. |
-| override [Collect](WindowsOperatingSystemInput/Collect.md)(…) |  |
+| [WindowsOperatingSystemInput](WindowsOperatingSystemInput/WindowsOperatingSystemInput.md)() | Default constructor. Set the command line to wmic. |
+| override [Collect](WindowsOperatingSystemInput/Collect.md)(…) | Collect one [`OperatingSystemInfo`](OperatingSystemInfo.md) using wmic command. |
 
 ## See Also
 
