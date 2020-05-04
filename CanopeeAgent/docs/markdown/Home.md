@@ -22,6 +22,16 @@ The Canopee Applications are dotnet core 3.1 standalone applications. Today impl
 
 ## General 
 
+### General purpose of the Canopee Engine : 
+
+Below the general scheme of the Canopee engine : 
+
+![](Images/GeneralPurpose.png)
+
+**<u>NB :</u>** not all inputs, transforms and outputs in the above schema are currently implemented. Please see reference for today available implementation.
+
+Doesn't find the input, transform or output you need ? You can easily extend the available library of component by creating your own plugin assembly !
+
 ### Architecture
 
  Below a global scheme of a standard Canopee architecture : 
