@@ -32,38 +32,38 @@ namespace Canopee.Common.Pipelines.Events
         /// <summary>
         /// The id of the collected event
         /// </summary>
-        public string EventId { get; set; }
+        public virtual string EventId { get; set; }
         
         /// <summary>
         ///   Inherit from <see cref="ICollectedEvent.EventDate"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
-        public DateTime EventDate { get; set; }
+        public virtual DateTime EventDate { get; set; }
         /// <summary>
         ///   Inherit from <see cref="ICollectedEvent.AgentId"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
-        public string AgentId { get; set; }
+        public virtual string AgentId { get; set; }
 
         /// <summary>
         /// Event as raw string.
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
         [JsonIgnore]
-         public string Raw { get; set; }
+         public virtual string Raw { get; set; }
         
         /// <summary>
         ///   Inherit from <see cref="ICollectedEvent.ExtractedFields"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
         [JsonExtensionData]
-        public Dictionary<string, object> ExtractedFields { get; set; }
+        public virtual Dictionary<string, object> ExtractedFields { get; set; }
         
         /// <summary>
         ///   Inherit from <see cref="ICollectedEvent.GetFieldValue"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
-        public object GetFieldValue(string propertyName)
+        public virtual object GetFieldValue(string propertyName)
         {
             var prop = GetType().GetProperty(propertyName);
             if (prop != null)
@@ -83,7 +83,7 @@ namespace Canopee.Common.Pipelines.Events
         ///   Inherit from <see cref="ICollectedEvent.SetFieldValue"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
-        public void SetFieldValue(string propertyName, object value)
+        public virtual void SetFieldValue(string propertyName, object value)
         {
             var prop = GetType().GetProperty(propertyName);
             if (prop != null)
@@ -107,7 +107,7 @@ namespace Canopee.Common.Pipelines.Events
         ///   Inherit from <see cref="ICollectedEvent.ConvertTo"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
-        public T ConvertTo<T>() where T:ICollectedEvent,new()
+        public virtual T ConvertTo<T>() where T:ICollectedEvent,new()
         {
             T converted = new T();
             foreach (var propertyInfo in GetType().GetProperties())
@@ -129,7 +129,7 @@ namespace Canopee.Common.Pipelines.Events
         ///   Inherit from <see cref="ICollectedEvent.GetEventType"/>
         /// </summary>
         /// <inheritdoc cref="ICollectedEvent"/>
-        public string GetEventType()
+        public virtual string GetEventType()
         {
             var extractedEventType = GetFieldValue("EventType");
             if (extractedEventType != null)

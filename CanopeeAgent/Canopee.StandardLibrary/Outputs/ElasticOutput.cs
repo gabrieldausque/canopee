@@ -13,6 +13,64 @@ using Microsoft.Extensions.Logging;
 
 namespace Canopee.StandardLibrary.Outputs
 {
+    /// <summary>
+    /// Send the <see cref="ICollectedEvent"/> to an ElasticSearch server.
+    ///
+    /// The configuration will be :
+    ///
+    /// <example>
+    ///
+    /// <code>
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Pipelines": [
+    ///                  ...   
+    ///                   {
+    ///                     "Name": "OS",
+    ///                     ...
+    ///                     "Outputs" : [{
+    ///                        "OutputType": "Elastic",
+    ///                        "DefaultIndex": "canopee-hw-hardwareinfos",
+    ///                        "Indexes": [
+    ///                            {
+    ///                                "InfosType": "Canopee.StandardLibrary.Inputs.Hardware.HardwareInfos",
+    ///                                "Index": "canopee-hw-hardwareinfos"
+    ///                            },
+    ///                            {
+    ///                                "InfosType": "Canopee.StandardLibrary.Inputs.Hardware.DiskInfos",
+    ///                                "Index": "canopee-hw-disks"
+    ///                            },
+    ///                            {
+    ///                                "InfosType": "Canopee.StandardLibrary.Inputs.Hardware.DisplayInfos",
+    ///                                "Index": "canopee-hw-display"
+    ///                            },
+    ///                            {
+    ///                                "InfosType": "Canopee.StandardLibrary.Inputs.Hardware.GraphicalCardInfos",
+    ///                                "Index": "canopee-hw-graphicalcards"
+    ///                            },
+    ///                            {
+    ///                                "InfosType": "Canopee.StandardLibrary.Inputs.Hardware.UsbPeripheralInfos",
+    ///                                "Index": "canopee-hw-usbperipherals"
+    ///                            }
+    ///                           ],
+    ///                        "Url": "http://127.0.0.1:9200"
+    ///                    }
+    ///                  ...
+    ///                 }
+    ///                 ...   
+    ///                 ]
+    ///             ...
+    ///         }
+    ///     }
+    /// </code>
+    /// 
+    /// </example>
+    ///
+    /// 
+    /// 
+    /// </summary>
     [Export("Elastic",typeof(IOutput))]
     public class ElasticOutput : BaseOutput
     {
