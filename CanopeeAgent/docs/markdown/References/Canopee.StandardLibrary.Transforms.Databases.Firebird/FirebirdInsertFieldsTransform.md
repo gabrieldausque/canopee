@@ -1,5 +1,45 @@
 # FirebirdInsertFieldsTransform class
 
+This transforms will add all fields configured in the mapping section to the ICollectedEvent Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                            "TransformType": "FirebirdInsert",
+                            "ConnectionString": "User=mylogin;Password=mypassword;Database=database.fdb;DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0;",
+                            "SelectStatement": "SELECT * FROM userinfos",
+                            "Fields": [
+                            {
+                                "LocalName": "Field1NewName",
+                                "SearchedName": "Field1"
+                            },
+                            {
+                                "LocalName": "Field2NewName",
+                                "SearchedName": "Field2"
+                            }
+                         }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     }    /// 
+```
+
+The TransformType attribute will be FirebirdInsert The ConnectionString attribute will contain the connection string to the database The SelectStatement attribute will contain the select statement that will contain the wanted fields The Fields attribute will contain all mappings for each wanted field : LocalName attribute will define the name of the field in the ICollectedEvent, SearchedName will define the name of the field in the recordset from the select statement
+
 ```csharp
 public class FirebirdInsertFieldsTransform : BaseTransform
 ```
@@ -8,9 +48,9 @@ public class FirebirdInsertFieldsTransform : BaseTransform
 
 | name | description |
 | --- | --- |
-| [FirebirdInsertFieldsTransform](FirebirdInsertFieldsTransform/FirebirdInsertFieldsTransform.md)() | The default constructor. |
-| override [Initialize](FirebirdInsertFieldsTransform/Initialize.md)(…) |  |
-| override [Transform](FirebirdInsertFieldsTransform/Transform.md)(…) |  |
+| [FirebirdInsertFieldsTransform](FirebirdInsertFieldsTransform/FirebirdInsertFieldsTransform.md)() | Default constructor. Initialized the list of field mappings |
+| override [Initialize](FirebirdInsertFieldsTransform/Initialize.md)(…) | Initialize this ITransform with configurations. Add all defined [`TransformFieldMapping`](../Canopee.StandardLibrary.Transforms/TransformFieldMapping.md) from the configuration. |
+| override [Transform](FirebirdInsertFieldsTransform/Transform.md)(…) | Add new fields from the SelectStatement to a collected event |
 
 ## See Also
 

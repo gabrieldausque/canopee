@@ -78,9 +78,9 @@
 
 | public type | description |
 | --- | --- |
-| class [CanopeeOutput](Canopee.StandardLibrary.Outputs/CanopeeOutput.md) |  |
-| class [ConsoleOutput](Canopee.StandardLibrary.Outputs/ConsoleOutput.md) |  |
-| class [ElasticOutput](Canopee.StandardLibrary.Outputs/ElasticOutput.md) |  |
+| class [CanopeeOutput](Canopee.StandardLibrary.Outputs/CanopeeOutput.md) | Send a collection of ICollectedEvent to a CanopeeServer api, the REST exposition of the Canopee pipeline execution engine. This is useful in following case : the canopeeserver is a passthrough node isolated in a web exposed dmz, the canopee server will enrich with new field all events send by agents with internal repositories. The configuration will be : |
+| class [ConsoleOutput](Canopee.StandardLibrary.Outputs/ConsoleOutput.md) | Default IOutput. Send the json string that represent a ICollectedEvent The configuration will be : |
+| class [ElasticOutput](Canopee.StandardLibrary.Outputs/ElasticOutput.md) | Send the ICollectedEvent to an ElasticSearch server. The configuration will be : |
 
 ## Canopee.StandardLibrary.Transforms namespace
 
@@ -98,7 +98,7 @@
 
 | public type | description |
 | --- | --- |
-| class [FirebirdInsertFieldsTransform](Canopee.StandardLibrary.Transforms.Databases.Firebird/FirebirdInsertFieldsTransform.md) |  |
+| class [FirebirdInsertFieldsTransform](Canopee.StandardLibrary.Transforms.Databases.Firebird/FirebirdInsertFieldsTransform.md) | This transforms will add all fields configured in the mapping section to the ICollectedEvent Configuration will be : |
 | class [FirebirdLookupTransform](Canopee.StandardLibrary.Transforms.Databases.Firebird/FirebirdLookupTransform.md) |  |
 
 ## Canopee.StandardLibrary.Transforms.Hardware namespace

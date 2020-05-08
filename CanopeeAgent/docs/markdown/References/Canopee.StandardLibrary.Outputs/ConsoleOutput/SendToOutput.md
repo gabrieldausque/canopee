@@ -1,8 +1,14 @@
 # ConsoleOutput.SendToOutput method
 
+Send the ICollectedEvent serialized as JSON string to the console.
+
 ```csharp
 public override void SendToOutput(ICollectedEvent collectedEvent)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEvent | the collected event to display in console |
 
 ## See Also
 

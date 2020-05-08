@@ -26,7 +26,7 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
             _requestedFieldMappings = new List<TransformFieldMapping>();
         }
         
-        public override ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
             FbDataAdapter da = null;
             try
@@ -36,11 +36,11 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
                 da.Fill(dt);
                 foreach (DataRow row in dt.Rows)
                 {
-                    if (row[_key.SearchedName] == input.GetFieldValue(_key.LocalName))
+                    if (row[_key.SearchedName] == collectedEventToTransform.GetFieldValue(_key.LocalName))
                     {
                         foreach (var mapping in _requestedFieldMappings)
                         {
-                            input.SetFieldValue(mapping.LocalName, row[mapping.SearchedName]);
+                            collectedEventToTransform.SetFieldValue(mapping.LocalName, row[mapping.SearchedName]);
                         }
                     }
                 }
@@ -55,7 +55,7 @@ namespace Canopee.StandardLibrary.Transforms.Databases.Firebird
                 da?.Dispose();
             }
 
-            return input;
+            return collectedEventToTransform;
         }
 
         public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)

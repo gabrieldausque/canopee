@@ -1,9 +1,16 @@
 # CanopeeOutput.Initialize method
 
+Initialize the IOutput with the output configuration and the logging configuration. Create the logger and setup all fields
+
 ```csharp
 public override void Initialize(IConfiguration configurationOutput, 
     IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| configurationOutput | the output configuration |
+| loggingConfiguration | the logging configuration |
 
 ## See Also
 

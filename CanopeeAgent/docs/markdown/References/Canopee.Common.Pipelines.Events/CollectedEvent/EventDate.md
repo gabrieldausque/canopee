@@ -3,7 +3,7 @@
 Inherit from [`EventDate`](../ICollectedEvent/EventDate.md)
 
 ```csharp
-public DateTime EventDate { get; set; }
+public virtual DateTime EventDate { get; set; }
 ```
 
 ## See Also

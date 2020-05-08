@@ -3,7 +3,7 @@
 Event as raw string.
 
 ```csharp
-public string Raw { get; set; }
+public virtual string Raw { get; set; }
 ```
 
 ## See Also

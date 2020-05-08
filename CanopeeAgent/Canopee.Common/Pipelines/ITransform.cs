@@ -11,9 +11,9 @@ namespace Canopee.Common.Pipelines
         /// <summary>
         /// Transform a <see cref="ICollectedEvent"/> to another <see cref="ICollectedEvent"/> implementation or simply enrich it by adding properties to the <see cref="ICollectedEvent.ExtractedFields"/> property
         /// </summary>
-        /// <param name="input">The <see cref="ICollectedEvent"/> to transform or enrich</param>
+        /// <param name="collectedEventToTransform">The <see cref="ICollectedEvent"/> to transform or enrich</param>
         /// <returns></returns>
-        ICollectedEvent Transform(ICollectedEvent input);
+        ICollectedEvent Transform(ICollectedEvent collectedEventToTransform);
         /// <summary>
         /// Initialize the <see cref="ITransform"/> with configurations
         /// </summary>

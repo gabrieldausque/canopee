@@ -1,7 +1,7 @@
 # LinuxOperatingSystemTransform.Transform method
 
 ```csharp
-public override ICollectedEvent Transform(ICollectedEvent input)
+public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
 
 ## See Also

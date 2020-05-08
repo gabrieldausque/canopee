@@ -3,7 +3,7 @@
 The id of the collected event
 
 ```csharp
-public string EventId { get; set; }
+public virtual string EventId { get; set; }
 ```
 
 ## See Also

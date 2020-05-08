@@ -1,6 +1,6 @@
 # CollectedEvent constructor (1 of 2)
 
-Default constructor of the constructor event
+Default constructor of the constructor event. Needed for serialization/deserialization
 
 ```csharp
 public CollectedEvent()

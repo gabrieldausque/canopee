@@ -11,9 +11,9 @@ namespace Canopee.StandardLibrary.Transforms
     [Export("Default", typeof(ITransform))]
     public class NoTransform : BaseTransform
     {
-        public override ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
-            return input;
+            return collectedEventToTransform;
         }
 
         public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)

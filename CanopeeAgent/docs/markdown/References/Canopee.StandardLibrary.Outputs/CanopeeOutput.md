@@ -1,5 +1,34 @@
 # CanopeeOutput class
 
+Send a collection of ICollectedEvent to a CanopeeServer api, the REST exposition of the Canopee pipeline execution engine. This is useful in following case : the canopeeserver is a passthrough node isolated in a web exposed dmz, the canopee server will enrich with new field all events send by agents with internal repositories. The configuration will be :
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "OS",
+                ...
+                "Outputs" : [{
+                    "NoSSLCheck": true,
+                    "OutputType": "Canopee",
+                    "Url": "https://the-url-of-canopee-server-web-exposed",
+                    "PipelineId": "the-pipeline-id"
+               }]
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
+the OutputType is "Canopee" the Url is the url of the CanopeeServer web exposed the PipelineId is the id of a pipeline that will treat the ICollectedEvent send by the current pipeline The NoSSLCheck is optional, and used for development purpose. Default value : false.
+
 ```csharp
 public class CanopeeOutput : BaseOutput
 ```
@@ -9,8 +38,8 @@ public class CanopeeOutput : BaseOutput
 | name | description |
 | --- | --- |
 | [CanopeeOutput](CanopeeOutput/CanopeeOutput.md)() | The default constructor. |
-| override [Initialize](CanopeeOutput/Initialize.md)(…) |  |
-| override [SendToOutput](CanopeeOutput/SendToOutput.md)(…) |  |
+| override [Initialize](CanopeeOutput/Initialize.md)(…) | Initialize the IOutput with the output configuration and the logging configuration. Create the logger and setup all fields |
+| override [SendToOutput](CanopeeOutput/SendToOutput.md)(…) | Send a ICollectedEvent to the specified CanopeeServer |
 
 ## See Also
 

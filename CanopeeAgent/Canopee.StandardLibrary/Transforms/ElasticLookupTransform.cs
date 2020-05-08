@@ -49,22 +49,22 @@ namespace Canopee.StandardLibrary.Transforms
             }
         }
 
-        public override ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
             try
             {
                 object keyValue = null;
-                if(input.GetType().GetProperty(_key.LocalName) != null)
+                if(collectedEventToTransform.GetType().GetProperty(_key.LocalName) != null)
                 {
-                    keyValue = input.GetType().GetProperty(_key.LocalName).GetValue(input);
+                    keyValue = collectedEventToTransform.GetType().GetProperty(_key.LocalName).GetValue(collectedEventToTransform);
                 } 
-                else if (input.ExtractedFields.ContainsKey(_key.LocalName))
+                else if (collectedEventToTransform.ExtractedFields.ContainsKey(_key.LocalName))
                 {
-                    keyValue = input.ExtractedFields[_key.LocalName];
+                    keyValue = collectedEventToTransform.ExtractedFields[_key.LocalName];
                 }
                 else
                 {
-                    throw new MissingMethodException($"Property {_key.LocalName} not found in type {input.GetType().ToString()}");
+                    throw new MissingMethodException($"Property {_key.LocalName} not found in type {collectedEventToTransform.GetType().ToString()}");
                 }
                 var response = _client.Search<dynamic>(sd => sd
                     .Index(_searchedIndex)
@@ -85,27 +85,27 @@ namespace Canopee.StandardLibrary.Transforms
                 );
                 foreach(var document in response.Documents)
                 {
-                    var inputProperties = input.GetType().GetProperties();
+                    var inputProperties = collectedEventToTransform.GetType().GetProperties();
                     foreach(var prop in document.Keys)
                     {
                         var destinationPropertyName = _requestedFieldMappings.First(p => p.SearchedName == prop).LocalName;
                         if(inputProperties.Any(p => p.Name == destinationPropertyName))
                         {
-                            inputProperties.First(p => p.Name == destinationPropertyName).SetValue(input, document[prop]);
+                            inputProperties.First(p => p.Name == destinationPropertyName).SetValue(collectedEventToTransform, document[prop]);
                         } 
                         else
                         {
-                            if (input.ExtractedFields.ContainsKey(destinationPropertyName))
+                            if (collectedEventToTransform.ExtractedFields.ContainsKey(destinationPropertyName))
                             {
-                                input.ExtractedFields[destinationPropertyName] = document[prop];
+                                collectedEventToTransform.ExtractedFields[destinationPropertyName] = document[prop];
                             } else
                             {
-                                input.ExtractedFields.Add(destinationPropertyName, document[prop]);
+                                collectedEventToTransform.ExtractedFields.Add(destinationPropertyName, document[prop]);
                             }
                         }
                     }
                 }
-                return input;
+                return collectedEventToTransform;
             }
             catch (Exception ex)
             {

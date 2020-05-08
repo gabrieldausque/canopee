@@ -3,7 +3,7 @@
 Inherit from [`ConvertTo`](../ICollectedEvent/ConvertTo.md)
 
 ```csharp
-public T ConvertTo<T>()
+public virtual T ConvertTo<T>()
     where T : ICollectedEvent, new()
 ```
 

@@ -20,9 +20,9 @@ namespace Canopee.Core.Pipelines
         /// <summary>
         /// Transform a <see cref="ICollectedEvent"/> : add new field, transform existing field, change type of the collected event
         /// </summary>
-        /// <param name="input">the <see cref="ICollectedEvent"/> to transform</param>
+        /// <param name="collectedEventToTransform">the <see cref="ICollectedEvent"/> to transform</param>
         /// <returns></returns>
-        public abstract ICollectedEvent Transform(ICollectedEvent input);
+        public abstract ICollectedEvent Transform(ICollectedEvent collectedEventToTransform);
 
         /// <summary>
         /// Initialize using the transform configuration

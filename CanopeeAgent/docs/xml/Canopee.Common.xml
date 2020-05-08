@@ -583,7 +583,7 @@
             <summary>
             Transform a <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to another <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> implementation or simply enrich it by adding properties to the <see cref="P:Canopee.Common.Pipelines.Events.ICollectedEvent.ExtractedFields"/> property
             </summary>
-            <param name="input">The <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to transform or enrich</param>
+            <param name="collectedEventToTransform">The <see cref="T:Canopee.Common.Pipelines.Events.ICollectedEvent"/> to transform or enrich</param>
             <returns></returns>
         </member>
         <member name="M:Canopee.Common.Pipelines.ITransform.Initialize(Microsoft.Extensions.Configuration.IConfigurationSection,Microsoft.Extensions.Configuration.IConfigurationSection)">

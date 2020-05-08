@@ -9,19 +9,19 @@ namespace Canopee.StandardLibrary.Transforms.Hardware
     [Export("HardwareWINDOWS", typeof(ITransform))]
     public class WindowsHardwareTransform : BaseHardwareTransform
     {
-        public override ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
             var output = GetBatchOutput("echo architecture=%PROCESSOR_ARCHITECTURE% model=%PROCESSOR_IDENTIFIER% ");
             var regex = new Regex("architecture=(?<architecture>.+)[ ]+model=(?<model>.+)");
             var match = regex.Match(output[0]);
-            input.SetFieldValue("CpuArchitecture", match.Groups["architecture"].Value);
-            input.SetFieldValue("CpuModel", match.Groups["model"].Value);
+            collectedEventToTransform.SetFieldValue("CpuArchitecture", match.Groups["architecture"].Value);
+            collectedEventToTransform.SetFieldValue("CpuModel", match.Groups["model"].Value);
             output = GetBatchOutput("wmic cpu get numberoflogicalprocessors /value ");
             foreach(var  line in output)
             {
                 if (line.Contains("NumberOfLogicalProcessors"))
                 {
-                    input.SetFieldValue("CpusAvailable", int.Parse(line.Split("=")[1]));
+                    collectedEventToTransform.SetFieldValue("CpusAvailable", int.Parse(line.Split("=")[1]));
                     break;
                 }
             }
@@ -32,13 +32,13 @@ namespace Canopee.StandardLibrary.Transforms.Hardware
                 if (line.Contains("TotalPhysicalMemory"))
                 {
                     var currentMemorySize = GetOptimizedSizeAndUnit(long.Parse(line.Split("=")[1]), out var unit);
-                    input.SetFieldValue("MemorySize", currentMemorySize);
-                    input.SetFieldValue("MemoryUnit", unit);
+                    collectedEventToTransform.SetFieldValue("MemorySize", currentMemorySize);
+                    collectedEventToTransform.SetFieldValue("MemoryUnit", unit);
                     break;
                 }
             }
 
-            return input;
+            return collectedEventToTransform;
         }
         
         

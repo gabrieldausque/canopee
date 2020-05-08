@@ -3,7 +3,7 @@
 Inherit from [`AgentId`](../ICollectedEvent/AgentId.md)
 
 ```csharp
-public string AgentId { get; set; }
+public virtual string AgentId { get; set; }
 ```
 
 ## See Also

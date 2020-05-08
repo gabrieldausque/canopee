@@ -3,7 +3,7 @@
 Inherit from [`ExtractedFields`](../ICollectedEvent/ExtractedFields.md)
 
 ```csharp
-public Dictionary<string, object> ExtractedFields { get; set; }
+public virtual Dictionary<string, object> ExtractedFields { get; set; }
 ```
 
 ## See Also

@@ -1,6 +1,6 @@
 # FirebirdInsertFieldsTransform constructor
 
-The default constructor.
+Default constructor. Initialized the list of field mappings
 
 ```csharp
 public FirebirdInsertFieldsTransform()

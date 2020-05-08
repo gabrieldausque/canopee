@@ -3,7 +3,7 @@
 Inherit from [`GetEventType`](../ICollectedEvent/GetEventType.md)
 
 ```csharp
-public string GetEventType()
+public virtual string GetEventType()
 ```
 
 ## See Also

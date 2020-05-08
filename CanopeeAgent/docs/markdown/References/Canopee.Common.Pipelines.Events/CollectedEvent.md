@@ -10,17 +10,17 @@ public class CollectedEvent : ICollectedEvent
 
 | name | description |
 | --- | --- |
-| [CollectedEvent](CollectedEvent/CollectedEvent.md)() | Default constructor of the constructor event |
+| [CollectedEvent](CollectedEvent/CollectedEvent.md)() | Default constructor of the constructor event. Needed for serialization/deserialization |
 | [CollectedEvent](CollectedEvent/CollectedEvent.md)(…) | Constructor that specified the agentid of the collected event |
-| [AgentId](CollectedEvent/AgentId.md) { get; set; } | Inherit from [`AgentId`](ICollectedEvent/AgentId.md) |
-| [EventDate](CollectedEvent/EventDate.md) { get; set; } | Inherit from [`EventDate`](ICollectedEvent/EventDate.md) |
-| [EventId](CollectedEvent/EventId.md) { get; set; } | The id of the collected event |
-| [ExtractedFields](CollectedEvent/ExtractedFields.md) { get; set; } | Inherit from [`ExtractedFields`](ICollectedEvent/ExtractedFields.md) |
-| [Raw](CollectedEvent/Raw.md) { get; set; } | Event as raw string. |
-| [ConvertTo&lt;T&gt;](CollectedEvent/ConvertTo.md)() | Inherit from [`ConvertTo`](ICollectedEvent/ConvertTo.md) |
-| [GetEventType](CollectedEvent/GetEventType.md)() | Inherit from [`GetEventType`](ICollectedEvent/GetEventType.md) |
-| [GetFieldValue](CollectedEvent/GetFieldValue.md)(…) | Inherit from [`GetFieldValue`](ICollectedEvent/GetFieldValue.md) |
-| [SetFieldValue](CollectedEvent/SetFieldValue.md)(…) | Inherit from [`SetFieldValue`](ICollectedEvent/SetFieldValue.md) |
+| virtual [AgentId](CollectedEvent/AgentId.md) { get; set; } | Inherit from [`AgentId`](ICollectedEvent/AgentId.md) |
+| virtual [EventDate](CollectedEvent/EventDate.md) { get; set; } | Inherit from [`EventDate`](ICollectedEvent/EventDate.md) |
+| virtual [EventId](CollectedEvent/EventId.md) { get; set; } | The id of the collected event |
+| virtual [ExtractedFields](CollectedEvent/ExtractedFields.md) { get; set; } | Inherit from [`ExtractedFields`](ICollectedEvent/ExtractedFields.md) |
+| virtual [Raw](CollectedEvent/Raw.md) { get; set; } | Event as raw string. |
+| virtual [ConvertTo&lt;T&gt;](CollectedEvent/ConvertTo.md)() | Inherit from [`ConvertTo`](ICollectedEvent/ConvertTo.md) |
+| virtual [GetEventType](CollectedEvent/GetEventType.md)() | Inherit from [`GetEventType`](ICollectedEvent/GetEventType.md) |
+| virtual [GetFieldValue](CollectedEvent/GetFieldValue.md)(…) | Inherit from [`GetFieldValue`](ICollectedEvent/GetFieldValue.md) |
+| virtual [SetFieldValue](CollectedEvent/SetFieldValue.md)(…) | Inherit from [`SetFieldValue`](ICollectedEvent/SetFieldValue.md) |
 
 ## See Also
 

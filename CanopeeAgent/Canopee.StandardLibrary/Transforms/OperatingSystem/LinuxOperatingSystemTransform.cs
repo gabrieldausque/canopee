@@ -13,11 +13,11 @@ namespace Canopee.StandardLibrary.Transforms
     [Export("OperatingSystemLINUX", typeof(ITransform))]
     public class LinuxOperatingSystemTransform : BatchTransform
     {
-        public override ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
-            input.SetFieldValue("OperatingSystem", GetBatchOutput("\"uname -o\"")[0]);
-            input.SetFieldValue("OperatingSystemVersion", GetBatchOutput("\"uname -v\"")[0]);
-            return input;
+            collectedEventToTransform.SetFieldValue("OperatingSystem", GetBatchOutput("\"uname -o\"")[0]);
+            collectedEventToTransform.SetFieldValue("OperatingSystemVersion", GetBatchOutput("\"uname -v\"")[0]);
+            return collectedEventToTransform;
         }
     }
 }

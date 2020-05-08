@@ -3,7 +3,7 @@
 Inherit from [`GetFieldValue`](../ICollectedEvent/GetFieldValue.md)
 
 ```csharp
-public object GetFieldValue(string propertyName)
+public virtual object GetFieldValue(string propertyName)
 ```
 
 ## See Also

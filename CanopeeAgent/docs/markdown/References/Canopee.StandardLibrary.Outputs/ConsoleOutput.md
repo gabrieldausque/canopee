@@ -1,5 +1,29 @@
 # ConsoleOutput class
 
+Default IOutput. Send the json string that represent a ICollectedEvent The configuration will be :
+
+```csharp
+{
+    ...
+    "Canopee": {
+        ...
+            "Pipelines": [
+             ...   
+              {
+                "Name": "OS",
+                ...
+                "Outputs" : {
+                    "OutputType": "Console",
+               }
+             ...
+            }
+            ...   
+            ]
+        ...
+    }
+}
+```
+
 ```csharp
 public class ConsoleOutput : BaseOutput
 ```
@@ -9,7 +33,7 @@ public class ConsoleOutput : BaseOutput
 | name | description |
 | --- | --- |
 | [ConsoleOutput](ConsoleOutput/ConsoleOutput.md)() | The default constructor. |
-| override [SendToOutput](ConsoleOutput/SendToOutput.md)(…) |  |
+| override [SendToOutput](ConsoleOutput/SendToOutput.md)(…) | Send the ICollectedEvent serialized as JSON string to the console. |
 
 ## See Also
 

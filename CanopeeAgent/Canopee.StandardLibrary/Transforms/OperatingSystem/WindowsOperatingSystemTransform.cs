@@ -13,20 +13,20 @@ namespace Canopee.StandardLibrary.Transforms
     [Export("OperatingSystemWINDOWS", typeof(ITransform))]
     public class WindowsOperatingSystemTransform : BatchTransform
     {
-        public override ICollectedEvent Transform(ICollectedEvent input)
+        public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
             foreach(var line in GetBatchOutput(@"wmic OS get Version,Name,OSArchitecture /value"))
             {
                 if (line.Contains("Name"))
                 {
-                    input.SetFieldValue("OperatingSystem", line.Split('=')[1]);
+                    collectedEventToTransform.SetFieldValue("OperatingSystem", line.Split('=')[1]);
                 } 
                 else if (line.Contains("Version"))
                 {
-                    input.SetFieldValue("OperatingSystemVersion", line.Split('=')[1]);
+                    collectedEventToTransform.SetFieldValue("OperatingSystemVersion", line.Split('=')[1]);
                 }
             }
-            return input;
+            return collectedEventToTransform;
         }
     }
 }

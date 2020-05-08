@@ -3,12 +3,12 @@
 Transform a ICollectedEvent : add new field, transform existing field, change type of the collected event
 
 ```csharp
-public abstract ICollectedEvent Transform(ICollectedEvent input)
+public abstract ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
 
 | parameter | description |
 | --- | --- |
-| input | the ICollectedEvent to transform |
+| collectedEventToTransform | the ICollectedEvent to transform |
 
 ## See Also
 
