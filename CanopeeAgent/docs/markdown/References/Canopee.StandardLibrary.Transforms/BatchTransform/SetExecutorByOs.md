@@ -1,8 +1,16 @@
 # BatchTransform.SetExecutorByOs method
 
+Set default executor and arguments depending on OS. Today only Linux (with bash) and windows (with cmd) are supported.
+
 ```csharp
 protected void SetExecutorByOs()
 ```
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| NotSupportedException |  |
 
 ## See Also
 

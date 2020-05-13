@@ -86,8 +86,8 @@
 
 | public type | description |
 | --- | --- |
-| class [APIGeoGouvTransform](Canopee.StandardLibrary.Transforms/APIGeoGouvTransform.md) |  |
-| abstract class [BatchTransform](Canopee.StandardLibrary.Transforms/BatchTransform.md) |  |
+| class [APIGeoGouvTransform](Canopee.StandardLibrary.Transforms/APIGeoGouvTransform.md) | ITransform that will add location coordinates, department code and region code in a ICollectedEvent based on a specific field that must represent a search field in the "https://geo.api.gouv.fr/" public API. Configuration will be : |
+| abstract class [BatchTransform](Canopee.StandardLibrary.Transforms/BatchTransform.md) | Base class for ITransform that will add field from a batch output. Will be OSSpecific |
 | class [ElasticLookupTransform](Canopee.StandardLibrary.Transforms/ElasticLookupTransform.md) |  |
 | class [LinuxOperatingSystemTransform](Canopee.StandardLibrary.Transforms/LinuxOperatingSystemTransform.md) | ITransform that will add OS information in a ICollectedEvent for Linux use uname command Configuration will be : |
 | class [NoTransform](Canopee.StandardLibrary.Transforms/NoTransform.md) |  |

@@ -1,8 +1,20 @@
 # BatchTransform.GetCurrentPlatform method
 
+Return the current OSPlatform
+
 ```csharp
 protected OSPlatform GetCurrentPlatform()
 ```
+
+## Return Value
+
+the OSPlatform
+
+## Exceptions
+
+| exception | condition |
+| --- | --- |
+| NotSupportedException | If OSPlatform is not supported (not a Linux, Windows, FreeBSD, OSX) |
 
 ## See Also
 

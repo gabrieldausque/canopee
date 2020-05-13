@@ -1,5 +1,38 @@
 # APIGeoGouvTransform class
 
+ITransform that will add location coordinates, department code and region code in a ICollectedEvent based on a specific field that must represent a search field in the "https://geo.api.gouv.fr/" public API. Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                            "TransformType": "APIGeoGouv",
+                            "Entity":"communes" 
+                            "Key": {
+                            "LocalName": "PostalCode",
+                            "SearchedName":  "codePostal"
+                         }
+                       ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     } 
+```
+
+The TransformType will be APIGeoGouv The Entity defines the entity to be used in the ApiGeoGouv Api. Defaulted to communes. The Key will defines the field to look for in the ApiGeoGouv Api : LocalName will define the name of the field in ICollectedEvent to match the SearchedName that will be a search field of the ApiGeoGouv In our example, the search is base on the codePostal, and the value is obtained from the PostalCode field of the ICollectedEvent;
+
 ```csharp
 public class APIGeoGouvTransform : BaseTransform
 ```
@@ -9,8 +42,8 @@ public class APIGeoGouvTransform : BaseTransform
 | name | description |
 | --- | --- |
 | [APIGeoGouvTransform](APIGeoGouvTransform/APIGeoGouvTransform.md)() | The default constructor. |
-| override [Initialize](APIGeoGouvTransform/Initialize.md)(…) |  |
-| override [Transform](APIGeoGouvTransform/Transform.md)(…) |  |
+| override [Initialize](APIGeoGouvTransform/Initialize.md)(…) | Initialize this ITransform with configurations. Add all defined [`TransformFieldMapping`](TransformFieldMapping.md) from the configuration. |
+| override [Transform](APIGeoGouvTransform/Transform.md)(…) | Add coordinate in form { lat: value, lon: value} CodeDepartement and CodeRegion in the ICollectedEvent |
 
 ## See Also
 

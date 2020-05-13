@@ -1,8 +1,18 @@
 # APIGeoGouvTransform.Transform method
 
+Add coordinate in form { lat: value, lon: value} CodeDepartement and CodeRegion in the ICollectedEvent
+
 ```csharp
 public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEventToTransform | the ICollectedEvent to transform |
+
+## Return Value
+
+the transform ICollectedEvent
 
 ## See Also
 

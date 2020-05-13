@@ -20,7 +20,7 @@ namespace Canopee.StandardLibrary.Transforms
         private string _searchedIndex;
         private ElasticClient _client;
         private TransformFieldMapping _key;
-        private List<TransformFieldMapping> _requestedFieldMappings;
+        private readonly List<TransformFieldMapping> _requestedFieldMappings;
 
         public ElasticLookupTransform()
         {

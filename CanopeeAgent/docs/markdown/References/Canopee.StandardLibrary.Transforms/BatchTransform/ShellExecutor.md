@@ -1,5 +1,7 @@
 # BatchTransform.ShellExecutor property
 
+The shell executor
+
 ```csharp
 public string ShellExecutor { get; set; }
 ```

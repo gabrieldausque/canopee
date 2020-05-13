@@ -1,5 +1,7 @@
 # BatchTransform.Arguments property
 
+Arguments used by the [`ShellExecutor`](ShellExecutor.md) to launch a command
+
 ```csharp
 public string Arguments { get; set; }
 ```

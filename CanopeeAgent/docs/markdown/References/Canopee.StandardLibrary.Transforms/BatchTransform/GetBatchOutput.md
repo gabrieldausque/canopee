@@ -1,8 +1,18 @@
 # BatchTransform.GetBatchOutput method
 
+Launch the specified command line with the shell executor
+
 ```csharp
 protected virtual string[] GetBatchOutput(string commandLine)
 ```
+
+| parameter | description |
+| --- | --- |
+| commandLine | The command line to execute |
+
+## Return Value
+
+an array of string for each line of the output
 
 ## See Also
 

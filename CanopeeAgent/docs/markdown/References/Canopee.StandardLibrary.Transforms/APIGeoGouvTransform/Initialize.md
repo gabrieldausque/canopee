@@ -1,9 +1,16 @@
 # APIGeoGouvTransform.Initialize method
 
+Initialize this ITransform with configurations. Add all defined [`TransformFieldMapping`](../TransformFieldMapping.md) from the configuration.
+
 ```csharp
 public override void Initialize(IConfigurationSection transformConfiguration, 
     IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| transformConfiguration | The transform configuration |
+| loggingConfiguration | The logger configuration |
 
 ## See Also
 

@@ -2,13 +2,23 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Canopee.Common;
+using Canopee.Common.Pipelines;
 using Canopee.Core.Pipelines;
 using Microsoft.Extensions.Configuration;
 
 namespace Canopee.StandardLibrary.Transforms
 {
+    /// <summary>
+    /// Base class for <see cref="ITransform"/> that will add field from a batch output.
+    /// Will be OSSpecific
+    /// </summary>
     public abstract class BatchTransform : BaseTransform
     {
+        /// <summary>
+        /// Return the current OSPlatform 
+        /// </summary>
+        /// <returns>the OSPlatform</returns>
+        /// <exception cref="NotSupportedException">If OSPlatform is not supported (not a Linux, Windows, FreeBSD, OSX)</exception>
         protected OSPlatform GetCurrentPlatform()
         {
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -33,6 +43,10 @@ namespace Canopee.StandardLibrary.Transforms
             throw new NotSupportedException("The current OS is not Supported");
         }
         
+        /// <summary>
+        /// Set default executor and arguments depending on OS. Today only Linux (with bash) and windows (with cmd) are supported.
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         protected void SetExecutorByOs()
         {
             var OS = GetCurrentPlatform();
@@ -52,10 +66,21 @@ namespace Canopee.StandardLibrary.Transforms
             }
         }
 
+        /// <summary>
+        /// Arguments used by the <see cref="ShellExecutor"/> to launch a command
+        /// </summary>
         public string Arguments { get; set; }
 
+        /// <summary>
+        /// The shell executor
+        /// </summary>
         public string ShellExecutor { get; set; }
 
+        /// <summary>
+        /// Launch the specified command line with the shell executor
+        /// </summary>
+        /// <param name="commandLine">The command line to execute</param>
+        /// <returns>an array of string for each line of the output</returns>
         protected virtual string[] GetBatchOutput(string commandLine)
         {
             Logger.LogDebug($"Starting the command {commandLine}");
@@ -75,6 +100,11 @@ namespace Canopee.StandardLibrary.Transforms
             return processOutput.Split("\n");
         }
    
+        /// <summary>
+        /// Initialize this <see cref="ITransform"/> with configurations. Add all defined <see cref="TransformFieldMapping"/> from the configuration.
+        /// </summary>
+        /// <param name="transformConfiguration">The transform configuration</param>
+        /// <param name="loggingConfiguration">The logger configuration</param>
         public override void Initialize(IConfigurationSection transformConfiguration, IConfigurationSection loggingConfiguration)
         {
             base.Initialize(transformConfiguration, loggingConfiguration);

@@ -1,5 +1,7 @@
 # BatchTransform class
 
+Base class for ITransform that will add field from a batch output. Will be OSSpecific
+
 ```csharp
 public abstract class BatchTransform : BaseTransform
 ```
@@ -8,18 +10,18 @@ public abstract class BatchTransform : BaseTransform
 
 | name | description |
 | --- | --- |
-| [Arguments](BatchTransform/Arguments.md) { get; set; } |  |
-| [ShellExecutor](BatchTransform/ShellExecutor.md) { get; set; } |  |
-| override [Initialize](BatchTransform/Initialize.md)(…) |  |
+| [Arguments](BatchTransform/Arguments.md) { get; set; } | Arguments used by the [`ShellExecutor`](BatchTransform/ShellExecutor.md) to launch a command |
+| [ShellExecutor](BatchTransform/ShellExecutor.md) { get; set; } | The shell executor |
+| override [Initialize](BatchTransform/Initialize.md)(…) | Initialize this ITransform with configurations. Add all defined [`TransformFieldMapping`](TransformFieldMapping.md) from the configuration. |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
 | [BatchTransform](BatchTransform/BatchTransform.md)() | The default constructor. |
-| virtual [GetBatchOutput](BatchTransform/GetBatchOutput.md)(…) |  |
-| [GetCurrentPlatform](BatchTransform/GetCurrentPlatform.md)() |  |
-| [SetExecutorByOs](BatchTransform/SetExecutorByOs.md)() |  |
+| virtual [GetBatchOutput](BatchTransform/GetBatchOutput.md)(…) | Launch the specified command line with the shell executor |
+| [GetCurrentPlatform](BatchTransform/GetCurrentPlatform.md)() | Return the current OSPlatform |
+| [SetExecutorByOs](BatchTransform/SetExecutorByOs.md)() | Set default executor and arguments depending on OS. Today only Linux (with bash) and windows (with cmd) are supported. |
 
 ## See Also
 
