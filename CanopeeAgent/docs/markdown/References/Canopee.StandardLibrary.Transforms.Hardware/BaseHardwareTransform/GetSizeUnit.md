@@ -1,8 +1,14 @@
 # BaseHardwareTransform.GetSizeUnit method
 
+Convert a mapped custom unit label in a standard unit label
+
 ```csharp
 protected string GetSizeUnit(string customUnit)
 ```
+
+| parameter | description |
+| --- | --- |
+| customUnit |  |
 
 ## See Also
 

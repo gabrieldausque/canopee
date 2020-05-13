@@ -1,8 +1,18 @@
 # WindowsOperatingSystemTransform.Transform method
 
+Add Operating System information to the ICollectedEvent
+
 ```csharp
 public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEventToTransform | The ICollectedEvent to transform |
+
+## Return Value
+
+the transformed ICollectedEvent
 
 ## See Also
 

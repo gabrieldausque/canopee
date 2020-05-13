@@ -89,25 +89,25 @@
 | class [APIGeoGouvTransform](Canopee.StandardLibrary.Transforms/APIGeoGouvTransform.md) |  |
 | abstract class [BatchTransform](Canopee.StandardLibrary.Transforms/BatchTransform.md) |  |
 | class [ElasticLookupTransform](Canopee.StandardLibrary.Transforms/ElasticLookupTransform.md) |  |
-| class [LinuxOperatingSystemTransform](Canopee.StandardLibrary.Transforms/LinuxOperatingSystemTransform.md) |  |
+| class [LinuxOperatingSystemTransform](Canopee.StandardLibrary.Transforms/LinuxOperatingSystemTransform.md) | ITransform that will add OS information in a ICollectedEvent for Linux use uname command Configuration will be : |
 | class [NoTransform](Canopee.StandardLibrary.Transforms/NoTransform.md) |  |
 | class [TransformFieldMapping](Canopee.StandardLibrary.Transforms/TransformFieldMapping.md) |  |
-| class [WindowsOperatingSystemTransform](Canopee.StandardLibrary.Transforms/WindowsOperatingSystemTransform.md) |  |
+| class [WindowsOperatingSystemTransform](Canopee.StandardLibrary.Transforms/WindowsOperatingSystemTransform.md) | ITransform that will add OS information in a ICollectedEvent for Windows use wmic command Configuration will be : |
 
 ## Canopee.StandardLibrary.Transforms.Databases.Firebird namespace
 
 | public type | description |
 | --- | --- |
 | class [FirebirdInsertFieldsTransform](Canopee.StandardLibrary.Transforms.Databases.Firebird/FirebirdInsertFieldsTransform.md) | This transforms will add all fields configured in the mapping section to the ICollectedEvent Configuration will be : |
-| class [FirebirdLookupTransform](Canopee.StandardLibrary.Transforms.Databases.Firebird/FirebirdLookupTransform.md) |  |
+| class [FirebirdLookupTransform](Canopee.StandardLibrary.Transforms.Databases.Firebird/FirebirdLookupTransform.md) | This transforms will make a lookup for a specific key field in a recordset from a select in a firebird database, and add expected field in the ICollectedEvent The configuration will be : |
 
 ## Canopee.StandardLibrary.Transforms.Hardware namespace
 
 | public type | description |
 | --- | --- |
-| abstract class [BaseHardwareTransform](Canopee.StandardLibrary.Transforms.Hardware/BaseHardwareTransform.md) |  |
-| class [HardwareTransform](Canopee.StandardLibrary.Transforms.Hardware/HardwareTransform.md) |  |
-| class [WindowsHardwareTransform](Canopee.StandardLibrary.Transforms.Hardware/WindowsHardwareTransform.md) |  |
+| abstract class [BaseHardwareTransform](Canopee.StandardLibrary.Transforms.Hardware/BaseHardwareTransform.md) | Base class that will add hardware information in a ICollectedEvent Configuration will be : |
+| class [HardwareTransform](Canopee.StandardLibrary.Transforms.Hardware/HardwareTransform.md) | class that will add hardware information in a ICollectedEvent for LINUX OS use lscpu and free command Configuration will be : |
+| class [WindowsHardwareTransform](Canopee.StandardLibrary.Transforms.Hardware/WindowsHardwareTransform.md) | class that will add hardware information in a ICollectedEvent for WINDOWS OS use wmic command Configuration will be : |
 
 ## Canopee.StandardLibrary.Triggers namespace
 

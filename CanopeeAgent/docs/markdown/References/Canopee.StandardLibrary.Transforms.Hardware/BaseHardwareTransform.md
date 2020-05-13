@@ -1,5 +1,35 @@
 # BaseHardwareTransform class
 
+Base class that will add hardware information in a ICollectedEvent Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                             "TransformType": "Hardware",
+                             "OSSpecific": true
+                        }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     } 
+```
+
+The TransformType will be Hardware The OSSpecific will be set to true as hardware infos are obtained in different way specific to OS
+
 ```csharp
 public abstract class BaseHardwareTransform : BatchTransform
 ```
@@ -8,15 +38,15 @@ public abstract class BaseHardwareTransform : BatchTransform
 
 | name | description |
 | --- | --- |
-| [BaseHardwareTransform](BaseHardwareTransform/BaseHardwareTransform.md)() | The default constructor. |
-| [UnitsRepository](BaseHardwareTransform/UnitsRepository.md) { get; set; } |  |
+| [BaseHardwareTransform](BaseHardwareTransform/BaseHardwareTransform.md)() | Default constructor, Initiliaze the Units Repository, used for conversion in human readable format |
+| [UnitsRepository](BaseHardwareTransform/UnitsRepository.md) { get; set; } | A mapping to normalize a customUnit label in a standard unit label |
 
 ## Protected Members
 
 | name | description |
 | --- | --- |
-| [GetOptimizedSizeAndUnit](BaseHardwareTransform/GetOptimizedSizeAndUnit.md)(…) |  |
-| [GetSizeUnit](BaseHardwareTransform/GetSizeUnit.md)(…) |  |
+| [GetOptimizedSizeAndUnit](BaseHardwareTransform/GetOptimizedSizeAndUnit.md)(…) | Get human readable format from a bytes value. |
+| [GetSizeUnit](BaseHardwareTransform/GetSizeUnit.md)(…) | Convert a mapped custom unit label in a standard unit label |
 
 ## See Also
 

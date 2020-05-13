@@ -1,6 +1,6 @@
 # BaseHardwareTransform constructor
 
-The default constructor.
+Default constructor, Initiliaze the Units Repository, used for conversion in human readable format
 
 ```csharp
 public BaseHardwareTransform()

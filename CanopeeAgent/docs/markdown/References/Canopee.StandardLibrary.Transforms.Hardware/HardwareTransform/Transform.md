@@ -1,8 +1,18 @@
 # HardwareTransform.Transform method
 
+Will add Cpus and memory infos in the ICollectedEvent
+
 ```csharp
 public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEventToTransform | the ICollectedEvent to transform |
+
+## Return Value
+
+the transformed ICollectedEvent
 
 ## See Also
 

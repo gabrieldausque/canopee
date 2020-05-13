@@ -1,5 +1,35 @@
 # WindowsOperatingSystemTransform class
 
+ITransform that will add OS information in a ICollectedEvent for Windows use wmic command Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                             "TransformType": "OperatingSystem",
+                             "OSSpecific": true
+                        }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     } 
+```
+
+The TransformType will be OperatingSystem The OSSpecific will be set to true as OperatingSystem infos are obtained in different way specific to OS
+
 ```csharp
 public class WindowsOperatingSystemTransform : BatchTransform
 ```
@@ -9,7 +39,7 @@ public class WindowsOperatingSystemTransform : BatchTransform
 | name | description |
 | --- | --- |
 | [WindowsOperatingSystemTransform](WindowsOperatingSystemTransform/WindowsOperatingSystemTransform.md)() | The default constructor. |
-| override [Transform](WindowsOperatingSystemTransform/Transform.md)(…) |  |
+| override [Transform](WindowsOperatingSystemTransform/Transform.md)(…) | Add Operating System information to the ICollectedEvent |
 
 ## See Also
 

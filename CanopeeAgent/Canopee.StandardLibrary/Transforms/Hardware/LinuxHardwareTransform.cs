@@ -7,9 +7,52 @@ using Canopee.Common.Pipelines.Events;
 
 namespace Canopee.StandardLibrary.Transforms.Hardware
 {
+    /// <summary>
+    /// class that will add hardware information in a <see cref="ICollectedEvent"/> for LINUX OS
+    ///
+    /// use lscpu and free command
+    /// 
+    /// Configuration will be :
+    /// <example>
+    /// <code>
+    ///
+    ///     {
+    ///         ...
+    ///         "Canopee": {
+    ///             ...
+    ///                 "Pipelines": [
+    ///                  ...   
+    ///                   {
+    ///                     "Name": "OS",
+    ///                     ...
+    ///                     "Transforms" : [
+    ///                         {
+    ///                             "TransformType": "Hardware",
+    ///                             "OSSpecific": true
+    ///                        }
+    ///                     ]
+    ///                  ...
+    ///                 }
+    ///                 ...   
+    ///                 ]
+    ///             ...
+    ///         }
+    ///     } 
+    /// </code>
+    /// </example>
+    ///
+    /// The TransformType will be Hardware
+    /// The OSSpecific will be set to true as hardware infos are obtained in different way specific to OS
+    /// 
+    /// </summary>
     [Export("HardwareLINUX",typeof(ITransform))]
     public class HardwareTransform : BaseHardwareTransform
     {
+        /// <summary>
+        /// Will add Cpus and memory infos in the <see cref="ICollectedEvent"/>
+        /// </summary>
+        /// <param name="collectedEventToTransform">the <see cref="ICollectedEvent"/> to transform</param>
+        /// <returns>the transformed <see cref="ICollectedEvent"/></returns>
         public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
         {
             var lines = GetBatchOutput("lscpu");

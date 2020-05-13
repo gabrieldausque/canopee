@@ -1,6 +1,6 @@
 # FirebirdLookupTransform constructor
 
-The default constructor.
+Default constructor. Initialized the list of mapping
 
 ```csharp
 public FirebirdLookupTransform()

@@ -1,5 +1,35 @@
 # WindowsHardwareTransform class
 
+class that will add hardware information in a ICollectedEvent for WINDOWS OS use wmic command Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                             "TransformType": "Hardware",
+                             "OSSpecific": true
+                        }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     } 
+```
+
+The TransformType will be Hardware The OSSpecific will be set to true as hardware infos are obtained in different way specific to OS
+
 ```csharp
 public class WindowsHardwareTransform : BaseHardwareTransform
 ```
@@ -9,7 +39,7 @@ public class WindowsHardwareTransform : BaseHardwareTransform
 | name | description |
 | --- | --- |
 | [WindowsHardwareTransform](WindowsHardwareTransform/WindowsHardwareTransform.md)() | The default constructor. |
-| override [Transform](WindowsHardwareTransform/Transform.md)(…) |  |
+| override [Transform](WindowsHardwareTransform/Transform.md)(…) | Will add Cpus and memory infos in the ICollectedEvent |
 
 ## See Also
 

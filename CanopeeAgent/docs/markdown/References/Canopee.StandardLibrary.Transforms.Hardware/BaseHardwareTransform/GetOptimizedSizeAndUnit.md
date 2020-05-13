@@ -1,8 +1,19 @@
 # BaseHardwareTransform.GetOptimizedSizeAndUnit method
 
+Get human readable format from a bytes value.
+
 ```csharp
 protected float GetOptimizedSizeAndUnit(float originalSize, out string unit)
 ```
+
+| parameter | description |
+| --- | --- |
+| originalSize | a quantity in bytes |
+| unit | The human readable unit |
+
+## Return Value
+
+the quantity converted in the unit
 
 ## See Also
 

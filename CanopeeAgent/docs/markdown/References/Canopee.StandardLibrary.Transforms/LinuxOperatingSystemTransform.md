@@ -1,5 +1,35 @@
 # LinuxOperatingSystemTransform class
 
+ITransform that will add OS information in a ICollectedEvent for Linux use uname command Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                             "TransformType": "OperatingSystem",
+                             "OSSpecific": true
+                        }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     } 
+```
+
+The TransformType will be OperatingSystem The OSSpecific will be set to true as OperatingSystem infos are obtained in different way specific to OS
+
 ```csharp
 public class LinuxOperatingSystemTransform : BatchTransform
 ```
@@ -9,7 +39,7 @@ public class LinuxOperatingSystemTransform : BatchTransform
 | name | description |
 | --- | --- |
 | [LinuxOperatingSystemTransform](LinuxOperatingSystemTransform/LinuxOperatingSystemTransform.md)() | The default constructor. |
-| override [Transform](LinuxOperatingSystemTransform/Transform.md)(…) |  |
+| override [Transform](LinuxOperatingSystemTransform/Transform.md)(…) | Add Operating System information to the ICollectedEvent |
 
 ## See Also
 

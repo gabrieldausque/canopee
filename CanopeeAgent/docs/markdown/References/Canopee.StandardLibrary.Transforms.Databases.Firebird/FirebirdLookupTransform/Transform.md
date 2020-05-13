@@ -1,8 +1,18 @@
 # FirebirdLookupTransform.Transform method
 
+Search the value of the _key field in the record set getted from the _selectStatement
+
 ```csharp
 public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEventToTransform | ICollectedEvent to modify |
+
+## Return Value
+
+the modified ICollectedEvent
 
 ## See Also
 

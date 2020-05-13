@@ -1,5 +1,7 @@
 # BaseHardwareTransform.UnitsRepository property
 
+A mapping to normalize a customUnit label in a standard unit label
+
 ```csharp
 public Dictionary<string, string> UnitsRepository { get; set; }
 ```

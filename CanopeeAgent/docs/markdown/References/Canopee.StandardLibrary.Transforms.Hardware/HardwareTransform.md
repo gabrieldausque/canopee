@@ -1,5 +1,35 @@
 # HardwareTransform class
 
+class that will add hardware information in a ICollectedEvent for LINUX OS use lscpu and free command Configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                             "TransformType": "Hardware",
+                             "OSSpecific": true
+                        }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     } 
+```
+
+The TransformType will be Hardware The OSSpecific will be set to true as hardware infos are obtained in different way specific to OS
+
 ```csharp
 public class HardwareTransform : BaseHardwareTransform
 ```
@@ -9,7 +39,7 @@ public class HardwareTransform : BaseHardwareTransform
 | name | description |
 | --- | --- |
 | [HardwareTransform](HardwareTransform/HardwareTransform.md)() | The default constructor. |
-| override [Transform](HardwareTransform/Transform.md)(…) |  |
+| override [Transform](HardwareTransform/Transform.md)(…) | Will add Cpus and memory infos in the ICollectedEvent |
 
 ## See Also
 

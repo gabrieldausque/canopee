@@ -1,5 +1,49 @@
 # FirebirdLookupTransform class
 
+This transforms will make a lookup for a specific key field in a recordset from a select in a firebird database, and add expected field in the ICollectedEvent The configuration will be :
+
+```csharp
+
+     {
+         ...
+         "Canopee": {
+             ...
+                 "Pipelines": [
+                  ...   
+                   {
+                     "Name": "OS",
+                     ...
+                     "Transforms" : [
+                         {
+                            "TransformType": "FirebirdLookup",
+                            "ConnectionString": "User=mylogin;Password=mypassword;Database=database.fdb;DataSource=localhost;Port=3050;Dialect=3;Charset=NONE;Role=;Connection lifetime=15;Pooling=true;MinPoolSize=0;MaxPoolSize=50;Packet Size=8192;ServerType=0;",
+                            "SelectStatement": "SELECT * FROM userinfos",
+                            "Key" : {
+                                 "LocalName":"KeyNameInCollectedEvent",
+                                 "SearchedName":"KeyNameInRecordSet"
+                             }, 
+                            "Fields": [
+                            {
+                                "LocalName": "Field1NewName",
+                                "SearchedName": "Field1"
+                            },
+                            {
+                                "LocalName": "Field2NewName",
+                                "SearchedName": "Field2"
+                            }
+                         }
+                     ]
+                  ...
+                 }
+                 ...   
+                 ]
+             ...
+         }
+     }    /// 
+```
+
+The TransformType attribute will be FirebirdLookup The ConnectionString attribute will contain the connection string to the database The SelectStatement attribute will contain the select statement that will contain the wanted fields The Key attribute will contain a mapping definition for the key field : LocalName is the name of the key in the ICollectedEvent, SearchedName is the name of the key in the record set The Fields attribute will contain all mappings for each wanted field : LocalName attribute will define the name of the field in the ICollectedEvent, SearchedName will define the name of the field in the recordset from the select statement
+
 ```csharp
 public class FirebirdLookupTransform : BaseTransform
 ```
@@ -8,9 +52,9 @@ public class FirebirdLookupTransform : BaseTransform
 
 | name | description |
 | --- | --- |
-| [FirebirdLookupTransform](FirebirdLookupTransform/FirebirdLookupTransform.md)() | The default constructor. |
-| override [Initialize](FirebirdLookupTransform/Initialize.md)(…) |  |
-| override [Transform](FirebirdLookupTransform/Transform.md)(…) |  |
+| [FirebirdLookupTransform](FirebirdLookupTransform/FirebirdLookupTransform.md)() | Default constructor. Initialized the list of mapping |
+| override [Initialize](FirebirdLookupTransform/Initialize.md)(…) | Initialize this ITransform with configurations. Add all defined [`TransformFieldMapping`](../Canopee.StandardLibrary.Transforms/TransformFieldMapping.md) from the configuration. |
+| override [Transform](FirebirdLookupTransform/Transform.md)(…) | Search the value of the _key field in the record set getted from the _selectStatement |
 
 ## See Also
 
