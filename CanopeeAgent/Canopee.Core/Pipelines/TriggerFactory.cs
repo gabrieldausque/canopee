@@ -37,6 +37,18 @@ namespace Canopee.Core.Pipelines
         }
 
         /// <summary>
+        /// Set the global factory instance with a new one.
+        /// </summary>
+        /// <param name="globalInstance"></param>
+        public static void SetGlobalInstance(TriggerFactory globalInstance)
+        {
+            lock (LockInstance)
+            {
+                _instance = globalInstance;
+            }
+        }
+        
+        /// <summary>
         /// The default constructor.
         /// </summary>
         /// <param name="directoryCatalog">the directory from which to load the <see cref="ITransform"/> catalog</param>

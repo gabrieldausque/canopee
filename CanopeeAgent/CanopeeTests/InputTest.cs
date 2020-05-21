@@ -18,10 +18,12 @@ namespace CanopeeTests
         [SetUp]
         public void Setup()
         {
-            InputFactory.SetGlobalInstance(new InputFactory("./"));
             CanopeeLoggerFactory.SetGlobalInstance(new CanopeeLoggerFactory("./"));
             _logger = CanopeeLoggerFactory.Instance()
                 .GetLogger(ConfigurationService.Instance.GetLoggingConfiguration(), typeof(Tests));
+            InputFactory.SetGlobalInstance(new InputFactory("./"));
+            TransformFactory.SetGlobalInstance(new TransformFactory("./"));
+            OutputFactory.SetGlobalInstance(new OutputFactory("./"));
         }
 
         [Test]

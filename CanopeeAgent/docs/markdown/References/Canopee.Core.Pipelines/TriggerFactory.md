@@ -13,6 +13,7 @@ public class TriggerFactory : FactoryFromDirectoryBase
 | [TriggerFactory](TriggerFactory/TriggerFactory.md)(…) | The default constructor. |
 | static [Instance](TriggerFactory/Instance.md)(…) | Get and create if needed the singleton instance |
 | [GetTrigger](TriggerFactory/GetTrigger.md)(…) | Create the ITrigger corresponding to the configuration |
+| static [SetGlobalInstance](TriggerFactory/SetGlobalInstance.md)(…) | Set the global factory instance with a new one. |
 
 ## See Also
 

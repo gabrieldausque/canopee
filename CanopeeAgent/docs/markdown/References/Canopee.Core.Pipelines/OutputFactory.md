@@ -14,6 +14,7 @@ public class OutputFactory : FactoryFromDirectoryBase
 | static [Instance](OutputFactory/Instance.md)(…) | Get and create if needed the singleton instance |
 | [GetOutput](OutputFactory/GetOutput.md)(…) | Create an instance of IOutput with the specified configuration |
 | [GetOutputs](OutputFactory/GetOutputs.md)(…) |  |
+| static [SetGlobalInstance](OutputFactory/SetGlobalInstance.md)(…) | Set the global factory instance with a new one. |
 
 ## See Also
 

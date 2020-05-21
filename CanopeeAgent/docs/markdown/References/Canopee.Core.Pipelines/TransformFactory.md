@@ -13,6 +13,7 @@ public class TransformFactory : FactoryFromDirectoryBase
 | [TransformFactory](TransformFactory/TransformFactory.md)(…) | Default constructor. |
 | static [Instance](TransformFactory/Instance.md)(…) | Get and create if needed the singleton instance |
 | [GetTransform](TransformFactory/GetTransform.md)(…) | Create the ITransform corresponding to the configuration |
+| static [SetGlobalInstance](TransformFactory/SetGlobalInstance.md)(…) | Set the global factory instance with a new one. |
 
 ## See Also
 
