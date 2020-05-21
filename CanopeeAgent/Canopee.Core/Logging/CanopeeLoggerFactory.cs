@@ -39,6 +39,19 @@ namespace Canopee.Core.Logging
             }
             return _instance;
         }
+
+        /// <summary>
+        /// Set the global instance
+        /// </summary>
+        /// <param name="canopeeLoggerFactory">The new <see cref="CanopeeLoggerFactory"/></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public static void SetGlobalInstance(CanopeeLoggerFactory canopeeLoggerFactory)
+        {
+            lock (LockInstance)
+            {
+                _instance = canopeeLoggerFactory;
+            }
+        }
         
         /// <summary>
         /// DEfault constructor
@@ -64,5 +77,6 @@ namespace Canopee.Core.Logging
             logger.Initialize(loggerConfiguration, callerType);
             return logger;
         }
+
     }
 }

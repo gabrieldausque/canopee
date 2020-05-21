@@ -37,6 +37,18 @@ namespace Canopee.Core.Pipelines
         }
 
         /// <summary>
+        /// Set the global factory instance with a new one.
+        /// </summary>
+        /// <param name="globalInstance"></param>
+        public static void SetGlobalInstance(InputFactory globalInstance)
+        {
+            lock (LockInstance)
+            {
+                _instance = globalInstance;
+            }
+        }
+        
+        /// <summary>
         /// Default constructor. Create the input factory using the specified catalog
         /// </summary>
         /// <param name="directoryCatalog">the directory to load <see cref="IInput"/> catalog from</param>

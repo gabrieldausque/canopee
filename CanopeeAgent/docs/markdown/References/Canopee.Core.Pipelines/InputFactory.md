@@ -13,6 +13,7 @@ public class InputFactory : FactoryFromDirectoryBase
 | [InputFactory](InputFactory/InputFactory.md)(…) | Default constructor. Create the input factory using the specified catalog |
 | static [Instance](InputFactory/Instance.md)(…) | Get the singleton instance and create it if needed |
 | [GetInput](InputFactory/GetInput.md)(…) | Get the corresponding IInput from the specified configuration |
+| static [SetGlobalInstance](InputFactory/SetGlobalInstance.md)(…) | Set the global factory instance with a new one. |
 
 ## See Also
 

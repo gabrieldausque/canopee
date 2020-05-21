@@ -44,6 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BBFE666A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestJsonObject", "TestJsonObject\TestJsonObject.csproj", "{73C7EE8B-C245-4958-9C80-66BB310DC78B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanopeeTests", "CanopeeTests\CanopeeTests.csproj", "{E78E0430-1652-491F-9DEE-233622F86359}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73C7EE8B-C245-4958-9C80-66BB310DC78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E78E0430-1652-491F-9DEE-233622F86359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78E0430-1652-491F-9DEE-233622F86359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78E0430-1652-491F-9DEE-233622F86359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78E0430-1652-491F-9DEE-233622F86359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +93,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{73C7EE8B-C245-4958-9C80-66BB310DC78B} = {BBFE666A-B43D-4EC0-BB21-E8BF0AFFFEC3}
+		{E78E0430-1652-491F-9DEE-233622F86359} = {BBFE666A-B43D-4EC0-BB21-E8BF0AFFFEC3}
 	EndGlobalSection
 EndGlobal

@@ -3,7 +3,7 @@
 Get the pipelines configuration section
 
 ```csharp
-public IConfiguration GetPipelinesConfiguration()
+public IConfigurationSection GetPipelinesConfiguration()
 ```
 
 ## See Also

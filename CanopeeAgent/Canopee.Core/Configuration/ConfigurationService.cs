@@ -220,7 +220,7 @@ namespace Canopee.Core.Configuration
         /// Get the logging configuration section
         /// </summary>
         /// <returns></returns>
-        public IConfiguration GetLoggingConfiguration()
+        public IConfigurationSection GetLoggingConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Logging");
         }
@@ -229,7 +229,7 @@ namespace Canopee.Core.Configuration
         /// Get the pipelines configuration section
         /// </summary>
         /// <returns></returns>
-        public IConfiguration GetPipelinesConfiguration()
+        public IConfigurationSection GetPipelinesConfiguration()
         {
             return GetCanopeeConfiguration().GetSection("Pipelines");
         }

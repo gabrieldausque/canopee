@@ -3,7 +3,7 @@
 Get the logging configuration section
 
 ```csharp
-public IConfiguration GetLoggingConfiguration()
+public IConfigurationSection GetLoggingConfiguration()
 ```
 
 ## See Also
