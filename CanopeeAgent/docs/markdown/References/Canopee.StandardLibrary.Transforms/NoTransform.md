@@ -1,5 +1,7 @@
 # NoTransform class
 
+The default transform, that does nothing.
+
 ```csharp
 public class NoTransform : BaseTransform
 ```
@@ -9,8 +11,8 @@ public class NoTransform : BaseTransform
 | name | description |
 | --- | --- |
 | [NoTransform](NoTransform/NoTransform.md)() | The default constructor. |
-| override [Initialize](NoTransform/Initialize.md)(…) |  |
-| override [Transform](NoTransform/Transform.md)(…) |  |
+| override [Initialize](NoTransform/Initialize.md)(…) | Initialize the logger |
+| override [Transform](NoTransform/Transform.md)(…) | Return the collectedEvent without any transformation |
 
 ## See Also
 

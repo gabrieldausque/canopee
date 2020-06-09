@@ -1,8 +1,14 @@
 # NoTransform.Transform method
 
+Return the collectedEvent without any transformation
+
 ```csharp
 public override ICollectedEvent Transform(ICollectedEvent collectedEventToTransform)
 ```
+
+| parameter | description |
+| --- | --- |
+| collectedEventToTransform | the ICollectedEvent |
 
 ## See Also
 

@@ -1,5 +1,7 @@
 # TransformFieldMapping.SearchedName property
 
+The name in the external object
+
 ```csharp
 public string SearchedName { get; set; }
 ```

@@ -1,6 +1,6 @@
 # ElasticLookupTransform constructor
 
-The default constructor.
+Default constructor. Initialize _requestedFieldMappings
 
 ```csharp
 public ElasticLookupTransform()

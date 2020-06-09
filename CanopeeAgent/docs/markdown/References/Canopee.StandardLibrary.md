@@ -88,10 +88,10 @@
 | --- | --- |
 | class [APIGeoGouvTransform](Canopee.StandardLibrary.Transforms/APIGeoGouvTransform.md) | ITransform that will add location coordinates, department code and region code in a ICollectedEvent based on a specific field that must represent a search field in the "https://geo.api.gouv.fr/" public API. Configuration will be : |
 | abstract class [BatchTransform](Canopee.StandardLibrary.Transforms/BatchTransform.md) | Base class for ITransform that will add field from a batch output. Will be OSSpecific |
-| class [ElasticLookupTransform](Canopee.StandardLibrary.Transforms/ElasticLookupTransform.md) |  |
+| class [ElasticLookupTransform](Canopee.StandardLibrary.Transforms/ElasticLookupTransform.md) | This transforms will make a lookup for a specific key field in an ElasticSearch recordset and add expected field in the ICollectedEvent The configuration will be : |
 | class [LinuxOperatingSystemTransform](Canopee.StandardLibrary.Transforms/LinuxOperatingSystemTransform.md) | ITransform that will add OS information in a ICollectedEvent for Linux use uname command Configuration will be : |
-| class [NoTransform](Canopee.StandardLibrary.Transforms/NoTransform.md) |  |
-| class [TransformFieldMapping](Canopee.StandardLibrary.Transforms/TransformFieldMapping.md) |  |
+| class [NoTransform](Canopee.StandardLibrary.Transforms/NoTransform.md) | The default transform, that does nothing. |
+| class [TransformFieldMapping](Canopee.StandardLibrary.Transforms/TransformFieldMapping.md) | Describe a mapping between an external object and a ICollectedEvent field |
 | class [WindowsOperatingSystemTransform](Canopee.StandardLibrary.Transforms/WindowsOperatingSystemTransform.md) | ITransform that will add OS information in a ICollectedEvent for Windows use wmic command Configuration will be : |
 
 ## Canopee.StandardLibrary.Transforms.Databases.Firebird namespace

@@ -1,9 +1,16 @@
 # ElasticLookupTransform.Initialize method
 
+Initialize this ITransform with configurations. Add all defined [`TransformFieldMapping`](../TransformFieldMapping.md) from the configuration.
+
 ```csharp
 public override void Initialize(IConfigurationSection transformConfiguration, 
     IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| transformConfiguration | the transform configuration |
+| loggingConfiguration | the logger configuration |
 
 ## See Also
 

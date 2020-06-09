@@ -1,9 +1,16 @@
 # NoTransform.Initialize method
 
+Initialize the logger
+
 ```csharp
 public override void Initialize(IConfigurationSection transformConfiguration, 
     IConfigurationSection loggingConfiguration)
 ```
+
+| parameter | description |
+| --- | --- |
+| transformConfiguration | the ITransform configuration |
+| loggingConfiguration | the ICanopeeLogger |
 
 ## See Also
 

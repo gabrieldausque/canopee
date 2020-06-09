@@ -1,5 +1,7 @@
 # TransformFieldMapping class
 
+Describe a mapping between an external object and a ICollectedEvent field
+
 ```csharp
 public class TransformFieldMapping
 ```
@@ -9,8 +11,8 @@ public class TransformFieldMapping
 | name | description |
 | --- | --- |
 | [TransformFieldMapping](TransformFieldMapping/TransformFieldMapping.md)() | The default constructor. |
-| [LocalName](TransformFieldMapping/LocalName.md) { get; set; } |  |
-| [SearchedName](TransformFieldMapping/SearchedName.md) { get; set; } |  |
+| [LocalName](TransformFieldMapping/LocalName.md) { get; set; } | The name in the ICollectedEvent |
+| [SearchedName](TransformFieldMapping/SearchedName.md) { get; set; } | The name in the external object |
 
 ## See Also
 

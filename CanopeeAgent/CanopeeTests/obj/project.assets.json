@@ -8401,14 +8401,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/datas/canopee/CanopeeAgent/CanopeeTests/CanopeeTests.csproj",
+      "projectUniqueName": "/home/gabriel/workspaces/canopee/CanopeeAgent/CanopeeTests/CanopeeTests.csproj",
       "projectName": "CanopeeTests",
-      "projectPath": "/datas/canopee/CanopeeAgent/CanopeeTests/CanopeeTests.csproj",
+      "projectPath": "/home/gabriel/workspaces/canopee/CanopeeAgent/CanopeeTests/CanopeeTests.csproj",
       "packagesPath": "/home/gabriel/.nuget/packages/",
-      "outputPath": "/datas/canopee/CanopeeAgent/CanopeeTests/obj/",
+      "outputPath": "/home/gabriel/workspaces/canopee/CanopeeAgent/CanopeeTests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/gabriel/.config/NuGet/NuGet.Config"
+        "/home/gabriel/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -8419,14 +8419,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/datas/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
-              "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
+            "/home/gabriel/workspaces/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj": {
+              "projectPath": "/home/gabriel/workspaces/canopee/CanopeeAgent/Canopee.Common/Canopee.Common.csproj"
             },
-            "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
-              "projectPath": "/datas/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
+            "/home/gabriel/workspaces/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj": {
+              "projectPath": "/home/gabriel/workspaces/canopee/CanopeeAgent/Canopee.Core/Canopee.Core.csproj"
             },
-            "/datas/canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {
-              "projectPath": "/datas/canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj"
+            "/home/gabriel/workspaces/canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj": {
+              "projectPath": "/home/gabriel/workspaces/canopee/CanopeeAgent/Canopee.StandardLibrary/Canopee.StandardLibrary.csproj"
             }
           }
         }
@@ -8467,6 +8467,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.2, 3.1.2]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8475,7 +8481,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.300/RuntimeIdentifierGraph.json"
       }
     }
   }

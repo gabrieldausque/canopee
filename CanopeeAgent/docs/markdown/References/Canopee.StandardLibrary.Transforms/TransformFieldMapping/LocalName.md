@@ -1,5 +1,7 @@
 # TransformFieldMapping.LocalName property
 
+The name in the ICollectedEvent
+
 ```csharp
 public string LocalName { get; set; }
 ```
