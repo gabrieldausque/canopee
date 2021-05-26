@@ -45,7 +45,7 @@ Doesn't find the input, transform or output you need ? You can easily extend the
  Below a schema that describes relations between each type of object in Canopee Framework :
  
  ![](Images/ObjectArchitecture.png)
-  
+as  
  ### How does it works ? 
  
  How does it works ? Below a schema of the pipeline process that describes the way a pipeline is working : 
